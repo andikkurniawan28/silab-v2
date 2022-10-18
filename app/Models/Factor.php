@@ -28,4 +28,9 @@ class Factor extends Model
     {
         return self::where('name', 'Raw Juice')->get()->first()->value;
     }
+
+    public static function findImbibitionFactor()
+    {
+        return self::where('name', 'Imbibition')->get()->first()->value;
+    }
 }

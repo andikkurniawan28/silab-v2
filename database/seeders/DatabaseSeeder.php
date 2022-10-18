@@ -86,6 +86,11 @@ class DatabaseSeeder extends Seeder
                 'value' => 0.85,
                 'admin' => 'Andik Kurniawan',
             ],
+            [
+                'name' => 'Imbibition',
+                'value' => 1,
+                'admin' => 'Andik Kurniawan',
+            ],
         ];
         Factor::insert($factors);
 

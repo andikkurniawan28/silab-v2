@@ -34,7 +34,8 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
                 <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
-                {{-- <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                {{-- 
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
                 <a class="collapse-item" href="{{ route('mollase-publish') }}">Timbangan Tetes</a>
