@@ -78,8 +78,8 @@ class Saccharomat extends Model
 
     public static function findYield($percent_pol, $percent_brix)
     {
-        $mollases_factor = self::findMollasesFactor();
-        $yield_factor = self::findRendemenFactor();
+        $mollases_factor = Factor::findMollasesFactor();
+        $yield_factor = Factor::findRendemenFactor();
         $yield = $yield_factor * ($percent_pol - $mollases_factor * ($percent_brix - $percent_pol));
         return $yield;
     }
@@ -113,16 +113,6 @@ class Saccharomat extends Model
                 ];
             }
         }
-    }
-
-    public static function findMollasesFactor()
-    {
-        return Factor::where('name', 'Mollases')->get()->first()->value;
-    }
-
-    public static function findRendemenFactor()
-    {
-        return Factor::where('name', 'Rendemen')->get()->first()->value;
     }
 
     public static function findPolCount($sample_id)

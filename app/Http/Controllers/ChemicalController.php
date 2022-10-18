@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chemical;
+use App\Models\Log;
 use Illuminate\Http\Request;
 
 class ChemicalController extends Controller
@@ -14,7 +15,8 @@ class ChemicalController extends Controller
      */
     public function index()
     {
-        //
+        $chemicals = Chemical::limit(1000)->get();
+        return view('chemical.index', compact('chemicals'));
     }
 
     /**
@@ -35,7 +37,10 @@ class ChemicalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->request->add([ 'admin' => session('name'), ]);
+        Chemical::create($request->all());
+        Log::writeLog('Chemical', 'Create New Chemical', session('name'));
+        return redirect()->back()->with('success', 'Chemical has been stored');
     }
 
     /**
@@ -67,9 +72,20 @@ class ChemicalController extends Controller
      * @param  \App\Models\Chemical  $chemical
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chemical $chemical)
+    public function update(Request $request, $id)
     {
-        //
+        Chemical::where('id', $id)->update([
+            'kapur' => $request->kapur,
+            'belerang' => $request->belerang,
+            'floc' => $request->floc,
+            'naoh' => $request->naoh,
+            'b894' => $request->b894,
+            'b895' => $request->b895,
+            'b210' => $request->b210,
+            'asam_phospat' => $request->asam_phospat,
+            'blotong' => $request->blotong,
+        ]);
+        return redirect()->back()->with('success', 'Chemical has been updated');
     }
 
     /**
@@ -78,8 +94,9 @@ class ChemicalController extends Controller
      * @param  \App\Models\Chemical  $chemical
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chemical $chemical)
+    public function destroy($id)
     {
-        //
+        Chemical::find($id)->delete();
+        return redirect()->back()->with('success', 'Chemical has been deleted');
     }
 }

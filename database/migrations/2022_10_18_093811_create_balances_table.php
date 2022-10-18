@@ -19,6 +19,7 @@ class CreateBalancesTable extends Migration
             $table->integer('totalizer_raw_juice')->nullable();
             $table->integer('flow_raw_juice')->nullable();
             $table->float('raw_juice_percent_sugar_cane')->nullable();
+            $table->string('admin')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

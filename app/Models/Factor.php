@@ -13,4 +13,19 @@ class Factor extends Model
         'value',
         'admin',
     ];
+
+    public static function findMollasesFactor()
+    {
+        return self::where('name', 'Mollases')->get()->first()->value;
+    }
+
+    public static function findRendemenFactor()
+    {
+        return self::where('name', 'Rendemen')->get()->first()->value;
+    }
+
+    public static function findRawJuiceFactor()
+    {
+        return self::where('name', 'Raw Juice')->get()->first()->value;
+    }
 }

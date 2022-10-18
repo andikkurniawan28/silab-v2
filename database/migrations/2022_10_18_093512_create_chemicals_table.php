@@ -15,7 +15,18 @@ class CreateChemicalsTable extends Migration
     {
         Schema::create('chemicals', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->integer('kapur')->nullable();
+            $table->integer('belerang')->nullable();
+            $table->integer('floc')->nullable();
+            $table->integer('naoh')->nullable();
+            $table->integer('b894')->nullable();
+            $table->integer('b895')->nullable();
+            $table->integer('b210')->nullable();
+            $table->integer('asam_phospat')->nullable();
+            $table->integer('blotong')->nullable();
+            $table->string('admin')->nullable();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
     }
 

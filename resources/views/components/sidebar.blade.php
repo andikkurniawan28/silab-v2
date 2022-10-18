@@ -32,8 +32,9 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
+                <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
+                {{-- <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
                 <a class="collapse-item" href="{{ route('mollase-publish') }}">Timbangan Tetes</a>
@@ -62,9 +63,7 @@
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
                 <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
                 <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
-                <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
                 {{-- <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling Proses</a>
-                <a class="collapse-item" href="{{ route('chemicals.index') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
                 <a class="collapse-item" href="{{ route('rs_ins.index') }}">Timbangan RS In</a>
                 <a class="collapse-item" href="{{ route('rs_outs.index') }}">Timbangan RS Out</a>
