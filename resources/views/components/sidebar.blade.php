@@ -32,9 +32,9 @@
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
                 <a class="collapse-item" href="{{ route('mollases.index') }}">Tangki Tetes</a>
-                <a class="collapse-item" href="">Timbangan Tetes</a>
+                {{-- <a class="collapse-item" href="">Timbangan Tetes</a>
                 <a class="collapse-item" href="">Timbangan RS In</a>
-                <a class="collapse-item" href="">Timbangan RS Out</a>
+                <a class="collapse-item" href="">Timbangan RS Out</a> --}}
             </div>
         </div>
     </li>
@@ -50,7 +50,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Data Operation</span>
+            <span>Input</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -64,6 +64,8 @@
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
                 <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
                 <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
+                <a class="collapse-item" href="{{ route('core_smalls.index') }}">Core EK</a>
+                <a class="collapse-item" href="{{ route('core_bigs.index') }}">Core EB</a>
             </div>
         </div>
     </li>
@@ -71,13 +73,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-print"></i>
-            <span>Reporting</span>
+            <span>Report</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="#">Report</a>
-                <a class="collapse-item" href="#">Certificate</a>
+                {{-- <a class="collapse-item" href="#">Off-Farm</a>
+                <a class="collapse-item" href="#">On-Farm</a>
+                <a class="collapse-item" href="#">Certificate of Analysis</a> --}}
             </div>
         </div>
     </li>
@@ -104,39 +107,13 @@
                 <a class="collapse-item" href="{{ route('activity_log') }}">Log</a>
                 
                 @if(session('name') == 'Andik Kurniawan')
-                <a class="collapse-item" href="{{ route('roles.index') }}">Role</a>
+                    <a class="collapse-item" href="{{ route('roles.index') }}">Role</a>
                 @endif
                 
             </div>
         </div>
     </li>
     @endif
-    
-    {{-- 
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        Addons
-    </div>
-
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
-    </li> 
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block"> --}}
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

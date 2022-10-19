@@ -9,6 +9,9 @@ use App\Models\Role;
 use App\Models\User;
 use App\Models\Factor;
 use App\Models\Material;
+use App\Models\Cooperative;
+use App\Models\Outpost;
+use App\Models\Program;
 
 class DatabaseSeeder extends Seeder
 {
@@ -186,7 +189,92 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Kapur PT Sedar', 'station_id' => 3, 'method_id' => 11, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Nira Kotor', 'station_id' => 3, 'method_id' => 14, 'admin' => 'Andik Kurniawan', ],
         ];
-
         Material::insert($materials);
+
+        $cooperatives = [
+            [ 'code' => '1', 'name' => 'Gondanglegi', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '2', 'name' => 'Pagelaran', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '3', 'name' => 'Dampit', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '4', 'name' => 'Bantur', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '5', 'name' => 'Donomulyo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'A', 'name' => 'Lawang', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'B', 'name' => 'Dengkol', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'C', 'name' => 'Karangploso', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'D', 'name' => 'Jabung', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'E', 'name' => 'Pakis', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'F', 'name' => 'Tumpang Agung', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'G', 'name' => 'Poncokusumo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'H', 'name' => 'Wagir', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'I', 'name' => 'Tajinan', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'J', 'name' => 'Bululawang', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'K', 'name' => 'Pakisaji', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'L', 'name' => 'Kromengan', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'M', 'name' => 'Wonosari', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'N', 'name' => 'Sumberpucung', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'O', 'name' => 'Ngajum', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'P', 'name' => 'Pagak', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Q', 'name' => 'Kalipare', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'R', 'name' => 'Sri Sedono', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'S', 'name' => 'Rekanan Utara', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'T', 'name' => 'Kesamben', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'U', 'name' => 'Kedungkandang', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'V', 'name' => 'Kepanjen', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'W', 'name' => 'Sari Madu', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'X', 'name' => 'Rekanan Selatan Timur', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Y', 'name' => 'Rekanan Selatan Barat', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Z', 'name' => 'Tumpang Padita', 'admin' => 'Andik Kurniawan' ],
+        ];
+        Cooperative::insert($cooperatives);
+
+        $outpost = [
+            [ 'code' => 'O', 'name' => 'Banyuglugur', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'P', 'name' => 'Tongas', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Q', 'name' => 'Turen', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'R', 'name' => 'Purwosari', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'S', 'name' => 'Ngoro', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'T', 'name' => 'Brongkos', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'U', 'name' => 'Talun', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'V', 'name' => 'Gumitir', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'W', 'name' => 'Gedok', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'X', 'name' => 'Peteng', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Y', 'name' => 'Pagak', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Z', 'name' => 'Pronojiwo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '1', 'name' => 'Kromengan', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '2', 'name' => 'Jatikerto', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '4', 'name' => 'Pagelaran', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '5', 'name' => 'Singosari', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '6', 'name' => 'Ngajum', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '7', 'name' => 'Gondanglegi', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '8', 'name' => 'Donomulyo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => '9', 'name' => 'Pakis', 'admin' => 'Andik Kurniawan' ],
+        ];
+        Outpost::insert($outpost);
+
+        $programs = [
+            [ 'code' => 'A', 'name' => 'Banyuwangi', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'B', 'name' => 'Jember', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'C', 'name' => 'Situbondo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'D', 'name' => 'Bondowoso', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'E', 'name' => 'Probolinggo', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'F', 'name' => 'Lumajang', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'G', 'name' => 'Pasuruan', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'H', 'name' => 'Mojokerto', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'I', 'name' => 'Jombang', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'J', 'name' => 'Blitar', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'K', 'name' => 'Kredit DW TR', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'L', 'name' => 'Kediri', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'M', 'name' => 'Tulungagung', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'N', 'name' => 'Non Kredit DW', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'P', 'name' => 'Kebun Benih Datar', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Q', 'name' => 'Kebun Benih Induk', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'R', 'name' => 'Kebun Benih Nenek', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'S', 'name' => 'Kebun Benih Pokok', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'T', 'name' => 'Kebun Persilangan P3GI', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'U', 'name' => 'Kebun Percobaan', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'V', 'name' => 'Kebun Pengenalan Jenis', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'X', 'name' => 'Tebu Giling TS', 'admin' => 'Andik Kurniawan' ],
+            [ 'code' => 'Z', 'name' => 'SPT', 'admin' => 'Andik Kurniawan' ],
+        ];
+        Program::insert($programs);
     }
 }

@@ -73,14 +73,20 @@ class Saccharomat extends Model
 
     public static function findPurity($percent_pol, $percent_brix)
     {
-        return ($percent_pol/$percent_brix * 100);
+        if($percent_pol != NULL && $percent_pol != NULL)
+            return ($percent_pol/$percent_brix * 100);
+        else return NULL;
     }
 
     public static function findYield($percent_pol, $percent_brix)
     {
-        $mollases_factor = Factor::findMollasesFactor();
-        $yield_factor = Factor::findRendemenFactor();
-        $yield = $yield_factor * ($percent_pol - $mollases_factor * ($percent_brix - $percent_pol));
+        if($percent_pol != NULL && $percent_pol != NULL)
+        {
+            $mollases_factor = Factor::findMollasesFactor();
+            $yield_factor = Factor::findRendemenFactor();
+            $yield = $yield_factor * ($percent_pol - $mollases_factor * ($percent_brix - $percent_pol));
+        }
+        else $yield = NULL;
         return $yield;
     }
     
