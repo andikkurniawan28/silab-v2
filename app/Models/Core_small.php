@@ -8,6 +8,7 @@ use App\Models\Cooperative;
 use App\Models\Outpost;
 use App\Models\Program;
 use App\Models\Saccharomat;
+use App\Models\Register;
 
 class Core_small extends Model
 {
@@ -45,7 +46,7 @@ class Core_small extends Model
 
     public static function validateRequest($request)
     {
-        $register = self::findRegister($request->barcode);
+        $register = Register::findRegister($request->barcode);
         $cooperative = Cooperative::getCooperative($register);
         $outpost = Outpost::getOutpost($register);
         $program = Program::getProgram($register);

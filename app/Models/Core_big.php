@@ -8,6 +8,7 @@ use App\Models\Cooperative;
 use App\Models\Outpost;
 use App\Models\Program;
 use App\Models\Saccharomat;
+use App\Models\Register;
 
 class Core_big extends Model
 {
@@ -45,7 +46,7 @@ class Core_big extends Model
 
     public static function validateRequest($request)
     {
-        $register = self::findRegister($request->barcode);
+        $register = Register::findRegister($request->barcode);
         $cooperative = Cooperative::getCooperative($register);
         $outpost = Outpost::getOutpost($register);
         $program = Program::getProgram($register);
@@ -59,24 +60,5 @@ class Core_big extends Model
         ];
         return $data;
     }
-
-    public static function findRegister($barcode)
-    {
-        $url = 'http://192.168.20.45:8111/getregister/';
-        $request_url = $url.$barcode;
-        $curl = curl_init($request_url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, [ 'authorization:PGKBA2022' ]);
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $data = json_decode($response, true);
-
-        if (array_key_exists("register", $data))
-        {
-            return $data['register'];
-        }
-        else return NULL;
-    }
-
 
 }
