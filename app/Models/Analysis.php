@@ -30,4 +30,16 @@ class Analysis extends Model
         $data = Method::serveByMethodId($method_id, $material_id, 1000); 
         return $data;
     }
+
+    public function serveAverageValueByTime($time, $material_id, $parameter, $table)
+    {
+        return Sample::join($table, 'samples.id', $table.'.sample_id')
+            ->join('materials', 'samples.material_id', 'materials.id')
+            ->where('materials.id', $material_id)
+            ->where('samples.created_at', '>=', $time['current'])
+            ->where('samples.created_at', '<', $time['tomorrow'])
+            ->where($table.'.is_verified', 1)
+            ->avg($parameter);
+    }
+    
 }

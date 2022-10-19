@@ -60,4 +60,5 @@ class Coloromat extends Model
             ->orderBy('coloromats.id', 'desc')
             ->get();
     }
+    
 }

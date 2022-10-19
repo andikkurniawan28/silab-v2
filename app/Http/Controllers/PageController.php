@@ -49,4 +49,14 @@ class PageController extends Controller
         $datas = Analysis::serveForSampleResult($material_id, $method);
         return view('sample_result.index', compact('datas', 'title', 'method', 'station_id', 'station_name'));
     }
+
+    public function offFarmreport()
+    {
+        return view('report.offfarm');
+    }
+
+    public function onFarmreport()
+    {
+        return view('report.onfarm');
+    }
 }

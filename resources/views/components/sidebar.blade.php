@@ -78,9 +78,9 @@
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                {{-- <a class="collapse-item" href="#">Off-Farm</a>
-                <a class="collapse-item" href="#">On-Farm</a>
-                <a class="collapse-item" href="#">Certificate of Analysis</a> --}}
+                <a class="collapse-item" href="{{ route('off-farm-report') }}">Off-Farm</a>
+                <a class="collapse-item" href="{{ route('on-farm-report') }}">On-Farm</a>
+                {{-- <a class="collapse-item" href="#">Certificate of Analysis</a> --}}
             </div>
         </div>
     </li>

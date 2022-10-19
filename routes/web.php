@@ -29,6 +29,7 @@ use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\CoreSmallController;
 use App\Http\Controllers\CoreBigController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,11 @@ Route::get('activity_log', [PageController::class, 'activityLogByUser'])->name('
 Route::get('analysis_result', [PageController::class, 'analysisResult'])->name('analysis_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('station_result/{station_id}', [PageController::class, 'stationResult'])->name('station_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['user_is_login', 'role_is_5']);
+Route::get('off-farm-report', [PageController::class, 'offFarmReport'])->name('off-farm-report')->middleware(['user_is_login', 'role_is_3']);
+Route::get('on-farm-report', [PageController::class, 'onFarmReport'])->name('on-farm-report')->middleware(['user_is_login', 'role_is_3']);
+
+// Report
+Route::post('lab_report', [ReportController::class, 'labReport'])->name('lab_report')->middleware(['user_is_login', 'role_is_3']);
 
 // Authentication
 Route::get('login', [LoginController::class, 'index'])->name('login');
