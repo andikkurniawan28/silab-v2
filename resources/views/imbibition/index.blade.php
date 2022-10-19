@@ -23,9 +23,9 @@
                             <th>Flow</th>
                             <th>Admin</th>
                             <th>Created @</th>
-                            <th>Updated @</th>
 
                             @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
+                                <th>Updated @</th>
                                 <th>Action</th>
                             @endif
                             
@@ -39,9 +39,9 @@
                             <td>{{ $imbibition->flow }}</td>
                             <td>{{ $imbibition->admin }}</td>
                             <td>{{ $imbibition->created_at }}</td>
-                            <td>{{ $imbibition->updated_at }}</td>
 
                             @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
+                                <td>{{ $imbibition->updated_at }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $imbibition->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 

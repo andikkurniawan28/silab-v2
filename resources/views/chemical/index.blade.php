@@ -30,9 +30,9 @@
                             <th>Blotong</th>
                             <th>Admin</th>
                             <th>Created @</th>
-                            <th>Updated @</th>
 
                             @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                                <th>Updated @</th>
                                 <th>Action</th>
                             @endif
                         </tr>
@@ -52,9 +52,9 @@
                             <td>{{ $chemical->blotong }}</td>
                             <td>{{ $chemical->admin }}</td>
                             <td>{{ $chemical->created_at }}</td>
-                            <td>{{ $chemical->updated_at }}</td>
 
                             @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                                <td>{{ $chemical->updated_at }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $chemical->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 

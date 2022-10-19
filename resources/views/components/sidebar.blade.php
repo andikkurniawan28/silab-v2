@@ -19,12 +19,6 @@
     <hr class="sidebar-divider">
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('analysis_result') }}">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Analysis Result</span></a>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages2" aria-expanded="true" aria-controls="collapsePages2">
             <i class="fas fa-fw fa-eye"></i>
             <span>Monitoring</span>
@@ -35,14 +29,21 @@
                 <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
                 <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
-                {{-- 
+                <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
+                {{-- 
                 <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
                 <a class="collapse-item" href="{{ route('mollase-publish') }}">Timbangan Tetes</a>
                 <a class="collapse-item" href="{{ route('rs_in-publish') }}">Timbangan RS In</a>
                 <a class="collapse-item" href="{{ route('rs_out-publish') }}">Timbangan RS Out</a> --}}
             </div>
         </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('analysis_result') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Analysis Result</span></a>
     </li>
 
     @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
@@ -64,7 +65,7 @@
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
                 <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
                 <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
-                {{-- <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling Proses</a>
+                {{-- 
                 <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
                 <a class="collapse-item" href="{{ route('rs_ins.index') }}">Timbangan RS In</a>
                 <a class="collapse-item" href="{{ route('rs_outs.index') }}">Timbangan RS Out</a>
