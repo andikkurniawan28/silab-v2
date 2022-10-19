@@ -26,6 +26,7 @@ use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\AroundController;
 use App\Http\Controllers\TaxationController;
+use App\Http\Controllers\MollaseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,7 @@ Route::resource('chemicals', ChemicalController::class)->middleware(['user_is_lo
 Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_is_login', 'role_is_5']);
 Route::resource('arounds', AroundController::class)->middleware(['user_is_login', 'role_is_5']);
 Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'role_is_5']);
+Route::resource('mollases', MollaseController::class)->middleware(['user_is_login', 'role_is_5']);
 
 // Corection
 Route::get('saccharomats_correction', [SaccharomatController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);

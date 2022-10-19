@@ -31,11 +31,10 @@
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
-                {{-- 
-                <a class="collapse-item" href="{{ route('eRonsel') }}">eRonsel</a>
-                <a class="collapse-item" href="{{ route('mollase-publish') }}">Timbangan Tetes</a>
-                <a class="collapse-item" href="{{ route('rs_in-publish') }}">Timbangan RS In</a>
-                <a class="collapse-item" href="{{ route('rs_out-publish') }}">Timbangan RS Out</a> --}}
+                <a class="collapse-item" href="{{ route('mollases.index') }}">Tangki Tetes</a>
+                <a class="collapse-item" href="">Timbangan Tetes</a>
+                <a class="collapse-item" href="">Timbangan RS In</a>
+                <a class="collapse-item" href="">Timbangan RS Out</a>
             </div>
         </div>
     </li>
@@ -51,7 +50,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Input Data</span>
+            <span>Data Operation</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -65,18 +64,11 @@
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
                 <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
                 <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
-                {{-- 
-                <a class="collapse-item" href="{{ route('tanks.index') }}">Taksasi Tetes</a>
-                <a class="collapse-item" href="{{ route('rs_ins.index') }}">Timbangan RS In</a>
-                <a class="collapse-item" href="{{ route('rs_outs.index') }}">Timbangan RS Out</a>
-                <a class="collapse-item" href="{{ route('mollases.index') }}">Timbangan Tetes</a>
-                <a class="collapse-item" href="{{ route('core_eks.index') }}">Core EK</a>
-                <a class="collapse-item" href="{{ route('core_ebs.index') }}">Core EB</a> --}}
             </div>
         </div>
     </li>
     
-    {{-- <li class="nav-item">
+    <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-print"></i>
             <span>Reporting</span>
@@ -88,7 +80,7 @@
                 <a class="collapse-item" href="#">Certificate</a>
             </div>
         </div>
-    </li> --}}
+    </li>
 
     @endif
 
