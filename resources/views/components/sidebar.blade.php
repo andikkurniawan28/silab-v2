@@ -64,8 +64,7 @@
                 <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
                 <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
                 <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
-                <a class="collapse-item" href="{{ route('core_smalls.index') }}">Core EK</a>
-                <a class="collapse-item" href="{{ route('core_bigs.index') }}">Core EB</a>
+                <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
             </div>
         </div>
     </li>
@@ -73,14 +72,14 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-print"></i>
-            <span>Report</span>
+            <span>Documentation</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('off-farm-report') }}">Off-Farm</a>
-                <a class="collapse-item" href="{{ route('on-farm-report') }}">On-Farm</a>
-                {{-- <a class="collapse-item" href="#">Certificate of Analysis</a> --}}
+                <a class="collapse-item" href="{{ route('reports') }}">Report</a>
+                {{-- <a class="collapse-item" href="{{ route('on-farm-report') }}">On-Farm</a> --}}
+                <a class="collapse-item" href="#">Certificate of Analysis</a>
             </div>
         </div>
     </li>

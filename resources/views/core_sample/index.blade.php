@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Core Sample EK') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Core Sample') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -20,8 +20,10 @@
                         <tr>
                             <th>ID</th>
                             <th>Barcode</th>
+                            <th>Spot</th>
                             <th>Batch</th>
                             <th>Register</th>
+                            <th>Vehicle</th>
                             <th>KUD</th>
                             <th>Pos</th>
                             <th>Program</th>
@@ -29,53 +31,44 @@
                             <th>Pol</th>
                             <th>Yield</th>
                             <th>Admin</th>
-                            <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($core_smalls as $core_small)
+                        @foreach ($core_samples as $core_sample)
                         <tr>
-                            <td>{{ $core_small->id }}</td>
-                            <td>{{ $core_small->barcode }}</td>
-                            <td>{{ $core_small->batch }}</td>
-                            <td>{{ $core_small->register }}</td>
-                            <td>{{ $core_small->cooperative }}</td>
-                            <td>{{ $core_small->outpost }}</td>
-                            <td>{{ $core_small->program }}</td>
-                            <td>{{ $core_small->percent_brix }}</td>
-                            <td>{{ $core_small->percent_pol }}</td>
-                            <td>{{ $core_small->yield }}</td>
-                            <td>{{ $core_small->admin }}</td>
-                            <td>{{ $core_small->master }}</td>
-                            <td>{{ $core_small->created_at }}</td>
+                            <td>{{ $core_sample->id }}</td>
+                            <td>{{ $core_sample->barcode }}</td>
+                            <td>{{ $core_sample->spot }}</td>
+                            <td>{{ $core_sample->batch }}</td>
+                            <td>{{ $core_sample->register }}</td>
+                            <td>{{ $core_sample->vehicle }}</td>
+                            <td>{{ $core_sample->cooperative }}</td>
+                            <td>{{ $core_sample->outpost }}</td>
+                            <td>{{ $core_sample->program }}</td>
+                            <td>{{ $core_sample->percent_brix }}</td>
+                            <td>{{ $core_sample->percent_pol }}</td>
+                            <td>{{ $core_sample->yield }}</td>
+                            <td>{{ $core_sample->admin }}</td>
+                            <td>{{ $core_sample->created_at }}</td>
                             <td>
-                                @if($core_small->is_verified == 0)
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_small->id }}">
+                                @if(session('role') == 1 || session('role') == 2)
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_sample->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit
                                     </button>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $core_small->id }}">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $core_sample->id }}">
                                         @include('components.icon', ['icon' => 'trash ']) 
                                         Delete
                                     </button>
-                                @elseif($core_small->is_verified == 1 && session('role') != 1)
+                                @else
                                     <h4>
                                         <span class="badge badge-warning text-dark">
                                             @include('components.icon', ['icon' => 'lock ']) 
                                             Locked
                                         </span>
                                     </h4>
-                                @elseif($core_small->is_verified == 1 && session('role') == 1)
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_small->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
-                                        Edit
-                                    </button>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $core_small->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
-                                        Delete
-                                    </button>
                                 @endif
                             </td>
                         </tr>
@@ -89,17 +82,10 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="core_smalls_correction" type="button" class="btn btn-info">
+            <a href="core_samples_correction" type="button" class="btn btn-info">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
-
-            @if(session('role') == 1 or session('role') == 2)
-            <a href="core_smalls_verification" type="button" class="btn btn-secondary">
-                @include('components.icon', ['icon' => 'check ']) 
-                Verification
-            </a>
-            @endif
 
         </div>
     </div>
@@ -107,7 +93,7 @@
 @endsection
 
 @section('modal')
-@include('core_small.create')
-@include('core_small.edit')
-@include('core_small.delete')
+@include('core_sample.create')
+@include('core_sample.edit')
+@include('core_sample.delete')
 @endsection

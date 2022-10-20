@@ -50,13 +50,8 @@ class PageController extends Controller
         return view('sample_result.index', compact('datas', 'title', 'method', 'station_id', 'station_name'));
     }
 
-    public function offFarmreport()
+    public function report()
     {
-        return view('report.offfarm');
-    }
-
-    public function onFarmreport()
-    {
-        return view('report.onfarm');
+        return view('report.report');
     }
 }

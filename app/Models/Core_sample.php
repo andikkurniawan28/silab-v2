@@ -10,14 +10,16 @@ use App\Models\Program;
 use App\Models\Saccharomat;
 use App\Models\Register;
 
-class Core_small extends Model
+class Core_sample extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'barcode',
+        'spot',
         'batch',
         'register',
+        'vehicle',
         'cooperative',
         'outpost',
         'program',
@@ -28,30 +30,30 @@ class Core_small extends Model
         'percent_pol_origin',
         'yield_origin',
         'admin',
-        'master',
         'corrector',
-        'is_verified',
         'correction',
     ];
 
     public static function serveCorrected()
     {
-        return self::where('correction', 1)->limit(1000)->orderBy('core_smalls.id', 'desc')->get();
+        return self::where('correction', 1)->limit(1000)->orderBy('core_samples.id', 'desc')->get();
     }
 
     public static function serveUnverificated()
     {
-        return self::where('is_verified', 0)->limit(1000)->orderBy('core_smalls.id', 'desc')->get();
+        return self::where('is_verified', 0)->limit(1000)->orderBy('core_samples.id', 'desc')->get();
     }
 
     public static function validateRequest($request)
     {
+        $vehicle = self::findVehicle($request->barcode);
         $register = Register::findRegister($request->barcode);
         $cooperative = Cooperative::getCooperative($register);
         $outpost = Outpost::getOutpost($register);
         $program = Program::getProgram($register);
         $yield = Saccharomat::findYield($request->percent_pol, $request->percent_brix);
         return $data = [
+            'vehicle' => $vehicle,
             'register' => $register,
             'cooperative' => $cooperative,
             'outpost' => $outpost,
@@ -61,22 +63,17 @@ class Core_small extends Model
         return $data;
     }
 
-    public static function findRegister($barcode)
+    public static function findVehicle($barcode)
     {
-        $url = 'http://192.168.20.45:8111/getregister/';
-        $request_url = $url.$barcode;
-        $curl = curl_init($request_url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, [ 'authorization:PGKBA2022' ]);
-        $response = curl_exec($curl);
-        curl_close($curl);
-        $data = json_decode($response, true);
-
-        if (array_key_exists("register", $data))
+        $code = substr($barcode, 2, 1);
+        switch($code)
         {
-            return $data['register'];
+            case 'K' : $vehicle = 'Engkel Kecil'; break;
+            case 'B' : $vehicle = 'Engkel Besar'; break;
+            case 'G' : $vehicle = 'Gandeng'; break;
+            default : $vehicle = NULL; break;
         }
-        else return NULL;
+        return $vehicle;
     }
 
 

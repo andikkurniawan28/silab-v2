@@ -20,4 +20,11 @@ class Chemical extends Model
         'blotong',
         'admin',
     ];
+
+    public static function serveSumarryValueByTime($time, $parameter)
+    {
+        return self::where('chemicals.created_at', '>=', $time['current'])
+            ->where('chemicals.created_at', '<', $time['tomorrow'])
+            ->sum($parameter);
+    }
 }

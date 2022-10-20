@@ -65,11 +65,48 @@ class DatabaseSeeder extends Seeder
         Role::insert($roles);
 
         $users = [
-            'role_id' => 1,
-            'name' => 'Andik Kurniawan',
-            'username' => 'andik',
-            'password' => md5(110887),
-            'admin' => 'Andik Kurniawan',
+            [
+                'role_id' => 1,
+                'name' => 'Andik Kurniawan',
+                'username' => 'andik',
+                'password' => md5(110887),
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 1,
+                'name' => 'Admin',
+                'username' => 'admin',
+                'password' => md5('admin'),
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 2,
+                'name' => 'Mandor',
+                'username' => 'mandor',
+                'password' => md5('mandor'),
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 3,
+                'name' => 'Analis',
+                'username' => 'analis',
+                'password' => md5('analis'),
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 4,
+                'name' => 'Pabrikasi',
+                'username' => 'pabrikasi',
+                'password' => md5('pabrikasi'),
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 5,
+                'name' => 'User',
+                'username' => 'user',
+                'password' => md5('user'),
+                'admin' => 'Andik Kurniawan',
+            ],
         ];
         User::insert($users);
         

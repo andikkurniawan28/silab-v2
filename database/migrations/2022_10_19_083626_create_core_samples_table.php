@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCoreSmallsTable extends Migration
+class CreateCoreSamplesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCoreSmallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('core_smalls', function (Blueprint $table) {
+        Schema::create('core_samples', function (Blueprint $table) {
             $table->id();
             $table->string('barcode')->unique();
+            $table->integer('spot')->nullable();
             $table->string('batch')->nullable();
             $table->string('register')->nullable();
+            $table->string('vehicle')->nullable();
             $table->string('cooperative')->nullable();
             $table->string('outpost')->nullable();
             $table->string('program')->nullable();
@@ -28,9 +30,7 @@ class CreateCoreSmallsTable extends Migration
             $table->float('percent_pol_origin')->nullable();
             $table->float('yield_origin')->nullable();
             $table->string('admin')->nullable();
-            $table->string('master')->nullable();
             $table->string('corrector')->nullable();
-            $table->boolean('is_verified')->default(0);
             $table->boolean('correction')->default(0);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
@@ -44,6 +44,6 @@ class CreateCoreSmallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('core_smalls');
+        Schema::dropIfExists('core_samples');
     }
 }

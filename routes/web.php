@@ -27,8 +27,7 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\AroundController;
 use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\MollaseController;
-use App\Http\Controllers\CoreSmallController;
-use App\Http\Controllers\CoreBigController;
+use App\Http\Controllers\CoreSampleController;
 use App\Http\Controllers\ReportController;
 
 /*
@@ -49,8 +48,7 @@ Route::get('activity_log', [PageController::class, 'activityLogByUser'])->name('
 Route::get('analysis_result', [PageController::class, 'analysisResult'])->name('analysis_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('station_result/{station_id}', [PageController::class, 'stationResult'])->name('station_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['user_is_login', 'role_is_5']);
-Route::get('off-farm-report', [PageController::class, 'offFarmReport'])->name('off-farm-report')->middleware(['user_is_login', 'role_is_3']);
-Route::get('on-farm-report', [PageController::class, 'onFarmReport'])->name('on-farm-report')->middleware(['user_is_login', 'role_is_3']);
+Route::get('reports', [PageController::class, 'Report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
 
 // Report
 Route::post('lab_report', [ReportController::class, 'labReport'])->name('lab_report')->middleware(['user_is_login', 'role_is_3']);
@@ -87,8 +85,7 @@ Route::resource('boilers', BoilerController::class)->middleware(['user_is_login'
 Route::resource('baggases', BaggaseController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('sugars', SugarController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('specials', SpecialController::class)->middleware(['user_is_login', 'role_is_3']);
-Route::resource('core_smalls', CoreSmallController::class)->middleware(['user_is_login', 'role_is_3']);
-Route::resource('core_bigs', CoreBigController::class)->middleware(['user_is_login', 'role_is_3']);
+Route::resource('core_samples', CoreSampleController::class)->middleware(['user_is_login', 'role_is_3']);
 
 // Pabrikasi can Involved
 Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'role_is_5']);
@@ -107,8 +104,7 @@ Route::get('boilers_correction', [BoilerController::class, 'showCorrection'])->m
 Route::get('baggases_correction', [BaggaseController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 Route::get('sugars_correction', [SugarController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 Route::get('specials_correction', [SpecialController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
-Route::get('core_smalls_correction', [CoreSmallController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
-Route::get('core_bigs_correction', [CoreBigController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
+Route::get('core_samples_correction', [CoreSampleController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 
 // Verification
 Route::get('saccharomats_verification', [SaccharomatController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
@@ -119,8 +115,6 @@ Route::get('boilers_verification', [BoilerController::class, 'showVerification']
 Route::get('baggases_verification', [BaggaseController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
 Route::get('sugars_verification', [SugarController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
 Route::get('specials_verification', [SpecialController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
-Route::get('core_smalls_verification', [CoreSmallController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
-Route::get('core_bigs_verification', [CoreBigController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);
 
 // Process Verification
 Route::post('saccharomats_verification', [SaccharomatController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('saccharomats.verify');
@@ -131,7 +125,5 @@ Route::post('boilers_verification', [BoilerController::class, 'processVerificati
 Route::post('baggases_verification', [BaggaseController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('baggases.verify');
 Route::post('sugars_verification', [SugarController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('sugars.verify');
 Route::post('specials_verification', [SpecialController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('specials.verify');
-Route::post('core_smalls_verification', [CoreSmallController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('core_smalls.verify');
-Route::post('core_bigs_verification', [CoreBigController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('core_bigs.verify');
 
 

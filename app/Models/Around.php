@@ -52,4 +52,11 @@ class Around extends Model
         'uap_3ato',
         'admin',
     ];
+
+    public static function serveAverageValueByTime($time, $parameter)
+    {
+        return self::where('arounds.created_at', '>=', $time['current'])
+            ->where('arounds.created_at', '<', $time['tomorrow'])
+            ->avg($parameter);
+    }
 }

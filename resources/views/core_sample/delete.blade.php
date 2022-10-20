@@ -1,13 +1,13 @@
-@foreach($core_bigs as $core_big)
-<div class="modal fade" id="delete{{ $core_big->id }}" tabindex="-1" core_big="dialog" aria-labelledby="delete{{ $core_big->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" core_big="document">
+@foreach($core_samples as $core_sample)
+<div class="modal fade" id="delete{{ $core_sample->id }}" tabindex="-1" core_sample="dialog" aria-labelledby="delete{{ $core_sample->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" core_sample="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $core_big->id }}Label">Delete {{ ucfirst('Core Sample EB') }}</h5>
+                <h5 class="modal-title" id="delete{{ $core_sample->id }}Label">Delete {{ ucfirst('Core Sample') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{ route('core_bigs.destroy', $core_big->id) }}" class="text-dark">
+            <form method="POST" action="{{ route('core_samples.destroy', $core_sample->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
                 <p>Are you sure ?</p>
@@ -16,7 +16,7 @@
                     'label' => 'Barcode',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $core_big->barcode,
+                    'value' => $core_sample->barcode,
                     'modifier' => 'readonly',
                 ])
 

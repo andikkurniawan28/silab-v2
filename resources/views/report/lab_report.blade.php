@@ -17,6 +17,14 @@
 	</head>
 
 	<body>
+
+        @if($request->handling == 'export')
+            @php
+                header("Content-type: application/vnd-ms-excel");
+                header("Content-Disposition: attachment; filename=Silab_".$request->date.".xls");
+            @endphp
+        @endif
+
         <div class="wrapper">
 
             <section class="invoice">
@@ -57,7 +65,7 @@
 
                 <div class="col-5 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="">
-                        <h5>Raw Sugar & Gula in Proses</h5>
+                        <h5>Raw Sugar & Gula</h5>
                         <tr bgcolor="pink">
                             <th>Material</th>
                             <th>IU</th>
@@ -72,9 +80,9 @@
                         <tr>
                             <td>{{ $data[0]['material'][$i]['material_name'] }}</td>
                             <td>{{ $data[0]['material'][$i]['icumsa'] }}</td>
-                            <td>{{ $data[0]['material'][$i]['water'] }}</td>
-                            <td>{{ $data[0]['material'][$i]['percent_brix'] }}</td>
-                            <td>{{ $data[0]['material'][$i]['percent_pol'] }}</td>
+                            <td>{{ $data[0]['material'][$i]['moisture'] }}</td>
+                            <td>{{ 100 - $data[0]['material'][$i]['moisture'] }}</td>
+                            <td>{{ number_format(($data[0]['material'][$i]['purity'] / 100) * (100 - $data[0]['material'][$i]['moisture']), 2) }}</td>
                             <td>{{ $data[0]['material'][$i]['purity'] }}</td>
                             <td>{{ $data[0]['material'][$i]['sulphur'] }}</td>
                             <td>{{ $data[0]['material'][$i]['diameter'] }}</td>
@@ -84,12 +92,24 @@
                         <tr>
                             <td>{{ $data[7]['material'][$i]['material_name'] }}</td>
                             <td>{{ $data[7]['material'][$i]['icumsa'] }}</td>
-                            <td>{{ $data[7]['material'][$i]['water'] }}</td>
-                            <td>{{ $data[7]['material'][$i]['percent_brix'] }}</td>
-                            <td>{{ $data[7]['material'][$i]['percent_pol'] }}</td>
+                            <td>{{ $data[7]['material'][$i]['moisture'] }}</td>
+                            <td>{{ 100 - $data[7]['material'][$i]['moisture'] }}</td>
+                            <td>{{ number_format(($data[7]['material'][$i]['purity'] / 100) * (100 - $data[7]['material'][$i]['moisture']), 2) }}</td>
                             <td>{{ $data[7]['material'][$i]['purity'] }}</td>
                             <td>{{ $data[7]['material'][$i]['sulphur'] }}</td>
                             <td>{{ $data[7]['material'][$i]['diameter'] }}</td>
+                        </tr>
+                        @endfor
+                        @for($i=0; $i < count($data[10]['material']); $i++)
+                        <tr>
+                            <td>{{ $data[10]['material'][$i]['material_name'] }}</td>
+                            <td>{{ $data[10]['material'][$i]['icumsa'] }}</td>
+                            <td>{{ $data[10]['material'][$i]['moisture'] }}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                         @endfor
                     </table>
@@ -300,3 +320,284 @@
                         </tr>
                         @endfor
                     </table>
+                    
+                    <br>
+                    <table width='100%' border='1' cellpadding='5' class="">
+                        <h5>Chemical</h5>
+                        <tr bgcolor="pink">
+                            <th>Chemical</th>
+                            <th>Qty</th>
+                        </tr>
+                        <tr>
+                            <td>Kapur</td>
+                            <td>{{ $chemical['kapur'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Belerang</td>
+                            <td>{{ $chemical['belerang'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Flocculant</td>
+                            <td>{{ $chemical['floc'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>NaOH</td>
+                            <td>{{ $chemical['naoh'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>B894</td>
+                            <td>{{ $chemical['b894'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>B895</td>
+                            <td>{{ $chemical['b895'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>B210</td>
+                            <td>{{ $chemical['b210'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>H<sub>3</sub>PO<sub>4</sub></td>
+                            <td>{{ $chemical['asam_phospat'] }}</td>
+                        </tr>
+                        <tr>
+                            <td>Blotong</td>
+                            <td>{{ $chemical['blotong'] }}</td>
+                        </tr>
+                    </table>
+
+                </div>
+
+            </div>
+			
+			<br>
+            
+            <div class='row d-flex justify-content-center text-dark'>
+
+                <div class="col-10 table-responsive">
+                    <table width='100%' border='1' cellpadding='5' class="text-xs">
+                        <h5>Keliling</h5>
+                        <tr bgcolor="pink">
+                            <th colspan="23">Tekanan</th>
+                        </tr>
+                        <tr>
+                            @for($i=1; $i<=2; $i++)
+                            <th>Pre-Evap{{ $i }}</th>
+                            @endfor
+                            @for($i=1; $i<=7; $i++)
+                            <th>Evap{{ $i }}</th>
+                            @endfor
+                            @for($i=1; $i<=14; $i++)
+                            <th>Pan{{ $i }}</th>
+                            @endfor
+                        </tr>
+                        <tr>
+                            @for($i=1; $i<=2; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['tek_pe1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['tek_pe2'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                            @for($i=1; $i<=7; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['tek_evap1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['tek_evap2'] }}</td>
+                                    @break
+                                    @case(3)
+                                    <td>{{ $keliling['tek_evap3'] }}</td>
+                                    @break
+                                    @case(4)
+                                    <td>{{ $keliling['tek_evap4'] }}</td>
+                                    @break
+                                    @case(5)
+                                    <td>{{ $keliling['tek_evap5'] }}</td>
+                                    @break
+                                    @case(6)
+                                    <td>{{ $keliling['tek_evap6'] }}</td>
+                                    @break
+                                    @case(7)
+                                    <td>{{ $keliling['tek_evap7'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                            @for($i=1; $i<=14; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['tek_pan1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['tek_pan2'] }}</td>
+                                    @break
+                                    @case(3)
+                                    <td>{{ $keliling['tek_pan3'] }}</td>
+                                    @break
+                                    @case(4)
+                                    <td>{{ $keliling['tek_pan4'] }}</td>
+                                    @break
+                                    @case(5)
+                                    <td>{{ $keliling['tek_pan5'] }}</td>
+                                    @break
+                                    @case(6)
+                                    <td>{{ $keliling['tek_pan6'] }}</td>
+                                    @break
+                                    @case(7)
+                                    <td>{{ $keliling['tek_pan7'] }}</td>
+                                    @break
+                                    @case(8)
+                                    <td>{{ $keliling['tek_pan8'] }}</td>
+                                    @break
+                                    @case(9)
+                                    <td>{{ $keliling['tek_pan9'] }}</td>
+                                    @break
+                                    @case(10)
+                                    <td>{{ $keliling['tek_pan10'] }}</td>
+                                    @break
+                                    @case(11)
+                                    <td>{{ $keliling['tek_pan11'] }}</td>
+                                    @break
+                                    @case(12)
+                                    <td>{{ $keliling['tek_pan12'] }}</td>
+                                    @break
+                                    @case(13)
+                                    <td>{{ $keliling['tek_pan13'] }}</td>
+                                    @break
+                                    @case(14)
+                                    <td>{{ $keliling['tek_pan14'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                        </tr>
+                        <tr>
+                            <th colspan="18">Suhu</th>
+                        </tr>
+                        <tr>
+                            @for($i=1; $i<=2; $i++)
+                            <th>Pre-Evap{{ $i }}</th>
+                            @endfor
+                            @for($i=1; $i<=7; $i++)
+                            <th>Evap{{ $i }}</th>
+                            @endfor
+                            @for($i=1; $i<=3; $i++)
+                            <th>Heater{{ $i }}</th>
+                            @endfor
+                            <th>Vakum</th>
+                            <th>Injeksi</th>
+                            <th>Terjun</th>
+                            <th>Baru</th>
+                            <th>Bekas</th>
+                            <th>3Ato</th>
+                        </tr>
+                        <tr>
+                            @for($i=1; $i<=2; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['suhu_pe1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['suhu_pe2'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                            @for($i=1; $i<=7; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['suhu_evap1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['suhu_evap2'] }}</td>
+                                    @break
+                                    @case(3)
+                                    <td>{{ $keliling['suhu_evap3'] }}</td>
+                                    @break
+                                    @case(4)
+                                    <td>{{ $keliling['suhu_evap4'] }}</td>
+                                    @break
+                                    @case(5)
+                                    <td>{{ $keliling['suhu_evap5'] }}</td>
+                                    @break
+                                    @case(6)
+                                    <td>{{ $keliling['suhu_evap6'] }}</td>
+                                    @break
+                                    @case(7)
+                                    <td>{{ $keliling['suhu_evap7'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                            @for($i=1; $i<=3; $i++)
+                                @switch($i)
+                                    @case(1)
+                                    <td>{{ $keliling['suhu_heater1'] }}</td>
+                                    @break
+                                    @case(2)
+                                    <td>{{ $keliling['suhu_heater2'] }}</td>
+                                    @break
+                                    @case(3)
+                                    <td>{{ $keliling['suhu_heater3'] }}</td>
+                                    @break
+                                @endswitch
+                            @endfor
+                            <td>{{ $keliling['tek_vakum'] }}</td>
+                            <td>{{ $keliling['suhu_air_injeksi'] }}</td>
+                            <td>{{ $keliling['suhu_air_terjun'] }}</td>
+                            <td>{{ $keliling['uap_baru'] }}</td>
+                            <td>{{ $keliling['uap_bekas'] }}</td>
+                            <td>{{ $keliling['uap_3ato'] }}</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+            
+            @if($request->shift != 0)
+            <br>
+			<div class='row d-flex justify-content-center text-dark'>
+                <div class="col-10 table-responsive">
+                    <table width='100%' border='1' cellpadding='5' class="text-center">
+                        <tr bgcolor="pink">
+                            <th>Mandor Lab</th>
+                            <th>Katim QC</th>
+                            <th>Chemiker</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </td>
+                            <td>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </td>
+                            <td>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            @endif
+			
+			<br><br>
+
+		  </section>
+		</div>
+
+		<!--<script type="text/javascript"> 
+		  window.addEventListener("load", window.print());
+		</script>-->
+	</body>
+</html>

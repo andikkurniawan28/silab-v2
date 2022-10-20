@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Core Sample EK') }} Correction</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Core Sample') }} Correction</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -29,28 +29,28 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($core_smalls as $core_small)
+                        @foreach ($core_samples as $core_sample)
                         <tr>
-                            <td>{{ $core_small->id }}</td>
-                            <td>{{ $core_small->barcode }}</td>
+                            <td>{{ $core_sample->id }}</td>
+                            <td>{{ $core_sample->barcode }}</td>
                             <td>
-                                {{ $core_small->percent_brix_origin }} 
+                                {{ $core_sample->percent_brix_origin }} 
                                 @include('components.icon', ['icon' => 'arrow-right '])  
-                                {{ $core_small->percent_brix }}
+                                {{ $core_sample->percent_brix }}
                             </td>
                             <td>
-                                {{ $core_small->percent_pol_origin }} 
+                                {{ $core_sample->percent_pol_origin }} 
                                 @include('components.icon', ['icon' => 'arrow-right '])  
-                                {{ $core_small->percent_pol }}
+                                {{ $core_sample->percent_pol }}
                             </td>
                             <td>
-                                {{ $core_small->yield_origin }} 
+                                {{ $core_sample->yield_origin }} 
                                 @include('components.icon', ['icon' => 'arrow-right '])  
-                                {{ $core_small->yield }}
+                                {{ $core_sample->yield }}
                             </td>
-                            <td>{{ $core_small->corrector }}</td>
-                            <td>{{ $core_small->created_at }}</td>
-                            <td>{{ $core_small->updated_at }}</td>
+                            <td>{{ $core_sample->corrector }}</td>
+                            <td>{{ $core_sample->created_at }}</td>
+                            <td>{{ $core_sample->updated_at }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -58,7 +58,7 @@
             </div>
         </div>
         <div class="card-footer">
-            <a href="{{ route('core_smalls.index') }}" type="button" class="btn btn-info">
+            <a href="{{ route('core_samples.index') }}" type="button" class="btn btn-info">
                 @include('components.icon', ['icon' => 'arrow-left ']) 
                 Back
             </a>

@@ -35,7 +35,9 @@ class ReportController extends Controller
     {
         $time = self::determineTimeRange($request);
         $data = Report::serveLabReport($time);
-        return view('report.lab_report', compact('data', 'request'));
-        // return $data[0]['material'][0]['material_name'];
+        $keliling = Report::serveKelilingReport($time);
+        $chemical = Report::serveChemicalReport($time);
+        return view('report.lab_report', compact('request', 'data', 'keliling', 'chemical'));
+        // return $chemical;
     }
 }

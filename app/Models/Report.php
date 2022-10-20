@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Material;
 use App\Models\Station;
 use App\Models\Analysis;
+use App\Models\Around;
+use App\Models\Chemical;
 
 class Report extends Model
 {
@@ -52,6 +54,67 @@ class Report extends Model
                 $data[$i]['material'][$j]['sugar_reducted'] = Analysis::serveAverageValueByTime($time, $data[$i]['material'][$j]['material_id'], 'sugar_reducted', 'specials');
             }
         }
+        return $data;
+    }
+
+    public static function serveKelilingReport($time)
+    {
+        $data['tek_pe1'] = Around::serveAverageValueByTime($time, 'tek_pe1');
+        $data['tek_pe2'] = Around::serveAverageValueByTime($time, 'tek_pe2');
+        $data['tek_evap1'] = Around::serveAverageValueByTime($time, 'tek_evap1');
+        $data['tek_evap2'] = Around::serveAverageValueByTime($time, 'tek_evap2');
+        $data['tek_evap3'] = Around::serveAverageValueByTime($time, 'tek_evap3');
+        $data['tek_evap4'] = Around::serveAverageValueByTime($time, 'tek_evap4');
+        $data['tek_evap5'] = Around::serveAverageValueByTime($time, 'tek_evap5');
+        $data['tek_evap6'] = Around::serveAverageValueByTime($time, 'tek_evap6');
+        $data['tek_evap7'] = Around::serveAverageValueByTime($time, 'tek_evap7');
+        $data['tek_pan1'] = Around::serveAverageValueByTime($time, 'tek_pan1');
+        $data['tek_pan2'] = Around::serveAverageValueByTime($time, 'tek_pan2');
+        $data['tek_pan3'] = Around::serveAverageValueByTime($time, 'tek_pan3');
+        $data['tek_pan4'] = Around::serveAverageValueByTime($time, 'tek_pan4');
+        $data['tek_pan5'] = Around::serveAverageValueByTime($time, 'tek_pan5');
+        $data['tek_pan6'] = Around::serveAverageValueByTime($time, 'tek_pan6');
+        $data['tek_pan7'] = Around::serveAverageValueByTime($time, 'tek_pan7');
+        $data['tek_pan8'] = Around::serveAverageValueByTime($time, 'tek_pan8');
+        $data['tek_pan9'] = Around::serveAverageValueByTime($time, 'tek_pan9');
+        $data['tek_pan10'] = Around::serveAverageValueByTime($time, 'tek_pan10');
+        $data['tek_pan11'] = Around::serveAverageValueByTime($time, 'tek_pan11');
+        $data['tek_pan12'] = Around::serveAverageValueByTime($time, 'tek_pan12');
+        $data['tek_pan13'] = Around::serveAverageValueByTime($time, 'tek_pan13');
+        $data['tek_pan14'] = Around::serveAverageValueByTime($time, 'tek_pan14');
+        $data['tek_vakum'] = Around::serveAverageValueByTime($time, 'tek_vakum');
+        $data['tek_vakum'] = Around::serveAverageValueByTime($time, 'tek_vakum');
+        $data['suhu_pe1'] = Around::serveAverageValueByTime($time, 'suhu_pe1');
+        $data['suhu_pe2'] = Around::serveAverageValueByTime($time, 'suhu_pe2');
+        $data['suhu_evap1'] = Around::serveAverageValueByTime($time, 'suhu_evap1');
+        $data['suhu_evap2'] = Around::serveAverageValueByTime($time, 'suhu_evap2');
+        $data['suhu_evap3'] = Around::serveAverageValueByTime($time, 'suhu_evap3');
+        $data['suhu_evap4'] = Around::serveAverageValueByTime($time, 'suhu_evap4');
+        $data['suhu_evap5'] = Around::serveAverageValueByTime($time, 'suhu_evap5');
+        $data['suhu_evap6'] = Around::serveAverageValueByTime($time, 'suhu_evap6');
+        $data['suhu_evap7'] = Around::serveAverageValueByTime($time, 'suhu_evap7');
+        $data['suhu_heater1'] = Around::serveAverageValueByTime($time, 'suhu_heater1');
+        $data['suhu_heater2'] = Around::serveAverageValueByTime($time, 'suhu_heater2');
+        $data['suhu_heater3'] = Around::serveAverageValueByTime($time, 'suhu_heater3');
+        $data['suhu_air_injeksi'] = Around::serveAverageValueByTime($time, 'suhu_air_injeksi');
+        $data['suhu_air_terjun'] = Around::serveAverageValueByTime($time, 'suhu_air_terjun');
+        $data['uap_baru'] = Around::serveAverageValueByTime($time, 'uap_baru');
+        $data['uap_bekas'] = Around::serveAverageValueByTime($time, 'uap_bekas');
+        $data['uap_3ato'] = Around::serveAverageValueByTime($time, 'uap_3ato');
+        return $data;
+    }
+
+    public static function serveChemicalReport($time)
+    {
+        $data['kapur'] = Chemical::serveSumarryValueByTime($time, 'kapur');
+        $data['belerang'] = Chemical::serveSumarryValueByTime($time, 'belerang');
+        $data['floc'] = Chemical::serveSumarryValueByTime($time, 'floc');
+        $data['naoh'] = Chemical::serveSumarryValueByTime($time, 'naoh');
+        $data['b894'] = Chemical::serveSumarryValueByTime($time, 'b894');
+        $data['b895'] = Chemical::serveSumarryValueByTime($time, 'b895');
+        $data['b210'] = Chemical::serveSumarryValueByTime($time, 'b210');
+        $data['asam_phospat'] = Chemical::serveSumarryValueByTime($time, 'asam_phospat');
+        $data['blotong'] = Chemical::serveSumarryValueByTime($time, 'blotong');
         return $data;
     }
 

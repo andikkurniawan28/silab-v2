@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Core_small;
+use App\Models\Core_sample;
 use App\Models\Log;
 use Illuminate\Http\Request;
 
-class CoreSmallController extends Controller
+class CoreSampleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CoreSmallController extends Controller
      */
     public function index()
     {
-        $core_smalls = Core_small::limit(1000)->get();
-        return view('core_small.index', compact('core_smalls'));
+        $core_samples = Core_sample::limit(5000)->get();
+        return view('core_sample.index', compact('core_samples'));
     }
 
     /**
@@ -37,8 +37,10 @@ class CoreSmallController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Core_small::validateRequest($request);
+        $data = Core_sample::validateRequest($request);
+        // return $data;
         $request->request->add([
+            'vehicle' => $data['vehicle'],
             'register' => $data['register'],
             'cooperative' => $data['cooperative'],
             'outpost' => $data['outpost'],
@@ -46,18 +48,18 @@ class CoreSmallController extends Controller
             'yield' => $data['yield'],
             'admin' => session('name'),
         ]);
-        Core_small::create($request->all());
-        Log::writeLog('Core Sample EK', 'Submit Data', session('name'));
+        Core_sample::create($request->all());
+        Log::writeLog('Core Sample', 'Submit Data', session('name'));
         return redirect()->back()->with('success', 'Data has been stored');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Core_small  $core_small
+     * @param  \App\Models\Core_sample  $core_sample
      * @return \Illuminate\Http\Response
      */
-    public function show(Core_small $core_small)
+    public function show(Core_sample $core_sample)
     {
         //
     }
@@ -65,10 +67,10 @@ class CoreSmallController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Core_small  $core_small
+     * @param  \App\Models\Core_sample  $core_sample
      * @return \Illuminate\Http\Response
      */
-    public function edit(Core_small $core_small)
+    public function edit(Core_sample $core_sample)
     {
         //
     }
@@ -77,23 +79,26 @@ class CoreSmallController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Core_small  $core_small
+     * @param  \App\Models\Core_sample  $core_sample
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $data = Core_small::validateRequest($request);
+        $data = Core_sample::validateRequest($request);
         $request->request->add([
+            'vehicle' => $data['vehicle'],
             'register' => $data['register'],
             'cooperative' => $data['cooperative'],
             'outpost' => $data['outpost'],
             'program' => $data['program'],
             'yield' => $data['yield'],
         ]);
-        Core_small::find($id)->update([
+        Core_sample::find($id)->update([
             'barcode' => $request->barcode,
+            'spot' => $request->spot,
             'batch' => $request->batch,
             'register' => $request->register,
+            'vehicle' => $request->vehicle,
             'cooperative' => $request->cooperative,
             'oupost' => $request->outpost,
             'program' => $request->program,
@@ -106,50 +111,26 @@ class CoreSmallController extends Controller
             'corrector' => session('name'),
             'correction' => 1,
         ]);
-        Log::writeLog('Core Sample EK', 'Edit Data', session('name'));
+        Log::writeLog('Core Sample', 'Edit Data', session('name'));
         return redirect()->back()->with('success', 'Data has been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Core_small  $core_small
+     * @param  \App\Models\Core_sample  $core_sample
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Core_small::find($id)->delete();
-        Log::writeLog('Core Sample EK', 'Delete Data', session('name'));
+        Core_sample::find($id)->delete();
+        Log::writeLog('Core Sample', 'Delete Data', session('name'));
         return redirect()->back()->with('success', 'Data has been deleted');
     }
 
     public function showCorrection()
     {
-        $core_smalls = Core_small::serveCorrected();
-        return view('core_small.correction', compact('core_smalls'));
-    }
-
-    public function showVerification()
-    {
-        $core_smalls = Core_small::serveUnverificated();
-        return view('core_small.verification', compact('core_smalls'));
-    }
-
-    public function processVerification(Request $request)
-    {
-        if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
-        else 
-        {
-            $request->request->add([
-                'master' => session('name'),
-            ]);
-            Core_small::whereIn('id', $request->checkAll)->update([
-                'is_verified' => 1,
-                'master' => $request->master,
-            ]);
-            Log::writeLog('Core Sample EK', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
-        }
+        $core_samples = Core_sample::serveCorrected();
+        return view('core_sample.correction', compact('core_samples'));
     }
 }
