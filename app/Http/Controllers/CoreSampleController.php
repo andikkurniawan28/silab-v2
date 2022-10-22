@@ -45,7 +45,7 @@ class CoreSampleController extends Controller
             'outpost' => $data['outpost'],
             'program' => $data['program'],
             'yield' => $data['yield'],
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Core_sample::create($request->all());
         Log::writeLog('Core Sample', 'Submit Data', session('name'));

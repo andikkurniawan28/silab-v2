@@ -16,7 +16,6 @@ class CreateSpecialsTable extends Migration
         Schema::create('specials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('sample_id')->unique();
-
             $table->float('tsai')->nullable();
             $table->float('glucose')->nullable();
             $table->float('fructose')->nullable();
@@ -26,7 +25,6 @@ class CreateSpecialsTable extends Migration
             $table->float('calcium')->nullable();
             $table->float('optical_density')->nullable();
             $table->float('sugar_reducted')->nullable();
-
             $table->float('tsai_origin')->nullable();
             $table->float('glucose_origin')->nullable();
             $table->float('fructose_origin')->nullable();
@@ -36,8 +34,7 @@ class CreateSpecialsTable extends Migration
             $table->float('calcium_origin')->nullable();
             $table->float('optical_density_origin')->nullable();
             $table->float('sugar_reducted_origin')->nullable();
-
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

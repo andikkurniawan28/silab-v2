@@ -18,7 +18,8 @@ class CreateColoromatsTable extends Migration
             $table->foreignId('sample_id')->unique();
             $table->integer('icumsa');
             $table->integer('icumsa_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
+            $table->string('preparation')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

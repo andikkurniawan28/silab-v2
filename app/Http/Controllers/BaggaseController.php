@@ -164,7 +164,7 @@ class BaggaseController extends Controller
             'corrected_pol' => $corrected_pol,
             'dry' => $dry,
             'water' => $water,
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
 
         Baggase::create($request->all());

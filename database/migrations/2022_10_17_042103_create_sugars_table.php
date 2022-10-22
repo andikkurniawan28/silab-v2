@@ -22,7 +22,7 @@ class CreateSugarsTable extends Migration
             $table->float('sulphur_origin')->nullable();
             $table->float('diameter_origin')->nullable();
             $table->integer('blackspot_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

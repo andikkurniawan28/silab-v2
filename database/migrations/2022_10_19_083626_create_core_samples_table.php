@@ -29,7 +29,7 @@ class CreateCoreSamplesTable extends Migration
             $table->float('percent_brix_origin')->nullable();
             $table->float('percent_pol_origin')->nullable();
             $table->float('yield_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('correction')->default(0);
             $table->timestamp('created_at')->useCurrent();

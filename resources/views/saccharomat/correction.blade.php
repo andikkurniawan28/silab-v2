@@ -26,7 +26,6 @@
                             <th>Purity<sub>(%)</sub></th>
                             <th>Yield</th>
                             <th>Corrector</th>
-                            {{-- <th>Master</th> --}}
                             <th>Created @</th>
                             <th>Updated @</th>
                         </tr>
@@ -62,7 +61,6 @@
                                 {{ $saccharomat->yield }}
                             </td>
                             <td>{{ $saccharomat->corrector }}</td>
-                            {{-- <td>{{ $saccharomat->master }}</td> --}}
                             <td>{{ $saccharomat->created_at }}</td>
                             <td>{{ $saccharomat->updated_at }}</td>
                         </tr>

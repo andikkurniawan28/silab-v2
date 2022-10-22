@@ -40,7 +40,7 @@ class SpecialController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Special::create($request->all());
         Log::writeLog('Special', 'Submit Data', session('name'));

@@ -19,7 +19,7 @@ class Umum extends Model
         'ph_origin',
         'turbidity_origin',
         'temperature_origin',
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',

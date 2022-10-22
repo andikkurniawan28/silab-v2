@@ -40,7 +40,7 @@ class BoilerController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Boiler::create($request->all());
         Log::writeLog('Boiler', 'Submit Data', session('name'));

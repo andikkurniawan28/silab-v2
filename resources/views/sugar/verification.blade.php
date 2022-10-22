@@ -26,7 +26,7 @@
                             <th>Sulphur</th>
                             <th>Diameter</th>
                             <th>Blackspot</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Created @</th>
                             <th>Check</th>
                         </tr>
@@ -39,7 +39,7 @@
                             <td>{{ $sugar->sulphur }}</td>
                             <td>{{ $sugar->diameter }}</td>
                             <td>{{ $sugar->blackspot }}</td>
-                            <td>{{ $sugar->admin }}</td>
+                            <td>{{ $sugar->analyst }}</td>
                             <td>{{ $sugar->created_at }}</td>
                             <td>
                                 <input type="checkbox" name="checkAll[]" class="checkSingle" value="{{ $sugar->id }}">

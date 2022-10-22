@@ -18,7 +18,7 @@ class Baggase extends Model
         'corrected_pol_origin',
         'dry_origin',
         'water_origin',
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',

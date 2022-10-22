@@ -24,7 +24,8 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Icumsa<sub>(IU)</sub></th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
+                            <th>Preparation</th>
                             <th>Created @</th>
                             <th>Check</th>
                         </tr>
@@ -35,7 +36,8 @@
                             <td>{{ $coloromat->id }}</td>
                             <td>{{ $coloromat->material_name }} <sub>({{ $coloromat->sample_id }})</sub></td>
                             <td>{{ $coloromat->icumsa }}</td>
-                            <td>{{ $coloromat->admin }}</td>
+                            <td>{{ $coloromat->analyst }}</td>
+                            <td>{{ $coloromat->preparation }}</td>
                             <td>{{ $coloromat->created_at }}</td>
                             <td>
                                 <input type="checkbox" name="checkAll[]" class="checkSingle" value="{{ $coloromat->id }}">

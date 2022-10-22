@@ -24,7 +24,7 @@ class CreateBoilersTable extends Migration
             $table->float('ph_origin')->nullable();
             $table->float('hardness_origin')->nullable();
             $table->float('phospate_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

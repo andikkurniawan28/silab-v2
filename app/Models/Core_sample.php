@@ -29,7 +29,7 @@ class Core_sample extends Model
         'percent_brix_origin',
         'percent_pol_origin',
         'yield_origin',
-        'admin',
+        'analyst',
         'corrector',
         'correction',
     ];

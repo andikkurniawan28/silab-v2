@@ -40,7 +40,7 @@ class MoistureController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Moisture::create($request->all());
         Log::writeLog('Moisture', 'Submit Data', session('name'));

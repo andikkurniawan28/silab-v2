@@ -23,7 +23,7 @@
                             <th>Corrected Pol</th>
                             <th>Dry</th>
                             <th>Water</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -37,7 +37,7 @@
                             <td>{{ $baggase->corrected_pol }}</td>
                             <td>{{ $baggase->dry }}</td>
                             <td>{{ $baggase->water }}</td>
-                            <td>{{ $baggase->admin }}</td>
+                            <td>{{ $baggase->analyst }}</td>
                             <td>{{ $baggase->master }}</td>
                             <td>{{ $baggase->created_at }}</td>
                             <td>

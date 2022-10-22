@@ -22,7 +22,6 @@
                             <th>Material</th>
                             <th>Icumsa<sub>(%)</sub></th>
                             <th>Corrector</th>
-                            {{-- <th>Master</th> --}}
                             <th>Created @</th>
                             <th>Updated @</th>
                         </tr>
@@ -38,7 +37,6 @@
                                 {{ $coloromat->icumsa }}
                             </td>
                             <td>{{ $coloromat->corrector }}</td>
-                            {{-- <td>{{ $coloromat->master }}</td> --}}
                             <td>{{ $coloromat->created_at }}</td>
                             <td>{{ $coloromat->updated_at }}</td>
                         </tr>

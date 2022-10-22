@@ -40,7 +40,7 @@ class SugarController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Sugar::create($request->all());
         Log::writeLog('Sugar', 'Submit Data', session('name'));

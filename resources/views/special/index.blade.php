@@ -29,7 +29,7 @@
                             <th>Calcium</th>
                             <th>OD</th>
                             <th>Reducted</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -49,7 +49,7 @@
                             <td>{{ $special->calcium }}</td>
                             <td>{{ $special->optical_density }}</td>
                             <td>{{ $special->sugar_reducted }}</td>
-                            <td>{{ $special->admin }}</td>
+                            <td>{{ $special->analyst }}</td>
                             <td>{{ $special->master }}</td>
                             <td>{{ $special->created_at }}</td>
                             <td>

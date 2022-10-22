@@ -18,7 +18,7 @@ class CreateMoisturesTable extends Migration
             $table->foreignId('sample_id')->unique();
             $table->float('moisture');
             $table->float('moisture_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

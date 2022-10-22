@@ -23,7 +23,7 @@
                             <th>Suplhur</th>
                             <th>Diameter</th>
                             <th>Blackspot</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -37,7 +37,7 @@
                             <td>{{ $sugar->sulphur }}</td>
                             <td>{{ $sugar->diameter }}</td>
                             <td>{{ $sugar->blackspot }}</td>
-                            <td>{{ $sugar->admin }}</td>
+                            <td>{{ $sugar->analyst }}</td>
                             <td>{{ $sugar->master }}</td>
                             <td>{{ $sugar->created_at }}</td>
                             <td>

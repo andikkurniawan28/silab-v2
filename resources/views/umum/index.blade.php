@@ -24,7 +24,7 @@
                             <th>pH</th>
                             <th>Turbidity</th>
                             <th>Temperature</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -39,7 +39,7 @@
                             <td>{{ $umum->ph }}</td>
                             <td>{{ $umum->turbidity }}</td>
                             <td>{{ $umum->temperature }}</td>
-                            <td>{{ $umum->admin }}</td>
+                            <td>{{ $umum->analyst }}</td>
                             <td>{{ $umum->master }}</td>
                             <td>{{ $umum->created_at }}</td>
                             <td>

@@ -24,7 +24,7 @@
                             <th>pH</th>
                             <th>Hardness</th>
                             <th>Phospate</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -39,7 +39,7 @@
                             <td>{{ $boiler->ph }}</td>
                             <td>{{ $boiler->hardness }}</td>
                             <td>{{ $boiler->phospate }}</td>
-                            <td>{{ $boiler->admin }}</td>
+                            <td>{{ $boiler->analyst }}</td>
                             <td>{{ $boiler->master }}</td>
                             <td>{{ $boiler->created_at }}</td>
                             <td>

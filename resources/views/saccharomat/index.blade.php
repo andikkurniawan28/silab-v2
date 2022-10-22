@@ -26,7 +26,9 @@
                             <th>Pol</th>
                             <th>Purity<sub>(%)</sub></th>
                             <th>Yield</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
+                            <th>P1</th>
+                            <th>P2</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -42,7 +44,9 @@
                             <td>{{ $saccharomat->pol }}</td>
                             <td>{{ $saccharomat->purity }}</td>
                             <td>{{ $saccharomat->yield }}</td>
-                            <td>{{ $saccharomat->admin }}</td>
+                            <td>{{ $saccharomat->analyst }}</td>
+                            <td>{{ $saccharomat->preparation1 }}</td>
+                            <td>{{ $saccharomat->preparation2 }}</td>
                             <td>{{ $saccharomat->master }}</td>
                             <td>{{ $saccharomat->created_at }}</td>
                             <td>

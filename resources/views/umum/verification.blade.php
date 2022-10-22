@@ -27,7 +27,7 @@
                             <th>pH</th>
                             <th>Turbidity</th>
                             <th>Temperature</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Created @</th>
                             <th>Check</th>
                         </tr>
@@ -41,7 +41,7 @@
                             <td>{{ $umum->ph }}</td>
                             <td>{{ $umum->turbidity }}</td>
                             <td>{{ $umum->temperature }}</td>
-                            <td>{{ $umum->admin }}</td>
+                            <td>{{ $umum->analyst }}</td>
                             <td>{{ $umum->created_at }}</td>
                             <td>
                                 <input type="checkbox" name="checkAll[]" class="checkSingle" value="{{ $umum->id }}">

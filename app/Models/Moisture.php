@@ -13,7 +13,7 @@ class Moisture extends Model
         'sample_id',
         'moisture',
         'moisture_origin',
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',

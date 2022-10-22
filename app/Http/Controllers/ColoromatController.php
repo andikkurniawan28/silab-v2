@@ -40,7 +40,7 @@ class ColoromatController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Coloromat::create($request->all());
         Log::writeLog('Coloromat', 'Submit Data', session('name'));

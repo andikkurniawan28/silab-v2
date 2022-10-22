@@ -21,7 +21,8 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Icumsa<sub>(IU)</sub></th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
+                            <th>Preparation</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -33,7 +34,8 @@
                             <td>{{ $coloromat->id }}</td>
                             <td>{{ $coloromat->material_name }} <sub>({{ $coloromat->sample_id }})</sub></td>
                             <td>{{ $coloromat->icumsa }}</td>
-                            <td>{{ $coloromat->admin }}</td>
+                            <td>{{ $coloromat->analyst }}</td>
+                            <td>{{ $coloromat->preparation }}</td>
                             <td>{{ $coloromat->master }}</td>
                             <td>{{ $coloromat->created_at }}</td>
                             <td>

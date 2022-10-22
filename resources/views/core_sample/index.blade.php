@@ -30,7 +30,7 @@
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>Yield</th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Created @</th>
                             <th>Action</th>
                         </tr>
@@ -50,7 +50,7 @@
                             <td>{{ $core_sample->percent_brix }}</td>
                             <td>{{ $core_sample->percent_pol }}</td>
                             <td>{{ $core_sample->yield }}</td>
-                            <td>{{ $core_sample->admin }}</td>
+                            <td>{{ $core_sample->analyst }}</td>
                             <td>{{ $core_sample->created_at }}</td>
                             <td>
                                 @if(session('role') == 1 || session('role') == 2)

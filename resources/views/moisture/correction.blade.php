@@ -22,7 +22,6 @@
                             <th>Material</th>
                             <th>Moisture<sub>(%)</sub></th>
                             <th>Corrector</th>
-                            {{-- <th>Master</th> --}}
                             <th>Created @</th>
                             <th>Updated @</th>
                         </tr>
@@ -38,7 +37,6 @@
                                 {{ $moisture->moisture }}
                             </td>
                             <td>{{ $moisture->corrector }}</td>
-                            {{-- <td>{{ $moisture->master }}</td> --}}
                             <td>{{ $moisture->created_at }}</td>
                             <td>{{ $moisture->updated_at }}</td>
                         </tr>

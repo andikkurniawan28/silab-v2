@@ -24,7 +24,7 @@ class CreateUmumsTable extends Migration
             $table->float('ph_origin')->nullable();
             $table->float('turbidity_origin')->nullable();
             $table->float('temperature_origin')->nullable();
-            $table->string('admin')->nullable();
+            $table->string('analyst')->nullable();
             $table->string('master')->nullable();
             $table->string('corrector')->nullable();
             $table->boolean('is_verified')->default(0);

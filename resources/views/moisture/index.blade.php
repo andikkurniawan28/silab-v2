@@ -21,7 +21,7 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Moisture<sub>(%)</sub></th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>
@@ -33,7 +33,7 @@
                             <td>{{ $moisture->id }}</td>
                             <td>{{ $moisture->material_name }} <sub>({{ $moisture->sample_id }})</sub></td>
                             <td>{{ $moisture->moisture }}</td>
-                            <td>{{ $moisture->admin }}</td>
+                            <td>{{ $moisture->analyst }}</td>
                             <td>{{ $moisture->master }}</td>
                             <td>{{ $moisture->created_at }}</td>
                             <td>

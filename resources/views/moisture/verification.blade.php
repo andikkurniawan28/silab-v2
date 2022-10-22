@@ -24,7 +24,7 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Moisture<sub>(%)</sub></th>
-                            <th>Admin</th>
+                            <th>Analyst</th>
                             <th>Created @</th>
                             <th>Check</th>
                         </tr>
@@ -35,7 +35,7 @@
                             <td>{{ $moisture->id }}</td>
                             <td>{{ $moisture->material_name }} <sub>({{ $moisture->sample_id }})</sub></td>
                             <td>{{ $moisture->moisture }}</td>
-                            <td>{{ $moisture->admin }}</td>
+                            <td>{{ $moisture->analyst }}</td>
                             <td>{{ $moisture->created_at }}</td>
                             <td>
                                 <input type="checkbox" name="checkAll[]" class="checkSingle" value="{{ $moisture->id }}">

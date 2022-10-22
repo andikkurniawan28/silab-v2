@@ -19,7 +19,7 @@ class Boiler extends Model
         'ph_origin',
         'hardness_origin',
         'phospate_origin',
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',

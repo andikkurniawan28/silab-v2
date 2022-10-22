@@ -48,7 +48,7 @@ class SaccharomatController extends Controller
             $request->request->add([
                 'purity' => $data['purity'],
                 'yield' => $data['yield'],
-                'admin' => session('name'),
+                'analyst' => session('name'),
             ]);
             Saccharomat::create($request->all());
             Log::writeLog('Saccharomat', 'Submit Data', session('name'));

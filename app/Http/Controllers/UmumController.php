@@ -40,7 +40,7 @@ class UmumController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'analyst' => session('name'),
         ]);
         Umum::create($request->all());
         Log::writeLog('Umum', 'Submit Data', session('name'));

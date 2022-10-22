@@ -17,7 +17,7 @@ class Sugar extends Model
         'sulphur_origin',
         'diameter_origin',
         'blackspot_origin',
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',

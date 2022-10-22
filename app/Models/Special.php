@@ -11,7 +11,6 @@ class Special extends Model
 
     protected $fillable = [
         'sample_id',
-        
         'tsai',
         'glucose',
         'fructose',
@@ -21,7 +20,6 @@ class Special extends Model
         'calcium',
         'optical_density',
         'sugar_reducted',
-        
         'tsai_origin',
         'glucose_origin',
         'fructose_origin',
@@ -31,8 +29,7 @@ class Special extends Model
         'calcium_origin',
         'optical_density_origin',
         'sugar_reducted_origin',
-
-        'admin',
+        'analyst',
         'master',
         'corrector',
         'is_verified',
