@@ -22,8 +22,7 @@
      <div class="row">
         
         @include('report.laporan_laboratorium')
-        @include('report.laporan_core_sample_ek')
-        @include('report.laporan_core_sample_eb')
+        @include('report.laporan_core_sample')
 
      </div>
 

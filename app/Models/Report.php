@@ -9,6 +9,7 @@ use App\Models\Station;
 use App\Models\Analysis;
 use App\Models\Around;
 use App\Models\Chemical;
+use App\Models\Core_sample;
 
 class Report extends Model
 {
@@ -115,6 +116,12 @@ class Report extends Model
         $data['b210'] = Chemical::serveSumarryValueByTime($time, 'b210');
         $data['asam_phospat'] = Chemical::serveSumarryValueByTime($time, 'asam_phospat');
         $data['blotong'] = Chemical::serveSumarryValueByTime($time, 'blotong');
+        return $data;
+    }
+
+    public static function serveCoreSampleReport($time)
+    {
+        $data = Core_sample::serveValueByTime($time);
         return $data;
     }
 

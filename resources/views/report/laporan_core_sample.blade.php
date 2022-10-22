@@ -1,11 +1,11 @@
 <div class="col-lg-3 mb-4">
-    <div class="card bg-success text-white shadow">
+    <div class="card bg-secondary text-white shadow">
         <div class="card-body">
             <div class="font-weight-bold text-light text-uppercase mb-1">
-                Laporan Core Sample EB & GD
+                Laporan Core Sample
             </div>
             <hr>
-            <form action="{{ route('lab_report') }}" method="POST" target="_blank">
+            <form action="{{ route('core_sample_report') }}" method="POST" target="_blank">
                 @csrf
                 @method('POST')
                 <div class="form-group">

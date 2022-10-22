@@ -52,6 +52,7 @@ Route::get('reports', [PageController::class, 'Report'])->name('reports')->middl
 
 // Report
 Route::post('lab_report', [ReportController::class, 'labReport'])->name('lab_report')->middleware(['user_is_login', 'role_is_3']);
+Route::post('core_sample_report', [ReportController::class, 'coreSampleReport'])->name('core_sample_report')->middleware(['user_is_login', 'role_is_3']);
 
 // Authentication
 Route::get('login', [LoginController::class, 'index'])->name('login');

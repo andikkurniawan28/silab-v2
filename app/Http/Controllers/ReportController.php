@@ -3,10 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Models\Report;
+use App\Models\Core_sample;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function labReport(Request $request)
+    {
+        $time = self::determineTimeRange($request);
+        $data = Report::serveLabReport($time);
+        $keliling = Report::serveKelilingReport($time);
+        $chemical = Report::serveChemicalReport($time);
+        return view('report.lab_report', compact('request', 'data', 'keliling', 'chemical'));
+    }
+
+    public function coreSampleReport(Request $request)
+    {
+        $time = self::determineTimeRange($request);
+        $data = Report::serveCoreSampleReport($time);
+        $global_accumulation = Core_sample::globalAccumulation($time);
+        $pos_accumulation = Core_sample::posAccumulation($time);
+        $kud_accumulation = Core_sample::kudAccumulation($time);
+        $program_accumulation = Core_sample::programAccumulation($time);
+        return view('report.core_sample_report', compact('request', 'data', 'global_accumulation', 'pos_accumulation', 'kud_accumulation', 'program_accumulation'));
+    }
+
     public function determineTimeRange($request)
     {
         switch($request->shift)
@@ -31,13 +52,4 @@ class ReportController extends Controller
         return $data;
     }
 
-    public function labReport(Request $request)
-    {
-        $time = self::determineTimeRange($request);
-        $data = Report::serveLabReport($time);
-        $keliling = Report::serveKelilingReport($time);
-        $chemical = Report::serveChemicalReport($time);
-        return view('report.lab_report', compact('request', 'data', 'keliling', 'chemical'));
-        // return $chemical;
-    }
 }

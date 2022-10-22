@@ -38,7 +38,6 @@ class CoreSampleController extends Controller
     public function store(Request $request)
     {
         $data = Core_sample::validateRequest($request);
-        // return $data;
         $request->request->add([
             'vehicle' => $data['vehicle'],
             'register' => $data['register'],
