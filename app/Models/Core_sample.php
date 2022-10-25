@@ -83,84 +83,71 @@ class Core_sample extends Model
             ->get();
     }
 
+    public static function averageAnalysis($time, $vehicle, $parameter)
+    {
+        return self::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('vehicle', $vehicle)
+            ->avg($parameter);
+    }
+
+    public static function averageWithoutVehicle($time, $parameter)
+    {
+        return self::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->avg($parameter);
+    }
+
+    public static function countRitByVehicle($time, $vehicle)
+    {
+        return self::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('vehicle', $vehicle)
+            ->count('id');
+    }
+
+    public static function countRitAll($time)
+    {
+        return self::where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->count('id');
+    }
+
+    public function findAnalysisByColumnAndVehicle($time, $column, $value, $vehicle, $parameter)
+    {
+        return self::where($column, $value)
+            ->where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->where('vehicle', $vehicle)
+            ->avg($parameter);
+    }
+
+    public function findAnalysisByColumn($time, $column, $value, $parameter)
+    {
+        return self::where($column, $value)
+            ->where('created_at', '>=', $time['current'])
+            ->where('created_at', '<', $time['tomorrow'])
+            ->avg($parameter);
+    }
+
     public static function globalAccumulation($time)
     {
-        $data['rit_engkel_kecil'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Kecil')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->count('id');
-
-        $data['rit_engkel_besar'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Besar')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->count('id');
-
-        $data['rit_gandeng'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Gandeng')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->count('id');
-
-        $data['rit_all'] = self::where('created_at', '>=', $time['current'])
-            ->where('created_at', '<', $time['tomorrow'])
-            ->count('id');
-
-        $data['percent_brix_engkel_kecil'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Kecil')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_brix');
-
-        $data['percent_brix_engkel_besar'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Besar')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_brix');
-
-        $data['percent_brix_gandeng'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Gandeng')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_brix');
-
-        $data['percent_brix_all'] = self::where('created_at', '>=', $time['current'])
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_brix');
-
-        $data['percent_pol_engkel_kecil'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Kecil')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_pol');
-
-        $data['percent_pol_engkel_besar'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Besar')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_pol');
-
-        $data['percent_pol_gandeng'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Gandeng')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_pol');
-
-        $data['percent_pol_all'] = self::where('created_at', '>=', $time['current'])
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('percent_pol');
-
-        $data['yield_engkel_kecil'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Kecil')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('yield');
-
-        $data['yield_engkel_besar'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Engkel Besar')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('yield');
-
-        $data['yield_gandeng'] = self::where('created_at', '>=', $time['current'])
-            ->where('vehicle', 'Gandeng')
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('yield');
-
-        $data['yield_all'] = self::where('created_at', '>=', $time['current'])
-            ->where('created_at', '<', $time['tomorrow'])
-            ->avg('yield');
-
+        $data['rit_engkel_kecil'] = self::countRitByVehicle($time, 'Engkel Kecil');
+        $data['rit_engkel_besar'] = self::countRitByVehicle($time, 'Engkel Besar');
+        $data['rit_gandeng'] = self::countRitByVehicle($time, 'Gandeng');
+        $data['rit_all'] = self::countRitAll($time);
+        $data['percent_brix_engkel_kecil'] = self::averageAnalysis($time, 'Engkel Kecil', 'percent_brix');
+        $data['percent_brix_engkel_besar'] = self::averageAnalysis($time, 'Engkel Besar', 'percent_brix');
+        $data['percent_brix_gandeng'] = self::averageAnalysis($time, 'Gandeng', 'percent_brix');
+        $data['percent_brix_all'] = self::averageWithoutVehicle($time, 'percent_brix');
+        $data['percent_pol_engkel_kecil'] = self::averageAnalysis($time, 'Engkel Kecil', 'percent_pol');
+        $data['percent_pol_engkel_besar'] = self::averageAnalysis($time, 'Engkel Besar', 'percent_pol');
+        $data['percent_pol_gandeng'] = self::averageAnalysis($time, 'Gandeng', 'percent_pol');
+        $data['percent_pol_all'] = self::averageWithoutVehicle($time, 'percent_pol');
+        $data['yield_engkel_kecil'] = self::averageAnalysis($time, 'Engkel Kecil', 'yield');
+        $data['yield_engkel_besar'] = self::averageAnalysis($time, 'Engkel Besar', 'yield');
+        $data['yield_gandeng'] = self::averageAnalysis($time, 'Engkel Besar', 'yield');
+        $data['yield_all'] = self::averageWithoutVehicle($time, 'yield');
         return $data;
     }
 
@@ -169,28 +156,10 @@ class Core_sample extends Model
         $post = Outpost::select('name')->get();
         for($i = 0; $i < count($post); $i++)
         {
-            $post[$i]->yield_ek = Core_sample::where('outpost', $post[$i]->name)
-                ->where('vehicle', 'Engkel Kecil')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-
-            $post[$i]->yield_eb = Core_sample::where('outpost', $post[$i]->name)
-                ->where('vehicle', 'Engkel Besar')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-
-            $post[$i]->yield_gd = Core_sample::where('outpost', $post[$i]->name)
-                ->where('vehicle', 'Gandeng')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-
-            $post[$i]->yield_all = Core_sample::where('outpost', $post[$i]->name)
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
+            $post[$i]->yield_ek = self::findAnalysisByColumnAndVehicle($time, 'outpost', $post[$i]->name, 'Engkel Kecil', 'yield');
+            $post[$i]->yield_eb = self::findAnalysisByColumnAndVehicle($time, 'outpost', $post[$i]->name, 'Engkel Besar', 'yield');
+            $post[$i]->yield_gd = self::findAnalysisByColumnAndVehicle($time, 'outpost', $post[$i]->name, 'Gandeng', 'yield');
+            $post[$i]->yield_all = self::findAnalysisByColumn($time, 'outpost', $post[$i]->name, 'yield');
         }
         return $post;
     }
@@ -200,28 +169,10 @@ class Core_sample extends Model
         $kud = Cooperative::select('name')->get();
         for($i = 0; $i < count($kud); $i++)
         {
-            $kud[$i]->yield_ek = Core_sample::where('cooperative', $kud[$i]->name)
-                ->where('vehicle', 'Engkel Kecil')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-
-            $kud[$i]->yield_eb = Core_sample::where('cooperative', $kud[$i]->name)
-                ->where('vehicle', 'Engkel Besar')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-                
-            $kud[$i]->yield_gd = Core_sample::where('cooperative', $kud[$i]->name)
-                ->where('vehicle', 'Gandeng')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-                
-            $kud[$i]->yield_all = Core_sample::where('cooperative', $kud[$i]->name)
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
+            $kud[$i]->yield_ek = self::findAnalysisByColumnAndVehicle($time, 'cooperative', $kud[$i]->name, 'Engkel Kecil', 'yield');
+            $kud[$i]->yield_eb = self::findAnalysisByColumnAndVehicle($time, 'cooperative', $kud[$i]->name, 'Engkel Besar', 'yield');
+            $kud[$i]->yield_gd = self::findAnalysisByColumnAndVehicle($time, 'cooperative', $kud[$i]->name, 'Gandeng', 'yield');
+            $kud[$i]->yield_all = self::findAnalysisByColumn($time, 'cooperative', $kud[$i]->name, 'yield');
         }
         return $kud;
     }
@@ -231,28 +182,10 @@ class Core_sample extends Model
         $program = Program::select('name')->get();
         for($i = 0; $i < count($program); $i++)
         {
-            $program[$i]->yield_ek = Core_sample::where('program', $program[$i]->name)
-                ->where('vehicle', 'Engkel Kecil')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-
-            $program[$i]->yield_eb = Core_sample::where('program', $program[$i]->name)
-                ->where('vehicle', 'Engkel Besar')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-                
-            $program[$i]->yield_gd = Core_sample::where('program', $program[$i]->name)
-                ->where('vehicle', 'Gandeng')
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
-                
-            $program[$i]->yield_all = Core_sample::where('program', $program[$i]->name)
-                ->where('created_at', '>=', $time['current'])
-                ->where('created_at', '<', $time['tomorrow'])
-                ->avg('yield');
+            $program[$i]->yield_ek = self::findAnalysisByColumnAndVehicle($time, 'program', $program[$i]->name, 'Engkel Kecil', 'yield');
+            $program[$i]->yield_eb = self::findAnalysisByColumnAndVehicle($time, 'program', $program[$i]->name, 'Engkel Besar', 'yield');
+            $program[$i]->yield_gd = self::findAnalysisByColumnAndVehicle($time, 'program', $program[$i]->name, 'Gandeng', 'yield');
+            $program[$i]->yield_all = self::findAnalysisByColumn($time, 'program', $program[$i]->name, 'yield');
         }
         return $program;
     }

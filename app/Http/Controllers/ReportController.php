@@ -14,7 +14,7 @@ class ReportController extends Controller
         $data = Report::serveLabReport($time);
         $keliling = Report::serveKelilingReport($time);
         $chemical = Report::serveChemicalReport($time);
-        return view('report.lab_report', compact('request', 'data', 'keliling', 'chemical'));
+        return view('documentation.report.lab_report', compact('request', 'data', 'keliling', 'chemical'));
     }
 
     public function coreSampleReport(Request $request)
@@ -25,7 +25,7 @@ class ReportController extends Controller
         $pos_accumulation = Core_sample::posAccumulation($time);
         $kud_accumulation = Core_sample::kudAccumulation($time);
         $program_accumulation = Core_sample::programAccumulation($time);
-        return view('report.core_sample_report', compact('request', 'data', 'global_accumulation', 'pos_accumulation', 'kud_accumulation', 'program_accumulation'));
+        return view('documentation.report.core_sample_report', compact('request', 'data', 'global_accumulation', 'pos_accumulation', 'kud_accumulation', 'program_accumulation'));
     }
 
     public function determineTimeRange($request)

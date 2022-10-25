@@ -29,6 +29,7 @@ use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\CoreSampleController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\CertificateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,11 +49,17 @@ Route::get('activity_log', [PageController::class, 'activityLogByUser'])->name('
 Route::get('analysis_result', [PageController::class, 'analysisResult'])->name('analysis_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('station_result/{station_id}', [PageController::class, 'stationResult'])->name('station_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['user_is_login', 'role_is_5']);
-Route::get('reports', [PageController::class, 'Report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
+Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
+Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['user_is_login', 'role_is_3']);
 
 // Report
 Route::post('lab_report', [ReportController::class, 'labReport'])->name('lab_report')->middleware(['user_is_login', 'role_is_3']);
 Route::post('core_sample_report', [ReportController::class, 'coreSampleReport'])->name('core_sample_report')->middleware(['user_is_login', 'role_is_3']);
+
+// Certificate
+Route::post('mollases_certificate', [CertificateController::class, 'mollasesCertificate'])->name('mollases_certificate')->middleware(['user_is_login', 'role_is_3']);
+Route::post('kapur_certificate', [CertificateController::class, 'kapurCertificate'])->name('kapur_certificate')->middleware(['user_is_login', 'role_is_3']);
+
 
 // Authentication
 Route::get('login', [LoginController::class, 'index'])->name('login');

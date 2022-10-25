@@ -18,8 +18,8 @@ class CreateBoilersTable extends Migration
             $table->foreignId('sample_id')->unique();
             $table->float('tds');
             $table->float('ph');
-            $table->float('hardness');
-            $table->float('phospate');
+            $table->float('hardness')->nullable();
+            $table->float('phospate')->nullable();
             $table->float('tds_origin')->nullable();
             $table->float('ph_origin')->nullable();
             $table->float('hardness_origin')->nullable();

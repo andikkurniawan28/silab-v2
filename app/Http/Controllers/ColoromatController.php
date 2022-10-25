@@ -41,6 +41,7 @@ class ColoromatController extends Controller
     {
         $request->request->add([
             'analyst' => session('name'),
+            'preparation' => session('name'),
         ]);
         Coloromat::create($request->all());
         Log::writeLog('Coloromat', 'Submit Data', session('name'));

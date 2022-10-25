@@ -52,6 +52,11 @@ class PageController extends Controller
 
     public function report()
     {
-        return view('report.report');
+        return view('documentation.report.index');
+    }
+
+    public function certificate()
+    {
+        return view('documentation.certificate.index');
     }
 }

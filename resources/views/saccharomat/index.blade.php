@@ -27,8 +27,8 @@
                             <th>Purity<sub>(%)</sub></th>
                             <th>Yield</th>
                             <th>Analyst</th>
-                            <th>P1</th>
-                            <th>P2</th>
+                            <th>Preparation1</th>
+                            <th>Preparation2</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>

@@ -21,8 +21,8 @@
      <!-- Content Row -->
      <div class="row">
         
-        @include('report.laporan_laboratorium')
-        @include('report.laporan_core_sample')
+        @include('documentation.report.laporan_laboratorium')
+        @include('documentation.report.laporan_core_sample')
 
      </div>
 
