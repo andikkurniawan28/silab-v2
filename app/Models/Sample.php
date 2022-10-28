@@ -15,8 +15,9 @@ class Sample extends Model
         'method_id',
         'pan',
         'reef',
-        'source',
         'volume',
+        'start_time',
+        'finish_time',
         'operator',
         'admin',
     ];

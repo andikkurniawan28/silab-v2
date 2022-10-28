@@ -21,9 +21,11 @@ class CreateSamplesTable extends Migration
 
             $table->integer('pan')->nullable();
             $table->integer('reef')->nullable();
-            $table->integer('source')->nullable();
             $table->integer('volume')->nullable();
             $table->string('operator')->nullable();
+
+            $table->time('start_time')->nullable();
+            $table->time('finish_time')->nullable();
             
             $table->string('admin');
             $table->timestamp('created_at')->useCurrent();

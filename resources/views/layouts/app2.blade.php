@@ -27,15 +27,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        @include('components.sidebar')
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column text-dark">
 
             <!-- Main Content -->
             <div id="content">
 
-                @include('components.navbar')
+                @include('components.navbar2')
                 @yield('content')
 
             </div>
@@ -79,7 +77,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
+                    <a class="btn btn-primary" href="/logout_hmi">Logout</a>
                 </div>
             </div>
         </div>

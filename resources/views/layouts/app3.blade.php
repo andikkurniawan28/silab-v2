@@ -27,15 +27,13 @@
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-        @include('components.sidebar')
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column text-dark">
 
             <!-- Main Content -->
             <div id="content">
 
-                @include('components.navbar')
+                @include('components.navbar2')
                 @yield('content')
 
             </div>

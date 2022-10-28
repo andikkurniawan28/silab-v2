@@ -16,7 +16,7 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
-                    <p class="mb-4">For Raw Sugar & Gula material, analysis result just process Purity. % Brix and % Pol may greater than 100%.</p>
+                    <p class="mb-4">For Raw Sugar & Gula material, analysis result just process Purity. % Brix and % Pol may greater than 100%. For Ampas Gilingan Material, Pol will be corrected depend on Water Content on Analisa Ampas Section.</p>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -27,8 +27,8 @@
                             <th>Purity<sub>(%)</sub></th>
                             <th>Yield</th>
                             <th>Analyst</th>
-                            <th>Preparation1</th>
-                            <th>Preparation2</th>
+                            <th>P1</th>
+                            <th>P2</th>
                             <th>Master</th>
                             <th>Created @</th>
                             <th>Action</th>

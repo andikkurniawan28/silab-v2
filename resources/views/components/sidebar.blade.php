@@ -28,6 +28,7 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
                 <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
+                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
@@ -56,6 +57,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
+                <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
                 <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
@@ -78,7 +80,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('reports') }}">Report</a>
-                <a class="collapse-item" href="{{ route('certificates') }}">Certificate of Analysis</a>
+                <a class="collapse-item" href="{{ route('certificates') }}">Certificate</a>
             </div>
         </div>
     </li>
@@ -88,8 +90,8 @@
     @if(session('role') == 1)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-database"></i>
-            <span>Master</span>
+            <i class="fas fa-fw fa-cog"></i>
+            <span>Configuration</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

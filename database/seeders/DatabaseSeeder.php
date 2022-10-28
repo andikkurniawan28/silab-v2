@@ -121,6 +121,14 @@ class DatabaseSeeder extends Seeder
                 'hmi_access' => 5,
                 'admin' => 'Andik Kurniawan',
             ],
+            [
+                'role_id' => 4,
+                'name' => 'Pabrikasi',
+                'username' => 'pabrikasi',
+                'password' => md5('pabrikasi'),
+                'hmi_access' => 'pabrikasi',
+                'admin' => 'Andik Kurniawan',
+            ],
         ];
         User::insert($users);
         

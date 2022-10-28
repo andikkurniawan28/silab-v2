@@ -62,16 +62,12 @@
                         <h5>Analysis Result</h5>
                         <tr bgcolor="pink">
                             <th>Material</th>
-                            <th>% Brix</th>
-                            <th>TSAI</th>
-                            <th>Optical Density</th>
+                            <th>Kadar Kapur</th>
                         </tr>
                         @foreach($data as $data)
                         <tr>
                             <td>{{ $data->name }}</td>
-                            <td>{{ $data->percent_brix }}</td>
-                            <td>{{ $data->tsai }}</td>
-                            <td>{{ $data->optical_density }}</td>
+                            <td>{{ $data->calcium }}</td>
                         </tr>
                         @endforeach
                     </table>

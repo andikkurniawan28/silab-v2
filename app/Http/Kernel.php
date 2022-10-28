@@ -69,5 +69,6 @@ class Kernel extends HttpKernel
         'role_is_3' => \App\Http\Middleware\EnsureRoleUserIs3::class,
         'role_is_4' => \App\Http\Middleware\EnsureRoleUserIs4::class,
         'role_is_5' => \App\Http\Middleware\EnsureRoleUserIs5::class,
+        'hmi_is_login' => \App\Http\Middleware\EnsureHmiAccess::class,
     ];
 }

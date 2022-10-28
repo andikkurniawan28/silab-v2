@@ -11,7 +11,6 @@ class CertificateController extends Controller
     {
         $time = self::determineTimeRange($request);
         $data = Certificate::serveMollasesCertificate($time);
-        // return $data['t1'][0];
         return view('documentation.certificate.mollases_certificate', compact('request', 'data'));
     }
 

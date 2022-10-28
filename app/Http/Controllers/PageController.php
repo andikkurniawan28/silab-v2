@@ -7,6 +7,7 @@ use App\Models\Log;
 use App\Models\Station;
 use App\Models\Material;
 use App\Models\Analysis;
+use App\Models\Ronsel;
 
 class PageController extends Controller
 {
@@ -58,5 +59,18 @@ class PageController extends Controller
     public function certificate()
     {
         return view('documentation.certificate.index');
+    }
+
+    public function barcodeSample()
+    {
+        $materials = Material::all();
+        return view('barcode_sample.index', compact('materials'));
+    }
+
+    public function ronselMasakan()
+    {
+        $materials = Ronsel::serveMasakan();
+        // return $materials;
+        return view('ronsel_masakan.index', compact('materials'));
     }
 }

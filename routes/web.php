@@ -30,6 +30,8 @@ use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\CoreSampleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\BarcodeController;
+use App\Http\Controllers\RonselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,7 +44,7 @@ use App\Http\Controllers\CertificateController;
 |
 */
 
-// Dashboard
+// Page
 Route::get('/', [PageController::class, 'index'])->name('dashboard')->middleware('user_is_login');
 Route::get('activity_log_by_user', [PageController::class, 'activityLogByUser'])->name('activity_log_by_user')->middleware('user_is_login');
 Route::get('activity_log', [PageController::class, 'activityLogByUser'])->name('activity_log')->middleware(['user_is_login', 'role_is_1']);
@@ -51,6 +53,11 @@ Route::get('station_result/{station_id}', [PageController::class, 'stationResult
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['user_is_login', 'role_is_5']);
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['user_is_login', 'role_is_3']);
+Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
+
+// Barcode
+Route::post('barcode_samples', [BarcodeController::class, 'showBarcode'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
+Route::post('ronsel_masakan', [RonselController::class, 'showBarcode'])->name('ronsel_masakan')->middleware(['user_is_login', 'role_is_4']);
 
 // Report
 Route::post('lab_report', [ReportController::class, 'labReport'])->name('lab_report')->middleware(['user_is_login', 'role_is_3']);
@@ -67,6 +74,9 @@ Route::get('logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('login-process', [LoginController::class, 'login'])->name('login-process');
 Route::post('register-process', [LoginController::class, 'registerProcess'])->name('register-process');
+Route::get('login_hmi', [LoginController::class, 'loginHmi'])->name('login_hmi');
+Route::post('login_hmi-process', [LoginController::class, 'loginHmiProccess'])->name('login_hmi-process');
+Route::get('logout_hmi', [LoginController::class, 'logoutHmi'])->name('logout_hmi');
 
 // User
 Route::resource('users', UserController::class)->middleware(['user_is_login', 'role_is_1']);
@@ -102,6 +112,7 @@ Route::resource('imbibitions', ImbibitionController::class)->middleware(['user_i
 Route::resource('arounds', AroundController::class)->middleware(['user_is_login', 'role_is_5']);
 Route::resource('taxations', TaxationController::class)->middleware(['user_is_login', 'role_is_5']);
 Route::resource('mollases', MollaseController::class)->middleware(['user_is_login', 'role_is_5']);
+Route::get('ronsel_masakan', [PageController::class, 'ronselMasakan'])->name('ronsel_masakan')->middleware(['user_is_login', 'role_is_5']);
 
 // Corection
 Route::get('saccharomats_correction', [SaccharomatController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
