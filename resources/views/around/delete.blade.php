@@ -3,7 +3,7 @@
     <div class="modal-dialog" around="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $around->id }}Label">Delete {{ ucfirst('keliling') }}</h5>
+                <h5 class="modal-title" id="delete{{ $around->id }}Label">Delete {{ ucfirst('Data Proses') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

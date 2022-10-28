@@ -42,7 +42,7 @@ class MollaseController extends Controller
         ]);
         Mollase::create($request->all());
         Log::writeLog('Mollase', 'Create New Mollase', session('name'));
-        return redirect()->back()->with('success', 'Mollase has been stored');
+        return redirect()->back()->with('success', 'Taksasi Tetes has been stored');
     }
 
     /**
@@ -83,7 +83,7 @@ class MollaseController extends Controller
             'meters' => $request->meters,
         ]);
         Log::writeLog('Mollase', 'Edit Mollase', session('name'));
-        return redirect()->back()->with('success', 'Mollase has been updated');
+        return redirect()->back()->with('success', 'Taksasi Tetes has been updated');
     }
 
     /**
@@ -96,6 +96,6 @@ class MollaseController extends Controller
     {
         Mollase::find($id)->delete();
         Log::writeLog('Mollase', 'Delete Mollase', session('name'));
-        return redirect()->back()->with('success', 'Mollase has been deleted');
+        return redirect()->back()->with('success', 'Taksasi Tetes has been deleted');
     }
 }

@@ -42,7 +42,7 @@ class AroundController extends Controller
         ]);
         Around::create($request->all());
         Log::writeLog('Keliling', 'Create New Keliling', session('name'));
-        return redirect()->back()->with('success', 'Keliling has been stored');
+        return redirect()->back()->with('success', 'Data Proses has been stored');
     }
 
     /**
@@ -120,7 +120,7 @@ class AroundController extends Controller
             'uap_3ato' => $request->uap_3ato,
         ]);
         Log::writeLog('Keliling', 'Edit Keliling', session('name'));
-        return redirect()->back()->with('success', 'Keliling has been updated');
+        return redirect()->back()->with('success', 'Data Proses has been updated');
     }
 
     /**
@@ -133,6 +133,6 @@ class AroundController extends Controller
     {
         Around::find($id)->delete();
         Log::writeLog('Keliling', 'Delete Keliling', session('name'));
-        return redirect()->back()->with('success', 'Keliling has been deleted');
+        return redirect()->back()->with('success', 'Data Proses has been deleted');
     }
 }

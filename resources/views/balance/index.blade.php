@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('balance') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Flow Nira Mentah') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -22,7 +22,7 @@
                             <th>Tebu<sub>(Ku)</sub></th>
                             <th>Totalizer</th>
                             <th>Flow</th>
-                            <th>NM % Tebu</th>
+                            <th>NM%Tebu</th>
                             <th>Admin</th>
                             <th>Created @</th>
 

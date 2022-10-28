@@ -44,7 +44,7 @@ class SpecialController extends Controller
         ]);
         Special::create($request->all());
         Log::writeLog('Special', 'Submit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Analisa Khusus has been stored');
     }
 
     /**
@@ -105,7 +105,7 @@ class SpecialController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Special', 'Edit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Analisa Khusus has been updated');
     }
 
     /**
@@ -118,7 +118,7 @@ class SpecialController extends Controller
     {
         Special::find($id)->delete();
         Log::writeLog('Special', 'Delete Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Analisa Khusus has been deleted');
     }
 
     public function showCorrection()
@@ -147,7 +147,7 @@ class SpecialController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Special', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Khusus has been verified by '.$request->master);
         }
     }
 }

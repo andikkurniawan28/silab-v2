@@ -3,7 +3,7 @@
     <div class="modal-dialog" umum="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $umum->id }}Label">Edit {{ ucfirst('umum') }}</h5>
+                <h5 class="modal-title" id="edit{{ $umum->id }}Label">Edit {{ ucfirst('Analisa Umum') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

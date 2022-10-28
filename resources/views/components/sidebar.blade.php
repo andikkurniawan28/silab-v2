@@ -26,16 +26,14 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('balances.index') }}">Balance</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
                 <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
-                <a class="collapse-item" href="{{ route('arounds.index') }}">Keliling</a>
-                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi</a>
-                <a class="collapse-item" href="{{ route('mollases.index') }}">Tangki Tetes</a>
-                {{-- <a class="collapse-item" href="">Timbangan Tetes</a>
-                <a class="collapse-item" href="">Timbangan RS In</a>
-                <a class="collapse-item" href="">Timbangan RS Out</a> --}}
+                <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
+                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
+                <a class="collapse-item" href="{{ route('mollases.index') }}">Taksasi Tetes</a>
+                <a class="collapse-item" href="#">Timbangan In Proses</a>
             </div>
         </div>
     </li>
@@ -58,14 +56,15 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
                 <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
+                <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
                 <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
                 <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
                 <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
-                <a class="collapse-item" href="{{ route('baggases.index') }}">Ampas</a>
-                <a class="collapse-item" href="{{ route('umums.index') }}">Umum</a>
-                <a class="collapse-item" href="{{ route('boilers.index') }}">Ketel</a>
-                <a class="collapse-item" href="{{ route('sugars.index') }}">SO<sub>2</sub> & BJB</a>
-                <a class="collapse-item" href="{{ route('specials.index') }}">Khusus</a>
+                <a class="collapse-item" href="{{ route('baggases.index') }}">Analisa Ampas</a>
+                <a class="collapse-item" href="{{ route('umums.index') }}">Analisa Umum</a>
+                <a class="collapse-item" href="{{ route('boilers.index') }}">Analisa Ketel</a>
+                <a class="collapse-item" href="{{ route('sugars.index') }}">Analisa Gula</a>
+                <a class="collapse-item" href="{{ route('specials.index') }}">Analisa Khusus</a>
                 <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
             </div>
         </div>
@@ -96,7 +95,6 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
                 <a class="collapse-item" href="{{ route('users.index') }}">User</a>
                 <a class="collapse-item" href="{{ route('stations.index') }}">Station</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>

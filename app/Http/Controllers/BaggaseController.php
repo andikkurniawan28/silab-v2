@@ -86,7 +86,7 @@ class BaggaseController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Baggase', 'Edit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Analisa Ampas has been updated');
     }
 
     /**
@@ -99,7 +99,7 @@ class BaggaseController extends Controller
     {
         Baggase::find($id)->delete();
         Log::writeLog('Baggase', 'Delete Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Analisa Ampas has been deleted');
     }
 
     public function showCorrection()
@@ -128,7 +128,7 @@ class BaggaseController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Baggase', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Ampas has been verified by '.$request->master);
         }
     }
 
@@ -169,7 +169,7 @@ class BaggaseController extends Controller
 
         Baggase::create($request->all());
         Log::writeLog('Baggase', 'Submit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Analisa Ampas has been stored');
     }
 
     

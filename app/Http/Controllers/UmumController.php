@@ -44,7 +44,7 @@ class UmumController extends Controller
         ]);
         Umum::create($request->all());
         Log::writeLog('Umum', 'Submit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Analisa Umum has been stored');
     }
 
     /**
@@ -92,7 +92,7 @@ class UmumController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Umum', 'Edit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Analisa Umum has been updated');
     }
 
     /**
@@ -105,7 +105,7 @@ class UmumController extends Controller
     {
         Umum::find($id)->delete();
         Log::writeLog('Umum', 'Delete Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Analisa Umum has been deleted');
     }
 
     public function showCorrection()
@@ -134,7 +134,7 @@ class UmumController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Umum', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Umum has been verified by '.$request->master);
         }
     }
 }

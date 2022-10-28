@@ -44,7 +44,7 @@ class SugarController extends Controller
         ]);
         Sugar::create($request->all());
         Log::writeLog('Sugar', 'Submit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Analisa Gula has been stored');
     }
 
     /**
@@ -90,7 +90,7 @@ class SugarController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Sugar', 'Edit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Analisa Gula has been updated');
     }
 
     /**
@@ -103,7 +103,7 @@ class SugarController extends Controller
     {
         Sugar::find($id)->delete();
         Log::writeLog('Sugar', 'Delete Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Analisa Gula has been deleted');
     }
 
     public function showCorrection()
@@ -132,7 +132,7 @@ class SugarController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Sugar', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Gula has been verified by '.$request->master);
         }
     }
 }

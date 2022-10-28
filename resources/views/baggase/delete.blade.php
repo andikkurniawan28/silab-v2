@@ -3,7 +3,7 @@
     <div class="modal-dialog" baggase="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $baggase->id }}Label">Delete {{ ucfirst('baggase') }}</h5>
+                <h5 class="modal-title" id="delete{{ $baggase->id }}Label">Delete {{ ucfirst('Analisa Ampas') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

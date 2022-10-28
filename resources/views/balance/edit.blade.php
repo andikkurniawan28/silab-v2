@@ -3,7 +3,7 @@
     <div class="modal-dialog" balance="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $balance->id }}Label">Edit {{ ucfirst('balance') }}</h5>
+                <h5 class="modal-title" id="edit{{ $balance->id }}Label">Edit {{ ucfirst('Flow Nira Mentah') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

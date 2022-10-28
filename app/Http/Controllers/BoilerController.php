@@ -44,7 +44,7 @@ class BoilerController extends Controller
         ]);
         Boiler::create($request->all());
         Log::writeLog('Boiler', 'Submit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Analisa Ketel has been stored');
     }
 
     /**
@@ -92,7 +92,7 @@ class BoilerController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Boiler', 'Edit Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Analisa Ketel has been updated');
     }
 
     /**
@@ -105,7 +105,7 @@ class BoilerController extends Controller
     {
         Boiler::find($id)->delete();
         Log::writeLog('Boiler', 'Delete Data', session('name'));
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Analisa Ketel has been deleted');
     }
 
     public function showCorrection()
@@ -134,7 +134,7 @@ class BoilerController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Boiler', 'Verify Data', session('name'));
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Ketel has been verified by '.$request->master);
         }
     }
 }

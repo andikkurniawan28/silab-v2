@@ -45,7 +45,7 @@ class BalanceController extends Controller
         ]);
         Balance::create($request->all());
         Log::writeLog('Balance', 'Create New Balance', session('name'));
-        return redirect()->back()->with('success', 'Balance has been stored');
+        return redirect()->back()->with('success', 'Flow Nira Mentah has been stored');
     }
 
     /**
@@ -87,7 +87,7 @@ class BalanceController extends Controller
             'raw_juice_percent_sugar_cane' => $data['raw_juice_percent_sugar_cane'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         ]);
         Log::writeLog('Balance', 'Edit Balance '.$request->name, session('name'));
-        return redirect()->back()->with('success', 'Balance has been updated');
+        return redirect()->back()->with('success', 'Flow Nira Mentah has been updated');
     }
 
     /**
@@ -100,6 +100,6 @@ class BalanceController extends Controller
     {
         Balance::find($id)->delete();
         Log::writeLog('Balance', 'Delete Balance', session('name'));
-        return redirect()->back()->with('success', 'Balance has been deleted');
+        return redirect()->back()->with('success', 'Flow Nira Mentah has been deleted');
     }
 }
