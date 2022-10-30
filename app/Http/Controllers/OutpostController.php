@@ -16,7 +16,8 @@ class OutpostController extends Controller
     public function index()
     {
         $outposts = Outpost::all();
-        return view('outpost.index', compact('outposts'));
+        $stations = $this->serveStation();
+        return view('outpost.index', compact('outposts', 'stations'));
     }
 
     /**

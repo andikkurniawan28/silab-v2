@@ -19,7 +19,8 @@ class BaggaseController extends Controller
     {
         $baggases = Baggase::serveAll();
         $samples = Sample::serveAll();
-        return view('baggase.index', compact('baggases', 'samples'));
+        $stations = $this->serveStation();
+        return view('baggase.index', compact('baggases', 'samples', 'stations'));
     }
 
     /**
@@ -105,13 +106,14 @@ class BaggaseController extends Controller
     public function showCorrection()
     {
         $baggases = Baggase::serveCorrected();
-        return view('baggase.correction', compact('baggases'));
+        $stations = $this->serveStation();
+        return view('baggase.correction', compact('baggases', 'stations'));
     }
 
     public function showVerification()
     {
         $baggases = Baggase::serveUnverificated();
-        return view('baggase.verification', compact('baggases'));
+        return view('baggase.verification', compact('baggases', 'stations'));
     }
 
     public function processVerification(Request $request)

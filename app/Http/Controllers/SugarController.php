@@ -18,7 +18,8 @@ class SugarController extends Controller
     {
         $sugars = Sugar::serveAll();
         $samples = Sample::serveAll();
-        return view('sugar.index', compact('sugars', 'samples'));
+        $stations = $this->serveStation();
+        return view('sugar.index', compact('sugars', 'samples', 'stations'));
     }
 
     /**
@@ -109,13 +110,15 @@ class SugarController extends Controller
     public function showCorrection()
     {
         $sugars = Sugar::serveCorrected();
-        return view('sugar.correction', compact('sugars'));
+        $stations = $this->serveStation();
+        return view('sugar.correction', compact('sugars', 'stations'));
     }
 
     public function showVerification()
     {
         $sugars = Sugar::serveUnverificated();
-        return view('sugar.verification', compact('sugars'));
+        $stations = $this->serveStation();
+        return view('sugar.verification', compact('sugars', 'stations'));
     }
 
     public function processVerification(Request $request)

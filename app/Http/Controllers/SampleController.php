@@ -18,7 +18,8 @@ class SampleController extends Controller
     {
         $samples = Sample::serveAll();
         $materials = Material::serveAll();
-        return view('sample.index', compact('samples', 'materials'));
+        $stations = $this->serveStation();
+        return view('sample.index', compact('samples', 'materials', 'stations'));
     }
 
     /**

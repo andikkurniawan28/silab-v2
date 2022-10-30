@@ -18,7 +18,8 @@ class BoilerController extends Controller
     {
         $boilers = Boiler::serveAll();
         $samples = Sample::serveAll();
-        return view('boiler.index', compact('boilers', 'samples'));
+        $stations = $this->serveStation();
+        return view('boiler.index', compact('boilers', 'samples', 'stations'));
     }
 
     /**
@@ -111,13 +112,15 @@ class BoilerController extends Controller
     public function showCorrection()
     {
         $boilers = Boiler::serveCorrected();
-        return view('boiler.correction', compact('boilers'));
+        $stations = $this->serveStation();
+        return view('boiler.correction', compact('boilers', 'stations'));
     }
 
     public function showVerification()
     {
         $boilers = Boiler::serveUnverificated();
-        return view('boiler.verification', compact('boilers'));
+        $stations = $this->serveStation();
+        return view('boiler.verification', compact('boilers', 'stations'));
     }
 
     public function processVerification(Request $request)

@@ -19,7 +19,8 @@ class SaccharomatController extends Controller
     {
         $saccharomats = Saccharomat::serveAll();
         $samples = Sample::serveAll();
-        return view('saccharomat.index', compact('saccharomats', 'samples'));
+        $stations = $this->serveStation();
+        return view('saccharomat.index', compact('saccharomats', 'samples', 'stations'));
     }
 
     /**
@@ -155,13 +156,15 @@ class SaccharomatController extends Controller
     public function showCorrection()
     {
         $saccharomats = Saccharomat::serveCorrected();
-        return view('saccharomat.correction', compact('saccharomats'));
+        $stations = $this->serveStation();
+        return view('saccharomat.correction', compact('saccharomats', 'stations'));
     }
 
     public function showVerification()
     {
         $saccharomats = Saccharomat::serveUnverificated();
-        return view('saccharomat.verification', compact('saccharomats'));
+        $stations = $this->serveStation();
+        return view('saccharomat.verification', compact('saccharomats', 'stations'));
     }
 
     public function processVerification(Request $request)

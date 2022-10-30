@@ -18,7 +18,8 @@ class UmumController extends Controller
     {
         $umums = Umum::serveAll();
         $samples = Sample::serveAll();
-        return view('umum.index', compact('umums', 'samples'));
+        $stations = $this->serveStation();
+        return view('umum.index', compact('umums', 'samples', 'stations'));
     }
 
     /**
@@ -111,13 +112,15 @@ class UmumController extends Controller
     public function showCorrection()
     {
         $umums = Umum::serveCorrected();
-        return view('umum.correction', compact('umums'));
+        $stations = $this->serveStation();
+        return view('umum.correction', compact('umums', 'stations'));
     }
 
     public function showVerification()
     {
         $umums = Umum::serveUnverificated();
-        return view('umum.verification', compact('umums'));
+        $stations = $this->serveStation();
+        return view('umum.verification', compact('umums', 'stations'));
     }
 
     public function processVerification(Request $request)

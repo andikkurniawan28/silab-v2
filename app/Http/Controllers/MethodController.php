@@ -16,7 +16,8 @@ class MethodController extends Controller
     public function index()
     {
         $methods = Method::all();
-        return view('method.index', compact('methods'));
+        $stations = $this->serveStation();
+        return view('method.index', compact('methods', 'stations'));
     }
 
     /**

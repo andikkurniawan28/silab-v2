@@ -16,7 +16,8 @@ class ChemicalController extends Controller
     public function index()
     {
         $chemicals = Chemical::limit(1000)->get();
-        return view('chemical.index', compact('chemicals'));
+        $stations = $this->serveStation();
+        return view('chemical.index', compact('chemicals', 'stations'));
     }
 
     /**

@@ -18,7 +18,8 @@ class ColoromatController extends Controller
     {
         $coloromats = Coloromat::serveAll();
         $samples = Sample::serveAll();
-        return view('coloromat.index', compact('coloromats', 'samples'));
+        $stations = $this->serveStation();
+        return view('coloromat.index', compact('coloromats', 'samples', 'stations'));
     }
 
     /**
@@ -106,13 +107,15 @@ class ColoromatController extends Controller
     public function showCorrection()
     {
         $coloromats = Coloromat::serveCorrected();
-        return view('coloromat.correction', compact('coloromats'));
+        $stations = $this->serveStation();
+        return view('coloromat.correction', compact('coloromats', 'stations'));
     }
 
     public function showVerification()
     {
         $coloromats = Coloromat::serveUnverificated();
-        return view('coloromat.verification', compact('coloromats'));
+        $stations = $this->serveStation();
+        return view('coloromat.verification', compact('coloromats', 'stations'));
     }
 
     public function processVerification(Request $request)

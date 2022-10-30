@@ -16,7 +16,8 @@ class CoreSampleController extends Controller
     public function index()
     {
         $core_samples = Core_sample::limit(5000)->get();
-        return view('core_sample.index', compact('core_samples'));
+        $stations = $this->serveStation();
+        return view('core_sample.index', compact('core_samples', 'stations'));
     }
 
     /**
@@ -130,6 +131,7 @@ class CoreSampleController extends Controller
     public function showCorrection()
     {
         $core_samples = Core_sample::serveCorrected();
-        return view('core_sample.correction', compact('core_samples'));
+        $stations = $this->serveStation();
+        return view('core_sample.correction', compact('core_samples', 'stations'));
     }
 }

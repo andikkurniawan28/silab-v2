@@ -16,7 +16,8 @@ class RoleController extends Controller
     public function index()
     {
         $roles = Role::all();
-        return view('role.index', compact('roles'));
+        $stations = $this->serveStation();
+        return view('role.index', compact('roles', 'stations'));
     }
 
     /**

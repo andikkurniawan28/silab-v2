@@ -16,7 +16,8 @@ class RejectController extends Controller
     public function index()
     {
         $rejects = Reject::all();
-        return view('reject.index', compact('rejects'));
+        $stations = $this->serveStation();
+        return view('reject.index', compact('rejects', 'stations'));
     }
 
     /**

@@ -18,7 +18,8 @@ class SpecialController extends Controller
     {
         $specials = Special::serveAll();
         $samples = Sample::serveAll();
-        return view('special.index', compact('specials', 'samples'));
+        $stations = $this->serveStation();
+        return view('special.index', compact('specials', 'samples', 'stations'));
     }
 
     /**
@@ -124,13 +125,15 @@ class SpecialController extends Controller
     public function showCorrection()
     {
         $specials = Special::serveCorrected();
-        return view('special.correction', compact('specials'));
+        $stations = $this->serveStation();
+        return view('special.correction', compact('specials', 'stations'));
     }
 
     public function showVerification()
     {
         $specials = Special::serveUnverificated();
-        return view('special.verification', compact('specials'));
+        $stations = $this->serveStation();
+        return view('special.verification', compact('specials', 'stations'));
     }
 
     public function processVerification(Request $request)

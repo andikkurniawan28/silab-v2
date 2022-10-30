@@ -18,7 +18,8 @@ class UserController extends Controller
     {
         $users = User::serveAll();
         $roles = Role::all();
-        return view('user.index', compact('users', 'roles'));
+        $stations = $this->serveStation();
+        return view('user.index', compact('users', 'roles', 'stations'));
     }
 
     /**

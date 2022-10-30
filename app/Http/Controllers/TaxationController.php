@@ -16,7 +16,8 @@ class TaxationController extends Controller
     public function index()
     {
         $taxations = Taxation::limit(1000)->get();
-        return view('taxation.index', compact('taxations'));
+        $stations = $this->serveStation();
+        return view('taxation.index', compact('taxations', 'stations'));
     }
 
     /**

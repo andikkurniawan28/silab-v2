@@ -16,7 +16,8 @@ class FactorController extends Controller
     public function index()
     {
         $factors = Factor::all();
-        return view('factor.index', compact('factors'));
+        $stations = $this->serveStation();
+        return view('factor.index', compact('factors', 'stations'));
     }
 
     /**

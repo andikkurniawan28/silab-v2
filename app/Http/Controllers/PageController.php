@@ -14,20 +14,22 @@ class PageController extends Controller
     public function index()
     {
         $data = Analysis::serveDashboard();
-        // return $data;
-        return view('page.dashboard', compact('data'));
+        $stations = $this->serveStation();
+        return view('page.dashboard', compact('data', 'stations'));
     }
 
     public function activityLogByUser()
     {
         $logs = Log::where('admin', session('name'))->limit(1000)->orderBy('id', 'desc')->get();
-        return view('log.index', compact('logs'));
+        $stations = $this->serveStation();
+        return view('log.index', compact('logs', 'stations'));
     }
 
     public function activityLog()
     {
         $logs = Log::limit(1000)->orderBy('id', 'desc')->get();
-        return view('log.index', compact('logs'));
+        $stations = $this->serveStation();
+        return view('log.index', compact('logs', 'stations'));
     }
 
     public function analysisResult()
@@ -40,7 +42,8 @@ class PageController extends Controller
     {
         $datas = Analysis::serveForStationResult($station_id);
         $title = Station::where('id', $station_id)->get()->first()->name;
-        return view('station_result.index', compact('datas', 'title'));
+        $stations = $this->serveStation();
+        return view('station_result.index', compact('datas', 'title', 'stations'));
     }
 
     public function sampleResult($material_id)
@@ -50,28 +53,33 @@ class PageController extends Controller
         $station_id = Material::where('id', $material_id)->get()->first()->station_id;
         $station_name = Station::where('id', $station_id)->get()->first()->name;
         $datas = Analysis::serveForSampleResult($material_id, $method);
-        return view('sample_result.index', compact('datas', 'title', 'method', 'station_id', 'station_name'));
+        $stations = $this->serveStation();
+        return view('sample_result.index', compact('datas', 'title', 'method', 'station_id', 'station_name', 'stations'));
     }
 
     public function report()
     {
-        return view('documentation.report.index');
+        $stations = $this->serveStation();
+        return view('documentation.report.index', compact('stations'));
     }
 
     public function certificate()
     {
-        return view('documentation.certificate.index');
+        $stations = $this->serveStation();
+        return view('documentation.certificate.index', compact('stations'));
     }
 
     public function barcodeSample()
     {
         $materials = Material::all();
-        return view('barcode_sample.index', compact('materials'));
+        $stations = $this->serveStation();
+        return view('barcode_sample.index', compact('materials', 'stations'));
     }
 
     public function ronselMasakan()
     {
         $materials = Ronsel::serveMasakan();
-        return view('ronsel_masakan.index', compact('materials'));
+        $stations = $this->serveStation();
+        return view('ronsel_masakan.index', compact('materials', 'stations'));
     }
 }

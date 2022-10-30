@@ -16,7 +16,8 @@ class MollaseController extends Controller
     public function index()
     {
         $mollases = Mollase::limit(1000)->get();
-        return view('mollase.index', compact('mollases'));
+        $stations = $this->serveStation();
+        return view('mollase.index', compact('mollases', 'stations'));
     }
 
     /**

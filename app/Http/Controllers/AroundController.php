@@ -16,7 +16,8 @@ class AroundController extends Controller
     public function index()
     {
         $arounds = Around::limit(1000)->get();
-        return view('around.index', compact('arounds'));
+        $stations = $this->serveStation();
+        return view('around.index', compact('arounds', 'stations'));
     }
 
     /**

@@ -16,7 +16,8 @@ class ImbibitionController extends Controller
     public function index()
     {
         $imbibitions = Imbibition::limit(1000)->get();
-        return view('imbibition.index', compact('imbibitions'));
+        $stations = $this->serveStation();
+        return view('imbibition.index', compact('imbibitions', 'stations'));
     }
 
     /**

@@ -18,7 +18,8 @@ class MoistureController extends Controller
     {
         $moistures = Moisture::serveAll();
         $samples = Sample::serveAll();
-        return view('moisture.index', compact('moistures', 'samples'));
+        $stations = $this->serveStation();
+        return view('moisture.index', compact('moistures', 'samples', 'stations'));
     }
 
     /**
@@ -105,13 +106,15 @@ class MoistureController extends Controller
     public function showCorrection()
     {
         $moistures = Moisture::serveCorrected();
-        return view('moisture.correction', compact('moistures'));
+        $stations = $this->serveStation();
+        return view('moisture.correction', compact('moistures', 'stations'));
     }
 
     public function showVerification()
     {
         $moistures = Moisture::serveUnverificated();
-        return view('moisture.verification', compact('moistures'));
+        $stations = $this->serveStation();
+        return view('moisture.verification', compact('moistures', 'stations'));
     }
 
     public function processVerification(Request $request)

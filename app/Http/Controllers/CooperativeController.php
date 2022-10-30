@@ -16,7 +16,8 @@ class CooperativeController extends Controller
     public function index()
     {
         $cooperatives = Cooperative::all();
-        return view('cooperative.index', compact('cooperatives'));
+        $stations = $this->serveStation();
+        return view('cooperative.index', compact('cooperatives', 'stations'));
     }
 
     /**

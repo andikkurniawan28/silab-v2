@@ -39,9 +39,18 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="{{ route('analysis_result') }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Hasil Analisa</span></a>
+            <span>Hasil Analisa</span>
+        </a>
+        <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Menu :</h6>
+                @foreach($stations as $station)
+                    <a class="collapse-item" href="{{ route('station_result', $station->id) }}" target="_blank">{{ $station->name }}
+                @endforeach
+            </div>
+        </div>
     </li>
 
     @if(session('role') == 1 or session('role') == 2 or session('role') == 3)

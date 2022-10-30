@@ -16,7 +16,8 @@ class BalanceController extends Controller
     public function index()
     {
         $balances = Balance::limit(1000)->get();
-        return view('balance.index', compact('balances'));
+        $stations = $this->serveStation();
+        return view('balance.index', compact('balances', 'stations'));
     }
 
     /**
