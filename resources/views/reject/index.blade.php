@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Analisa Umum') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('reject') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,52 +19,42 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Material</th>
-                            <th>CaO</th>
-                            <th>pH</th>
-                            <th>Turbidity</th>
-                            <th>Temperature</th>
-                            <th>Analyst</th>
-                            <th>Master</th>
+                            <th>Weight<sub>(Ku)</sub></th>
+                            <th>Admin</th>
                             <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($umums as $umum)
+                        @foreach ($rejects as $reject)
                         <tr>
-                            <td>{{ $umum->id }}</td>
-                            <td>{{ $umum->material_name }} <sub>({{ $umum->sample_id }})</sub></td>
-                            <td>{{ $umum->cao }}</td>
-                            <td>{{ $umum->ph }}</td>
-                            <td>{{ $umum->turbidity }}</td>
-                            <td>{{ $umum->temperature }}</td>
-                            <td>{{ $umum->analyst }}</td>
-                            <td>{{ $umum->master }}</td>
-                            <td>{{ $umum->created_at }}</td>
+                            <td>{{ $reject->id }}</td>
+                            <td>{{ $reject->weight }}</td>
+                            <td>{{ $reject->admin }}</td>
+                            <td>{{ $reject->created_at }}</td>
                             <td>
-                                @if($umum->is_verified == 0)
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $umum->id }}">
+                                @if($reject->is_verified == 0)
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $reject->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit
                                     </button>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $umum->id }}">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $reject->id }}">
                                         @include('components.icon', ['icon' => 'trash ']) 
                                         Delete
                                     </button>
-                                @elseif($umum->is_verified == 1 && session('role') != 1)
+                                @elseif($reject->is_verified == 1 && session('role') != 1)
                                     <h4>
                                         <span class="badge badge-warning text-dark">
                                             @include('components.icon', ['icon' => 'lock ']) 
                                             Locked
                                         </span>
                                     </h4>
-                                @elseif($umum->is_verified == 1 && session('role') == 1)
-                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $umum->id }}">
+                                @elseif($reject->is_verified == 1 && session('role') == 1)
+                                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $reject->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit
                                     </button>
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $umum->id }}">
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $reject->id }}">
                                         @include('components.icon', ['icon' => 'trash ']) 
                                         Delete
                                     </button>
@@ -81,25 +71,17 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="umums_correction" type="button" class="btn btn-info" target="_blank">
+            <a href="rejects_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
-
-            @if(session('role') == 1 or session('role') == 2)
-            <a href="umums_verification" type="button" class="btn btn-secondary" target="_blank">
-                @include('components.icon', ['icon' => 'check ']) 
-                Verification
-            </a>
-            @endif
-
         </div>
     </div>
 </div>
 @endsection
 
 @section('modal')
-@include('umum.create')
-@include('umum.edit')
-@include('umum.delete')
+@include('reject.create')
+@include('reject.edit')
+@include('reject.delete')
 @endsection

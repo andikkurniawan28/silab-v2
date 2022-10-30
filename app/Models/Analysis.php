@@ -41,5 +41,44 @@ class Analysis extends Model
             ->where($table.'.is_verified', 1)
             ->avg($parameter);
     }
+
+    public static function serveDashboard()
+    {
+        $data['rendemen_npp'] = Sample::join('materials', 'samples.material_id', 'materials.id')
+            ->join('saccharomats', 'samples.id', 'saccharomats.sample_id')
+            ->where('materials.name', 'Nira Gilingan 1')
+            ->where('saccharomats.is_verified', 1)
+            ->select('saccharomats.yield')
+            ->get()
+            ->last();
+
+        $data['pol_ampas'] = Sample::join('materials', 'samples.material_id', 'materials.id')
+            ->join('baggases', 'samples.id', 'baggases.sample_id')
+            ->where('materials.name', 'Ampas Gilingan 5')
+            ->select('baggases.corrected_pol')
+            ->where('baggases.is_verified', 1)
+            ->get()
+            ->last();
+
+        $data['hk_tetes'] = Sample::join('materials', 'samples.material_id', 'materials.id')
+            ->join('saccharomats', 'samples.id', 'saccharomats.sample_id')
+            ->where('materials.name', 'Tetes Puteran')
+            ->select('saccharomats.purity')
+            ->where('saccharomats.is_verified', 1)
+            ->get()
+            ->last();
+
+        $data['icumsa_shs'] = Sample::join('materials', 'samples.material_id', 'materials.id')
+            ->join('coloromats', 'samples.id', 'coloromats.sample_id')
+            ->where('materials.name', 'Gula SHS')
+            ->select('coloromats.icumsa')
+            ->where('coloromats.is_verified', 1)
+            ->get()
+            ->last();
+
+        $data['reject'] = Reject::limit(10)->orderBy('id', 'desc')->get();
+
+        return $data;
+    }
     
 }

@@ -91,13 +91,13 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="specials_correction" type="button" class="btn btn-info">
+            <a href="specials_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
 
             @if(session('role') == 1 or session('role') == 2)
-            <a href="specials_verification" type="button" class="btn btn-secondary">
+            <a href="specials_verification" type="button" class="btn btn-secondary" target="_blank">
                 @include('components.icon', ['icon' => 'check ']) 
                 Verification
             </a>

@@ -43,8 +43,9 @@
             <footer class="sticky-footer bg-white text-dark">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Sistem Informasi Laboratorium PG. Kebon Agung V2.0</span><br>
-                        <span>Developed &copy; <a href="https://wa.me/6285733465399" target="_blank">Andik Kurniawan</a></span>
+                        <span>Bagian Quality Control</span><br>
+                        <span>Sistem Informasi Laboratorium V<sub>2.0</sub></span><br>
+                        <span>Developed by <a href="https://wa.me/6285733465399" target="_blank">Andik Kurniawan</a></span>
                         {{-- <br>
                         <span>Empowered by <i class="fa-brands fa-laravel"></i></span> --}}
                     </div>

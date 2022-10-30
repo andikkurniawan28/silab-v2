@@ -32,6 +32,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\RonselController;
+use App\Http\Controllers\RejectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -104,6 +105,7 @@ Route::resource('baggases', BaggaseController::class)->middleware(['user_is_logi
 Route::resource('sugars', SugarController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('specials', SpecialController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('core_samples', CoreSampleController::class)->middleware(['user_is_login', 'role_is_3']);
+Route::resource('rejects', RejectController::class)->middleware(['user_is_login', 'role_is_3']);
 
 // Pabrikasi can Involved
 Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'role_is_5']);
@@ -124,6 +126,7 @@ Route::get('baggases_correction', [BaggaseController::class, 'showCorrection'])-
 Route::get('sugars_correction', [SugarController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 Route::get('specials_correction', [SpecialController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 Route::get('core_samples_correction', [CoreSampleController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
+Route::get('rejects_correction', [RejectController::class, 'showCorrection'])->middleware(['user_is_login', 'role_is_3']);
 
 // Verification
 Route::get('saccharomats_verification', [SaccharomatController::class, 'showVerification'])->middleware(['user_is_login', 'role_is_2']);

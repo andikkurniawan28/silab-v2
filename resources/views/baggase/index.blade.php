@@ -16,6 +16,10 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
+                    <p class="mb-4">
+                        Untuk material Ampas, <code>Corrected Pol = Pol Baca * Faktor</code> dari <a href="saccharomats" target="_blank">Saccharomat</a>. 
+                        Untuk material Blotong, <code>Corrected Pol = Pol Baca</code> <a href="saccharomats" target="_blank">Saccharomat</a>. 
+                    </p>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -79,13 +83,13 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="baggases_correction" type="button" class="btn btn-info">
+            <a href="baggases_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
 
             @if(session('role') == 1 or session('role') == 2)
-            <a href="baggases_verification" type="button" class="btn btn-secondary">
+            <a href="baggases_verification" type="button" class="btn btn-secondary" target="_blank">
                 @include('components.icon', ['icon' => 'check ']) 
                 Verification
             </a>

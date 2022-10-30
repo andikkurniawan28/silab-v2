@@ -82,7 +82,7 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="core_samples_correction" type="button" class="btn btn-info">
+            <a href="core_samples_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>

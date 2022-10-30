@@ -13,7 +13,9 @@ class PageController extends Controller
 {
     public function index()
     {
-        return view('page.dashboard');
+        $data = Analysis::serveDashboard();
+        // return $data;
+        return view('page.dashboard', compact('data'));
     }
 
     public function activityLogByUser()
@@ -70,7 +72,6 @@ class PageController extends Controller
     public function ronselMasakan()
     {
         $materials = Ronsel::serveMasakan();
-        // return $materials;
         return view('ronsel_masakan.index', compact('materials'));
     }
 }

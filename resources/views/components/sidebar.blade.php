@@ -26,13 +26,13 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('balances.index') }}">Flow Nira Mentah</a>
-                <a class="collapse-item" href="{{ route('chemicals.index') }}">Chemical</a>
-                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
-                <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
-                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
-                <a class="collapse-item" href="{{ route('mollases.index') }}">Taksasi Tetes</a>
+                <a class="collapse-item" href="{{ route('ronsel_masakan') }}" target="_blank">Masakan</a>
+                <a class="collapse-item" href="{{ route('balances.index') }}" target="_blank">Flow Nira Mentah</a>
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}" target="_blank">Imbibisi</a>
+                <a class="collapse-item" href="{{ route('arounds.index') }}" target="_blank">Data Proses</a>
+                <a class="collapse-item" href="{{ route('taxations.index') }}" target="_blank">Taksasi In Proses</a>
+                <a class="collapse-item" href="{{ route('mollases.index') }}" target="_blank">Taksasi Tetes</a>
+                <a class="collapse-item" href="{{ route('chemicals.index') }}" target="_blank">Bahan Kimia</a>
                 <a class="collapse-item" href="#">Timbangan In Proses</a>
             </div>
         </div>
@@ -41,7 +41,7 @@
     <li class="nav-item">
         <a class="nav-link" href="{{ route('analysis_result') }}">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Analysis Result</span></a>
+            <span>Hasil Analisa</span></a>
     </li>
 
     @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
@@ -49,23 +49,24 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-edit"></i>
-            <span>Input</span>
+            <span>Input Data</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
-                <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
-                <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
-                <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
-                <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
-                <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
-                <a class="collapse-item" href="{{ route('baggases.index') }}">Analisa Ampas</a>
-                <a class="collapse-item" href="{{ route('umums.index') }}">Analisa Umum</a>
-                <a class="collapse-item" href="{{ route('boilers.index') }}">Analisa Ketel</a>
-                <a class="collapse-item" href="{{ route('sugars.index') }}">Analisa Gula</a>
-                <a class="collapse-item" href="{{ route('specials.index') }}">Analisa Khusus</a>
-                <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
+                <a class="collapse-item" href="{{ route('materials.index') }}" target="_blank">Material</a>
+                <a class="collapse-item" href="{{ route('barcode_samples') }}" target="_blank">Barcode</a>
+                <a class="collapse-item" href="{{ route('samples.index') }}" target="_blank">Sample</a>
+                <a class="collapse-item" href="{{ route('saccharomats.index') }}" target="_blank">Saccharomat</a>
+                <a class="collapse-item" href="{{ route('coloromats.index') }}" target="_blank">Coloromat</a>
+                <a class="collapse-item" href="{{ route('moistures.index') }}" target="_blank">Moisture</a>
+                <a class="collapse-item" href="{{ route('baggases.index') }}" target="_blank">Analisa Ampas</a>
+                <a class="collapse-item" href="{{ route('umums.index') }}" target="_blank">Analisa Umum</a>
+                <a class="collapse-item" href="{{ route('boilers.index') }}" target="_blank">Analisa Ketel</a>
+                <a class="collapse-item" href="{{ route('sugars.index') }}" target="_blank">Analisa Gula</a>
+                <a class="collapse-item" href="{{ route('specials.index') }}" target="_blank">Analisa Khusus</a>
+                <a class="collapse-item" href="{{ route('core_samples.index') }}" target="_blank">Core Sample</a>
+                <a class="collapse-item" href="{{ route('rejects.index') }}" target="_blank">Reject</a>
             </div>
         </div>
     </li>
@@ -73,7 +74,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-print"></i>
-            <span>Documentation</span>
+            <span>Dokumentasi</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -90,7 +91,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
-            <span>Configuration</span>
+            <span>Konfigurasi</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">

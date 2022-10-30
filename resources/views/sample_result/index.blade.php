@@ -6,7 +6,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('analysis_result') }}">Analysis Result</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('analysis_result') }}">Hasil Analisa</a></li>
         <li class="breadcrumb-item"><a href="{{ route('station_result', $station_id) }}">{{ $station_name }}</a></li>
         <li class="breadcrumb-item active" aria-current="page">{{ $title }}</li>
         </ol>

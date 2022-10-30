@@ -53,9 +53,9 @@
                         <table width="100%" class="table table-sm table-hovered text-light">
                             <tr>
                                 <th>Item</th>
-                                <th>Kemarin</th>
-                                <th>Hari Ini</th>
-                                <th>SD Hari Ini</th>
+                                <th>Yesterday</th>
+                                <th>Today</th>
+                                <th>Recap</th>
                             </tr>
                             <tr>
                                 <th>Masakan Turun<sub>(X)</sub></th>

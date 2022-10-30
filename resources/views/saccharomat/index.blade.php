@@ -16,7 +16,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
-                    <p class="mb-4">For Raw Sugar & Gula material, analysis result just process Purity. % Brix and % Pol may greater than 100%. For Ampas Gilingan Material, Pol will be corrected depend on Water Content on Analisa Ampas Section.</p>
+                    <p class="mb-4">Untuk material Gula & Raw Sugar, data yang diproses di hasil analisa adalah Purity / HK dengan rumus <code>( % Brix = 100 - % Moisture )</code>. Untuk material Ampas, Pol Baca nantinya akan dikoreksi di sesi 
+                        <a href="baggases" target="_blank">Analisa Ampas.</a> Untuk material Blotong, <code>( Pol Koreksi = Pol Baca ) </code>. Data yang ada pada tabel ini telah terkoreksi dengan faktor yang telah ditentukan oleh sistem.</p>
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -88,13 +89,13 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="saccharomats_correction" type="button" class="btn btn-info">
+            <a href="saccharomats_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
 
             @if(session('role') == 1 or session('role') == 2)
-            <a href="saccharomats_verification" type="button" class="btn btn-secondary">
+            <a href="saccharomats_verification" type="button" class="btn btn-secondary" target="_blank">
                 @include('components.icon', ['icon' => 'check ']) 
                 Verification
             </a>

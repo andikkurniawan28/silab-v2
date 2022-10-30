@@ -81,13 +81,13 @@
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
-            <a href="boilers_correction" type="button" class="btn btn-info">
+            <a href="boilers_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
             </a>
 
             @if(session('role') == 1 or session('role') == 2)
-            <a href="boilers_verification" type="button" class="btn btn-secondary">
+            <a href="boilers_verification" type="button" class="btn btn-secondary" target="_blank">
                 @include('components.icon', ['icon' => 'check ']) 
                 Verification
             </a>

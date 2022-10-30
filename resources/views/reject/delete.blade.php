@@ -1,22 +1,22 @@
-@foreach($chemicals as $chemical)
-<div class="modal fade" id="delete{{ $chemical->id }}" tabindex="-1" chemical="dialog" aria-labelledby="delete{{ $chemical->id }}Label" aria-hidden="true">
-    <div class="modal-dialog" chemical="document">
+@foreach($rejects as $reject)
+<div class="modal fade" id="delete{{ $reject->id }}" tabindex="-1" reject="dialog" aria-labelledby="delete{{ $reject->id }}Label" aria-hidden="true">
+    <div class="modal-dialog" reject="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $chemical->id }}Label">Delete {{ ucfirst('Bahan Kimia') }}</h5>
+                <h5 class="modal-title" id="delete{{ $reject->id }}Label">Delete {{ ucfirst('reject') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-            <form method="POST" action="{{ route('chemicals.destroy', $chemical->id) }}" class="text-dark">
+            <form method="POST" action="{{ route('rejects.destroy', $reject->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
                 <p>Are you sure ?</p>
-
+                
                 @include('components.input',[
                     'label' => 'ID',
                     'name' => 'id',
                     'type' => 'text',
-                    'value' => $chemical->id,
+                    'value' => $reject->id,
                     'modifier' => 'readonly',
                 ])
 
