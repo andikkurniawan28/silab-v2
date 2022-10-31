@@ -3,13 +3,15 @@
 @section('content')
 <div class="container-fluid">
 
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Ronsel Masakan</h1>
+    </div>
+
     @if($message = Session::get('error'))
         @include('components.alert', ['message'=>$message, 'color'=>'danger'])
     @elseif($message = Session::get('success'))
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
-
-    <h1>Monitoring Masakan</h1>
 
     <p>(*) Data berdasarkan ronsel yang dibuat.</p>
 

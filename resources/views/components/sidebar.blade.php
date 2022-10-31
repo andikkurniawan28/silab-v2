@@ -4,7 +4,7 @@
         <div class="sidebar-brand-icon">
             <img src="/admin_template/img/QC.png" width="50" height="50" alt="Logo QC">
         </div>
-        <div class="sidebar-brand-text mx-3">SILAB</div>
+        <div class="sidebar-brand-text mx-3">SILAB <sub>V2</sub></div>
     </a>
 
     <!-- Divider -->
@@ -47,7 +47,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
                 @foreach($stations as $station)
-                    <a class="collapse-item" href="{{ route('station_result', $station->id) }}" target="_blank">{{ $station->name }}
+                    <a class="collapse-item" href="{{ route('station_result', $station->id) }}" target="_blank">{{ $station->name }}</a>
                 @endforeach
             </div>
         </div>
@@ -82,14 +82,14 @@
     
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-            <i class="fas fa-fw fa-print"></i>
+            <i class="fas fa-fw fa-file-signature"></i>
             <span>Dokumentasi</span>
         </a>
         <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('reports') }}">Report</a>
-                <a class="collapse-item" href="{{ route('certificates') }}">Certificate</a>
+                <a class="collapse-item" href="{{ route('reports') }}">Laporan</a>
+                <a class="collapse-item" href="{{ route('certificates') }}">Sertifikat</a>
             </div>
         </div>
     </li>
@@ -99,8 +99,8 @@
     @if(session('role') == 1)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-cog"></i>
-            <span>Konfigurasi</span>
+            <i class="fa-solid fa-folder-tree"></i>
+            <span>Administrasi</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -115,7 +115,7 @@
                 <a class="collapse-item" href="{{ route('activity_log') }}">Log</a>
                 
                 @if(session('name') == 'Andik Kurniawan')
-                    <a class="collapse-item" href="{{ route('roles.index') }}">Role</a>
+                    <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
                 @endif
                 
             </div>

@@ -286,6 +286,38 @@
             @endif
         </td>
         @break
+    @case(15)
+        <td>
+            @if($analysis->saccharomat_verification == 1)
+                {{ $analysis->percent_brix }}
+            @endif
+        </td>
+        <td>
+            @if($analysis->saccharomat_verification == 1)
+                {{ $analysis->percent_pol }}
+            @endif
+        </td>
+        <td>
+            @if($analysis->saccharomat_verification == 1)
+                {{ $analysis->purity }}
+            @endif
+        </td>
+        <td>
+            @if($analysis->coloromat_verification == 1)
+                {{ $analysis->icumsa }}
+            @endif
+        </td>
+        <td>{{ $analysis->pan }} </td>
+        <td>{{ $analysis->reef }}</td>
+        <td>{{ $analysis->volume }}</td>
+        @break
+    @case(16)
+        <td>
+            @if($analysis->saccharomat_verification == 1)
+                {{ $analysis->percent_brix }}
+            @endif
+        </td>
+        @break
     @default
         <p>Method Undefined</p>
         @break

@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Role & Permission') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Data Proses') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,30 +19,38 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
                             <th>Admin</th>
                             <th>Created @</th>
-                            <th>Updated @</th>
+                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                                <th>Updated @</th>
+                            @endif
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($roles as $role)
+                        @foreach ($arounds as $around)
                         <tr>
-                            <td>{{ $role->id }}</td>
-                            <td>{{ $role->name }}</td>
-                            <td>{{ $role->admin }}</td>
-                            <td>{{ $role->created_at }}</td>
-                            <td>{{ $role->updated_at }}</td>
+                            <td>{{ $around->id }}</td>
+                            <td>{{ $around->admin }}</td>
+                            <td>{{ $around->created_at }}</td>
+                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                                <td>{{ $around->updated_at }}</td>
+                            @endif
                             <td>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $role->id }}">
+                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#show{{ $around->id }}">
+                                    @include('components.icon', ['icon' => 'eye ']) 
+                                    Show
+                                </button>
+                                @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $around->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
                                     Edit
                                 </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $role->id }}">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $around->id }}">
                                     @include('components.icon', ['icon' => 'trash ']) 
                                     Delete
                                 </button>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
@@ -51,17 +59,20 @@
             </div>
         </div>
         <div class="card-footer">
+            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
             </button>
+            @endif
         </div>
     </div>
 </div>
 @endsection
 
 @section('modal')
-@include('role.create')
-@include('role.edit')
-@include('role.delete')
+@include('around.create')
+@include('around.show')
+@include('around.edit')
+@include('around.delete')
 @endsection

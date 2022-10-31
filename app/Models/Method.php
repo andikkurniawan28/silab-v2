@@ -272,6 +272,42 @@ class Method extends Model
                     ->orderBy('samples.id', 'desc')
                     ->get();
             break;
+
+            case 15 : 
+                $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
+                ->leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
+                    ->where('samples.material_id', $material_id)
+                    ->select(
+                        'samples.id',
+                        'samples.created_at',
+                        'samples.volume',
+                        'samples.pan',
+                        'samples.reef',
+                        'saccharomats.percent_brix',
+                        'saccharomats.percent_pol',
+                        'saccharomats.purity',
+                        'coloromats.icumsa',
+                        'saccharomats.is_verified as saccharomat_verification',
+                        'coloromats.is_verified as coloromat_verification',
+                    )
+                    ->limit($limit)
+                    ->orderBy('samples.id', 'desc')
+                    ->get();
+            break;
+
+            case 16 : 
+                $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
+                    ->where('samples.material_id', $material_id)
+                    ->select(
+                        'samples.id',
+                        'samples.created_at',
+                        'saccharomats.percent_brix',
+                        'saccharomats.is_verified as saccharomat_verification',
+                    )
+                    ->limit($limit)
+                    ->orderBy('samples.id', 'desc')
+                    ->get();
+            break;
         }
         return $data;
     }

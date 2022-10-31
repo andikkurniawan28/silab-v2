@@ -15,7 +15,7 @@ class AroundController extends Controller
      */
     public function index()
     {
-        $arounds = Around::limit(1000)->get();
+        $arounds = Around::limit(8)->orderBy('id', 'desc')->get();
         $stations = $this->serveStation();
         return view('around.index', compact('arounds', 'stations'));
     }
@@ -27,7 +27,9 @@ class AroundController extends Controller
      */
     public function create()
     {
-        //
+        $arounds = Around::limit(1000)->orderBy('id', 'desc')->get();
+        $stations = $this->serveStation();
+        return view('around.all_data', compact('arounds', 'stations'));
     }
 
     /**

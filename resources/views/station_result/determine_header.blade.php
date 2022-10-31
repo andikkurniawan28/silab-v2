@@ -78,6 +78,18 @@
         <th>pH</th>
         <th>Temperature</th>
         @break
+    @case(15)
+        <th>Brix</th>
+        <th>Pol</th>
+        <th>HK</th>
+        <th>Icumsa</th>
+        <th>Pan</th>
+        <th>Palung</th>
+        <th>Hl</th>
+        @break
+    @case(16)
+        <th>Brix</th>
+        @break
     @default
         <p>Method Undefined</p>
         @break

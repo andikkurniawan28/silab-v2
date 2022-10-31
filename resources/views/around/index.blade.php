@@ -1,7 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.app3')
 
 @section('content')
 <div class="container-fluid">
+
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Data Proses</h1>
+    </div>
 
     @if($message = Session::get('error'))
         @include('components.alert', ['message'=>$message, 'color'=>'danger'])
@@ -9,64 +13,28 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Data Proses') }}</h5>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered text-dark table-hover" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
-                                <th>Updated @</th>
-                            @endif
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($arounds as $around)
-                        <tr>
-                            <td>{{ $around->id }}</td>
-                            <td>{{ $around->admin }}</td>
-                            <td>{{ $around->created_at }}</td>
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
-                                <td>{{ $around->updated_at }}</td>
-                            @endif
-                            <td>
-                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#show{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'eye ']) 
-                                    Show
-                                </button>
-                                @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
-                                    Edit
-                                </button>
-                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
-                                    Delete
-                                </button>
-                                @endif
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="card-footer">
-            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
-                Create
-            </button>
-            @endif
-        </div>
+    <!-- Content Row -->
+    <div class="row">
+
+        @include('around.cards')
+    
     </div>
+
+    <p>*) Data berdasarkan catatan Petugas Keliling Proses QC. </p>
+
+    @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+            @include('components.icon', ['icon' => 'plus ']) 
+            Create
+        </button>
+        <a href="arounds/create" target="_blank" class="btn btn-secondary shadow-sm">
+            <i  class="fas fa-table fa-sm text-white-50"></i> All Data
+        </a>
+    @endif
+
+    <br>
+    <br>
+
 </div>
 @endsection
 

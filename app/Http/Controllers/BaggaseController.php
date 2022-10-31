@@ -113,6 +113,7 @@ class BaggaseController extends Controller
     public function showVerification()
     {
         $baggases = Baggase::serveUnverificated();
+        $stations = $this->serveStation();
         return view('baggase.verification', compact('baggases', 'stations'));
     }
 

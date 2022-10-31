@@ -19,13 +19,18 @@
                     'modifier' => '',
                 ])
 
-                @include('components.input3',[
-                    'label' => 'Pemanas Nira Mentah',
-                    'name' => 'pemanas_nira_mentah',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => '',
-                ])
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-6 col-form-label">Pemanas Nira Mentah</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="pemanas_nira_mentah">
+                            <option value="0">Nonaktif</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                          </select>
+                    </div>
+                </div>
 
                 @include('components.input3',[
                     'label' => 'Reaction Tank',
@@ -35,13 +40,16 @@
                     'modifier' => '',
                 ])
 
-                @include('components.input3',[
-                    'label' => 'Defekator',
-                    'name' => 'defekator',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => '',
-                ])
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-6 col-form-label">Defekator</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="defekator">
+                            <option value="0">Nonaktif</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                    </div>
+                </div>
 
                 @include('components.input3',[
                     'label' => 'Clarifier ST',
@@ -51,16 +59,19 @@
                     'modifier' => '',
                 ])
 
-                @include('components.input3',[
-                    'label' => 'Pemanas Nira Encer',
-                    'name' => 'pemanas_nira_encer',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => '',
-                ])
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-6 col-form-label">Pemanas Nira Encer</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="pemanas_nira_encer">
+                            <option value="0">Nonaktif</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                          </select>
+                    </div>
+                </div>
 
                 @include('components.input3',[
-                    'label' => 'Evap1',
+                    'label' => 'Evaporator 1',
                     'name' => 'evap1',
                     'type' => 'number',
                     'value' => '',
@@ -68,7 +79,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap2',
+                    'label' => 'Evaporator 2',
                     'name' => 'evap2',
                     'type' => 'number',
                     'value' => '',
@@ -76,7 +87,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap3',
+                    'label' => 'Evaporator 3',
                     'name' => 'evap3',
                     'type' => 'number',
                     'value' => '',
@@ -84,7 +95,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap4',
+                    'label' => 'Evaporator 4',
                     'name' => 'evap4',
                     'type' => 'number',
                     'value' => '',
@@ -92,7 +103,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap5',
+                    'label' => 'Evaporator 5',
                     'name' => 'evap5',
                     'type' => 'number',
                     'value' => '',
@@ -100,7 +111,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap6',
+                    'label' => 'Evaporator 6',
                     'name' => 'evap6',
                     'type' => 'number',
                     'value' => '',
@@ -108,7 +119,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap7',
+                    'label' => 'Evaporator 7',
                     'name' => 'evap7',
                     'type' => 'number',
                     'value' => '',
@@ -116,7 +127,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap8',
+                    'label' => 'Evaporator 8',
                     'name' => 'evap8',
                     'type' => 'number',
                     'value' => '',
@@ -124,7 +135,7 @@
                 ])
 
                 @include('components.input3',[
-                    'label' => 'Evap9',
+                    'label' => 'Evaporator 9',
                     'name' => 'evap9',
                     'type' => 'number',
                     'value' => '',

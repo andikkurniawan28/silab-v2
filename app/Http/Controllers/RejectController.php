@@ -103,6 +103,7 @@ class RejectController extends Controller
     public function showCorrection()
     {
         $rejects = Reject::serveCorrected();
-        return view('reject.correction', compact('rejects'));
+        $stations = $this->serveStation();
+        return view('reject.correction', compact('rejects', 'stations'));
     }
 }
