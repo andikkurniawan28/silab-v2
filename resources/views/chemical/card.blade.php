@@ -7,15 +7,15 @@
             <div class="table-responsive">
                 <table width="100%" class="table table-sm table-hovered text-light text-left">
                     <tr>
-                        <th>Date</th>
-                        <th>Qty</th>
-                        <th>Admin</th>
+                        <th>Time</th>
+                        <th>Value</th>
+                        {{-- <th>Admin</th> --}}
                     </tr>
-                    @for($i=0; $i<count($taxations); $i++)
+                    @for($i=0; $i<count($chemicals); $i++)
                     <tr>
-                        <td>{{ date('d-m', strtotime($taxations[$i]->created_at)) }}</td>
-                        <td>{{ $taxations[$i]->{$var} }}
-                        <td>{{ $taxations[$i]->admin }}
+                        <td>{{ date('d-m H:i', strtotime($chemicals[$i]->created_at)) }}</td>
+                        <td>{{ $chemicals[$i]->{$var} }}
+                        {{-- <td>{{ $chemicals[$i]->admin }} --}}
                     </tr>
                     @endfor
                 </table>

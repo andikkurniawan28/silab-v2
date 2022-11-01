@@ -1,4 +1,4 @@
-@extends('layouts.app3')
+@extends('layouts.app')
 
 @section('content')
 <div class="container-fluid">
@@ -55,12 +55,12 @@
                         <table width="100%" class="table table-sm table-hovered text-light">
                             <tr>
                                 <th>Item</th>
-                                <th>Yesterday</th>
+                                <th>Yest</th>
                                 <th>Today</th>
                                 <th>Recap</th>
                             </tr>
                             <tr>
-                                <th>Masakan Turun<sub>(X)</sub></th>
+                                <th>Turun<sub>(X)</sub></th>
                                 <th>{{ $material->qty_kemarin }}</th>
                                 <th>{{ $material->qty_hari_ini }}</th>
                                 <th>{{ $material->qty_sd_hari_ini }}</th>

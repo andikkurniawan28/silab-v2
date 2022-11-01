@@ -27,7 +27,27 @@ class MollaseController extends Controller
      */
     public function create()
     {
-        //
+        $mollases = Mollase::limit(8)->get();
+        $stations = $this->serveStation();
+        $vars = [
+            'volume_t1',
+            'volume_t2',
+            'volume_t3',
+            'meters',
+        ];
+        $labels = [
+            'Tangki 1',
+            'Tangki 2',
+            'Tangki 3',
+            'Counter',
+        ];
+        $colors = [
+            'primary',
+            'secondary',
+            'success',
+            'danger',
+        ];
+        return view('mollase.monitoring', compact('mollases', 'stations', 'vars', 'labels', 'colors'));
     }
 
     /**

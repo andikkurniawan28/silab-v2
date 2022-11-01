@@ -1,4 +1,4 @@
-<div class="col-lg-3 mb-4">
+<div class="col-lg-6 mb-4">
     <div class="card bg-{{ $color }} text-white shadow">
         <div class="card-body">
             <div class="font-weight-bold text-light text-uppercase mb-1">
@@ -7,15 +7,15 @@
             <div class="table-responsive">
                 <table width="100%" class="table table-sm table-hovered text-light text-left">
                     <tr>
-                        <th>Date</th>
-                        <th>Qty</th>
-                        <th>Admin</th>
+                        <th>Time</th>
+                        <th>Value</th>
+                        {{-- <th>Admin</th> --}}
                     </tr>
-                    @for($i=0; $i<count($taxations); $i++)
+                    @for($i=0; $i<count($balances); $i++)
                     <tr>
-                        <td>{{ date('d-m', strtotime($taxations[$i]->created_at)) }}</td>
-                        <td>{{ $taxations[$i]->{$var} }}
-                        <td>{{ $taxations[$i]->admin }}
+                        <td>{{ date('H:i', strtotime($balances[$i]->created_at)) }}</td>
+                        <td>{{ $balances[$i]->{$var} }}
+                        {{-- <td>{{ $balances[$i]->admin }} --}}
                     </tr>
                     @endfor
                 </table>

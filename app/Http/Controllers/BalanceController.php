@@ -27,7 +27,27 @@ class BalanceController extends Controller
      */
     public function create()
     {
-        // 
+        $balances = Balance::limit(8)->get();
+        $stations = $this->serveStation();
+        $vars = [
+            'sugar_cane',
+            'totalizer_raw_juice',
+            'flow_raw_juice',
+            'raw_juice_percent_sugar_cane',
+        ];
+        $labels = [
+            'Tebu',
+            'Totalizer',
+            'Flow NM',
+            'NM % Tebu',
+        ];
+        $colors = [
+            'primary',
+            'secondary',
+            'success',
+            'danger',
+        ];
+        return view('balance.monitoring', compact('balances', 'stations', 'vars', 'labels', 'colors'));
     }
 
     /**

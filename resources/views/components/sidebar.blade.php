@@ -26,13 +26,13 @@
         <div id="collapsePages2" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('ronsel_masakan') }}" target="_blank">Masakan</a>
-                <a class="collapse-item" href="{{ route('balances.index') }}" target="_blank">Flow Nira Mentah</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}" target="_blank">Imbibisi</a>
-                <a class="collapse-item" href="{{ route('arounds.index') }}" target="_blank">Data Proses</a>
-                <a class="collapse-item" href="{{ route('taxations.index') }}" target="_blank">Taksasi In Proses</a>
-                <a class="collapse-item" href="{{ route('mollases.index') }}" target="_blank">Taksasi Tetes</a>
-                <a class="collapse-item" href="{{ route('chemicals.index') }}" target="_blank">Bahan Kimia</a>
+                <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
+                <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
+                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
+                <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
+                <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>
+                <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="#">Timbangan In Proses</a>
             </div>
         </div>
@@ -40,7 +40,7 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2" aria-expanded="true" aria-controls="collapseUtilities2">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-fw fa-folder-open"></i>
             <span>Hasil Analisa</span>
         </a>
         <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
@@ -110,13 +110,13 @@
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('cooperatives.index') }}">KUD</a>
                 <a class="collapse-item" href="{{ route('outposts.index') }}">Pos Pantau</a>
-                <a class="collapse-item" href="{{ route('programs.index') }}">Program</a>
+                <a class="collapse-item" href="{{ route('programs.index') }}">Asal Tebu</a>
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
                 <a class="collapse-item" href="{{ route('activity_log') }}">Log</a>
                 
-                @if(session('name') == 'Andik Kurniawan')
+                {{-- @if(session('name') == 'Andik Kurniawan') --}}
                     <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
-                @endif
+                {{-- @endif --}}
                 
             </div>
         </div>

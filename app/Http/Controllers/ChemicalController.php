@@ -27,7 +27,42 @@ class ChemicalController extends Controller
      */
     public function create()
     {
-        //
+        $chemicals = Chemical::limit(8)->get();
+        $stations = $this->serveStation();
+        $vars = [
+            'kapur',
+            'belerang',
+            'floc',
+            'naoh',
+            'b894',
+            'b895',
+            'b210',
+            'asam_phospat',
+            'blotong',
+        ];
+        $labels = [
+            'Kapur',
+            'Belerang',
+            'AccuFloc',
+            'NaOH',
+            'B894',
+            'B895',
+            'B210',
+            'Asam Phospat',
+            'Blotong',
+        ];
+        $colors = [
+            'primary',
+            'secondary',
+            'success',
+            'danger',
+            'info',
+            'dark',
+            'primary',
+            'secondary',
+            'success',
+        ];
+        return view('chemical.monitoring', compact('chemicals', 'stations', 'vars', 'labels', 'colors'));
     }
 
     /**
