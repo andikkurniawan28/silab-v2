@@ -8,9 +8,11 @@
             </div>
             <div class="modal-body">
 
-                <form method="POST" action="{{ route('taxations.update', $taxation->id) }}" class="text-dark">
+                <form method="POST" action="{{ route('taxation_export') }}" class="text-dark">
                 @csrf
-                @method('PUT')
+                @method('POST')
+                
+                <input type="hidden" name="id" value="{{ $taxation->id }}">
 
                 @include('components.input3',[
                     'label' => 'Peti Nira Mentah',
@@ -796,9 +798,20 @@
                     'modifier' => 'readonly',
                 ])
 
+                @include('components.input3',[
+                    'label' => 'Admin',
+                    'name' => 'admin',
+                    'type' => 'text',
+                    'value' => $taxation->admin,
+                    'modifier' => 'readonly',
+                ])
+
             </div>
             <div class="modal-footer">
-            </form>
+                <button type="submit" class="btn btn-success">Export 
+                    @include('components.icon', ['icon' => 'file-excel'])
+                </button>
+                </form>
             </div>
         </div>
     </div>

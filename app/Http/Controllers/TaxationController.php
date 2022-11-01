@@ -15,7 +15,7 @@ class TaxationController extends Controller
      */
     public function index()
     {
-        $taxations = Taxation::limit(8)->get();
+        $taxations = Taxation::latest()->paginate(8);
         $stations = $this->serveStation();
         $labels = self::prepareLabel();
         $vars = self::prepareVars();
@@ -33,7 +33,7 @@ class TaxationController extends Controller
      */
     public function create()
     {
-        $taxations = Taxation::limit(1000)->get();
+        $taxations = Taxation::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('taxation.all_data', compact('taxations', 'stations'));
     }
@@ -433,5 +433,116 @@ class TaxationController extends Controller
             case 4 : return 'info'; break;
             case 5 : return 'dark'; break;
         }
+    }
+
+    public function export(Request $request)
+    {
+        $vars = [
+            'peti_nira_mentah',
+            'pemanas_nira_mentah',
+            'reaction_tank',
+            'defekator',
+            'clarifier_st',
+            'pemanas_nira_encer',
+            'evap1',
+            'evap2',
+            'evap3',
+            'evap4',
+            'evap5',
+            'evap6',
+            'evap7',
+            'evap8',
+            'evap9',
+            'nk_sebelum_sulfitasi',
+            'nk_sulfitasi_atas',
+            'nk_sulfitasi_bawah',
+            'klare_shs_atas',
+            'klare_shs_bawah',
+            'pan1',
+            'pan2',
+            'pan3',
+            'pan4',
+            'pan5',
+            'pan6',
+            'pan7',
+            'pan8',
+            'pan9',
+            'pan10',
+            'pan11',
+            'pan12',
+            'pan13',
+            'pan14',
+            'pan15',
+            'pan16',
+            'pan17',
+            'pan18',
+            'palung1',
+            'palung2',
+            'palung3',
+            'palung4',
+            'palung5',
+            'palung6',
+            'palung7',
+            'palung8',
+            'palung9',
+            'palung10',
+            'dist_mixer_a_utara',
+            'dist_mixer_a_selatan',
+            'cvp_c',
+            'palung_cvp_c',
+            'dist_mixer_c_timur',
+            'dist_mixer_c_barat',
+            'cvp_d',
+            'palung_cvp_d',
+            'vertical_timur',
+            'vertical_barat',
+            'dist_mixer_d1',
+            'dist_mixer_d2',
+            'stroop_a_atas',
+            'stroop_a_bawah',
+            'stroop_c_atas',
+            'stroop_c_bawah',
+            'klare_d_atas',
+            'klare_d_bawah',
+            'einwuurf_c',
+            'einwuurf_d',
+            'clear_liquor_1',
+            'clear_liquor_2',
+            'remelt_a',
+            'r1_mol_atas',
+            'r2_mol_atas',
+            'r1_mol_bawah',
+            'r2_mol_bawah',
+            'remelter_a1',
+            'remelter_a2',
+            'remelter_cd',
+            'mingler_atas',
+            'mingler_bawah',
+            'silo_retail',
+            'shs_silo',
+            'pp',
+            'reaction_tank_drk',
+            'talo_phospatasi',
+            'deep_bad_filter',
+            'co2_gas_carbonator1',
+            'co2_gas_carbonator2',
+            'first_filtrat_tank',
+            'sweet_water_tank',
+            'clear_liquor_tank1',
+            'clear_liquor_tank2',
+            'carbonated_liquor_tank1',
+            'carbonated_liquor_tank2',
+            'raw_liquor_tank1',
+            'raw_liquor_tank2',
+            'clarifier_melt_tank1',
+            'clarifier_melt_tank2',
+            'filtered_melt_tank1',
+            'filtered_melt_tank2',
+            'back_wash_tank1',
+            'back_wash_tank2',
+            'admin',
+        ];
+        // return var_dump($request->all());
+        return view('taxation.export', compact('request', 'vars'));
     }
 }

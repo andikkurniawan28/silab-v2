@@ -15,7 +15,7 @@ class ImbibitionController extends Controller
      */
     public function index()
     {
-        $imbibitions = Imbibition::limit(1000)->get();
+        $imbibitions = Imbibition::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('imbibition.index', compact('imbibitions', 'stations'));
     }
@@ -27,7 +27,29 @@ class ImbibitionController extends Controller
      */
     public function create()
     {
-        //
+        $imbibitions = Imbibition::serveMonitoring();
+        for($i = 0; $i < count($imbibitions); $i++)
+        {
+            $imbibitions[$i]->percent_sugar_cane = ($imbibitions[$i]->flow / $imbibitions[$i]->sugar_cane * 1000);
+        }
+        $stations = $this->serveStation();
+        $vars = [
+            'totalizer',
+            'flow',
+            'percent_sugar_cane',
+        ];
+        $labels = [
+            'Totalizer',
+            'Flow',
+            'Imbibisi % Tebu',
+        ];
+        $colors = [
+            'primary',
+            'secondary',
+            'success',
+        ];
+        return view('imbibition.monitoring', compact('imbibitions', 'stations', 'vars', 'labels', 'colors'));
+        // return $imbibitions;
     }
 
     /**

@@ -15,7 +15,7 @@ class MollaseController extends Controller
      */
     public function index()
     {
-        $mollases = Mollase::limit(1000)->get();
+        $mollases = Mollase::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('mollase.index', compact('mollases', 'stations'));
     }
@@ -27,7 +27,7 @@ class MollaseController extends Controller
      */
     public function create()
     {
-        $mollases = Mollase::limit(8)->get();
+        $mollases = Mollase::latest()->paginate(8);
         $stations = $this->serveStation();
         $vars = [
             'volume_t1',

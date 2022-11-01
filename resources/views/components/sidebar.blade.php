@@ -28,7 +28,7 @@
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('ronsel_masakan') }}">Masakan</a>
                 <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
-                <a class="collapse-item" href="{{ route('imbibitions.index') }}">Imbibisi</a>
+                <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
                 <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>

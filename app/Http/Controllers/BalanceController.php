@@ -15,7 +15,7 @@ class BalanceController extends Controller
      */
     public function index()
     {
-        $balances = Balance::limit(1000)->get();
+        $balances = Balance::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('balance.index', compact('balances', 'stations'));
     }
@@ -27,7 +27,7 @@ class BalanceController extends Controller
      */
     public function create()
     {
-        $balances = Balance::limit(8)->get();
+        $balances = Balance::latest()->paginate(8);
         $stations = $this->serveStation();
         $vars = [
             'sugar_cane',

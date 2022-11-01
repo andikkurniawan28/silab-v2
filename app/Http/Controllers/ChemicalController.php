@@ -15,7 +15,7 @@ class ChemicalController extends Controller
      */
     public function index()
     {
-        $chemicals = Chemical::limit(1000)->get();
+        $chemicals = Chemical::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('chemical.index', compact('chemicals', 'stations'));
     }
@@ -27,7 +27,7 @@ class ChemicalController extends Controller
      */
     public function create()
     {
-        $chemicals = Chemical::limit(8)->get();
+        $chemicals = Chemical::latest()->paginate(8);
         $stations = $this->serveStation();
         $vars = [
             'kapur',

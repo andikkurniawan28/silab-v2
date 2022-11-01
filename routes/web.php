@@ -147,5 +147,6 @@ Route::post('boilers_verification', [BoilerController::class, 'processVerificati
 Route::post('baggases_verification', [BaggaseController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('baggases.verify');
 Route::post('sugars_verification', [SugarController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('sugars.verify');
 Route::post('specials_verification', [SpecialController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('specials.verify');
+Route::post('taxation_export', [TaxationController::class, 'export'])->middleware(['user_is_login', 'role_is_2'])->name('taxation_export');
 
 
