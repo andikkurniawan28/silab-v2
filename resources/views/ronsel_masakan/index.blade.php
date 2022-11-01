@@ -48,7 +48,7 @@
             @endswitch
                 <div class="card-body">
                     <div class="font-weight-bold text-light text-uppercase mb-1">
-                        <h3 align="right"><strong><a href="{{ route('sample_result', $material->id) }}" class="text-light">{{ $material->name }}</a></strong></h3>
+                        <h5 align="right"><strong><a href="{{ route('sample_result', $material->id) }}" class="text-light">{{ $material->name }}</a></strong></h5>
                     </div>
                     <br>
                     <div class="table-responsive">

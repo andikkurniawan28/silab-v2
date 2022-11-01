@@ -23,6 +23,8 @@ class Report extends Model
             $data[$i]['material'] = Material::where('station_id', $data[$i]['station_id'])->select('id as material_id', 'name as material_name', 'method_id')->get();
             for($j = 0; $j < count($data[$i]['material']); $j++)
             {
+                $data[$i]['material'][$j]['volume'] = Analysis::serveSummaryValueByTime($time, $data[$i]['material'][$j]['material_id'], 'volume');
+                $data[$i]['material'][$j]['pan'] = Analysis::serveCountValueByTime($time, $data[$i]['material'][$j]['material_id'], 'pan');
                 $data[$i]['material'][$j]['percent_brix'] = Analysis::serveAverageValueByTime($time, $data[$i]['material'][$j]['material_id'], 'percent_brix', 'saccharomats');
                 $data[$i]['material'][$j]['percent_pol'] = Analysis::serveAverageValueByTime($time, $data[$i]['material'][$j]['material_id'], 'percent_pol', 'saccharomats');
                 $data[$i]['material'][$j]['pol'] = Analysis::serveAverageValueByTime($time, $data[$i]['material'][$j]['material_id'], 'pol', 'saccharomats');

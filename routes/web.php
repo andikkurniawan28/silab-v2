@@ -55,6 +55,7 @@ Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['user_is_login', 'role_is_3']);
 Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
+Route::get('timbangan_in_proses', [PageController::class, 'timbanganInProses'])->name('timbangan_in_proses')->middleware(['hmi_is_login', 'role_is_5']);
 
 // Barcode
 Route::post('barcode_samples', [BarcodeController::class, 'showBarcode'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);

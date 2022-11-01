@@ -23,8 +23,8 @@
                             <th>Brix<sub>(%)</sub></th>
                             <th>Pol<sub>(%)</sub></th>
                             <th>Pol</th>
-                            <th>Purity<sub>(%)</sub></th>
-                            <th>Yield</th>
+                            <th>HK<sub>(%)</sub></th>
+                            <th>Rend</th>
                             <th>Corrector</th>
                             <th>Created @</th>
                             <th>Updated @</th>

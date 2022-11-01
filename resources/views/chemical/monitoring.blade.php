@@ -31,9 +31,6 @@
         </a>
     @endif
 
-    <br>
-    <br>
-
 </div>
 @endsection
 

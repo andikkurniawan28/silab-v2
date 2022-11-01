@@ -8,6 +8,7 @@ use App\Models\Station;
 use App\Models\Material;
 use App\Models\Analysis;
 use App\Models\Ronsel;
+use App\Models\Weight;
 
 class PageController extends Controller
 {
@@ -81,5 +82,12 @@ class PageController extends Controller
         $materials = Ronsel::serveMasakan();
         $stations = $this->serveStation();
         return view('ronsel_masakan.index', compact('materials', 'stations'));
+    }
+
+    public function timbanganInProses()
+    {
+        $data = Weight::serveData();
+        $stations = $this->serveStation();
+        return view('timbangan_in_proses.index', compact('stations', 'data'));
     }
 }

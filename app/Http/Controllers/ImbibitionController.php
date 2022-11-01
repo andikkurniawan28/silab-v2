@@ -30,7 +30,7 @@ class ImbibitionController extends Controller
         $imbibitions = Imbibition::serveMonitoring();
         for($i = 0; $i < count($imbibitions); $i++)
         {
-            $imbibitions[$i]->percent_sugar_cane = ($imbibitions[$i]->flow / $imbibitions[$i]->sugar_cane * 1000);
+            $imbibitions[$i]->percent_sugar_cane = number_format(($imbibitions[$i]->flow / $imbibitions[$i]->sugar_cane * 1000),2);
         }
         $stations = $this->serveStation();
         $vars = [

@@ -32,7 +32,7 @@
             <br></br>
   
               <div class="row d-flex justify-content-center text-dark">
-                  <div class="col-10 table-responsive">
+                  <div class="col-11 table-responsive">
                       <table border='1' cellpadding='0' width='100%'>
                           <thead>
                               <tr>
@@ -67,7 +67,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Raw Sugar & Gula</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>IU</th>
                             <th>Air</th>
                             <th>Brix</th>
@@ -81,8 +81,20 @@
                             <td>{{ $data[0]['material'][$i]['material_name'] }}</td>
                             <td>{{ $data[0]['material'][$i]['icumsa'] }}</td>
                             <td>{{ $data[0]['material'][$i]['moisture'] }}</td>
-                            <td>{{ 100 - $data[0]['material'][$i]['moisture'] }}</td>
-                            <td>{{ number_format(($data[0]['material'][$i]['purity'] / 100) * (100 - $data[0]['material'][$i]['moisture']), 2) }}</td>
+                            <td>
+                                @if($data[0]['material'][$i]['moisture'] != NULL)
+                                {{ 100 - $data[0]['material'][$i]['moisture'] }}
+                                @else
+                                {{ NULL }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($data[0]['material'][$i]['moisture'] != NULL)
+                                {{ number_format(($data[0]['material'][$i]['purity'] / 100) * (100 - $data[0]['material'][$i]['moisture']), 2) }}
+                                @else
+                                {{ NULL }}
+                                @endif
+                            </td>
                             <td>{{ $data[0]['material'][$i]['purity'] }}</td>
                             <td>{{ $data[0]['material'][$i]['sulphur'] }}</td>
                             <td>{{ $data[0]['material'][$i]['diameter'] }}</td>
@@ -93,8 +105,20 @@
                             <td>{{ $data[7]['material'][$i]['material_name'] }}</td>
                             <td>{{ $data[7]['material'][$i]['icumsa'] }}</td>
                             <td>{{ $data[7]['material'][$i]['moisture'] }}</td>
-                            <td>{{ 100 - $data[7]['material'][$i]['moisture'] }}</td>
-                            <td>{{ number_format(($data[7]['material'][$i]['purity'] / 100) * (100 - $data[7]['material'][$i]['moisture']), 2) }}</td>
+                            <td>
+                                @if($data[7]['material'][$i]['moisture'] != NULL)
+                                {{ 100 - $data[0]['material'][$i]['moisture'] }}
+                                @else
+                                {{ NULL }}
+                                @endif
+                            </td>
+                            <td>
+                                @if($data[7]['material'][$i]['moisture'] != NULL)
+                                {{ number_format(($data[0]['material'][$i]['purity'] / 100) * (100 - $data[0]['material'][$i]['moisture']), 2) }}
+                                @else
+                                {{ NULL }}
+                                @endif
+                            </td>
                             <td>{{ $data[7]['material'][$i]['purity'] }}</td>
                             <td>{{ $data[7]['material'][$i]['sulphur'] }}</td>
                             <td>{{ $data[7]['material'][$i]['diameter'] }}</td>
@@ -118,11 +142,13 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Masakan</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>HK</th>
                             <th>IU</th>
+                            <th>Hl</th>
+                            <th>Pan</th>
                         </tr>
                         @for($i=0; $i < count($data[5]['material']); $i++)
                         <tr>
@@ -131,6 +157,8 @@
                             <td>{{ $data[5]['material'][$i]['percent_pol'] }}</td>
                             <td>{{ $data[5]['material'][$i]['purity'] }}</td>
                             <td>{{ $data[5]['material'][$i]['icumsa'] }}</td>
+                            <td>{{ $data[5]['material'][$i]['volume'] }}</td>
+                            <td>{{ $data[5]['material'][$i]['pan'] }}</td>
                         </tr>
                         @endfor
                     </table>
@@ -139,7 +167,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Stroop</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>HK</th>
@@ -160,7 +188,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Tangki Tetes</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>TSAI</th>
                             <th>Optical Density</th>
@@ -179,7 +207,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Ketel</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>TDS</th>
                             <th>pH</th>
                             <th>Sadah</th>
@@ -198,15 +226,15 @@
 
                 </div>
                 
-                <div class="col-5 table-responsive">
+                <div class="col-6 table-responsive">
 
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Gilingan</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
-                            <th>Koreksi</th>
+                            <th>Pol</th>
                             <th>HK</th>
                             <th>ZK</th>
                             <th>Air</th>
@@ -234,7 +262,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Pemurnian</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>HK</th>
@@ -242,7 +270,7 @@
                             <th>CaO</th>
                             <th>pH</th>
                             <th>Turb</th>
-                            <th>Koreksi</th>
+                            <th>Pol</th>
                             <th>Air</th>
                             <th>Kapur</th>
                         </tr>
@@ -267,7 +295,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>Penguapan</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>HK</th>
@@ -294,7 +322,7 @@
                     <table width='100%' border='1' cellpadding='5' class="">
                         <h5>DRK</h5>
                         <tr bgcolor="pink">
-                            <th>Material</th>
+                            <th>Item</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>Z</th>
@@ -374,7 +402,7 @@
             
             <div class='row d-flex justify-content-center text-dark'>
 
-                <div class="col-10 table-responsive">
+                <div class="col-11 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-xs">
                         <h5>Keliling</h5>
                         <tr bgcolor="pink">
@@ -559,11 +587,11 @@
             @if($request->shift != 0)
             <br>
 			<div class='row d-flex justify-content-center text-dark'>
-                <div class="col-10 table-responsive">
+                <div class="col-11 table-responsive">
                     <table width='100%' border='1' cellpadding='5' class="text-center">
                         <tr bgcolor="pink">
                             <th>Mandor Lab</th>
-                            <th>Katim QC</th>
+                            <th>Ketua Tim QC</th>
                             <th>Chemiker</th>
                         </tr>
                         <tr>

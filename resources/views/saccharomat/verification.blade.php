@@ -26,11 +26,11 @@
                             <th>Brix<sub>(%)</sub></th>
                             <th>Pol<sub>(%)</sub></th>
                             <th>Pol</th>
-                            <th>Purity<sub>(%)</sub></th>
-                            <th>Yield</th>
+                            <th>HK<sub>(%)</sub></th>
+                            <th>Rend</th>
                             <th>Analyst</th>
-                            <th>P1</th>
-                            <th>P2</th>
+                            <th>Prep1</th>
+                            <th>Prep2</th>
                             <th>Created @</th>
                             <th>Check</th>
                         </tr>

@@ -33,7 +33,7 @@
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
                 <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>
                 <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
-                <a class="collapse-item" href="#">Timbangan In Proses</a>
+                <a class="collapse-item" href="{{ route('timbangan_in_proses') }}">Timbangan In Proses</a>
             </div>
         </div>
     </li>
@@ -47,7 +47,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
                 @foreach($stations as $station)
-                    <a class="collapse-item" href="{{ route('station_result', $station->id) }}" target="_blank">{{ $station->name }}</a>
+                    <a class="collapse-item" href="{{ route('station_result', $station->id) }}">{{ $station->name }}</a>
                 @endforeach
             </div>
         </div>
@@ -63,19 +63,19 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
-                <a class="collapse-item" href="{{ route('materials.index') }}" target="_blank">Material</a>
-                <a class="collapse-item" href="{{ route('barcode_samples') }}" target="_blank">Barcode</a>
-                <a class="collapse-item" href="{{ route('samples.index') }}" target="_blank">Sample</a>
-                <a class="collapse-item" href="{{ route('saccharomats.index') }}" target="_blank">Saccharomat</a>
-                <a class="collapse-item" href="{{ route('coloromats.index') }}" target="_blank">Coloromat</a>
-                <a class="collapse-item" href="{{ route('moistures.index') }}" target="_blank">Moisture</a>
-                <a class="collapse-item" href="{{ route('baggases.index') }}" target="_blank">Analisa Ampas</a>
-                <a class="collapse-item" href="{{ route('umums.index') }}" target="_blank">Analisa Umum</a>
-                <a class="collapse-item" href="{{ route('boilers.index') }}" target="_blank">Analisa Ketel</a>
-                <a class="collapse-item" href="{{ route('sugars.index') }}" target="_blank">Analisa Gula</a>
-                <a class="collapse-item" href="{{ route('specials.index') }}" target="_blank">Analisa Khusus</a>
-                <a class="collapse-item" href="{{ route('core_samples.index') }}" target="_blank">Core Sample</a>
-                <a class="collapse-item" href="{{ route('rejects.index') }}" target="_blank">Reject</a>
+                <a class="collapse-item" href="{{ route('materials.index') }}">Material</a>
+                <a class="collapse-item" href="{{ route('barcode_samples') }}">Barcode</a>
+                <a class="collapse-item" href="{{ route('samples.index') }}">Sample</a>
+                <a class="collapse-item" href="{{ route('saccharomats.index') }}">Saccharomat</a>
+                <a class="collapse-item" href="{{ route('coloromats.index') }}">Coloromat</a>
+                <a class="collapse-item" href="{{ route('moistures.index') }}">Moisture</a>
+                <a class="collapse-item" href="{{ route('baggases.index') }}">Analisa Ampas</a>
+                <a class="collapse-item" href="{{ route('umums.index') }}">Analisa Umum</a>
+                <a class="collapse-item" href="{{ route('boilers.index') }}">Analisa Ketel</a>
+                <a class="collapse-item" href="{{ route('sugars.index') }}">Analisa Gula</a>
+                <a class="collapse-item" href="{{ route('specials.index') }}">Analisa Khusus</a>
+                <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
+                <a class="collapse-item" href="{{ route('rejects.index') }}">Reject</a>
             </div>
         </div>
     </li>

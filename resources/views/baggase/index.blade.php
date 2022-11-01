@@ -24,7 +24,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Material</th>
-                            <th>Corrected Pol</th>
+                            <th>Pol</th>
                             <th>Dry</th>
                             <th>Water</th>
                             <th>Analyst</th>
