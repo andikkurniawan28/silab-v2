@@ -13,23 +13,12 @@
         @include('components.alert', ['message'=>$message, 'color'=>'success'])
     @endif
 
+    {{-- <p>*) Cut Off 05:00 - 04:59. </p> --}}
+
     <!-- Content Row -->
     <div class="row">
-
         @include('timbangan_in_proses.cards')
-    
     </div>
-
-    {{-- @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-            @include('components.icon', ['icon' => 'plus ']) 
-            Create
-        </button>
-
-        <a href="{{ route('timbangan_in_prosess.index') }}" target="_blank" class="btn btn-secondary shadow-sm">
-            <i  class="fas fa-table fa-sm text-white-50"></i> All Data
-        </a>
-    @endif --}}
 
 </div>
 @endsection

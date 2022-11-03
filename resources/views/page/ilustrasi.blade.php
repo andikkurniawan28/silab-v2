@@ -10,8 +10,14 @@
                 <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="/admin_template/img/undraw_posting_photo.svg" alt="">
             </div>
             <p>Anda bisa melakukan input data Taksasi In Proses disini.</p>
-            <a target="_blank" rel="nofollow" href="taxations/create">Taksasi in Proses &rarr;</a>
+            <a href="#"
+            @if(session('role') < 5)
+                data-toggle="modal" data-target="#create"
+            @endif 
+            >Taksasi in Proses &rarr;</a>
         </div>
     </div>
+
+    @include('taxation.create')
 
 </div>

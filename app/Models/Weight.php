@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Weight extends Model
 {
@@ -11,9 +12,77 @@ class Weight extends Model
 
     public static function serveData()
     {
-        $data['tetes'] = NULL;
-        $data['rs_in'] = NULL;
-        $data['rs_out'] = NULL;
+        $time = self::determineTimeRange();
+
+        $data['tetes']['today'] = 
+            DB::connection('tetes')
+                ->table('tetes')
+                ->where('time', '>=', $time['yesterday'])
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+                
+        $data['tetes']['until_today'] = 
+            DB::connection('tetes')
+                ->table('tetes')
+                ->where('time', '<', $time['today'])
+                ->sum('netto'); 
+
+        for($i=0; $i<24; $i++)
+        {
+            $data['tetes']['hour'][$i] = 
+            DB::connection('tetes')
+                ->table('tetes')
+                ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
+                ->where('time', '<',  date('Y-m-d H:i', strtotime(date('Y-m-d '.$i.':00:00') . "+1 hours")))
+                ->sum('netto');
+        }
+
+        $data['raw_sugar']['today'] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar')
+                ->where('time', '>=', $time['yesterday'])
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+                
+        $data['raw_sugar']['until_today'] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar')
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+                
+        for($i=0; $i<24; $i++)
+        {
+            $data['raw_sugar']['hour'][$i] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar')
+                ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
+                ->where('time', '<',  date('Y-m-d H:i', strtotime(date('Y-m-d '.$i.':00:00') . "+1 hours")))
+                ->sum('netto');
+        }
+
+        $data['raw_sugar_output']['today'] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar_output')
+                ->where('time', '>=', $time['yesterday'])
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+                
+        $data['raw_sugar_output']['until_today'] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar_output')
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+                
+        for($i=0; $i<24; $i++)
+        {
+            $data['raw_sugar_output']['hour'][$i] = 
+            DB::connection('raw_sugar')
+                ->table('raw_sugar_output')
+                ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
+                ->where('time', '<',  date('Y-m-d H:i', strtotime(date('Y-m-d '.$i.':00:00') . "+1 hours")))
+                ->sum('netto');
+        }
+
         return $data;
     }
     

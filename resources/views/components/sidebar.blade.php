@@ -112,7 +112,7 @@
                 <a class="collapse-item" href="{{ route('outposts.index') }}">Pos Pantau</a>
                 <a class="collapse-item" href="{{ route('programs.index') }}">Asal Tebu</a>
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
-                <a class="collapse-item" href="{{ route('activity_log') }}">Log</a>
+                <a class="collapse-item" href="{{ route('activity_log') }}">Log Aktifitas</a>
                 
                 {{-- @if(session('name') == 'Andik Kurniawan') --}}
                     <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>

@@ -33,17 +33,7 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\BarcodeController;
 use App\Http\Controllers\RonselController;
 use App\Http\Controllers\RejectController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\WeightController;
 
 // Page
 Route::get('/', [PageController::class, 'index'])->name('dashboard')->middleware('user_is_login');
@@ -55,7 +45,14 @@ Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['user_is_login', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['user_is_login', 'role_is_3']);
 Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
-Route::get('timbangan_in_proses', [PageController::class, 'timbanganInProses'])->name('timbangan_in_proses')->middleware(['hmi_is_login', 'role_is_5']);
+Route::get('timbangan_in_proses', [PageController::class, 'timbanganInProses'])->name('timbangan_in_proses')->middleware(['user_is_login', 'role_is_5']);
+
+Route::get('timbangan_tetes', [WeightController::class, 'showTetes'])->name('timbangan_tetes')->middleware(['user_is_login', 'role_is_1']);
+Route::get('timbangan_rs_out', [WeightController::class, 'showRSOut'])->name('timbangan_rs_out')->middleware(['user_is_login', 'role_is_1']);
+Route::get('timbangan_rs_in', [WeightController::class, 'showRSIn'])->name('timbangan_rs_in')->middleware(['user_is_login', 'role_is_1']);
+Route::post('adjust_timbangan_tetes', [WeightController::class, 'adjustTetes'])->name('adjust_timbangan_tetes')->middleware(['user_is_login', 'role_is_1']);
+Route::post('adjust_timbangan_rs_out', [WeightController::class, 'adjustRawSugarOut'])->name('adjust_timbangan_rs_out')->middleware(['user_is_login', 'role_is_1']);
+Route::post('adjust_timbangan_rs_in', [WeightController::class, 'adjustRawSugarIn'])->name('adjust_timbangan_rs_in')->middleware(['user_is_login', 'role_is_1']);
 
 // Barcode
 Route::post('barcode_samples', [BarcodeController::class, 'showBarcode'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
