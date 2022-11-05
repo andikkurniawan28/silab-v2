@@ -15,7 +15,7 @@ class CoreSampleController extends Controller
      */
     public function index()
     {
-        $core_samples = Core_sample::limit(5000)->get();
+        $core_samples = Core_sample::latest()->paginate(500);
         $stations = $this->serveStation();
         return view('core_sample.index', compact('core_samples', 'stations'));
     }

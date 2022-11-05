@@ -76,6 +76,7 @@
                 <a class="collapse-item" href="{{ route('specials.index') }}">Analisa Khusus</a>
                 <a class="collapse-item" href="{{ route('core_samples.index') }}">Core Sample</a>
                 <a class="collapse-item" href="{{ route('rejects.index') }}">Reject</a>
+                <a class="collapse-item" href="{{ route('rafactions.index') }}">Scoring MBS</a>
             </div>
         </div>
     </li>

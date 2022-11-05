@@ -1,39 +1,42 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\MaterialController;
-use App\Http\Controllers\StationController;
+use App\Http\Controllers\SkmtController;
+use App\Http\Controllers\UmumController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SugarController;
+use App\Http\Controllers\AroundController;
+use App\Http\Controllers\BoilerController;
+use App\Http\Controllers\FactorController;
 use App\Http\Controllers\MethodController;
+use App\Http\Controllers\RejectController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\RonselController;
 use App\Http\Controllers\SampleController;
-use App\Http\Controllers\CooperativeController;
+use App\Http\Controllers\WeightController;
+use App\Http\Controllers\BaggaseController;
+use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\BarcodeController;
+use App\Http\Controllers\MollaseController;
 use App\Http\Controllers\OutpostController;
 use App\Http\Controllers\ProgramController;
-use App\Http\Controllers\FactorController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\SaccharomatController;
-use App\Http\Controllers\ColoromatController;
-use App\Http\Controllers\MoistureController;
-use App\Http\Controllers\UmumController;
-use App\Http\Controllers\BoilerController;
-use App\Http\Controllers\BaggaseController;
-use App\Http\Controllers\SugarController;
 use App\Http\Controllers\SpecialController;
-use App\Http\Controllers\BalanceController;
+use App\Http\Controllers\StationController;
 use App\Http\Controllers\ChemicalController;
-use App\Http\Controllers\ImbibitionController;
-use App\Http\Controllers\AroundController;
+use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\MejaTebuController;
+use App\Http\Controllers\MoistureController;
 use App\Http\Controllers\TaxationController;
-use App\Http\Controllers\MollaseController;
+use App\Http\Controllers\ColoromatController;
+use App\Http\Controllers\RafactionController;
 use App\Http\Controllers\CoreSampleController;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\BarcodeController;
-use App\Http\Controllers\RonselController;
-use App\Http\Controllers\RejectController;
-use App\Http\Controllers\WeightController;
+use App\Http\Controllers\CooperativeController;
+use App\Http\Controllers\SaccharomatController;
 
 // Page
 Route::get('/', [PageController::class, 'index'])->name('dashboard')->middleware('user_is_login');
@@ -104,6 +107,9 @@ Route::resource('sugars', SugarController::class)->middleware(['user_is_login', 
 Route::resource('specials', SpecialController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('core_samples', CoreSampleController::class)->middleware(['user_is_login', 'role_is_3']);
 Route::resource('rejects', RejectController::class)->middleware(['user_is_login', 'role_is_3']);
+Route::resource('rafactions', RafactionController::class)->middleware(['user_is_login', 'role_is_3']);
+Route::post('rafactions/assign', [RafactionController::class, 'assignScore'])->middleware(['user_is_login', 'role_is_3'])->name('rafactions.assign');
+Route::resource('skmts', SkmtController::class)->middleware(['user_is_login', 'role_is_3']);
 
 // Pabrikasi can Involved
 Route::resource('balances', BalanceController::class)->middleware(['user_is_login', 'role_is_5']);
@@ -146,5 +152,8 @@ Route::post('baggases_verification', [BaggaseController::class, 'processVerifica
 Route::post('sugars_verification', [SugarController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('sugars.verify');
 Route::post('specials_verification', [SpecialController::class, 'processVerification'])->middleware(['user_is_login', 'role_is_2'])->name('specials.verify');
 Route::post('taxation_export', [TaxationController::class, 'export'])->middleware(['user_is_login', 'role_is_2'])->name('taxation_export');
+
+// Meja Tebu
+Route::get('meja_tebu/{nomor_meja}', MejaTebuController::class);
 
 

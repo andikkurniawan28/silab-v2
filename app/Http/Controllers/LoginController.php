@@ -35,7 +35,7 @@ class LoginController extends Controller
                 session()->put('is_login', 1);
             }
             Log::writeLog('Authentication', 'Login' , $user->name);
-            return redirect('/');    
+            return redirect()->intended();    
         }
         else
         {
