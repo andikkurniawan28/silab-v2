@@ -16,7 +16,7 @@ class EnsureRoleUserIs5
      */
     public function handle(Request $request, Closure $next)
     {
-        switch(session('role'))
+        switch(Auth()->user()->role_id)
         {
             case 1 : return $next($request); break;
             case 2 : return $next($request); break;

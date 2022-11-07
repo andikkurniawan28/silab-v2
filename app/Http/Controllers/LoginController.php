@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -23,23 +24,42 @@ class LoginController extends Controller
         return view('auth.register');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $users = User::checkUserIsExisted($request->username, md5($request->password));
+    //     if($users->count() == 1)
+    //     {
+    //         foreach($users->get() as $user)
+    //         {
+    //             session()->put('name', $user->name);
+    //             session()->put('role', $user->role_id);
+    //             session()->put('is_login', 1);
+    //         }
+    //         Log::writeLog('Authentication', 'Login' , $user->name);
+    //         return redirect()->intended();    
+    //     }
+    //     else
+    //     {
+    //         Log::writeLog('Authentication', 'Login failed' , $request->username);
+    //         return redirect('login')->with('error', 'Username / password wrong.');
+    //     }
+    // }
+    
     public function login(Request $request)
     {
-        $users = User::checkUserIsExisted($request->username, md5($request->password));
-        if($users->count() == 1)
+        $attempt = Auth::attempt([
+            'username' => $request->username, 
+            'password' => $request->password, 
+            'is_active' => 1, 
+        ]);
+
+        if ($attempt) 
         {
-            foreach($users->get() as $user)
-            {
-                session()->put('name', $user->name);
-                session()->put('role', $user->role_id);
-                session()->put('is_login', 1);
-            }
-            Log::writeLog('Authentication', 'Login' , $user->name);
-            return redirect()->intended();    
+            $request->session()->regenerate();
+            return redirect()->intended('dashboard');
         }
-        else
+        else 
         {
-            Log::writeLog('Authentication', 'Login failed' , $request->username);
             return redirect('login')->with('error', 'Username / password wrong.');
         }
     }
@@ -59,7 +79,7 @@ class LoginController extends Controller
 
     public function logout()
     {
-        Log::writeLog('Authentication', 'Logout', session('name'));
+        // Log::writeLog('Authentication', 'Logout', session('name'));
         session()->flush();
         return redirect('/');
     }
@@ -87,7 +107,7 @@ class LoginController extends Controller
 
     public function logoutHmi()
     {
-        Log::writeLog('Authentication', 'Logout', session('name'));
+        // Log::writeLog('Authentication', 'Logout', session('name'));
         session()->flush();
         return redirect('login_hmi');
     }

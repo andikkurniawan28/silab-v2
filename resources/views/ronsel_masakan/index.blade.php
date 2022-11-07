@@ -74,7 +74,7 @@
                         </table>
                     </div>
                     <br>
-                    @if(session('role') < 5)
+                    @if(Auth()->user()->role_id < 5)
                     <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#create{{ $material->id }}">
                         Create Ronsel 
                         @include('components.icon', ['icon' => 'file ']) 

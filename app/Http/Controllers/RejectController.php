@@ -39,10 +39,10 @@ class RejectController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Reject::create($request->all());
-        Log::writeLog('Reject', 'Submit Data', session('name'));
+        Log::writeLog('Reject', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Reject has been stored');
     }
 
@@ -80,10 +80,10 @@ class RejectController extends Controller
         Reject::find($id)->update([
             'weight' => $request->weight,
             'weight_origin' => $request->weight_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Reject', 'Edit Data', session('name'));
+        Log::writeLog('Reject', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Reject has been updated');
     }
 
@@ -96,7 +96,7 @@ class RejectController extends Controller
     public function destroy($id)
     {
         Reject::find($id)->delete();
-        Log::writeLog('Reject', 'Delete Data', session('name'));
+        Log::writeLog('Reject', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Reject has been deleted');
     }
 

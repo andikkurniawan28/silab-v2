@@ -49,12 +49,12 @@ class SaccharomatController extends Controller
             $request->request->add([
                 'purity' => $data['purity'],
                 'yield' => $data['yield'],
-                'analyst' => session('name'),
-                'preparation1' => session('name'),
-                'preparation2' => session('name'),
+                'analyst' => Auth()->user()->name,
+                'preparation1' => Auth()->user()->name,
+                'preparation2' => Auth()->user()->name,
             ]);
             Saccharomat::create($request->all());
-            Log::writeLog('Saccharomat', 'Submit Data', session('name'));
+            Log::writeLog('Saccharomat', 'Submit Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Data has been stored');
         }
         else return self::showError($error);
@@ -99,7 +99,7 @@ class SaccharomatController extends Controller
             $request->request->add([
                 'purity' => $data['purity'],
                 'yield' => $data['yield'],
-                'corrector' => session('name'),
+                'corrector' => Auth()->user()->name,
             ]);
             Saccharomat::where('id', $id)->update([
                 'sample_id' => $request->sample_id,
@@ -116,7 +116,7 @@ class SaccharomatController extends Controller
                 'corrector' => $request->corrector,
                 'correction' => 1,
             ]);
-            Log::writeLog('Saccharomat', 'Update Data', session('name'));
+            Log::writeLog('Saccharomat', 'Update Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Data has been updated');
         }
         else return self::showError($error);
@@ -131,7 +131,7 @@ class SaccharomatController extends Controller
     public function destroy($id)
     {
         Saccharomat::where('id', $id)->delete();
-        Log::writeLog('Saccharomat', 'Delete Data', session('name'));
+        Log::writeLog('Saccharomat', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been deleted');
     }
 
@@ -174,13 +174,13 @@ class SaccharomatController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Saccharomat::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Saccharomat', 'Verify Data', session('name'));
+            Log::writeLog('Saccharomat', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
         }
     }

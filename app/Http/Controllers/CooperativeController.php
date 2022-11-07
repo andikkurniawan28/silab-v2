@@ -39,10 +39,10 @@ class CooperativeController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Cooperative::create($request->all());
-        Log::writeLog('Cooperative', 'Create New Cooperative', session('name'));
+        Log::writeLog('Cooperative', 'Create New Cooperative', Auth()->user()->name);
         return redirect()->back()->with('success', 'KUD '.$request->name.' has been stored');
     }
 
@@ -81,7 +81,7 @@ class CooperativeController extends Controller
             'code' => $request->code,
             'name' => $request->name,
         ]);
-        Log::writeLog('Cooperative', 'Update Cooperative '.$request->name, session('name'));
+        Log::writeLog('Cooperative', 'Update Cooperative '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'KUD '.$request->name.' has been updated');
     }
 
@@ -94,7 +94,7 @@ class CooperativeController extends Controller
     public function destroy($id)
     {
         Cooperative::where('id', $id)->delete();
-        Log::writeLog('Cooperative', 'Delete Cooperative', session('name'));
+        Log::writeLog('Cooperative', 'Delete Cooperative', Auth()->user()->name);
         return redirect()->back()->with('success', 'KUD has been deleted');
     }
 }

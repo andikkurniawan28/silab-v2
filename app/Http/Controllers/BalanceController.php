@@ -62,10 +62,10 @@ class BalanceController extends Controller
         $request->request->add([
             'flow_raw_juice' => $data['flow_raw_juice'],
             'raw_juice_percent_sugar_cane' => $data['raw_juice_percent_sugar_cane'],
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Balance::create($request->all());
-        Log::writeLog('Balance', 'Create New Balance', session('name'));
+        Log::writeLog('Balance', 'Create New Balance', Auth()->user()->name);
         return redirect()->back()->with('success', 'Flow Nira Mentah has been stored');
     }
 
@@ -107,7 +107,7 @@ class BalanceController extends Controller
             'flow_raw_juice' => $data['flow_raw_juice'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
             'raw_juice_percent_sugar_cane' => $data['raw_juice_percent_sugar_cane'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
         ]);
-        Log::writeLog('Balance', 'Edit Balance '.$request->name, session('name'));
+        Log::writeLog('Balance', 'Edit Balance '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Flow Nira Mentah has been updated');
     }
 
@@ -120,7 +120,7 @@ class BalanceController extends Controller
     public function destroy($id)
     {
         Balance::find($id)->delete();
-        Log::writeLog('Balance', 'Delete Balance', session('name'));
+        Log::writeLog('Balance', 'Delete Balance', Auth()->user()->name);
         return redirect()->back()->with('success', 'Flow Nira Mentah has been deleted');
     }
 }

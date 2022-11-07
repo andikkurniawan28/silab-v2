@@ -92,7 +92,7 @@
                 </table>
             </div>
             <br>
-            @if(session('role') == 1)
+            @if(Auth()->user()->role_id == 1)
                 <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#createTetes">
                     Adjust 
                     @include('components.icon', ['icon' => 'edit ']) 
@@ -125,7 +125,7 @@
                 </table>
             </div>
             <br>
-            @if(session('role') == 1)
+            @if(Auth()->user()->role_id == 1)
                 <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#createRawSugarIn">
                     Adjust 
                     @include('components.icon', ['icon' => 'edit ']) 
@@ -158,7 +158,7 @@
                 </table>
             </div>
             <br>
-            @if(session('role') == 1)
+            @if(Auth()->user()->role_id == 1)
                 <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#createRawSugarOut">
                     Adjust 
                     @include('components.icon', ['icon' => 'edit ']) 

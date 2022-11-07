@@ -47,10 +47,10 @@ class TaxationController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Taxation::create($request->all());
-        Log::writeLog('Taksasi', 'Create New Taksasi', session('name'));
+        Log::writeLog('Taksasi', 'Create New Taksasi', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi In Proses has been stored');
     }
 
@@ -185,7 +185,7 @@ class TaxationController extends Controller
             'back_wash_tank1' => $request->back_wash_tank1,
             'back_wash_tank2' => $request->back_wash_tank2,
         ]);
-        Log::writeLog('Taksasi', 'Edit Taksasi', session('name'));
+        Log::writeLog('Taksasi', 'Edit Taksasi', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi In Proses has been updated');
     }
 
@@ -198,7 +198,7 @@ class TaxationController extends Controller
     public function destroy($id)
     {
         Taxation::find($id)->delete();
-        Log::writeLog('Taksasi', 'Delete Taksasi', session('name'));
+        Log::writeLog('Taksasi', 'Delete Taksasi', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi In Proses has been deleted');
     }
 

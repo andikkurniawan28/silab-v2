@@ -53,7 +53,7 @@
         </div>
     </li>
 
-    @if(session('role') == 1 or session('role') == 2 or session('role') == 3)
+    @if(Auth()->user()->role_id == 1 or Auth()->user()->role_id == 2 or Auth()->user()->role_id == 3)
 
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -97,7 +97,7 @@
 
     @endif
 
-    @if(session('role') == 1)
+    @if(Auth()->user()->role_id == 1)
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fa-solid fa-folder-tree"></i>

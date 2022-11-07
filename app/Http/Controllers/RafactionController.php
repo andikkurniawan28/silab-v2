@@ -56,7 +56,7 @@ class RafactionController extends Controller
             return redirect()->back()->with('error', 'Error : Nomor Antrian Salah ['.$request->barcode.'].');
         else
             Rafaction::create($request->all());
-            Log::writeLog('Scoring MBS', 'Tap Barcode', session('name'));
+            Log::writeLog('Scoring MBS', 'Tap Barcode', Auth()->user()->name);
             return redirect()->back()->with('success', 'Scan Sukses');
     }
 
@@ -96,7 +96,7 @@ class RafactionController extends Controller
         // Rafaction::find($request->barcode)->update([
         //     'score' => $score,
         // ]);
-        // Log::writeLog('Scoring MBS', 'Assign Score', session('name'));
+        // Log::writeLog('Scoring MBS', 'Assign Score', Auth()->user()->name);
         // return redirect()->back()->with('success', 'Scoring MBS has been assigned');
     }
 
@@ -109,18 +109,19 @@ class RafactionController extends Controller
     public function destroy($id)
     {
         Rafaction::find($id)->delete();
-        Log::writeLog('Scoring MBS', 'Delete Data', session('name'));
+        Log::writeLog('Scoring MBS', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Scoring MBS has been deleted');
     }
 
     public function assignScore(Request $request)
     {
         $score = Rafaction::generateScore($request);
-        Rafaction::where('barcode', $request->barcode)->update([
-            'score' => $score,
-            'analyst' => session('name'),
-        ]);
-        Log::writeLog('Scoring MBS', 'Assign Score', session('name'));
-        return redirect()->back()->with('success', 'Scoring MBS has been assigned');
+        // Rafaction::where('barcode', $request->barcode)->update([
+        //     'score' => $score,
+        //     'analyst' => Auth()->user()->name,
+        // ]);
+        // Log::writeLog('Scoring MBS', 'Assign Score', Auth()->user()->name);
+        // return redirect()->back()->with('success', 'Scoring MBS has been assigned');
+        return $score;
     }
 }

@@ -39,10 +39,10 @@ class MethodController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Method::create($request->all());
-        Log::writeLog('Method', 'Create New Method', session('name'));
+        Log::writeLog('Method', 'Create New Method', Auth()->user()->name);
         return redirect()->back()->with('success', 'Method '.$request->name.' has been stored');
     }
 
@@ -80,7 +80,7 @@ class MethodController extends Controller
         Method::where('id', $id)->update([
             'name' => $request->name,
         ]);
-        Log::writeLog('Method', 'Edit Method '.$request->name, session('name'));
+        Log::writeLog('Method', 'Edit Method '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Method '.$request->name.' has been updated');
     }
 
@@ -93,7 +93,7 @@ class MethodController extends Controller
     public function destroy($id)
     {
         Method::where('id', $id)->delete();
-        Log::writeLog('Method', 'Delete Method', session('name'));
+        Log::writeLog('Method', 'Delete Method', Auth()->user()->name);
         return redirect()->back()->with('success', 'Method has been deleted');
     }
 }

@@ -41,11 +41,11 @@ class ColoromatController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
-            'preparation' => session('name'),
+            'analyst' => Auth()->user()->name,
+            'preparation' => Auth()->user()->name,
         ]);
         Coloromat::create($request->all());
-        Log::writeLog('Coloromat', 'Submit Data', session('name'));
+        Log::writeLog('Coloromat', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been stored');
     }
 
@@ -84,10 +84,10 @@ class ColoromatController extends Controller
             'sample_id' => $request->sample_id,
             'icumsa' => $request->icumsa,
             'icumsa_origin' => $request->icumsa_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Coloromat', 'Edit Data', session('name'));
+        Log::writeLog('Coloromat', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been updated');
     }
 
@@ -100,7 +100,7 @@ class ColoromatController extends Controller
     public function destroy($id)
     {
         Coloromat::find($id)->delete();
-        Log::writeLog('Coloromat', 'Delete Data', session('name'));
+        Log::writeLog('Coloromat', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been deleted');
     }
 
@@ -125,13 +125,13 @@ class ColoromatController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Coloromat::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Coloromat', 'Verify Data', session('name'));
+            Log::writeLog('Coloromat', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
         }
     }

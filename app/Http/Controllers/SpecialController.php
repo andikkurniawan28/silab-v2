@@ -41,10 +41,10 @@ class SpecialController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Special::create($request->all());
-        Log::writeLog('Special', 'Submit Data', session('name'));
+        Log::writeLog('Special', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Khusus has been stored');
     }
 
@@ -102,10 +102,10 @@ class SpecialController extends Controller
             'optical_density_origin' => $request->optical_density_origin,
             'sugar_reducted_origin' => $request->sugar_reducted_origin,
 
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Special', 'Edit Data', session('name'));
+        Log::writeLog('Special', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Khusus has been updated');
     }
 
@@ -118,7 +118,7 @@ class SpecialController extends Controller
     public function destroy($id)
     {
         Special::find($id)->delete();
-        Log::writeLog('Special', 'Delete Data', session('name'));
+        Log::writeLog('Special', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Khusus has been deleted');
     }
 
@@ -143,13 +143,13 @@ class SpecialController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Special::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Special', 'Verify Data', session('name'));
+            Log::writeLog('Special', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Khusus has been verified by '.$request->master);
         }
     }

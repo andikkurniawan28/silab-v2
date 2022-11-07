@@ -47,10 +47,30 @@ class Rafaction extends Model
 
     public static function generateScore($request)
     {
-        if($request->pucuk < 30)
-            $score = 'A';
+        if($request->tebu_muda > 0)
+        $score = "F";
+        elseif($request->lelesan > 0)
+        $score = "F";
+        elseif($request->terbakar > 1)
+        $score = "F";
+        elseif($request->pucuk > 1 AND $request->sogolan > 1)
+        $score = "E";
+        elseif(
+            $request->pucuk == 0 AND 
+            $request->sogolan == 0 AND 
+            $request->daduk == 0 AND 
+            $request->akar == 0 AND 
+            $request->tali_pucuk == 0 AND 
+            $request->terbakar == 0 AND 
+            $request->tebu_muda == 0 AND 
+            $request->lelesan == 0
+        )
+        $score = "A";
         else
-            $score = 'B';
+        {
+            
+        }
+
         return $score;
     }
     

@@ -60,14 +60,14 @@
                                         @include('components.icon', ['icon' => 'trash ']) 
                                         Delete
                                     </button>
-                                @elseif($saccharomat->is_verified == 1 && session('role') != 1)
+                                @elseif($saccharomat->is_verified == 1 && Auth()->user()->role_id != 1)
                                     <h4>
                                         <span class="badge badge-warning text-dark">
                                             @include('components.icon', ['icon' => 'lock ']) 
                                             Locked
                                         </span>
                                     </h4>
-                                @elseif($saccharomat->is_verified == 1 && session('role') == 1)
+                                @elseif($saccharomat->is_verified == 1 && Auth()->user()->role_id == 1)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $saccharomat->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit
@@ -94,7 +94,7 @@
                 Correction
             </a>
 
-            @if(session('role') == 1 or session('role') == 2)
+            @if(Auth()->user()->role_id == 1 or Auth()->user()->role_id == 2)
             <a href="saccharomats_verification" type="button" class="btn btn-secondary" target="_blank">
                 @include('components.icon', ['icon' => 'check ']) 
                 Verification

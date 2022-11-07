@@ -45,11 +45,11 @@ class SampleController extends Controller
         $request->request->add([
             'station_id' => $foreignId->station_id,
             'method_id' => $foreignId->method_id,
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
 
         Sample::create($request->all());
-        Log::writeLog('Sample', 'Create New Sample', session('name'));
+        Log::writeLog('Sample', 'Create New Sample', Auth()->user()->name);
         return redirect()->back()->with('success', 'Sample has been stored');
     }
 
@@ -90,7 +90,7 @@ class SampleController extends Controller
             'station_id' => $foreignId->station_id,
             'method_id' => $foreignId->method_id,
         ]);
-        Log::writeLog('Sample', 'Update Sample', session('name'));
+        Log::writeLog('Sample', 'Update Sample', Auth()->user()->name);
         return redirect()->back()->with('success', 'Sample has been updated');
     }
 
@@ -103,7 +103,7 @@ class SampleController extends Controller
     public function destroy($id)
     {
         Sample::where('id', $id)->delete();
-        Log::writeLog('Sample', 'Delete Sample', session('name'));
+        Log::writeLog('Sample', 'Delete Sample', Auth()->user()->name);
         return redirect()->back()->with('success', 'Sample has been delete');
     }
 }

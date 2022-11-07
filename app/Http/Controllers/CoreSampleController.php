@@ -46,10 +46,10 @@ class CoreSampleController extends Controller
             'outpost' => $data['outpost'],
             'program' => $data['program'],
             'yield' => $data['yield'],
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Core_sample::create($request->all());
-        Log::writeLog('Core Sample', 'Submit Data', session('name'));
+        Log::writeLog('Core Sample', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been stored');
     }
 
@@ -108,10 +108,10 @@ class CoreSampleController extends Controller
             'percent_brix_origin' => $request->percent_brix_origin,
             'percent_pol_origin' => $request->percent_pol_origin,
             'yield_origin' => $request->yield_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Core Sample', 'Edit Data', session('name'));
+        Log::writeLog('Core Sample', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been updated');
     }
 
@@ -124,7 +124,7 @@ class CoreSampleController extends Controller
     public function destroy($id)
     {
         Core_sample::find($id)->delete();
-        Log::writeLog('Core Sample', 'Delete Data', session('name'));
+        Log::writeLog('Core Sample', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been deleted');
     }
 

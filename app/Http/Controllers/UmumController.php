@@ -41,10 +41,10 @@ class UmumController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Umum::create($request->all());
-        Log::writeLog('Umum', 'Submit Data', session('name'));
+        Log::writeLog('Umum', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Umum has been stored');
     }
 
@@ -89,10 +89,10 @@ class UmumController extends Controller
             'ph_origin' => $request->ph_origin,
             'turbidity_origin' => $request->turbidity_origin,
             'temperature_origin' => $request->temperature_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Umum', 'Edit Data', session('name'));
+        Log::writeLog('Umum', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Umum has been updated');
     }
 
@@ -105,7 +105,7 @@ class UmumController extends Controller
     public function destroy($id)
     {
         Umum::find($id)->delete();
-        Log::writeLog('Umum', 'Delete Data', session('name'));
+        Log::writeLog('Umum', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Umum has been deleted');
     }
 
@@ -130,13 +130,13 @@ class UmumController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Umum::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Umum', 'Verify Data', session('name'));
+            Log::writeLog('Umum', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Umum has been verified by '.$request->master);
         }
     }

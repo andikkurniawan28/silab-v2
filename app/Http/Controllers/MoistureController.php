@@ -41,10 +41,10 @@ class MoistureController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Moisture::create($request->all());
-        Log::writeLog('Moisture', 'Submit Data', session('name'));
+        Log::writeLog('Moisture', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been stored');
     }
 
@@ -83,10 +83,10 @@ class MoistureController extends Controller
             'sample_id' => $request->sample_id,
             'moisture' => $request->moisture,
             'moisture_origin' => $request->moisture_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Moisture', 'Edit Data', session('name'));
+        Log::writeLog('Moisture', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been updated');
     }
 
@@ -99,7 +99,7 @@ class MoistureController extends Controller
     public function destroy($id)
     {
         Moisture::find($id)->delete();
-        Log::writeLog('Moisture', 'Delete Data', session('name'));
+        Log::writeLog('Moisture', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been deleted');
     }
 
@@ -124,13 +124,13 @@ class MoistureController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Moisture::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Moisture', 'Verify Data', session('name'));
+            Log::writeLog('Moisture', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
         }
     }

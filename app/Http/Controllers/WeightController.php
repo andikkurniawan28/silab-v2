@@ -21,7 +21,7 @@ class WeightController extends Controller
                 'netto' => $request->netto,
             ]);
 
-        Log::writeLog('Timbangan RS Out', 'Adjust', session('name'));
+        Log::writeLog('Timbangan RS Out', 'Adjust', Auth()->user()->name);
 
         return redirect()->back()->with('success', 'Raw Sugar Out has been adjusted');
     }
@@ -38,7 +38,7 @@ class WeightController extends Controller
                 'netto' => $request->netto,
             ]);
 
-        Log::writeLog('Timbangan RS In', 'Adjust', session('name'));
+        Log::writeLog('Timbangan RS In', 'Adjust', Auth()->user()->name);
 
         return redirect()->back()->with('success', 'Raw Sugar In has been adjusted');
     }
@@ -55,7 +55,7 @@ class WeightController extends Controller
                 'netto' => $request->netto,
             ]);
         
-        Log::writeLog('Timbangan Tetes', 'Adjust', session('name'));
+        Log::writeLog('Timbangan Tetes', 'Adjust', Auth()->user()->name);
 
         return redirect()->back()->with('success', 'Tetes has been adjusted');
     }

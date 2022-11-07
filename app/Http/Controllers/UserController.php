@@ -32,10 +32,10 @@ class UserController extends Controller
     {
         $request->request->add([
             'password' => md5($request->password),
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         User::create($request->all());
-        Log::writeLog('User', 'Create User '.$request->name, session('name'));
+        Log::writeLog('User', 'Create User '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'User '.$request->name.' has been stored');
     }
 
@@ -66,11 +66,11 @@ class UserController extends Controller
             // 'password' => md5($request->password),
             'name' => $request->name,
             'is_active' => $request->is_active,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'hmi_access' => $request->hmi_access,
             'entrance_access' => $request->entrance_access,
         ]);
-        Log::writeLog('User', 'Edit User '.$request->name, session('name'));
+        Log::writeLog('User', 'Edit User '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'User '.$request->name.' has been updated');
     }
 
@@ -83,7 +83,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::where('id', $id)->delete();
-        Log::writeLog('User', 'Delete User', session('name'));
+        Log::writeLog('User', 'Delete User', Auth()->user()->name);
         return redirect()->back()->with('success', 'User has been deleted');
     }
 }

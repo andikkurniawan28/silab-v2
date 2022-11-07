@@ -41,10 +41,10 @@ class BoilerController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Boiler::create($request->all());
-        Log::writeLog('Boiler', 'Submit Data', session('name'));
+        Log::writeLog('Boiler', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ketel has been stored');
     }
 
@@ -89,10 +89,10 @@ class BoilerController extends Controller
             'ph_origin' => $request->ph_origin,
             'hardness_origin' => $request->hardness_origin,
             'phospate_origin' => $request->phospate_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Boiler', 'Edit Data', session('name'));
+        Log::writeLog('Boiler', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ketel has been updated');
     }
 
@@ -105,7 +105,7 @@ class BoilerController extends Controller
     public function destroy($id)
     {
         Boiler::find($id)->delete();
-        Log::writeLog('Boiler', 'Delete Data', session('name'));
+        Log::writeLog('Boiler', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ketel has been deleted');
     }
 
@@ -130,13 +130,13 @@ class BoilerController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Boiler::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Boiler', 'Verify Data', session('name'));
+            Log::writeLog('Boiler', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ketel has been verified by '.$request->master);
         }
     }

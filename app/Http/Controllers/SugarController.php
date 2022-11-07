@@ -41,10 +41,10 @@ class SugarController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
         Sugar::create($request->all());
-        Log::writeLog('Sugar', 'Submit Data', session('name'));
+        Log::writeLog('Sugar', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Gula has been stored');
     }
 
@@ -87,10 +87,10 @@ class SugarController extends Controller
             'sulphur_origin' => $request->sulphur_origin,
             'diameter_origin' => $request->diameter_origin,
             'blackspot_origin' => $request->blackspot_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Sugar', 'Edit Data', session('name'));
+        Log::writeLog('Sugar', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Gula has been updated');
     }
 
@@ -103,7 +103,7 @@ class SugarController extends Controller
     public function destroy($id)
     {
         Sugar::find($id)->delete();
-        Log::writeLog('Sugar', 'Delete Data', session('name'));
+        Log::writeLog('Sugar', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Gula has been deleted');
     }
 
@@ -128,13 +128,13 @@ class SugarController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Sugar::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Sugar', 'Verify Data', session('name'));
+            Log::writeLog('Sugar', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Gula has been verified by '.$request->master);
         }
     }

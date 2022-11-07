@@ -39,10 +39,10 @@ class ProgramController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Program::create($request->all());
-        Log::writeLog('Program', 'Create New Program', session('name'));
+        Log::writeLog('Program', 'Create New Program', Auth()->user()->name);
         return redirect()->back()->with('success', 'Program '.$request->name.' has been stored');
     }
 
@@ -81,7 +81,7 @@ class ProgramController extends Controller
             'code' => $request->code,
             'name' => $request->name,
         ]);
-        Log::writeLog('Program', 'Edit Program '.$request->name, session('name'));
+        Log::writeLog('Program', 'Edit Program '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Program '.$request->name.' has been updated');
     }
 
@@ -94,7 +94,7 @@ class ProgramController extends Controller
     public function destroy($id)
     {
         Program::where('id', $id)->delete();
-        Log::writeLog('Program', 'Delete Program', session('name'));
+        Log::writeLog('Program', 'Delete Program', Auth()->user()->name);
         return redirect()->back()->with('success', 'Program has been deleted');
     }
 }

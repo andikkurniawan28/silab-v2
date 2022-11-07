@@ -39,10 +39,10 @@ class FactorController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Factor::create($request->all());
-        Log::writeLog('Factor', 'Create New Factor', session('name'));
+        Log::writeLog('Factor', 'Create New Factor', Auth()->user()->name);
         return redirect()->back()->with('success', 'Factor '.$request->name.' has been stored');
     }
 
@@ -81,7 +81,7 @@ class FactorController extends Controller
             'name' => $request->name,
             'value' => $request->value,
         ]);
-        Log::writeLog('Factor', 'Edit Factor '.$request->name, session('name'));
+        Log::writeLog('Factor', 'Edit Factor '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Factor '.$request->name.' has been updated');
     }
 
@@ -94,7 +94,7 @@ class FactorController extends Controller
     public function destroy($id)
     {
         Factor::where('id', $id)->delete();
-        Log::writeLog('Factor', 'Delete Factor', session('name'));
+        Log::writeLog('Factor', 'Delete Factor', Auth()->user()->name);
         return redirect()->back()->with('success', 'Factor has been deleted');
     }
 }

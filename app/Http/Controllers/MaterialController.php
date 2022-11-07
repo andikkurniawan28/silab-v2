@@ -42,10 +42,10 @@ class MaterialController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Material::create($request->all());
-        Log::writeLog('Material', 'Create New Material', session('name'));
+        Log::writeLog('Material', 'Create New Material', Auth()->user()->name);
         return redirect()->back()->with('success', 'Material '.$request->name.' has been stored');
     }
 
@@ -86,7 +86,7 @@ class MaterialController extends Controller
             'station_id' => $request->station_id,
             'method_id' => $request->method_id,
         ]);
-        Log::writeLog('Material', 'Edit Material '.$request->name, session('name'));
+        Log::writeLog('Material', 'Edit Material '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Material '.$request->name.' has been updated');
     }
 
@@ -99,7 +99,7 @@ class MaterialController extends Controller
     public function destroy($id)
     {
         Material::where('id', $id)->delete();
-        Log::writeLog('Material', 'Delete Material', session('name'));
+        Log::writeLog('Material', 'Delete Material', Auth()->user()->name);
         return redirect()->back()->with('success', 'Material berhasil dihapus');
     }
 }

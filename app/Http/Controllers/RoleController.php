@@ -39,10 +39,10 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Role::create($request->all());
-        Log::writeLog('Role', 'Create New Role', session('name'));
+        Log::writeLog('Role', 'Create New Role', Auth()->user()->name);
         return redirect()->back()->with('success', 'Role '.$request->name.' has been stored');
     }
 
@@ -80,7 +80,7 @@ class RoleController extends Controller
         Role::where('id', $id)->update([
             'name' => $request->name,
         ]);
-        Log::writeLog('Role', 'Update Role '.$request->name, session('name'));
+        Log::writeLog('Role', 'Update Role '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Role '.$request->name.' has been updated');
     }
 
@@ -93,7 +93,7 @@ class RoleController extends Controller
     public function destroy($id)
     {
         Role::where('id', $id)->delete();
-        Log::writeLog('Role', 'Delete Role', session('name'));
+        Log::writeLog('Role', 'Delete Role', Auth()->user()->name);
         return redirect()->back()->with('success', 'Role has been deleted');
     }
 }

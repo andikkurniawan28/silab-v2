@@ -39,10 +39,10 @@ class OutpostController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Outpost::create($request->all());
-        Log::writeLog('Outpost', 'Create New Outpost', session('name'));
+        Log::writeLog('Outpost', 'Create New Outpost', Auth()->user()->name);
         return redirect()->back()->with('success', 'Pos Pantau '.$request->name.' has been stored');
     }
 
@@ -81,7 +81,7 @@ class OutpostController extends Controller
             'code' => $request->code,
             'name' => $request->name,
         ]);
-        Log::writeLog('Outpost', 'Edit Outpost '.$request->name, session('name'));
+        Log::writeLog('Outpost', 'Edit Outpost '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Pos Pantau '.$request->name.' has been updated');
     }
 
@@ -94,7 +94,7 @@ class OutpostController extends Controller
     public function destroy($id)
     {
         Outpost::where('id', $id)->delete();
-        Log::writeLog('Outpost', 'Delete Outpost', session('name'));
+        Log::writeLog('Outpost', 'Delete Outpost', Auth()->user()->name);
         return redirect()->back()->with('success', 'Pos Pantau has been deleted');
     }
 }

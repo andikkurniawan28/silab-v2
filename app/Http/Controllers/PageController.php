@@ -21,7 +21,7 @@ class PageController extends Controller
 
     public function activityLogByUser()
     {
-        $logs = Log::where('admin', session('name'))->limit(1000)->orderBy('id', 'desc')->get();
+        $logs = Log::where('admin', Auth()->user()->name)->limit(1000)->orderBy('id', 'desc')->get();
         $stations = $this->serveStation();
         return view('log.index', compact('logs', 'stations'));
     }

@@ -42,14 +42,14 @@
                                         @include('components.icon', ['icon' => 'trash ']) 
                                         Delete
                                     </button>
-                                @elseif($reject->is_verified == 1 && session('role') != 1)
+                                @elseif($reject->is_verified == 1 && Auth()->user()->role_id != 1)
                                     <h4>
                                         <span class="badge badge-warning text-dark">
                                             @include('components.icon', ['icon' => 'lock ']) 
                                             Locked
                                         </span>
                                     </h4>
-                                @elseif($reject->is_verified == 1 && session('role') == 1)
+                                @elseif($reject->is_verified == 1 && Auth()->user()->role_id == 1)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $reject->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit

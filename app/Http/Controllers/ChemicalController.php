@@ -73,9 +73,9 @@ class ChemicalController extends Controller
      */
     public function store(Request $request)
     {
-        $request->request->add([ 'admin' => session('name'), ]);
+        $request->request->add([ 'admin' => Auth()->user()->name, ]);
         Chemical::create($request->all());
-        Log::writeLog('Chemical', 'Create New Chemical', session('name'));
+        Log::writeLog('Chemical', 'Create New Chemical', Auth()->user()->name);
         return redirect()->back()->with('success', 'Bahan Kimia has been stored');
     }
 
@@ -121,6 +121,7 @@ class ChemicalController extends Controller
             'asam_phospat' => $request->asam_phospat,
             'blotong' => $request->blotong,
         ]);
+        Log::writeLog('Chemical', 'Update Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Bahan Kimia has been updated');
     }
 
@@ -133,6 +134,7 @@ class ChemicalController extends Controller
     public function destroy($id)
     {
         Chemical::find($id)->delete();
+        Log::writeLog('Chemical', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Bahan Kimia has been deleted');
     }
 }

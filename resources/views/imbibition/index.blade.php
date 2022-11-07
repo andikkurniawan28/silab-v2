@@ -24,7 +24,7 @@
                             <th>Admin</th>
                             <th>Created @</th>
 
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
+                            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
                                 <th>Updated @</th>
                                 <th>Action</th>
                             @endif
@@ -40,7 +40,7 @@
                             <td>{{ $imbibition->admin }}</td>
                             <td>{{ $imbibition->created_at }}</td>
 
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
+                            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
                                 <td>{{ $imbibition->updated_at }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $imbibition->id }}">
@@ -60,7 +60,7 @@
             </div>
         </div>
         <div class="card-footer">
-            @if(session('role') == 1 || session('role') == 2 || session('role') == 3 || session('role') == 4)
+            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                     @include('components.icon', ['icon' => 'plus ']) 
                     Create

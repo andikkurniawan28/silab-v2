@@ -39,14 +39,14 @@
                             <td>{{ $material->created_at }}</td>
                             <td>{{ $material->updated_at }}</td>
                             <td>
-                                @if(session('role') != 1)
+                                @if(Auth()->user()->role_id != 1)
                                 <h4>
                                     <span class="badge badge-warning text-dark">
                                         @include('components.icon', ['icon' => 'lock ']) 
                                         Locked
                                     </span>
                                 </h4>
-                                @elseif(session('role') == 1)
+                                @elseif(Auth()->user()->role_id == 1)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $material->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit

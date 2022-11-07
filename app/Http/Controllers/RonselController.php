@@ -15,11 +15,11 @@ class RonselController extends Controller
         $request->request->add([
             'station_id' => $foreignId->station_id,
             'method_id' => $foreignId->method_id,
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
 
         Sample::create($request->all());
-        Log::writeLog('Sample', 'Create New Sample', session('name'));
+        Log::writeLog('Sample', 'Create New Sample', Auth()->user()->name);
 
         $data = Sample::join('materials', 'samples.material_id', 'materials.id')
             ->where('samples.material_id', $request->material_id)

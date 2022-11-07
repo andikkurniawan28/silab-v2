@@ -59,10 +59,10 @@ class MollaseController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Mollase::create($request->all());
-        Log::writeLog('Mollase', 'Create New Mollase', session('name'));
+        Log::writeLog('Mollase', 'Create New Mollase', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi Tetes has been stored');
     }
 
@@ -103,7 +103,7 @@ class MollaseController extends Controller
             'volume_t3' => $request->volume_t3,
             'meters' => $request->meters,
         ]);
-        Log::writeLog('Mollase', 'Edit Mollase', session('name'));
+        Log::writeLog('Mollase', 'Edit Mollase', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi Tetes has been updated');
     }
 
@@ -116,7 +116,7 @@ class MollaseController extends Controller
     public function destroy($id)
     {
         Mollase::find($id)->delete();
-        Log::writeLog('Mollase', 'Delete Mollase', session('name'));
+        Log::writeLog('Mollase', 'Delete Mollase', Auth()->user()->name);
         return redirect()->back()->with('success', 'Taksasi Tetes has been deleted');
     }
 }

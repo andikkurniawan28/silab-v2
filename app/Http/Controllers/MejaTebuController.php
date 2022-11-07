@@ -14,6 +14,13 @@ class MejaTebuController extends Controller
      */
     public function __invoke($nomor_meja)
     {
-        return view('meja_tebu.index', compact('nomor_meja'));
+        if ($nomor_meja > 5 || $nomor_meja < 1)
+        {
+            return redirect()->back()->with('success', 'Meja Tebu '.$nomor_meja.' tidak ada.');
+        }
+        else
+        {
+            return view('meja_tebu.index', compact('nomor_meja'));
+        }
     }
 }

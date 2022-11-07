@@ -53,7 +53,7 @@
                             <td>{{ $core_sample->analyst }}</td>
                             <td>{{ $core_sample->created_at }}</td>
                             <td>
-                                @if(session('role') == 1 || session('role') == 2)
+                                @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_sample->id }}">
                                         @include('components.icon', ['icon' => 'edit ']) 
                                         Edit

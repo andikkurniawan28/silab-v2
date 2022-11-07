@@ -83,10 +83,10 @@ class BaggaseController extends Controller
             'corrected_pol_origin' => $request->corrected_pol_origin,
             'dry_origin' => $request->dry_origin,
             'water_origin' => $request->water_origin,
-            'corrector' => session('name'),
+            'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Baggase', 'Edit Data', session('name'));
+        Log::writeLog('Baggase', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas has been updated');
     }
 
@@ -99,7 +99,7 @@ class BaggaseController extends Controller
     public function destroy($id)
     {
         Baggase::find($id)->delete();
-        Log::writeLog('Baggase', 'Delete Data', session('name'));
+        Log::writeLog('Baggase', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas has been deleted');
     }
 
@@ -124,13 +124,13 @@ class BaggaseController extends Controller
         else 
         {
             $request->request->add([
-                'master' => session('name'),
+                'master' => Auth()->user()->name,
             ]);
             Baggase::whereIn('id', $request->checkAll)->update([
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Baggase', 'Verify Data', session('name'));
+            Log::writeLog('Baggase', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ampas has been verified by '.$request->master);
         }
     }
@@ -167,11 +167,11 @@ class BaggaseController extends Controller
             'corrected_pol' => $corrected_pol,
             'dry' => $dry,
             'water' => $water,
-            'analyst' => session('name'),
+            'analyst' => Auth()->user()->name,
         ]);
 
         Baggase::create($request->all());
-        Log::writeLog('Baggase', 'Submit Data', session('name'));
+        Log::writeLog('Baggase', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas has been stored');
     }
 

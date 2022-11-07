@@ -41,10 +41,10 @@ class AroundController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Around::create($request->all());
-        Log::writeLog('Keliling', 'Create New Keliling', session('name'));
+        Log::writeLog('Keliling', 'Create New Keliling', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data Proses has been stored');
     }
 
@@ -122,7 +122,7 @@ class AroundController extends Controller
             'uap_bekas' => $request->uap_bekas,
             'uap_3ato' => $request->uap_3ato,
         ]);
-        Log::writeLog('Keliling', 'Edit Keliling', session('name'));
+        Log::writeLog('Keliling', 'Edit Keliling', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data Proses has been updated');
     }
 
@@ -135,7 +135,7 @@ class AroundController extends Controller
     public function destroy($id)
     {
         Around::find($id)->delete();
-        Log::writeLog('Keliling', 'Delete Keliling', session('name'));
+        Log::writeLog('Keliling', 'Delete Keliling', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data Proses has been deleted');
     }
 }

@@ -38,10 +38,10 @@ class StationController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Station::create($request->all());
-        Log::writeLog('Station', 'Create New Station', session('name'));
+        Log::writeLog('Station', 'Create New Station', Auth()->user()->name);
         return redirect()->back()->with('success', 'Station '.$request->name.' has been stored');
     }
 
@@ -79,7 +79,7 @@ class StationController extends Controller
         Station::where('id', $id)->update([
             'name' => $request->name,
         ]);
-        Log::writeLog('Station', 'Edit Station '.$request->name, session('name'));
+        Log::writeLog('Station', 'Edit Station '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Station '.$request->name.' has been updated');
     }
 
@@ -92,7 +92,7 @@ class StationController extends Controller
     public function destroy($id)
     {
         Station::where('id', $id)->delete();
-        Log::writeLog('Station', 'Delete Station', session('name'));
+        Log::writeLog('Station', 'Delete Station', Auth()->user()->name);
         return redirect()->back()->with('success', 'Station has been deleted');
     }
 }

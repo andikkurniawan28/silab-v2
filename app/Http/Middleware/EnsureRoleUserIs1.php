@@ -16,7 +16,7 @@ class EnsureRoleUserIs1
      */
     public function handle(Request $request, Closure $next)
     {
-        switch(session('role'))
+        switch(Auth()->user()->role_id)
         {
             case 1 : return $next($request); break;
             default : return redirect()->back()->with('error', 'You are not permitted to access those page.'); break;

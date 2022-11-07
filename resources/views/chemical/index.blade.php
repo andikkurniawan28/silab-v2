@@ -31,7 +31,7 @@
                             <th>Admin</th>
                             <th>Created @</th>
 
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
                                 <th>Updated @</th>
                                 <th>Action</th>
                             @endif
@@ -53,7 +53,7 @@
                             <td>{{ $chemical->admin }}</td>
                             <td>{{ $chemical->created_at }}</td>
 
-                            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+                            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
                                 <td>{{ $chemical->updated_at }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $chemical->id }}">
@@ -73,7 +73,7 @@
             </div>
         </div>
         <div class="card-footer">
-            @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+            @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                     @include('components.icon', ['icon' => 'plus ']) 
                     Create

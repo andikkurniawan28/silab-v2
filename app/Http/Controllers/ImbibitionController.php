@@ -63,10 +63,10 @@ class ImbibitionController extends Controller
         $data = Imbibition::countImbibition($request);
         $request->request->add([
             'flow' => $data['flow'],
-            'admin' => session('name'),
+            'admin' => Auth()->user()->name,
         ]);
         Imbibition::create($request->all());
-        Log::writeLog('Imbibition', 'Create New Imbibition', session('name'));
+        Log::writeLog('Imbibition', 'Create New Imbibition', Auth()->user()->name);
         return redirect()->back()->with('success', 'Imbibisi has been stored');
     }
 
@@ -106,7 +106,7 @@ class ImbibitionController extends Controller
             'totalizer' => $request->totalizer,
             'flow' => $data['flow'],
         ]);
-        Log::writeLog('Imbibition', 'Edit Imbibition', session('name'));
+        Log::writeLog('Imbibition', 'Edit Imbibition', Auth()->user()->name);
         return redirect()->back()->with('success', 'Imbibisi has been updated');
     }
 
@@ -119,7 +119,7 @@ class ImbibitionController extends Controller
     public function destroy($id)
     {
         Imbibition::find($id)->delete();
-        Log::writeLog('Imbibition', 'Delete Imbibition', session('name'));
+        Log::writeLog('Imbibition', 'Delete Imbibition', Auth()->user()->name);
         return redirect()->back()->with('success', 'Imbibisi has been deleted');
     }
 }

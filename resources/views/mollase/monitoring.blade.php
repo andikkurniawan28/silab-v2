@@ -20,7 +20,7 @@
     
     </div>
 
-    @if(session('role') == 1 || session('role') == 2 || session('role') == 3)
+    @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
             @include('components.icon', ['icon' => 'plus ']) 
             Create
