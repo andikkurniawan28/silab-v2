@@ -80,6 +80,7 @@ class OutpostController extends Controller
         Outpost::where('id', $id)->update([
             'code' => $request->code,
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Outpost', 'Edit Outpost '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Pos Pantau '.$request->name.' has been updated');

@@ -80,6 +80,7 @@ class ProgramController extends Controller
         Program::where('id', $id)->update([
             'code' => $request->code,
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Program', 'Edit Program '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Program '.$request->name.' has been updated');

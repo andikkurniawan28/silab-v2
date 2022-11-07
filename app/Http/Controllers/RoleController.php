@@ -79,6 +79,7 @@ class RoleController extends Controller
     {
         Role::where('id', $id)->update([
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Role', 'Update Role '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Role '.$request->name.' has been updated');

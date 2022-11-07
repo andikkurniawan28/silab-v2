@@ -23,27 +23,6 @@ class LoginController extends Controller
     {
         return view('auth.register');
     }
-
-    // public function login(Request $request)
-    // {
-    //     $users = User::checkUserIsExisted($request->username, md5($request->password));
-    //     if($users->count() == 1)
-    //     {
-    //         foreach($users->get() as $user)
-    //         {
-    //             session()->put('name', $user->name);
-    //             session()->put('role', $user->role_id);
-    //             session()->put('is_login', 1);
-    //         }
-    //         Log::writeLog('Authentication', 'Login' , $user->name);
-    //         return redirect()->intended();    
-    //     }
-    //     else
-    //     {
-    //         Log::writeLog('Authentication', 'Login failed' , $request->username);
-    //         return redirect('login')->with('error', 'Username / password wrong.');
-    //     }
-    // }
     
     public function login(Request $request)
     {
@@ -77,11 +56,13 @@ class LoginController extends Controller
         return redirect('login')->with('success', 'Account has been registered successfully.');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        // Log::writeLog('Authentication', 'Logout', session('name'));
-        session()->flush();
-        return redirect('/');
+        Log::writeLog('Authentication', 'Logout', Auth()->user()->name);
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('login');
     }
 
     public function loginHmiProccess(Request $request)
@@ -107,7 +88,7 @@ class LoginController extends Controller
 
     public function logoutHmi()
     {
-        // Log::writeLog('Authentication', 'Logout', session('name'));
+        // Log::writeLog('Authentication', 'Logout', Auth()->user()->name);
         session()->flush();
         return redirect('login_hmi');
     }

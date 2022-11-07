@@ -80,6 +80,7 @@ class CooperativeController extends Controller
         Cooperative::where('id', $id)->update([
             'code' => $request->code,
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Cooperative', 'Update Cooperative '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'KUD '.$request->name.' has been updated');

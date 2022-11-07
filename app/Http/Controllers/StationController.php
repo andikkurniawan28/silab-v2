@@ -78,6 +78,7 @@ class StationController extends Controller
     {
         Station::where('id', $id)->update([
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Station', 'Edit Station '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Station '.$request->name.' has been updated');

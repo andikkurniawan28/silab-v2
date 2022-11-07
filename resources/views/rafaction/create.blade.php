@@ -25,18 +25,38 @@
                           </select>
                     </div>
                 </div>
-
+                
+                @foreach($dirts as $dirt)
                 <div class="form-group row">
+                <label for="spot" class="col-sm-2 col-form-label">{{ ucfirst($dirt->name) }}</label>
+                    <div class="col-sm-10">
+                        @for($i = 1; $i <= $dirt->interval; $i++)
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="{{ $dirt->name }}" id="{{ $dirt->name }}" value="{{ $i }}"
+                                @if($i == 1)
+                                checked="checked"
+                                @endif
+                            >
+                            <label class="form-check-label" for="{{ $dirt->name }}">
+                                <strong>Tes</strong>
+                            </label>
+                        </div>
+                        @endfor
+                    </div>
+                </div>
+                @endforeach
+
+                {{-- <div class="form-group row">
                     <label for="spot" class="col-sm-2 col-form-label">Pucuk</label>
                     <div class="col-sm-10">
                         @for($i = 0; $i < 5; $i++)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="pucuk" id="pucuk" value="{{ $i }}"
+                            <input class="form-check-input" type="radio" name="{{ $dirt->name }}" id="{{ $dirt->name }}" value="{{ $i }}"
                                 @if($i == 0)
                                 checked="checked"
                                 @endif
                             >
-                            <label class="form-check-label" for="pucuk">
+                            <label class="form-check-label" for="{{ $dirt->name }}">
                                 <strong>
                                 @switch($i)
                                     @case(0)
@@ -175,12 +195,12 @@
                     <div class="col-sm-10">
                         @for($i = 0; $i < 5; $i++)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="tali_pucuk" id="tali_pucuk" value="{{ $i }}"
+                            <input class="form-check-input" type="radio" name="tali_{{ $dirt->name }}" id="tali_{{ $dirt->name }}" value="{{ $i }}"
                                 @if($i == 0)
                                 checked="checked"
                                 @endif
                             >
-                            <label class="form-check-label" for="tali_pucuk">
+                            <label class="form-check-label" for="tali_{{ $dirt->name }}">
                                 <strong>
                                     @switch($i)
                                         @case(0)
@@ -288,7 +308,7 @@
                         </div>
                         @endfor
                     </div>
-                </div>
+                </div> --}}
 
             </div>
             <div class="modal-footer">

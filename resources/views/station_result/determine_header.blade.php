@@ -1,10 +1,10 @@
 @switch($method)
     @case(1)
-        <th>Icumsa</th>
-        <th>Moisture</th>
+        <th>IU</th>
+        <th>Moist</th>
         <th>Brix</th>
         <th>Pol</th>
-        <th>Purity</th>
+        <th>HK</th>
         <th>SO<sub>2</sub></th>
         <th>BJB</th>
         @break
@@ -12,7 +12,7 @@
         <th>Brix</th>
         <th>Pol</th>
         <th>Z</th>
-        <th>Purity</th>
+        <th>HK</th>
         @break
     @case(3)
         <th>Pol</th>
@@ -23,18 +23,18 @@
         <th>Brix</th>
         <th>Pol</th>
         <th>Z</th>
-        <th>Purity</th>
-        <th>Icumsa</th>
+        <th>HK</th>
+        <th>IU</th>
         <th>CaO</th>
         <th>pH</th>
-        <th>Turbidity</th>
+        <th>Turb</th>
         @break
     @case(5)
         <th>Brix</th>
         <th>Pol</th>
         <th>Z</th>
-        <th>Purity</th>
-        <th>Icumsa</th>
+        <th>HK</th>
+        <th>IU</th>
         @break
     @case(6)
         <th>Brix</th>
@@ -43,7 +43,7 @@
         @break
     @case(7)
         <th>Pol</th>
-        <th>Moisture</th>
+        <th>Moist</th>
         @break
     @case(8)
         <th>Pol</th>
@@ -52,37 +52,37 @@
     @case(9)
         <th>TDS</th>
         <th>pH</th>
-        <th>Hardness</th>
-        <th>Phospate</th>
+        <th>Hard</th>
+        <th>Phosp</th>
         @break
     @case(10)
-        <th>Icumsa</th>
-        <th>Moisture</th>
+        <th>IU</th>
+        <th>Moist</th>
         @break
     @case(11)
-        <th>Calcium</th>
+        <th>Calc</th>
         @break
     @case(12)
-        <th>Preparation</th>
+        <th>PI</th>
         <th>Fiber</th>
         @break
     @case(13)
         <th>Brix</th>
         <th>Pol</th>
         <th>Z</th>
-        <th>Purity</th>
-        <th>Rendemen</th>
+        <th>HK</th>
+        <th>Rend</th>
         @break
     @case(14)
         <th>Brix</th>
         <th>pH</th>
-        <th>Temperature</th>
+        <th>Temp</th>
         @break
     @case(15)
         <th>Brix</th>
         <th>Pol</th>
         <th>HK</th>
-        <th>Icumsa</th>
+        <th>IU</th>
         <th>Pan</th>
         <th>Palung</th>
         <th>Hl</th>

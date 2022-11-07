@@ -79,6 +79,7 @@ class MethodController extends Controller
     {
         Method::where('id', $id)->update([
             'name' => $request->name,
+            'admin' => Auth()->user()->name,
         ]);
         Log::writeLog('Method', 'Edit Method '.$request->name, Auth()->user()->name);
         return redirect()->back()->with('success', 'Method '.$request->name.' has been updated');

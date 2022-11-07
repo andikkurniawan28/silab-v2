@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Factor;
+use App\Models\Dirt;
 use App\Models\Log;
 use Illuminate\Http\Request;
 
-class FactorController extends Controller
+class DirtController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class FactorController extends Controller
      */
     public function index()
     {
-        $factors = Factor::all();
+        $dirts = Dirt::all();
         $stations = $this->serveStation();
-        return view('factor.index', compact('factors', 'stations'));
+        return view('dirt.index', compact('dirts', 'stations'));
     }
 
     /**
@@ -41,18 +41,18 @@ class FactorController extends Controller
         $request->request->add([
             'admin' => Auth()->user()->name,
         ]);
-        Factor::create($request->all());
-        Log::writeLog('Factor', 'Create New Factor', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Factor '.$request->name.' has been stored');
+        Dirt::create($request->all());
+        Log::writeLog('Dirt', 'Create New Dirt', Auth()->user()->name);
+        return redirect()->back()->with('success', 'Kotoran '.$request->name.' has been stored');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Factor  $factor
+     * @param  \App\Models\Dirt  $dirt
      * @return \Illuminate\Http\Response
      */
-    public function show(Factor $factor)
+    public function show(Dirt $dirt)
     {
         //
     }
@@ -60,10 +60,10 @@ class FactorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Factor  $factor
+     * @param  \App\Models\Dirt  $dirt
      * @return \Illuminate\Http\Response
      */
-    public function edit(Factor $factor)
+    public function edit(Dirt $dirt)
     {
         //
     }
@@ -72,30 +72,31 @@ class FactorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Factor  $factor
+     * @param  \App\Models\Dirt  $dirt
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        Factor::where('id', $id)->update([
+        Dirt::where('id', $id)->update([
             'name' => $request->name,
-            'value' => $request->value,
+            'interval' => $request->interval,
+            'punishment' => $request->punishment,
             'admin' => Auth()->user()->name,
         ]);
-        Log::writeLog('Factor', 'Edit Factor '.$request->name, Auth()->user()->name);
-        return redirect()->back()->with('success', 'Factor '.$request->name.' has been updated');
+        Log::writeLog('Dirt', 'Edit Dirt '.$request->name, Auth()->user()->name);
+        return redirect()->back()->with('success', 'Kotoran '.$request->name.' has been updated');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Factor  $factor
+     * @param  \App\Models\Dirt  $dirt
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Factor::where('id', $id)->delete();
-        Log::writeLog('Factor', 'Delete Factor', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Factor has been deleted');
+        Dirt::where('id', $id)->delete();
+        Log::writeLog('Dirt', 'Delete Dirt', Auth()->user()->name);
+        return redirect()->back()->with('success', 'Kotoran has been deleted');
     }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DirtController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SkmtController;
@@ -47,7 +48,7 @@ Route::get('station_result/{station_id}', [PageController::class, 'stationResult
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['auth', 'role_is_5']);
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['auth', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['auth', 'role_is_3']);
-Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
+Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['auth', 'role_is_3']);
 Route::get('timbangan_in_proses', [PageController::class, 'timbanganInProses'])->name('timbangan_in_proses')->middleware(['auth', 'role_is_5']);
 
 Route::get('timbangan_tetes', [WeightController::class, 'showTetes'])->name('timbangan_tetes')->middleware(['auth', 'role_is_1']);
@@ -58,7 +59,7 @@ Route::post('adjust_timbangan_rs_out', [WeightController::class, 'adjustRawSugar
 Route::post('adjust_timbangan_rs_in', [WeightController::class, 'adjustRawSugarIn'])->name('adjust_timbangan_rs_in')->middleware(['auth', 'role_is_1']);
 
 // Barcode
-Route::post('barcode_samples', [BarcodeController::class, 'showBarcode'])->name('barcode_samples')->middleware(['hmi_is_login', 'role_is_3']);
+Route::post('barcode_samples', [BarcodeController::class, 'showBarcode'])->name('barcode_samples')->middleware(['auth', 'role_is_3']);
 Route::post('ronsel_masakan', [RonselController::class, 'showBarcode'])->name('ronsel_masakan')->middleware(['auth', 'role_is_4']);
 
 // Report
@@ -88,6 +89,7 @@ Route::resource('roles', RoleController::class)->middleware(['auth', 'role_is_1'
 Route::resource('stations', StationController::class)->middleware(['auth', 'role_is_1']);
 Route::resource('methods', MethodController::class)->middleware(['auth', 'role_is_1']);
 Route::resource('factors', FactorController::class)->middleware(['auth', 'role_is_1']);
+Route::resource('dirts', DirtController::class)->middleware(['auth', 'role_is_1']);
 Route::resource('materials', MaterialController::class)->middleware(['auth', 'role_is_3']);
 Route::resource('samples', SampleController::class)->middleware(['auth', 'role_is_3']);
 

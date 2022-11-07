@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Rafaction;
+use App\Models\Dirt;
 use App\Models\Log;
 use Illuminate\Http\Request;
 
@@ -15,6 +16,7 @@ class RafactionController extends Controller
      */
     public function index()
     {
+        $dirts = Dirt::all();
         $rafactions = Rafaction::latest()->paginate(500);
         $rafactions_null = Rafaction::where('image1', '=', NULL)
             ->where('image2', '=', NULL)
@@ -22,7 +24,7 @@ class RafactionController extends Controller
             ->get();
         $rafactions_unscored = Rafaction::where('score', '=', NULL)->get();
         $stations = $this->serveStation();
-        return view('rafaction.index', compact('rafactions', 'rafactions_null', 'rafactions_unscored', 'stations'));
+        return view('rafaction.index', compact('rafactions', 'rafactions_null', 'rafactions_unscored', 'dirts', 'stations'));
     }
 
     /**
