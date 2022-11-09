@@ -56,9 +56,10 @@ class SkmtController extends Controller
      * @param  \App\Models\Rafaction  $rafaction
      * @return \Illuminate\Http\Response
      */
-    public function show(Rafaction $rafaction)
+    public function show(Rafaction $rafaction, $id)
     {
-        //
+        $data = Rafaction::find($id)->get()->last();
+        return view('documentation.report.skmt', compact('data'));
     }
 
     /**

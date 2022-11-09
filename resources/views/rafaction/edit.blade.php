@@ -12,13 +12,21 @@
                 @csrf
                 @method('PUT')
 
-                {{-- @include('components.input',[
-                    'label' => 'Code',
-                    'name' => 'code',
+                @include('components.input',[
+                    'label' => 'Antrian',
+                    'name' => 'barcode',
                     'type' => 'text',
-                    'value' => $rafaction->code,
+                    'value' => $rafaction->barcode,
                     'modifier' => 'required',
-                ]) --}}
+                ])
+
+                @include('components.input',[
+                    'label' => 'Score',
+                    'name' => 'score',
+                    'type' => 'text',
+                    'value' => $rafaction->score,
+                    'modifier' => 'required',
+                ])
 
             </div>
             <div class="modal-footer">

@@ -31,7 +31,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->request->add([
-            'password' => md5($request->password),
+            'password' => bcrypt($request->password),
             'admin' => Auth()->user()->name,
         ]);
         User::create($request->all());

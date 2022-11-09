@@ -25,7 +25,7 @@
                             <th>Score</th>
                             @endif
                             <th>Analyst</th>
-                            <th>Scanned @</th>
+                            <th>Created @</th>
                             @if(Auth()->user()->role_id < 2)
                             <th>Action</th>
                             @endif
@@ -52,6 +52,10 @@
                                     @include('components.icon', ['icon' => 'trash ']) 
                                     Delete
                                 </button>
+                                <a href="{{ route('skmts.show', $rafaction->id) }}" type="button" class="btn btn-info" target="_blank">
+                                    @include('components.icon', ['icon' => 'print ']) 
+                                    Print
+                                </a>
                             </td>
                             @endif
                         </tr>

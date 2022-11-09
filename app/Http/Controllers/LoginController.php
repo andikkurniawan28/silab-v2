@@ -48,7 +48,7 @@ class LoginController extends Controller
         User::insert([
             'name' => $request->name,
             'username' => $request->username,
-            'password' => md5($request->password),
+            'password' => bcrypt($request->password),
             'role_id' => 5,
             'admin' => $request->name,
         ]);

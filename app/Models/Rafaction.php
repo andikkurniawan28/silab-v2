@@ -27,6 +27,9 @@ class Rafaction extends Model
         'farmer',
         'score',
         'analyst',
+        'image1',
+        'image2',
+        'image3',
     ];
 
     public static function validateRequest($request)

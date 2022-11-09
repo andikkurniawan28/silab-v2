@@ -20,7 +20,7 @@
                         <select class="form-control" name="barcode">
                             @foreach ($rafactions_null as $rafaction_null)
                                 <option value="{{ $rafaction_null->barcode }}">
-                                    {{ $rafaction_null->barcode }} - Meja {{ $rafaction_null->spot }} - {{ $rafaction_null->created_at }}
+                                    {{ $rafaction_null->barcode }} - Meja {{ $rafaction_null->spot }}
                                 </option>
                             @endforeach
                           </select>

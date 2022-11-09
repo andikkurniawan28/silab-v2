@@ -110,15 +110,31 @@ class RafactionController extends Controller
      * @param  \App\Models\Rafaction  $rafaction
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Rafaction $rafaction, $id)
+    public function update(Request $request, $id)
     {
-        $score = Rafaction::generateScore($request);
-        return $score;
-        // Rafaction::find($request->barcode)->update([
-        //     'score' => $score,
-        // ]);
-        // Log::writeLog('Scoring MBS', 'Assign Score', Auth()->user()->name);
-        // return redirect()->back()->with('success', 'Scoring MBS has been assigned');
+        $data = Rafaction::validateRequest($request);
+        $request->request->add([
+            'vehicle' => $data['vehicle'],
+            'register' => $data['register'],
+            'truck_number' => $data['truck_number'],
+            'farmer' => $data['farmer'],
+            'cooperative' => $data['cooperative'],
+            'outpost' => $data['outpost'],
+            'program' => $data['program'],
+        ]);
+        Rafaction::find($id)->update([
+            'barcode' => $request->barcode,
+            'vehicle' => $request->vehicle,
+            'register' => $request->register,
+            'truck_number' => $request->truck_number,
+            'farmer' => $request->farmer,
+            'cooperative' => $request->cooperative,
+            'outpost' => $request->outpost,
+            'program' => $request->program,
+            'score' => $request->score,
+        ]);
+        Log::writeLog('Scoring MBS', 'Edit Data', Auth()->user()->name);
+        return redirect()->back()->with('success', 'Scoring MBS has berhasil diedit');
     }
 
     /**

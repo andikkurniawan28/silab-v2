@@ -34,6 +34,7 @@
                 <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>
                 <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="{{ route('timbangan_in_proses') }}">Timbangan In Proses</a>
+                <a class="collapse-item" href="{{ route('agroklimat_view') }}">Agroklimat</a>
             </div>
         </div>
     </li>
