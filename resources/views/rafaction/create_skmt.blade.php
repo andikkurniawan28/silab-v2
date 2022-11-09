@@ -20,7 +20,7 @@
                         <select class="form-control" name="barcode">
                             @foreach ($rafactions_null as $rafaction_null)
                                 <option value="{{ $rafaction_null->barcode }}">
-                                    {{ $rafaction_null->barcode }}
+                                    {{ $rafaction_null->barcode }} - Meja {{ $rafaction_null->spot }} - {{ $rafaction_null->created_at }}
                                 </option>
                             @endforeach
                           </select>
@@ -29,7 +29,7 @@
                 
                 @for($i=1; $i<=3; $i++)
                 <div class="form-group">
-                    <label for="exampleFormControlFile1">Image {{ $i }}</label>
+                    <label for="exampleFormControlFile1">Penampakan Tebu {{ $i }}</label>
                     <input 
                         type="file" 
                         class="form-control-file" 

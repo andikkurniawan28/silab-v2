@@ -35,7 +35,7 @@ class LoginController extends Controller
         if ($attempt) 
         {
             $request->session()->regenerate();
-            return redirect()->intended('dashboard');
+            return redirect()->intended();
         }
         else 
         {

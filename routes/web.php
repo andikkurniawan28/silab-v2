@@ -26,6 +26,7 @@ use App\Http\Controllers\OutpostController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\SpecialController;
 use App\Http\Controllers\StationController;
+use App\Http\Controllers\WaitingController;
 use App\Http\Controllers\ChemicalController;
 use App\Http\Controllers\MaterialController;
 use App\Http\Controllers\MejaTebuController;
@@ -38,6 +39,7 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\SaccharomatController;
+use App\Http\Controllers\RafactionScoreIsNullController;
 
 // Page
 Route::get('/', [PageController::class, 'index'])->name('dashboard')->middleware('auth');
@@ -70,16 +72,15 @@ Route::post('core_sample_report', [ReportController::class, 'coreSampleReport'])
 Route::post('mollases_certificate', [CertificateController::class, 'mollasesCertificate'])->name('mollases_certificate')->middleware(['auth', 'role_is_3']);
 Route::post('kapur_certificate', [CertificateController::class, 'kapurCertificate'])->name('kapur_certificate')->middleware(['auth', 'role_is_3']);
 
-
 // Authentication
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::get('logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('register', [LoginController::class, 'register'])->name('register');
 Route::post('login-process', [LoginController::class, 'login'])->name('login-process');
-Route::post('register-process', [LoginController::class, 'registerProcess'])->name('register-process');
-Route::get('login_hmi', [LoginController::class, 'loginHmi'])->name('login_hmi');
-Route::post('login_hmi-process', [LoginController::class, 'loginHmiProccess'])->name('login_hmi-process');
-Route::get('logout_hmi', [LoginController::class, 'logoutHmi'])->name('logout_hmi');
+// Route::get('register', [LoginController::class, 'register'])->name('register');
+// Route::post('register-process', [LoginController::class, 'registerProcess'])->name('register-process');
+// Route::get('login_hmi', [LoginController::class, 'loginHmi'])->name('login_hmi');
+// Route::post('login_hmi-process', [LoginController::class, 'loginHmiProccess'])->name('login_hmi-process');
+// Route::get('logout_hmi', [LoginController::class, 'logoutHmi'])->name('logout_hmi');
 
 // User
 Route::resource('users', UserController::class)->middleware(['auth', 'role_is_1']);
@@ -156,6 +157,8 @@ Route::post('specials_verification', [SpecialController::class, 'processVerifica
 Route::post('taxation_export', [TaxationController::class, 'export'])->middleware(['auth', 'role_is_2'])->name('taxation_export');
 
 // Meja Tebu
-Route::get('meja_tebu/{nomor_meja}', MejaTebuController::class)->middleware(['auth', 'role_is_3']);
+Route::get('meja_tebu/{nomor_meja}', MejaTebuController::class)->name('meja_tebu')->middleware(['auth', 'role_is_3']);
+Route::get('waiting/{nomor_meja}/{rafaction_id}', WaitingController::class)->name('waiting');
+Route::get('rafaction_checking/{rafaction_id}', RafactionScoreIsNullController::class)->name('rafaction_checking')->middleware(['auth', 'role_is_3']);
 
 

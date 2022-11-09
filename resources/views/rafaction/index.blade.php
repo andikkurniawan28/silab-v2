@@ -21,31 +21,28 @@
                             <th>ID</th>
                             <th>Antrian</th>
                             <th>Meja</th>
-                            <th>Register</th>
-                            {{-- <th>Kendaraan</th> --}}
-                            <th>KUD</th>
-                            <th>Pos</th>
-                            <th>Asal</th>
+                            @if(Auth()->user()->role_id < 2)
                             <th>Score</th>
+                            @endif
                             <th>Analyst</th>
-                            <th>Time</th>
+                            <th>Scanned @</th>
+                            @if(Auth()->user()->role_id < 2)
                             <th>Action</th>
+                            @endif
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($rafactions as $rafaction)
                         <tr>
                             <td>{{ $rafaction->id }}</td>
-                            <td>{{ $rafaction->barcode }}</td>
+                            <td><a href="#" data-toggle="modal" data-target="#show{{ $rafaction->id }}">{{ $rafaction->barcode }}</a></td>
                             <td>{{ $rafaction->spot }}</td>
-                            <td>{{ $rafaction->register }}</td>
-                            {{-- <td>{{ $rafaction->vehicle }}</td> --}}
-                            <td>{{ $rafaction->cooperative }}</td>
-                            <td>{{ $rafaction->outpost }}</td>
-                            <td>{{ $rafaction->program }}</td>
+                            @if(Auth()->user()->role_id < 2)
                             <td>{{ $rafaction->score }}</td>
+                            @endif
                             <td>{{ $rafaction->analyst }}</td>
                             <td>{{ $rafaction->created_at }}</td>
+                            @if(Auth()->user()->role_id < 2)
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $rafaction->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -56,6 +53,7 @@
                                     Delete
                                 </button>
                             </td>
+                            @endif
                         </tr>
                         @endforeach
                     </tbody>
@@ -63,14 +61,35 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#meja_1">
                 @include('components.icon', ['icon' => 'plus']) 
-                Create Rafaksi
+                Meja 1
+            </button>
+
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#meja_2">
+                @include('components.icon', ['icon' => 'plus']) 
+                Meja 2
+            </button>
+
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#meja_3">
+                @include('components.icon', ['icon' => 'plus']) 
+                Meja 3
+            </button>
+
+            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#meja_4">
+                @include('components.icon', ['icon' => 'plus']) 
+                Meja 4
+            </button>
+
+            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#meja_5">
+                @include('components.icon', ['icon' => 'plus']) 
+                Meja 5
             </button>
             
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#createSKMT">
+            <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#createSKMT">
                 @include('components.icon', ['icon' => 'file']) 
-                Create SKMT
+                SKMT
             </button>
         </div>
     </div>
@@ -78,8 +97,13 @@
 @endsection
 
 @section('modal')
-@include('rafaction.create')
+@include('rafaction.meja_1')
+@include('rafaction.meja_2')
+@include('rafaction.meja_3')
+@include('rafaction.meja_4')
+@include('rafaction.meja_5')
 @include('rafaction.create_skmt')
+@include('rafaction.show')
 @include('rafaction.edit')
 @include('rafaction.delete')
 @endsection

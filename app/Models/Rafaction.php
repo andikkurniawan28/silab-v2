@@ -23,14 +23,20 @@ class Rafaction extends Model
         'cooperative',
         'outpost',
         'program',
+        'truck_number',
+        'farmer',
         'score',
         'analyst',
     ];
 
     public static function validateRequest($request)
     {
+        $barcode_info = Register::findBarcodeInfo($request->barcode);
+        $register = $barcode_info['register'];
+        $truck_number = $barcode_info['nopol'];
+        $farmer = $barcode_info['nama_petani'];
+        
         $vehicle = Core_sample::findVehicle($request->barcode);
-        $register = Register::findRegister($request->barcode);
         $cooperative = Cooperative::getCooperative($register);
         $outpost = Outpost::getOutpost($register);
         $program = Program::getProgram($register);
@@ -42,6 +48,8 @@ class Rafaction extends Model
             'cooperative' => $cooperative,
             'outpost' => $outpost,
             'program' => $program,
+            'truck_number' => $truck_number,
+            'farmer' => $farmer,
         ];
     }
 

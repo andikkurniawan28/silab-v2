@@ -22,6 +22,8 @@ class CreateRafactionsTable extends Migration
             $table->string('cooperative')->nullable();
             $table->string('outpost')->nullable();
             $table->string('program')->nullable();
+            $table->string('truck_number')->nullable();
+            $table->string('farmer')->nullable();
             $table->string('score')->nullable();
             $table->string('analyst')->nullable();
             $table->string('image1')->nullable();

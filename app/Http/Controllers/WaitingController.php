@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Rafaction;
 
-class MejaTebuController extends Controller
+class WaitingController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -12,7 +13,7 @@ class MejaTebuController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke($nomor_meja)
+    public function __invoke($nomor_meja, $rafaction_id)
     {
         if ($nomor_meja > 5 || $nomor_meja < 1)
         {
@@ -20,7 +21,8 @@ class MejaTebuController extends Controller
         }
         else
         {
-            return view('meja_tebu.index', compact('nomor_meja'));
+            $data = Rafaction::where('id', $rafaction_id)->get()->last();
+            return view('meja_tebu.waiting', compact('nomor_meja', 'rafaction_id', 'data'));
         }
     }
 }

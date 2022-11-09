@@ -47,7 +47,8 @@ class Core_sample extends Model
     public static function validateRequest($request)
     {
         $vehicle = self::findVehicle($request->barcode);
-        $register = Register::findRegister($request->barcode);
+        $barcode_info = Register::findBarcodeInfo($request->barcode);
+        $register = $barcode_info['register'];
         $cooperative = Cooperative::getCooperative($register);
         $outpost = Outpost::getOutpost($register);
         $program = Program::getProgram($register);

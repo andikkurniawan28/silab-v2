@@ -115,11 +115,12 @@
                 <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
                 <a class="collapse-item" href="{{ route('dirts.index') }}">Kotoran</a>
                 <a class="collapse-item" href="{{ route('activity_log') }}">Log Aktifitas</a>
-                
-                {{-- @if(session('name') == 'Andik Kurniawan') --}}
-                    <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
-                {{-- @endif --}}
-                
+                <a class="collapse-item" href="{{ route('meja_tebu', 1) }}">Meja Tebu 1</a>
+                <a class="collapse-item" href="{{ route('meja_tebu', 2) }}">Meja Tebu 2</a>
+                <a class="collapse-item" href="{{ route('meja_tebu', 3) }}">Meja Tebu 3</a>
+                <a class="collapse-item" href="{{ route('meja_tebu', 4) }}">Meja Tebu 4</a>
+                <a class="collapse-item" href="{{ route('meja_tebu', 5) }}">Meja Tebu 5</a>
+                <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
             </div>
         </div>
     </li>

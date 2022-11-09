@@ -9,9 +9,9 @@ class Register extends Model
 {
     use HasFactory;
 
-    public static function findRegister($barcode)
+    public static function findBarcodeInfo($barcode)
     {
-        $url = 'http://192.168.20.45:8111/getregister/';
+        $url = 'http://192.168.20.45:8111/getregisterinfo/';
         $request_url = $url.$barcode;
         $curl = curl_init($request_url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
@@ -20,10 +20,15 @@ class Register extends Model
         curl_close($curl);
         $data = json_decode($response, true);
 
-        if (array_key_exists("register", $data))
+        if($response != 'Internal Server Error')
+            $data = json_decode($response, true);
+        else
         {
-            return $data['register'];
+            $data['register'] = NULL;
+            $data['nopol'] = NULL;
+            $data['nama_petani'] = NULL;
         }
-        else return NULL;
+
+        return $data;
     }
 }
