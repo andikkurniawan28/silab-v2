@@ -50,6 +50,8 @@
                 @foreach($stations as $station)
                     <a class="collapse-item" href="{{ route('station_result', $station->id) }}">{{ $station->name }}</a>
                 @endforeach
+                <a class="collapse-item" href="{{ route('core_samples_view') }}">{{ "Core Sample" }}</a>
+                <a class="collapse-item" href="{{ route('rafactions_view') }}">{{ "MBS" }}</a>
             </div>
         </div>
     </li>

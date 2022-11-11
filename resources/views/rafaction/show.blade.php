@@ -3,7 +3,7 @@
     <div class="modal-dialog" rafaction="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="show{{ $rafaction->id }}Label">Edit {{ ucfirst('Scoring MBS') }}</h5>
+                <h5 class="modal-title" id="show{{ $rafaction->id }}Label">Informasi</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">

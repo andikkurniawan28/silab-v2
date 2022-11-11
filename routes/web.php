@@ -42,6 +42,8 @@ use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\SaccharomatController;
 use App\Http\Controllers\RainMonitoringController;
+use App\Http\Controllers\RafactionMonitoringController;
+use App\Http\Controllers\CoreSampleMonitoringController;
 use App\Http\Controllers\RafactionScoreIsNullController;
 
 // Page
@@ -170,5 +172,9 @@ Route::get('agroklimat/', RainMonitoringController::class)->name('agroklimat_vie
 
 // TestApi
 Route::get('test/{nomor_bor}', TestApi::class)->name('test');
+
+// View
+Route::get('core_samples_view', CoreSampleMonitoringController::class)->name('core_samples_view');
+Route::get('rafactions_view', RafactionMonitoringController::class)->name('rafactions_view');
 
 
