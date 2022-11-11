@@ -38,18 +38,18 @@ class CoreSampleController extends Controller
      */
     public function store(Request $request)
     {
-        $data = Core_sample::validateRequest($request);
-        $request->request->add([
-            'vehicle' => $data['vehicle'],
-            'register' => $data['register'],
-            'cooperative' => $data['cooperative'],
-            'outpost' => $data['outpost'],
-            'program' => $data['program'],
-            'yield' => $data['yield'],
-            'analyst' => Auth()->user()->name,
-        ]);
+        // $data = Core_sample::validateRequest($request);
+        // $request->request->add([
+        //     'vehicle' => $data['vehicle'],
+        //     'register' => $data['register'],
+        //     'cooperative' => $data['cooperative'],
+        //     'outpost' => $data['outpost'],
+        //     'program' => $data['program'],
+        //     'yield' => $data['yield'],
+        //     'analyst' => Auth()->user()->name,
+        // ]);
         Core_sample::create($request->all());
-        Log::writeLog('Core Sample', 'Submit Data', Auth()->user()->name);
+        // Log::writeLog('Core Sample', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Data has been stored');
     }
 

@@ -20,13 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Barcode</th>
-                            <th>Spot</th>
-                            <th>Batch</th>
-                            <th>Register</th>
-                            <th>Vehicle</th>
-                            <th>KUD</th>
-                            <th>Pos</th>
-                            <th>Program</th>
                             <th>Brix</th>
                             <th>Pol</th>
                             <th>Yield</th>
@@ -39,14 +32,13 @@
                         @foreach ($core_samples as $core_sample)
                         <tr>
                             <td>{{ $core_sample->id }}</td>
-                            <td>{{ $core_sample->barcode }}</td>
-                            <td>{{ $core_sample->spot }}</td>
-                            <td>{{ $core_sample->batch }}</td>
-                            <td>{{ $core_sample->register }}</td>
-                            <td>{{ $core_sample->vehicle }}</td>
-                            <td>{{ $core_sample->cooperative }}</td>
-                            <td>{{ $core_sample->outpost }}</td>
-                            <td>{{ $core_sample->program }}</td>
+                            <td>
+                                @if($core_sample->register != NULL)
+                                <a href="#" data-toggle="modal" data-target="#show{{ $core_sample->id }}">{{ $core_sample->barcode }}</a>
+                                @else
+                                {{ $core_sample->barcode }}
+                                @endif
+                            </td>
                             <td>{{ $core_sample->percent_brix }}</td>
                             <td>{{ $core_sample->percent_pol }}</td>
                             <td>{{ $core_sample->yield }}</td>
@@ -78,10 +70,10 @@
             </div>
         </div>
         <div class="card-footer">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
-            </button>
+            </button> --}}
             <a href="core_samples_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction
@@ -94,6 +86,7 @@
 
 @section('modal')
 @include('core_sample.create')
+@include('core_sample.show')
 @include('core_sample.edit')
 @include('core_sample.delete')
 @endsection

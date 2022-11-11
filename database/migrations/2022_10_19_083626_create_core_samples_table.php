@@ -20,9 +20,13 @@ class CreateCoreSamplesTable extends Migration
             $table->string('batch')->nullable();
             $table->string('register')->nullable();
             $table->string('vehicle')->nullable();
+            $table->string('truck_number')->nullable();
+            $table->string('farmer')->nullable();
             $table->string('cooperative')->nullable();
             $table->string('outpost')->nullable();
             $table->string('program')->nullable();
+            $table->boolean('pucuk')->default(0);
+            $table->boolean('lonjoran')->default(0);
             $table->float('percent_brix')->nullable();
             $table->float('percent_pol')->nullable();
             $table->float('yield')->nullable();

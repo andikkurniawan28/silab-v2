@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TestApi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DirtController;
 use App\Http\Controllers\PageController;
@@ -165,6 +166,9 @@ Route::get('rafaction_checking/{rafaction_id}', RafactionScoreIsNullController::
 
 // Agro Klimat
 Route::get('agroklimat/{kud}/{humidity}/{cahaya}/{curah_hujan}', RainController::class)->name('agroklimat');
-Route::get('agroklimat/view', RainMonitoringController::class)->name('agroklimat_view')->middleware('auth');
+Route::get('agroklimat/', RainMonitoringController::class)->name('agroklimat_view')->middleware('auth');
+
+// TestApi
+Route::get('test/{nomor_bor}', TestApi::class)->name('test');
 
 

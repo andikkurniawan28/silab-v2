@@ -20,6 +20,8 @@ class Core_sample extends Model
         'batch',
         'register',
         'vehicle',
+        'truck_number',
+        'farmer',
         'cooperative',
         'outpost',
         'program',
@@ -189,6 +191,13 @@ class Core_sample extends Model
             $program[$i]->yield_all = self::findAnalysisByColumn($time, 'program', $program[$i]->name, 'yield');
         }
         return $program;
+    }
+
+    public static function getIdViaNomorBorForHmi($nomor_bor)
+    {
+        return Core_sample::where('spot', $nomor_bor)
+            ->where('register', '=', NULL)
+            ->get()->last()->id;
     }
 
 }

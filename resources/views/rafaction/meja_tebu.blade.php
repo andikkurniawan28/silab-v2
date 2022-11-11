@@ -1,10 +1,10 @@
 
 
-<div class="modal fade bd-example-modal-xl" id="meja_1" tabindex="-1" sample="dialog" aria-labelledby="meja_1Label" aria-hidden="true">
+<div class="modal fade bd-example-modal-xl" id="meja_{{ $number }}" tabindex="-1" sample="dialog" aria-labelledby="meja_{{ $number }}Label" aria-hidden="true">
     <div class="modal-dialog modal-xl" sample="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="meja_1Label">Meja Tebu 1</h5>
+                <h5 class="modal-title" id="meja_{{ $number }}Label">Meja Tebu {{ $number }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -17,7 +17,7 @@
                     <label for="role_id" class="col-sm-2 col-form-label">Antrian</label>
                     <div class="col-sm-10">
                         <select class="form-control" name="barcode">
-                            @foreach ($rafactions_unscored[1] as $rafaction_unscored)
+                            @foreach ($rafactions_unscored[$number] as $rafaction_unscored)
                                 <option value="{{ $rafaction_unscored->barcode }}">
                                     {{ $rafaction_unscored->barcode }} 
                                 </option>

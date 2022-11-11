@@ -20,22 +20,22 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Spot',
+                    'label' => 'No Bor',
                     'name' => 'spot',
                     'type' => 'number',
                     'value' => '',
                     'modifier' => '',
                 ])
 
-                @include('components.input',[
+                {{-- @include('components.input',[
                     'label' => 'Batch',
                     'name' => 'batch',
                     'type' => 'text',
                     'value' => '',
                     'modifier' => '',
-                ])
+                ]) --}}
 
-                @include('components.input',[
+                {{-- @include('components.input',[
                     'label' => 'Brix',
                     'name' => 'percent_brix',
                     'type' => 'number',
@@ -49,7 +49,7 @@
                     'type' => 'number',
                     'value' => '',
                     'modifier' => '',
-                ])
+                ]) --}}
 
             </div>
             <div class="modal-footer">
