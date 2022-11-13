@@ -24,6 +24,14 @@ class CreateRafactionsTable extends Migration
             $table->string('program')->nullable();
             $table->string('truck_number')->nullable();
             $table->string('farmer')->nullable();
+            $table->integer('pucuk')->nullable();
+            $table->integer('sogolan')->nullable();
+            $table->integer('daduk')->nullable();
+            $table->integer('akar')->nullable();
+            $table->integer('tali')->nullable();
+            $table->integer('terbakar')->nullable();
+            $table->integer('muda')->nullable();
+            $table->integer('lelesan')->nullable();
             $table->string('score')->nullable();
             $table->string('analyst')->nullable();
             $table->string('image1')->nullable();

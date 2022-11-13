@@ -21,7 +21,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Spot',
+                    'label' => 'No Bor',
                     'name' => 'spot',
                     'type' => 'number',
                     'value' => $core_sample->spot,

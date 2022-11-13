@@ -70,10 +70,12 @@
             </div>
         </div>
         <div class="card-footer">
-            {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
+            @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus ']) 
                 Create
-            </button> --}}
+            </button>
+            @endif
             <a href="core_samples_correction" type="button" class="btn btn-info" target="_blank">
                 @include('components.icon', ['icon' => 'history ']) 
                 Correction

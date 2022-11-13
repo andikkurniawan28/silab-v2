@@ -32,7 +32,7 @@
                     <div class="col-sm-10">
                         @for($i = 0; $i < $dirt->interval; $i++)
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="{{ $dirt->name }}" id="{{ $dirt->name }}" value="{{ $i }}"
+                            <input class="form-check-input" type="radio" name="{{ strtolower($dirt->name) }}" id="{{ $dirt->name }}" value="{{ $i }}"
                                 @if($i == 0)
                                 checked="checked"
                                 @endif

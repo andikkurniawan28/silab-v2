@@ -154,6 +154,14 @@ class RafactionController extends Controller
     {
         $score = Rafaction::generateScore($request);
         Rafaction::where('barcode', $request->barcode)->update([
+            'pucuk' => $request->pucuk,
+            'sogolan' => $request->sogolan,
+            'daduk' => $request->daduk,
+            'akar' => $request->akar,
+            'tali' => $request->tali,
+            'terbakar' => $request->terbakar,
+            'muda' => $request->muda,
+            'lelesan' => $request->lelesan,
             'score' => $score,
             'analyst' => Auth()->user()->name,
         ]);

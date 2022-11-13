@@ -25,7 +25,6 @@
 
 				<form class="login100-form validate-form" method="POST" action="{{ route('login-process') }}">
                     @csrf
-                    @method('POST')
 
 					<span class="login100-form-title">
 						Login
