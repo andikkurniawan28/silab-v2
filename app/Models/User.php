@@ -21,6 +21,7 @@ class User extends Authenticatable
         'is_active',
         'hmi_access',
         'entrance_access',
+        'image',
     ];
 
     public static function serveAll()

@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_active')->default(1);
             $table->string('hmi_access')->nullable();
             $table->string('entrance_access')->nullable();
+            $table->string('image')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });

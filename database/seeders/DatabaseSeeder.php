@@ -533,6 +533,14 @@ class DatabaseSeeder extends Seeder
                 'hmi_access' => NULL,
                 'admin' => 'Andik Kurniawan',
             ],
+            [
+                'role_id' => 3,
+                'name' => 'Mardiyanto',
+                'username' => 'mardiyanto',
+                'password' => bcrypt('mardiyanto987'),
+                'hmi_access' => NULL,
+                'admin' => 'Andik Kurniawan',
+            ],
         ];
         User::insert($users);
         

@@ -43,6 +43,7 @@ use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\SaccharomatController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RainMonitoringController;
+use App\Http\Controllers\UploadUserImageController;
 use App\Http\Controllers\RafactionMonitoringController;
 use App\Http\Controllers\CoreSampleMonitoringController;
 use App\Http\Controllers\RafactionScoreIsNullController;
@@ -181,4 +182,8 @@ Route::get('rafactions_view', RafactionMonitoringController::class)->name('rafac
 
 // Change Password
 Route::post('change_password', ChangePasswordController::class)->name('change_password');
+
+// Upload Image
+Route::post('upload_image', UploadUserImageController::class)->name('upload_image');
+
 

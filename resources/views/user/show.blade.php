@@ -10,6 +10,14 @@
 
                 <form method="POST" action="#" class="text-dark">
 
+                @if($user->image != NULL)
+                    <div class="form-group row text-center">
+                        <label for="image" class="col-sm-2 col-form-label">Image</label>
+                        <img class="img-profile rounded-circle" src="{{ Storage::url('public/image/').$user->image }}" width="200" height="200"></img>
+                    </div>
+                    <br>
+                @endif
+
                 @include('components.input',[
                     'label' => 'Name',
                     'name' => 'name',
