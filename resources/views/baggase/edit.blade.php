@@ -37,7 +37,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Dry',
+                    'label' => 'ZK',
                     'name' => 'dry',
                     'type' => 'number',
                     'value' => $baggase->dry,
@@ -45,7 +45,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Water',
+                    'label' => 'Air',
                     'name' => 'water',
                     'type' => 'number',
                     'value' => $baggase->water,

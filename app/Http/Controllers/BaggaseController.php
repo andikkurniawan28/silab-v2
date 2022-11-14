@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 
 class BaggaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $baggases = Baggase::serveAll();
@@ -23,56 +18,26 @@ class BaggaseController extends Controller
         return view('baggase.index', compact('baggases', 'samples', 'stations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         return self::handleRequest($request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Baggase  $baggase
-     * @return \Illuminate\Http\Response
-     */
     public function show(Baggase $baggase)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Baggase  $baggase
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Baggase $baggase)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Baggase  $baggase
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         Baggase::find($id)->update([
@@ -87,20 +52,14 @@ class BaggaseController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Baggase', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Ampas has been updated');
+        return redirect()->back()->with('success', 'Analisa Ampas berhasil diupdate');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Baggase  $baggase
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Baggase::find($id)->delete();
         Log::writeLog('Baggase', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Ampas has been deleted');
+        return redirect()->back()->with('success', 'Analisa Ampas berhasil dihapus');
     }
 
     public function showCorrection()
@@ -120,7 +79,7 @@ class BaggaseController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -131,7 +90,7 @@ class BaggaseController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Baggase', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Ampas has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Ampas berhasil diverifikasi oleh '.$request->master);
         }
     }
 
@@ -142,6 +101,9 @@ class BaggaseController extends Controller
 
     public function handleRequest($request)
     {   
+        if(Sample::where('id', $request->id)->count() == 0)
+            return redirect()->back()->with('error', 'Error : Barcode tidak terdaftar!');
+
         $station_id = Sample::checkSampleStation($request->sample_id);
         $find_pol = Saccharomat::findPolCount($request->sample_id);
 
@@ -161,7 +123,7 @@ class BaggaseController extends Controller
                 $corrected_pol = Saccharomat::where('sample_id', $request->sample_id)->get()->first()->pol;
             }
         }
-        else return redirect()->back()->with('error', 'Error : Sample ID has not registered on Saccharomat');
+        else return redirect()->back()->with('error', 'Error : Barcode tidak ditemukan di database Saccharomat!');
 
         $request->request->add([
             'corrected_pol' => $corrected_pol,
@@ -172,11 +134,9 @@ class BaggaseController extends Controller
 
         Baggase::create($request->all());
         Log::writeLog('Baggase', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Ampas has been stored');
+        return redirect()->back()->with('success', 'Analisa Ampas berhasil disimpan');
     }
-
     
-
 }
 
 

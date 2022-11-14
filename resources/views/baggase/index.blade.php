@@ -16,20 +16,20 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
-                    <p class="mb-4">
+                    {{-- <p class="mb-4">
                         Untuk material Ampas, <code>Corrected Pol = Pol Baca * Faktor</code> dari <a href="saccharomats" target="_blank">Saccharomat</a>. 
                         Untuk material Blotong, <code>Corrected Pol = Pol Baca</code> <a href="saccharomats" target="_blank">Saccharomat</a>. 
-                    </p>
+                    </p> --}}
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Material</th>
                             <th>Pol</th>
-                            <th>Dry</th>
-                            <th>Water</th>
-                            <th>Analyst</th>
+                            <th>ZK</th>
+                            <th>Air</th>
+                            {{-- <th>Analyst</th>
                             <th>Master</th>
-                            <th>Created @</th>
+                            <th>Created @</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -37,13 +37,15 @@
                         @foreach ($baggases as $baggase)
                         <tr>
                             <td>{{ $baggase->id }}</td>
-                            <td>{{ $baggase->material_name }} <sub>({{ $baggase->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $baggase->id }}">{{ $baggase->material_name }}</a>
+                            </td>
                             <td>{{ $baggase->corrected_pol }}</td>
                             <td>{{ $baggase->dry }}</td>
                             <td>{{ $baggase->water }}</td>
-                            <td>{{ $baggase->analyst }}</td>
+                            {{-- <td>{{ $baggase->analyst }}</td>
                             <td>{{ $baggase->master }}</td>
-                            <td>{{ $baggase->created_at }}</td>
+                            <td>{{ $baggase->created_at }}</td> --}}
                             <td>
                                 @if($baggase->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $baggase->id }}">
@@ -102,6 +104,7 @@
 
 @section('modal')
 @include('baggase.create')
+@include('baggase.show')
 @include('baggase.edit')
 @include('baggase.delete')
 @endsection

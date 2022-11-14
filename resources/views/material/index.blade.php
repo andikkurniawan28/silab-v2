@@ -20,11 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Station</th>
-                            <th>Method</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,12 +27,9 @@
                         @foreach ($materials as $material)
                         <tr>
                             <td>{{ $material->id }}</td>
-                            <td>{{ $material->name }}</td>
-                            <td>{{ $material->station_name }} <sub>({{ $material->station_id }})</sub></td>
-                            <td>{{ $material->method_name }} <sub>({{ $material->method_id }})</sub></td>
-                            <td>{{ $material->admin }}</td>
-                            <td>{{ $material->created_at }}</td>
-                            <td>{{ $material->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $material->id }}">{{ $material->name }}</a>
+                            </td>
                             <td>
                                 @if(Auth()->user()->role_id != 1)
                                 <h4>
@@ -75,6 +67,7 @@
 
 @section('modal')
 @include('material.create')
+@include('material.show')
 @include('material.edit')
 @include('material.delete')
 @endsection

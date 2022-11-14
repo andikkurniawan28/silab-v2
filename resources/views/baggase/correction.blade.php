@@ -21,8 +21,8 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Pol</th>
-                            <th>Dry</th>
-                            <th>Water</th>
+                            <th>ZK</th>
+                            <th>Air</th>
                             <th>Corrector</th>
                             <th>Created @</th>
                             <th>Updated @</th>

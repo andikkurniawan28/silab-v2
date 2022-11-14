@@ -21,9 +21,6 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Moisture<sub>(%)</sub></th>
-                            <th>Analyst</th>
-                            <th>Master</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -31,11 +28,10 @@
                         @foreach ($moistures as $moisture)
                         <tr>
                             <td>{{ $moisture->id }}</td>
-                            <td>{{ $moisture->material_name }} <sub>({{ $moisture->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $moisture->id }}">{{ $moisture->material_name }}</a>
+                            </td>
                             <td>{{ $moisture->moisture }}</td>
-                            <td>{{ $moisture->analyst }}</td>
-                            <td>{{ $moisture->master }}</td>
-                            <td>{{ $moisture->created_at }}</td>
                             <td>
                                 @if($moisture->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $moisture->id }}">
@@ -94,6 +90,7 @@
 
 @section('modal')
 @include('moisture.create')
+@include('moisture.show')
 @include('moisture.edit')
 @include('moisture.delete')
 @endsection

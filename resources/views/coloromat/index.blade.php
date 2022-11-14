@@ -21,10 +21,6 @@
                             <th>ID</th>
                             <th>Material</th>
                             <th>Icumsa<sub>(IU)</sub></th>
-                            <th>Analyst</th>
-                            <th>Preparation</th>
-                            <th>Master</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,12 +28,10 @@
                         @foreach ($coloromats as $coloromat)
                         <tr>
                             <td>{{ $coloromat->id }}</td>
-                            <td>{{ $coloromat->material_name }} <sub>({{ $coloromat->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $coloromat->id }}">{{ $coloromat->material_name }}</a>
+                            </td>
                             <td>{{ $coloromat->icumsa }}</td>
-                            <td>{{ $coloromat->analyst }}</td>
-                            <td>{{ $coloromat->preparation }}</td>
-                            <td>{{ $coloromat->master }}</td>
-                            <td>{{ $coloromat->created_at }}</td>
                             <td>
                                 @if($coloromat->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $coloromat->id }}">
@@ -96,6 +90,7 @@
 
 @section('modal')
 @include('coloromat.create')
+@include('coloromat.show')
 @include('coloromat.edit')
 @include('coloromat.delete')
 @endsection

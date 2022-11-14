@@ -20,7 +20,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Dry',
+                    'label' => 'ZK',
                     'name' => 'dry',
                     'type' => 'number',
                     'value' => '',

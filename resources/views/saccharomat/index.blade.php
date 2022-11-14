@@ -16,8 +16,8 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
-                    <p class="mb-4">Untuk material Gula & Raw Sugar, data yang diproses di hasil analisa adalah <code>HK</code> dengan rumus <code>( % Brix = 100 - % Moisture )</code>. Untuk material Ampas, Pol Baca nantinya akan dikoreksi di sesi 
-                        <a href="baggases" target="_blank">Analisa Ampas.</a> Untuk material Blotong, <code>( Pol Koreksi = Pol Baca ) </code>. Data yang ada pada tabel ini telah terkoreksi dengan faktor yang telah ditentukan oleh sistem.</p>
+                    {{-- <p class="mb-4">Untuk material Gula & Raw Sugar, data yang diproses di hasil analisa adalah <code>HK</code> dengan rumus <code>( % Brix = 100 - % Moisture )</code>. Untuk material Ampas, Pol Baca nantinya akan dikoreksi di sesi 
+                        <a href="baggases" target="_blank">Analisa Ampas.</a> Untuk material Blotong, <code>( Pol Koreksi = Pol Baca ) </code>. Data yang ada pada tabel ini telah terkoreksi dengan faktor yang telah ditentukan oleh sistem.</p> --}}
                     <thead>
                         <tr>
                             <th>ID</th>
@@ -26,12 +26,6 @@
                             <th>Pol<sub>(%)</sub></th>
                             <th>Pol</th>
                             <th>HK<sub>(%)</sub></th>
-                            <th>Rend</th>
-                            <th>Analyst</th>
-                            <th>Prep1</th>
-                            <th>Prep2</th>
-                            <th>Master</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,17 +33,13 @@
                         @foreach ($saccharomats as $saccharomat)
                         <tr>
                             <td>{{ $saccharomat->id }}</td>
-                            <td>{{ $saccharomat->material_name }} <sub>({{ $saccharomat->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $saccharomat->id }}">{{ $saccharomat->material_name }}</a>
+                            </td>
                             <td>{{ $saccharomat->percent_brix }}</td>
                             <td>{{ $saccharomat->percent_pol }}</td>
                             <td>{{ $saccharomat->pol }}</td>
                             <td>{{ $saccharomat->purity }}</td>
-                            <td>{{ $saccharomat->yield }}</td>
-                            <td>{{ $saccharomat->analyst }}</td>
-                            <td>{{ $saccharomat->preparation1 }}</td>
-                            <td>{{ $saccharomat->preparation2 }}</td>
-                            <td>{{ $saccharomat->master }}</td>
-                            <td>{{ $saccharomat->created_at }}</td>
                             <td>
                                 @if($saccharomat->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $saccharomat->id }}">
@@ -108,6 +98,7 @@
 
 @section('modal')
 @include('saccharomat.create')
+@include('saccharomat.show')
 @include('saccharomat.edit')
 @include('saccharomat.delete')
 @endsection

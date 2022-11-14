@@ -20,11 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Material</th>
-                            <th>Station</th>
-                            <th>Method</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,12 +27,9 @@
                         @foreach ($samples as $sample)
                         <tr>
                             <td>{{ $sample->id }}</td>
-                            <td>{{ $sample->material_name }} <sub>({{ $sample->material_id }})</sub></td>
-                            <td>{{ $sample->station_name }} <sub>({{ $sample->station_id }})</sub></td>
-                            <td>{{ $sample->method_name }} <sub>({{ $sample->method_id }})</sub></td>
-                            <td>{{ $sample->admin }}</td>
-                            <td>{{ $sample->created_at }} </td>
-                            <td>{{ $sample->updated_at }} </td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $sample->id }}">{{ $sample->material_name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sample->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -66,6 +58,7 @@
 
 @section('modal')
 @include('sample.create')
+@include('sample.show')
 @include('sample.edit')
 @include('sample.delete')
 @endsection
