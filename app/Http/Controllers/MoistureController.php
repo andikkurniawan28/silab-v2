@@ -45,7 +45,7 @@ class MoistureController extends Controller
         ]);
         Moisture::create($request->all());
         Log::writeLog('Moisture', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Moisture berhasil disimpan');
     }
 
     /**
@@ -87,7 +87,7 @@ class MoistureController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Moisture', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Moisture berhasil diupdate');
     }
 
     /**
@@ -100,7 +100,7 @@ class MoistureController extends Controller
     {
         Moisture::find($id)->delete();
         Log::writeLog('Moisture', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Moisture berhasil dihapus');
     }
 
     public function showCorrection()
@@ -120,7 +120,7 @@ class MoistureController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -131,7 +131,7 @@ class MoistureController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Moisture', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Moisture berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

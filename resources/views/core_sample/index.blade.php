@@ -22,9 +22,7 @@
                             <th>Barcode</th>
                             <th>Brix</th>
                             <th>Pol</th>
-                            <th>Yield</th>
-                            <th>Analyst</th>
-                            <th>Created @</th>
+                            <th>Rend</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -42,8 +40,6 @@
                             <td>{{ $core_sample->percent_brix }}</td>
                             <td>{{ $core_sample->percent_pol }}</td>
                             <td>{{ $core_sample->yield }}</td>
-                            <td>{{ $core_sample->analyst }}</td>
-                            <td>{{ $core_sample->created_at }}</td>
                             <td>
                                 @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_sample->id }}">

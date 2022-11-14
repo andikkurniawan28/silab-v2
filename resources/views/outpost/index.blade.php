@@ -21,9 +21,6 @@
                             <th>ID</th>
                             <th>Code</th>
                             <th>Name</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,10 +29,9 @@
                         <tr>
                             <td>{{ $outpost->id }}</td>
                             <td>{{ $outpost->code }}</td>
-                            <td>{{ $outpost->name }}</td>
-                            <td>{{ $outpost->admin }}</td>
-                            <td>{{ $outpost->created_at }}</td>
-                            <td>{{ $outpost->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $outpost->id }}">{{ $outpost->name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $outpost->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -64,6 +60,7 @@
 
 @section('modal')
 @include('outpost.create')
+@include('outpost.show')
 @include('outpost.edit')
 @include('outpost.delete')
 @endsection

@@ -20,9 +20,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Admin</th>
+                            {{-- <th>Admin</th>
                             <th>Created @</th>
-                            <th>Updated @</th>
+                            <th>Updated @</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,10 +30,12 @@
                         @foreach ($methods as $method)
                         <tr>
                             <td>{{ $method->id }}</td>
-                            <td>{{ $method->name }}</td>
-                            <td>{{ $method->admin }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $method->id }}">{{ $method->name }}</a>
+                            </td>
+                            {{-- <td>{{ $method->admin }}</td>
                             <td>{{ $method->created_at }}</td>
-                            <td>{{ $method->updated_at }}</td>
+                            <td>{{ $method->updated_at }}</td> --}}
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $method->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -62,6 +64,7 @@
 
 @section('modal')
 @include('method.create')
+@include('method.show')
 @include('method.edit')
 @include('method.delete')
 @endsection

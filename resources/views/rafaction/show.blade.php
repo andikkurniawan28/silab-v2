@@ -75,8 +75,16 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Time',
-                    'name' => 'farmer',
+                    'label' => 'Analis',
+                    'name' => 'analyst',
+                    'type' => 'text',
+                    'value' => $rafaction->analyst,
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Created',
+                    'name' => 'created_at',
                     'type' => 'text',
                     'value' => $rafaction->created_at,
                     'modifier' => 'readonly',
@@ -84,10 +92,6 @@
 
             </div>
             <div class="modal-footer">
-                {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
-                {{-- <button type="submit" class="btn btn-primary">Save 
-                    @include('components.icon', ['icon' => 'show'])
-                </button> --}}
                 </form>
             </div>
         </div>

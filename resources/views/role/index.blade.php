@@ -20,9 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,10 +27,9 @@
                         @foreach ($roles as $role)
                         <tr>
                             <td>{{ $role->id }}</td>
-                            <td>{{ $role->name }}</td>
-                            <td>{{ $role->admin }}</td>
-                            <td>{{ $role->created_at }}</td>
-                            <td>{{ $role->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $role->id }}">{{ $role->name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $role->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -62,6 +58,7 @@
 
 @section('modal')
 @include('role.create')
+@include('role.show')
 @include('role.edit')
 @include('role.delete')
 @endsection

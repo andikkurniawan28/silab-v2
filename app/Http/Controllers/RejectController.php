@@ -43,7 +43,7 @@ class RejectController extends Controller
         ]);
         Reject::create($request->all());
         Log::writeLog('Reject', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Reject has been stored');
+        return redirect()->back()->with('success', 'Reject berhasil disimpan');
     }
 
     /**
@@ -84,7 +84,7 @@ class RejectController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Reject', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Reject has been updated');
+        return redirect()->back()->with('success', 'Reject berhasil diupdate');
     }
 
     /**
@@ -97,7 +97,7 @@ class RejectController extends Controller
     {
         Reject::find($id)->delete();
         Log::writeLog('Reject', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Reject has been deleted');
+        return redirect()->back()->with('success', 'Reject berhasil dihapus');
     }
 
     public function showCorrection()

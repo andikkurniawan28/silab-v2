@@ -21,11 +21,6 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Role</th>
-                            <th>Admin</th>
-                            <th>Corrector</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,19 +28,10 @@
                         @foreach ($users as $user)
                         <tr>
                             <td>{{ $user->id }}</td>
-                            <td>{{ $user->name }}</td>
-                            <td>{{ $user->role_name }}</td>
-                            <td>{{ $user->admin }}</td>
-                            <td>{{ $user->corrector }}</td>
-                            <td>{{ $user->created_at }}</td>
-                            <td>{{ $user->updated_at }}</td>
                             <td>
-                                @if($user->is_active == 1)
-                                {{ "Active" }}
-                                @else
-                                {{ "Non-Active" }}
-                                @endif
+                                <a href="#" data-toggle="modal" data-target="#show{{ $user->id }}">{{ $user->name }}</a>
                             </td>
+                            <td>{{ $user->role_name }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $user->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -74,6 +60,7 @@
 
 @section('modal')
 @include('user.create')
+@include('user.show')
 @include('user.edit')
 @include('user.delete')
 @endsection

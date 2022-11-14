@@ -45,7 +45,7 @@ class SugarController extends Controller
         ]);
         Sugar::create($request->all());
         Log::writeLog('Sugar', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Gula has been stored');
+        return redirect()->back()->with('success', 'Analisa Gula berhasil disimpan');
     }
 
     /**
@@ -91,7 +91,7 @@ class SugarController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Sugar', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Gula has been updated');
+        return redirect()->back()->with('success', 'Analisa Gula berhasil diupdate');
     }
 
     /**
@@ -104,7 +104,7 @@ class SugarController extends Controller
     {
         Sugar::find($id)->delete();
         Log::writeLog('Sugar', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Gula has been deleted');
+        return redirect()->back()->with('success', 'Analisa Gula berhasil dihapus');
     }
 
     public function showCorrection()
@@ -124,7 +124,7 @@ class SugarController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -135,7 +135,7 @@ class SugarController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Sugar', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Gula has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Gula berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

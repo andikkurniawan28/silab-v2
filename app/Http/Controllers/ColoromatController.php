@@ -46,7 +46,7 @@ class ColoromatController extends Controller
         ]);
         Coloromat::create($request->all());
         Log::writeLog('Coloromat', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been stored');
+        return redirect()->back()->with('success', 'Coloromat berhasil disimpan');
     }
 
     /**
@@ -88,7 +88,7 @@ class ColoromatController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Coloromat', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Coloromat berhasil diupdate');
     }
 
     /**
@@ -101,7 +101,7 @@ class ColoromatController extends Controller
     {
         Coloromat::find($id)->delete();
         Log::writeLog('Coloromat', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Coloromat berhasil dihapus');
     }
 
     public function showCorrection()
@@ -121,7 +121,7 @@ class ColoromatController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -132,7 +132,7 @@ class ColoromatController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Coloromat', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Coloromat berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

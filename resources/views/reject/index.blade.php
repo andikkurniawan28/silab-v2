@@ -20,8 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Weight<sub>(Ku)</sub></th>
-                            <th>Admin</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,9 +27,9 @@
                         @foreach ($rejects as $reject)
                         <tr>
                             <td>{{ $reject->id }}</td>
-                            <td>{{ $reject->weight }}</td>
-                            <td>{{ $reject->admin }}</td>
-                            <td>{{ $reject->created_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $reject->id }}">{{ $reject->weight }}</a>
+                            </td>
                             <td>
                                 @if($reject->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $reject->id }}">
@@ -82,6 +80,7 @@
 
 @section('modal')
 @include('reject.create')
+@include('reject.show')
 @include('reject.edit')
 @include('reject.delete')
 @endsection

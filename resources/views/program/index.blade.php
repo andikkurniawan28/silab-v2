@@ -21,9 +21,6 @@
                             <th>ID</th>
                             <th>Code</th>
                             <th>Name</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,10 +29,9 @@
                         <tr>
                             <td>{{ $program->id }}</td>
                             <td>{{ $program->code }}</td>
-                            <td>{{ $program->name }}</td>
-                            <td>{{ $program->admin }}</td>
-                            <td>{{ $program->created_at }}</td>
-                            <td>{{ $program->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $program->id }}">{{ $program->name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $program->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -64,6 +60,7 @@
 
 @section('modal')
 @include('program.create')
+@include('program.show')
 @include('program.edit')
 @include('program.delete')
 @endsection

@@ -55,7 +55,7 @@ class SaccharomatController extends Controller
             ]);
             Saccharomat::create($request->all());
             Log::writeLog('Saccharomat', 'Submit Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Data has been stored');
+            return redirect()->back()->with('success', 'Saccharomat berhasil disimpan');
         }
         else return self::showError($error);
     }
@@ -117,7 +117,7 @@ class SaccharomatController extends Controller
                 'correction' => 1,
             ]);
             Log::writeLog('Saccharomat', 'Update Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Data has been updated');
+            return redirect()->back()->with('success', 'Saccharomat berhasil diupdate');
         }
         else return self::showError($error);
     }
@@ -132,7 +132,7 @@ class SaccharomatController extends Controller
     {
         Saccharomat::where('id', $id)->delete();
         Log::writeLog('Saccharomat', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Saccharomat berhasil dihapus');
     }
 
     public function validateRequest($request)
@@ -147,9 +147,9 @@ class SaccharomatController extends Controller
     {
         switch($error)
         {
-            case 1 : return redirect()->back()->with('error', 'Error : Data is blank. You have to fil at least 1 parameter!'); break;
-            case 2 : return redirect()->back()->with('error', 'Error : % Brix > % Pol. Evaluate your data!'); break;
-            case 3 : return redirect()->back()->with('error', 'Error : Sample ID is duplicated!'); break;
+            case 1 : return redirect()->back()->with('error', 'Error : Data kosong, isi setidaknya 1 parameter!'); break;
+            case 2 : return redirect()->back()->with('error', 'Error : % Brix > % Pol. Evaluasi data Anda!'); break;
+            case 3 : return redirect()->back()->with('error', 'Error : Barcode tersebut sudah dianalisa!'); break;
         }
     }
 
@@ -170,7 +170,7 @@ class SaccharomatController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -181,7 +181,7 @@ class SaccharomatController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Saccharomat', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Data has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Saccharomat berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

@@ -23,7 +23,7 @@
                             <th>CaO</th>
                             <th>pH</th>
                             <th>Turbidity</th>
-                            <th>Temperature</th>
+                            <th>Suhu</th>
                             <th>Corrector</th>
                             <th>Created @</th>
                             <th>Updated @</th>

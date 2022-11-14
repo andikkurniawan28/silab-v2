@@ -21,9 +21,6 @@
                             <th>ID</th>
                             <th>Name</th>
                             <th>Value</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -31,11 +28,10 @@
                         @foreach ($factors as $factor)
                         <tr>
                             <td>{{ $factor->id }}</td>
-                            <td>{{ $factor->name }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $factor->id }}">{{ $factor->name }}</a>
+                            </td>
                             <td>{{ $factor->value }}</td>
-                            <td>{{ $factor->admin }}</td>
-                            <td>{{ $factor->created_at }}</td>
-                            <td>{{ $factor->updated_at }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $factor->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -64,6 +60,7 @@
 
 @section('modal')
 @include('factor.create')
+@include('factor.show')
 @include('factor.edit')
 @include('factor.delete')
 @endsection

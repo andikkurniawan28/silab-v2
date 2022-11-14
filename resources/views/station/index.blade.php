@@ -20,9 +20,6 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -30,10 +27,9 @@
                         @foreach ($stations as $station)
                         <tr>
                             <td>{{ $station->id }}</td>
-                            <td>{{ $station->name }}</td>
-                            <td>{{ $station->admin }}</td>
-                            <td>{{ $station->created_at }}</td>
-                            <td>{{ $station->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $station->id }}">{{ $station->name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $station->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -62,6 +58,7 @@
 
 @section('modal')
 @include('station.create')
+@include('station.show')
 @include('station.edit')
 @include('station.delete')
 @endsection

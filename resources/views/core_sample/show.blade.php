@@ -107,8 +107,16 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Time',
-                    'name' => 'farmer',
+                    'label' => 'Analis',
+                    'name' => 'analyst',
+                    'type' => 'text',
+                    'value' => $core_sample->analyst,
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Created',
+                    'name' => 'created_at',
                     'type' => 'text',
                     'value' => $core_sample->created_at,
                     'modifier' => 'readonly',

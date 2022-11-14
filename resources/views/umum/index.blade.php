@@ -23,10 +23,7 @@
                             <th>CaO</th>
                             <th>pH</th>
                             <th>Turbidity</th>
-                            <th>Temperature</th>
-                            <th>Analyst</th>
-                            <th>Master</th>
-                            <th>Created @</th>
+                            <th>Suhu</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,14 +31,13 @@
                         @foreach ($umums as $umum)
                         <tr>
                             <td>{{ $umum->id }}</td>
-                            <td>{{ $umum->material_name }} <sub>({{ $umum->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $umum->id }}">{{ $umum->material_name }}</a>
+                            </td>
                             <td>{{ $umum->cao }}</td>
                             <td>{{ $umum->ph }}</td>
                             <td>{{ $umum->turbidity }}</td>
                             <td>{{ $umum->temperature }}</td>
-                            <td>{{ $umum->analyst }}</td>
-                            <td>{{ $umum->master }}</td>
-                            <td>{{ $umum->created_at }}</td>
                             <td>
                                 @if($umum->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $umum->id }}">
@@ -100,6 +96,7 @@
 
 @section('modal')
 @include('umum.create')
+@include('umum.show')
 @include('umum.edit')
 @include('umum.delete')
 @endsection

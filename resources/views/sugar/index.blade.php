@@ -20,12 +20,9 @@
                         <tr>
                             <th>ID</th>
                             <th>Material</th>
-                            <th>Suplhur</th>
+                            <th>Sulphur</th>
                             <th>Diameter</th>
                             <th>Blackspot</th>
-                            <th>Analyst</th>
-                            <th>Master</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,13 +30,12 @@
                         @foreach ($sugars as $sugar)
                         <tr>
                             <td>{{ $sugar->id }}</td>
-                            <td>{{ $sugar->material_name }} <sub>({{ $sugar->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $sugar->id }}">{{ $sugar->material_name }}</a>
+                            </td>
                             <td>{{ $sugar->sulphur }}</td>
                             <td>{{ $sugar->diameter }}</td>
                             <td>{{ $sugar->blackspot }}</td>
-                            <td>{{ $sugar->analyst }}</td>
-                            <td>{{ $sugar->master }}</td>
-                            <td>{{ $sugar->created_at }}</td>
                             <td>
                                 @if($sugar->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sugar->id }}">
@@ -98,6 +94,7 @@
 
 @section('modal')
 @include('sugar.create')
+@include('sugar.show')
 @include('sugar.edit')
 @include('sugar.delete')
 @endsection

@@ -26,7 +26,7 @@
                             <th>CaO</th>
                             <th>pH</th>
                             <th>Turbidity</th>
-                            <th>Temperature</th>
+                            <th>Suhu</th>
                             <th>Analyst</th>
                             <th>Created @</th>
                             <th>Check</th>

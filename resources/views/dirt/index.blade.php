@@ -22,9 +22,6 @@
                             <th>Name</th>
                             <th>Interval</th>
                             <th>Punishment</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,12 +29,11 @@
                         @foreach ($dirts as $dirt)
                         <tr>
                             <td>{{ $dirt->id }}</td>
-                            <td>{{ $dirt->name }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $dirt->id }}">{{ $dirt->name }}</a>
+                            </td>
                             <td>{{ $dirt->interval }}</td>
                             <td>{{ $dirt->punishment }}</td>
-                            <td>{{ $dirt->admin }}</td>
-                            <td>{{ $dirt->created_at }}</td>
-                            <td>{{ $dirt->updated_at }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $dirt->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -66,6 +62,7 @@
 
 @section('modal')
 @include('dirt.create')
+@include('dirt.show')
 @include('dirt.edit')
 @include('dirt.delete')
 @endsection

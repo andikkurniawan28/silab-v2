@@ -21,9 +21,6 @@
                             <th>ID</th>
                             <th>Code</th>
                             <th>Name</th>
-                            <th>Admin</th>
-                            <th>Created @</th>
-                            <th>Updated @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -32,10 +29,9 @@
                         <tr>
                             <td>{{ $cooperative->id }}</td>
                             <td>{{ $cooperative->code }}</td>
-                            <td>{{ $cooperative->name }}</td>
-                            <td>{{ $cooperative->admin }}</td>
-                            <td>{{ $cooperative->created_at }}</td>
-                            <td>{{ $cooperative->updated_at }}</td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $cooperative->id }}">{{ $cooperative->name }}</a>
+                            </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $cooperative->id }}">
                                     @include('components.icon', ['icon' => 'edit ']) 
@@ -64,6 +60,7 @@
 
 @section('modal')
 @include('cooperative.create')
+@include('cooperative.show')
 @include('cooperative.edit')
 @include('cooperative.delete')
 @endsection

@@ -24,9 +24,6 @@
                             <th>pH</th>
                             <th>Hardness</th>
                             <th>Phospate</th>
-                            <th>Analyst</th>
-                            <th>Master</th>
-                            <th>Created @</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,14 +31,13 @@
                         @foreach ($boilers as $boiler)
                         <tr>
                             <td>{{ $boiler->id }}</td>
-                            <td>{{ $boiler->material_name }} <sub>({{ $boiler->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $boiler->id }}">{{ $boiler->material_name }}</a>
+                            </td>
                             <td>{{ $boiler->tds }}</td>
                             <td>{{ $boiler->ph }}</td>
                             <td>{{ $boiler->hardness }}</td>
                             <td>{{ $boiler->phospate }}</td>
-                            <td>{{ $boiler->analyst }}</td>
-                            <td>{{ $boiler->master }}</td>
-                            <td>{{ $boiler->created_at }}</td>
                             <td>
                                 @if($boiler->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $boiler->id }}">
@@ -100,6 +96,7 @@
 
 @section('modal')
 @include('boiler.create')
+@include('boiler.show')
 @include('boiler.edit')
 @include('boiler.delete')
 @endsection

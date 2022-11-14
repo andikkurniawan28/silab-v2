@@ -45,7 +45,7 @@ class SpecialController extends Controller
         ]);
         Special::create($request->all());
         Log::writeLog('Special', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Khusus has been stored');
+        return redirect()->back()->with('success', 'Analisa Khusus berhasil disimpan');
     }
 
     /**
@@ -106,7 +106,7 @@ class SpecialController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Special', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Khusus has been updated');
+        return redirect()->back()->with('success', 'Analisa Khusus berhasil diupdate');
     }
 
     /**
@@ -119,7 +119,7 @@ class SpecialController extends Controller
     {
         Special::find($id)->delete();
         Log::writeLog('Special', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Khusus has been deleted');
+        return redirect()->back()->with('success', 'Analisa Khusus berhasil dihapus');
     }
 
     public function showCorrection()
@@ -139,7 +139,7 @@ class SpecialController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -150,7 +150,7 @@ class SpecialController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Special', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Khusus has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Khusus berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

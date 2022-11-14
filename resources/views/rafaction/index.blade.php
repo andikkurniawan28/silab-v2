@@ -24,8 +24,8 @@
                             @if(Auth()->user()->role_id < 2)
                             <th>Score</th>
                             @endif
-                            <th>Analyst</th>
-                            <th>Created @</th>
+                            {{-- <th>Analyst</th>
+                            <th>Created @</th> --}}
                             @if(Auth()->user()->role_id < 2)
                             <th>Action</th>
                             @endif
@@ -46,8 +46,8 @@
                             @if(Auth()->user()->role_id < 2)
                             <td>{{ $rafaction->score }}</td>
                             @endif
-                            <td>{{ $rafaction->analyst }}</td>
-                            <td>{{ $rafaction->created_at }}</td>
+                            {{-- <td>{{ $rafaction->analyst }}</td>
+                            <td>{{ $rafaction->created_at }}</td> --}}
                             @if(Auth()->user()->role_id < 2)
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $rafaction->id }}">

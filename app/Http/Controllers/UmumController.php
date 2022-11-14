@@ -45,7 +45,7 @@ class UmumController extends Controller
         ]);
         Umum::create($request->all());
         Log::writeLog('Umum', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Umum has been stored');
+        return redirect()->back()->with('success', 'Analisa Umum berhasil disimpan');
     }
 
     /**
@@ -93,7 +93,7 @@ class UmumController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Umum', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Umum has been updated');
+        return redirect()->back()->with('success', 'Analisa Umum berhasil diupdate');
     }
 
     /**
@@ -106,7 +106,7 @@ class UmumController extends Controller
     {
         Umum::find($id)->delete();
         Log::writeLog('Umum', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Umum has been deleted');
+        return redirect()->back()->with('success', 'Analisa Umum berhasil dihapus');
     }
 
     public function showCorrection()
@@ -126,7 +126,7 @@ class UmumController extends Controller
     public function processVerification(Request $request)
     {
         if($request->checkAll == NULL) 
-            return redirect()->back()->with('error', 'Error : No data to verified!');
+            return redirect()->back()->with('error', 'Error : Tidak ada data!');
         else 
         {
             $request->request->add([
@@ -137,7 +137,7 @@ class UmumController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Umum', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Umum has been verified by '.$request->master);
+            return redirect()->back()->with('success', 'Analisa Umum berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

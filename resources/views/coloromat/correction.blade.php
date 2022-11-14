@@ -20,7 +20,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Material</th>
-                            <th>Icumsa<sub>(%)</sub></th>
+                            <th>Icumsa<sub>(IU)</sub></th>
                             <th>Corrector</th>
                             <th>Created @</th>
                             <th>Updated @</th>

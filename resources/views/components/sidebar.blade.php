@@ -110,6 +110,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Menu :</h6>
                 <a class="collapse-item" href="{{ route('users.index') }}">User</a>
+                <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
                 <a class="collapse-item" href="{{ route('stations.index') }}">Station</a>
                 <a class="collapse-item" href="{{ route('methods.index') }}">Method</a>
                 <a class="collapse-item" href="{{ route('cooperatives.index') }}">KUD</a>
@@ -123,7 +124,6 @@
                 <a class="collapse-item" href="{{ route('meja_tebu', 3) }}">Meja Tebu 3</a>
                 <a class="collapse-item" href="{{ route('meja_tebu', 4) }}">Meja Tebu 4</a>
                 <a class="collapse-item" href="{{ route('meja_tebu', 5) }}">Meja Tebu 5</a>
-                <a class="collapse-item" href="{{ route('roles.index') }}">Role & Permission</a>
             </div>
         </div>
     </li>

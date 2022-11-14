@@ -44,7 +44,7 @@
                 ])
 
                 @include('components.input',[
-                    'label' => 'Temperature',
+                    'label' => 'Suhu',
                     'name' => 'temperature',
                     'type' => 'number',
                     'value' => '',

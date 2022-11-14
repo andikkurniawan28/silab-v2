@@ -24,14 +24,14 @@
                             <th>Glucose</th>
                             <th>Fructose</th>
                             <th>Sucrose</th>
-                            <th>PI</th>
+                            {{-- <th>PI</th>
                             <th>Fiber</th>
                             <th>Calcium</th>
                             <th>OD</th>
                             <th>Reducted</th>
                             <th>Analyst</th>
                             <th>Master</th>
-                            <th>Created @</th>
+                            <th>Created @</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -39,19 +39,21 @@
                         @foreach ($specials as $special)
                         <tr>
                             <td>{{ $special->id }}</td>
-                            <td>{{ $special->material_name }} <sub>({{ $special->sample_id }})</sub></td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $special->id }}">{{ $special->material_name }}</a>
+                            </td>
                             <td>{{ $special->tsai }}</td>
                             <td>{{ $special->glucose }}</td>
                             <td>{{ $special->fructose }}</td>
                             <td>{{ $special->sucrose }}</td>
-                            <td>{{ $special->preparation_index }}</td>
+                             {{-- <td>{{ $special->preparation_index }}</td>
                             <td>{{ $special->fiber }}</td>
                             <td>{{ $special->calcium }}</td>
                             <td>{{ $special->optical_density }}</td>
                             <td>{{ $special->sugar_reducted }}</td>
                             <td>{{ $special->analyst }}</td>
                             <td>{{ $special->master }}</td>
-                            <td>{{ $special->created_at }}</td>
+                            <td>{{ $special->created_at }}</td> --}}
                             <td>
                                 @if($special->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $special->id }}">
@@ -110,6 +112,7 @@
 
 @section('modal')
 @include('special.create')
+@include('special.show')
 @include('special.edit')
 @include('special.delete')
 @endsection
