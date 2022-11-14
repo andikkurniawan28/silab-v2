@@ -22,7 +22,7 @@
                             <th>Barcode</th>
                             <th>Brix</th>
                             <th>Pol</th>
-                            <th>Yield</th>
+                            <th>Rend</th>
                             <th>Created @</th>
                         </tr>
                     </thead>

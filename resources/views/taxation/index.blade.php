@@ -30,6 +30,7 @@
             <i  class="fas fa-table fa-sm text-white-50"></i> All Data
         </a>
     @endif
+    <br>
 
 </div>
 @endsection

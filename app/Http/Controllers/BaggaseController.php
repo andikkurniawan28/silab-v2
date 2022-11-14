@@ -54,14 +54,14 @@ class BaggaseController extends Controller
             'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Baggase', 'Edit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Ampas', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas berhasil diupdate');
     }
 
     public function destroy($id)
     {
         Baggase::find($id)->delete();
-        Log::writeLog('Baggase', 'Delete Data', Auth()->user()->name);
+        Log::writeLog('Analisa Ampas', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas berhasil dihapus');
     }
 
@@ -92,7 +92,7 @@ class BaggaseController extends Controller
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Baggase', 'Verify Data', Auth()->user()->name);
+            Log::writeLog('Analisa Ampas', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ampas berhasil diverifikasi oleh '.$request->master);
         }
     }
@@ -136,7 +136,7 @@ class BaggaseController extends Controller
         ]);
 
         Baggase::create($request->all());
-        Log::writeLog('Baggase', 'Submit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Ampas', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas berhasil disimpan');
     }
 

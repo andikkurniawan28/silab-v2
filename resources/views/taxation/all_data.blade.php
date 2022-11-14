@@ -47,6 +47,11 @@
                                         Show
                                     </button>
 
+                                    {{-- <a href="{{ route('taxation_export', $taxation->id) }}" type="button" class="btn btn-secondary">
+                                        @include('components.icon', ['icon' => 'file-excel ']) 
+                                        Export
+                                    </a> --}}
+
                                     @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
                                         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $taxation->id }}">
                                             @include('components.icon', ['icon' => 'edit ']) 

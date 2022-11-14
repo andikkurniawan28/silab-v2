@@ -47,7 +47,7 @@ class BoilerController extends Controller
         if(self::countId($request) == 0)
         {
             Boiler::create($request->all());
-            Log::writeLog('Boiler', 'Submit Data', Auth()->user()->name);
+            Log::writeLog('Analisa Ketel', 'Submit Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ketel berhasil disimpan');
         }
         else
@@ -98,7 +98,7 @@ class BoilerController extends Controller
             'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Boiler', 'Edit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Ketel', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ketel berhasil diupdate');
     }
 
@@ -111,7 +111,7 @@ class BoilerController extends Controller
     public function destroy($id)
     {
         Boiler::find($id)->delete();
-        Log::writeLog('Boiler', 'Delete Data', Auth()->user()->name);
+        Log::writeLog('Analisa Ketel', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ketel berhasil dihapus');
     }
 
@@ -142,7 +142,7 @@ class BoilerController extends Controller
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Boiler', 'Verify Data', Auth()->user()->name);
+            Log::writeLog('Analisa Ketel', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ketel berhasil diverifikasi oleh '.$request->master);
         }
     }

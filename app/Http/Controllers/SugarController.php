@@ -47,7 +47,7 @@ class SugarController extends Controller
         if(self::countId($request) == 0)
         {
             Sugar::create($request->all());
-            Log::writeLog('Sugar', 'Submit Data', Auth()->user()->name);
+            Log::writeLog('Analisa Sugar', 'Submit Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Gula berhasil disimpan');
         }
         else
@@ -96,7 +96,7 @@ class SugarController extends Controller
             'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Sugar', 'Edit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Sugar', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Gula berhasil diupdate');
     }
 
@@ -109,7 +109,7 @@ class SugarController extends Controller
     public function destroy($id)
     {
         Sugar::find($id)->delete();
-        Log::writeLog('Sugar', 'Delete Data', Auth()->user()->name);
+        Log::writeLog('Analisa Sugar', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Gula berhasil dihapus');
     }
 
@@ -140,7 +140,7 @@ class SugarController extends Controller
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Sugar', 'Verify Data', Auth()->user()->name);
+            Log::writeLog('Analisa Sugar', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Gula berhasil diverifikasi oleh '.$request->master);
         }
     }

@@ -390,13 +390,15 @@
                     'modifier' => '',
                 ])
 
-                @include('components.input3',[
-                    'label' => 'CVP C',
-                    'name' => 'cvp_c',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => '',
-                ])
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-6 col-form-label">CVP C</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="cvp_c">
+                            <option value="0">Nonaktif</option>
+                            <option value="100">Aktif</option>
+                          </select>
+                    </div>
+                </div>
 
                 @include('components.input3',[
                     'label' => 'Palung CVP C',
@@ -422,13 +424,15 @@
                     'modifier' => '',
                 ])
 
-                @include('components.input3',[
-                    'label' => 'CVP D',
-                    'name' => 'cvp_d',
-                    'type' => 'number',
-                    'value' => '',
-                    'modifier' => '',
-                ])
+                <div class="form-group row">
+                    <label for="role_id" class="col-sm-6 col-form-label">CVP D</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" name="cvp_d">
+                            <option value="0">Nonaktif</option>
+                            <option value="100">Aktif</option>
+                          </select>
+                    </div>
+                </div>
 
                 @include('components.input3',[
                     'label' => 'Palung CVP D',

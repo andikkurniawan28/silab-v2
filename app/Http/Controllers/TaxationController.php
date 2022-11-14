@@ -526,7 +526,6 @@ class TaxationController extends Controller
             'back_wash_tank2',
             'admin',
         ];
-        // return var_dump($request->all());
         return view('taxation.export', compact('request', 'vars'));
     }
 }

@@ -47,7 +47,7 @@ class SpecialController extends Controller
         if(self::countId($request) == 0)
         {
             Special::create($request->all());
-            Log::writeLog('Special', 'Submit Data', Auth()->user()->name);
+            Log::writeLog('Analisa Khusus', 'Submit Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Khusus berhasil disimpan');
         }
         else
@@ -111,7 +111,7 @@ class SpecialController extends Controller
             'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Special', 'Edit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Khusus', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Khusus berhasil diupdate');
     }
 
@@ -124,7 +124,7 @@ class SpecialController extends Controller
     public function destroy($id)
     {
         Special::find($id)->delete();
-        Log::writeLog('Special', 'Delete Data', Auth()->user()->name);
+        Log::writeLog('Analisa Khusus', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Khusus berhasil dihapus');
     }
 
@@ -155,7 +155,7 @@ class SpecialController extends Controller
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Special', 'Verify Data', Auth()->user()->name);
+            Log::writeLog('Analisa Khusus', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Khusus berhasil diverifikasi oleh '.$request->master);
         }
     }

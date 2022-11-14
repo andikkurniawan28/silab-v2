@@ -47,7 +47,7 @@ class UmumController extends Controller
         if(self::countId($request) == 0)
         {
             Umum::create($request->all());
-            Log::writeLog('Umum', 'Submit Data', Auth()->user()->name);
+            Log::writeLog('Analisa Umum', 'Submit Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Umum berhasil disimpan');
         }
         else
@@ -98,7 +98,7 @@ class UmumController extends Controller
             'corrector' => Auth()->user()->name,
             'correction' => 1,
         ]);
-        Log::writeLog('Umum', 'Edit Data', Auth()->user()->name);
+        Log::writeLog('Analisa Umum', 'Edit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Umum berhasil diupdate');
     }
 
@@ -111,7 +111,7 @@ class UmumController extends Controller
     public function destroy($id)
     {
         Umum::find($id)->delete();
-        Log::writeLog('Umum', 'Delete Data', Auth()->user()->name);
+        Log::writeLog('Analisa Umum', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Umum berhasil dihapus');
     }
 
@@ -142,7 +142,7 @@ class UmumController extends Controller
                 'is_verified' => 1,
                 'master' => $request->master,
             ]);
-            Log::writeLog('Umum', 'Verify Data', Auth()->user()->name);
+            Log::writeLog('Analisa Umum', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Umum berhasil diverifikasi oleh '.$request->master);
         }
     }

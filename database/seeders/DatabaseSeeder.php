@@ -60,13 +60,11 @@ class DatabaseSeeder extends Seeder
         Method::insert($methods);
 
         $roles = [
-            ['name' => 'Admin QC', 'admin' => 'Andik Kurniawan'],
-            ['name' => 'Mandor Lab', 'admin' => 'Andik Kurniawan'],
-            ['name' => 'Analis Lab', 'admin' => 'Andik Kurniawan'],
+            ['name' => 'Admin', 'admin' => 'Andik Kurniawan'],
+            ['name' => 'Mandor', 'admin' => 'Andik Kurniawan'],
+            ['name' => 'Analis', 'admin' => 'Andik Kurniawan'],
             ['name' => 'Pabrikasi', 'admin' => 'Andik Kurniawan'],
             ['name' => 'User', 'admin' => 'Andik Kurniawan'],
-            ['name' => 'Mandor Core', 'admin' => 'Andik Kurniawan'],
-            ['name' => 'Analis Core', 'admin' => 'Andik Kurniawan'],
         ];
         Role::insert($roles);
 
@@ -529,7 +527,7 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'role_id' => 3,
-                'name' => 'Feri',
+                'name' => 'Feri Andriyas',
                 'username' => 'feri',
                 'password' => bcrypt('feri987'),
                 'hmi_access' => NULL,

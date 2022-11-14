@@ -41,6 +41,7 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\SaccharomatController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RainMonitoringController;
 use App\Http\Controllers\RafactionMonitoringController;
 use App\Http\Controllers\CoreSampleMonitoringController;
@@ -172,9 +173,12 @@ Route::get('agroklimat/', RainMonitoringController::class)->name('agroklimat_vie
 
 // TestApi
 Route::get('test/{nomor_bor}', TestApi::class)->name('test');
+// Route::get('taxation_export/{id}', [TaxationController::class, 'export'])->name('taxation_export')->middleware(['auth', 'role_is_5']);
 
 // View
 Route::get('core_samples_view', CoreSampleMonitoringController::class)->name('core_samples_view');
 Route::get('rafactions_view', RafactionMonitoringController::class)->name('rafactions_view');
 
+// Change Password
+Route::post('change_password', ChangePasswordController::class)->name('change_password');
 

@@ -35,10 +35,12 @@ class LoginController extends Controller
         if ($attempt) 
         {
             $request->session()->regenerate();
+            Log::writeLog('Authentication', 'Login' , auth()->user()->name);
             return redirect()->intended();
         }
         else 
         {
+            Log::writeLog('Authentication', 'Login Failed' , $request->username);
             return redirect('login')->with('error', 'Username / password wrong.');
         }
     }

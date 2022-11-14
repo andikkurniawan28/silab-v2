@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <button type="submit" name="handling" value="print" class="btn btn-warning text-dark">Print Screen <i class='fas fa-print'></i></button>
+                    <button type="submit" name="handling" value="print" class="btn btn-warning text-dark">Print <i class='fas fa-print'></i></button>
                     <button type="submit" name="handling" value="export" class="btn btn-warning text-dark">Export <i class='fas fa-download'></i></button>
                 </div>
             </form>

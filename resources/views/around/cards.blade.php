@@ -8,8 +8,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -35,8 +35,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -62,8 +62,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -89,8 +89,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -116,8 +116,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -143,8 +143,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -170,8 +170,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -197,8 +197,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -224,8 +224,8 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
-                        <th>Temperature</th>
+                        <th>Tek.</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -251,7 +251,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -276,7 +276,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -301,7 +301,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -326,7 +326,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -351,7 +351,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -376,7 +376,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -401,7 +401,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -426,7 +426,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -451,7 +451,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -476,7 +476,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -501,7 +501,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -526,7 +526,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -551,7 +551,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -576,7 +576,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -601,7 +601,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Pressure</th>
+                        <th>Tek.</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -626,7 +626,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Temperature</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -651,7 +651,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Temperature</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -676,7 +676,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Temperature</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -701,7 +701,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Temperature</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
@@ -726,7 +726,7 @@
                 <table width="100%" class="table table-sm table-hovered text-light text-center">
                     <tr>
                         <th>Time</th>
-                        <th>Temperature</th>
+                        <th>Suhu</th>
                     </tr>
                     @for($i=0; $i<count($arounds); $i++)
                     <tr>
