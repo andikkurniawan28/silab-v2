@@ -43,9 +43,15 @@ class UmumController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        Umum::create($request->all());
-        Log::writeLog('Umum', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Umum berhasil disimpan');
+
+        if(self::countId($request) == 0)
+        {
+            Umum::create($request->all());
+            Log::writeLog('Umum', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Analisa Umum berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -139,5 +145,10 @@ class UmumController extends Controller
             Log::writeLog('Umum', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Umum berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Umum::where('sample_id', $request->sample_id)->count();
     }
 }

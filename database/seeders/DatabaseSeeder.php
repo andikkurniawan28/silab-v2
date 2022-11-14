@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
             ['name' => "Brix, pH, Temperatur", 'admin' => 'Andik Kurniawan'],
             ['name' => "Brix, Pol, HK, Icumsa, HL", 'admin' => 'Andik Kurniawan'],
             ['name' => "Brix", 'admin' => 'Andik Kurniawan'],
+            ['name' => "TDS, pH", 'admin' => 'Andik Kurniawan'],
         ];
         Method::insert($methods);
 
@@ -701,10 +702,10 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Yoshimine 1', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Yoshimine 2', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'WTP', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
-            ['name' => 'Daert JJ', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
-            ['name' => 'Daert Yoshimine1', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
-            ['name' => 'Daert Yoshimine2', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
-            ['name' => 'HW', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
+            ['name' => 'Daert JJ', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
+            ['name' => 'Daert Yoshimine1', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
+            ['name' => 'Daert Yoshimine2', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
+            ['name' => 'HW', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Gula Produksi 50Kg', 'station_id' => 11, 'method_id' => 10, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Gula Produksi Retail', 'station_id' => 11, 'method_id' => 10, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Kapur PT Sedar', 'station_id' => 3, 'method_id' => 11, 'admin' => 'Andik Kurniawan', ],

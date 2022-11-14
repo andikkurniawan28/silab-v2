@@ -25,7 +25,10 @@ class BaggaseController extends Controller
 
     public function store(Request $request)
     {
-        return self::handleRequest($request);
+        if(self::countId($request) == 0)
+            return self::handleRequest($request);
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     public function show(Baggase $baggase)
@@ -136,7 +139,11 @@ class BaggaseController extends Controller
         Log::writeLog('Baggase', 'Submit Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Analisa Ampas berhasil disimpan');
     }
-    
+
+    public function countId($request)
+    {
+        return Baggase::where('sample_id', $request->sample_id)->count();
+    }
 }
 
 

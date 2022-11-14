@@ -43,9 +43,15 @@ class SugarController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        Sugar::create($request->all());
-        Log::writeLog('Sugar', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Gula berhasil disimpan');
+
+        if(self::countId($request) == 0)
+        {
+            Sugar::create($request->all());
+            Log::writeLog('Sugar', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Analisa Gula berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -137,5 +143,10 @@ class SugarController extends Controller
             Log::writeLog('Sugar', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Gula berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Sugar::where('sample_id', $request->sample_id)->count();
     }
 }

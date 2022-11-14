@@ -318,6 +318,14 @@
             @endif
         </td>
         @break
+    @case(17)
+        <td>
+            @if($analysis->boiler_verification == 1)
+                {{ $analysis->tds }}
+                {{ $analysis->ph }}
+            @endif
+        </td>
+        @break
     @default
         <p>Method Undefined</p>
         @break

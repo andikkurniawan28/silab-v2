@@ -44,9 +44,15 @@ class ColoromatController extends Controller
             'analyst' => Auth()->user()->name,
             'preparation' => Auth()->user()->name,
         ]);
-        Coloromat::create($request->all());
-        Log::writeLog('Coloromat', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Coloromat berhasil disimpan');
+
+        if(self::countId($request) == 0)
+        {
+            Coloromat::create($request->all());
+            Log::writeLog('Coloromat', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Coloromat berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -134,5 +140,10 @@ class ColoromatController extends Controller
             Log::writeLog('Coloromat', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Coloromat berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Coloromat::where('sample_id', $request->sample_id)->count();
     }
 }

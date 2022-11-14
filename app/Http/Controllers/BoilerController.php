@@ -43,9 +43,15 @@ class BoilerController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        Boiler::create($request->all());
-        Log::writeLog('Boiler', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Ketel berhasil disimpan');
+
+        if(self::countId($request) == 0)
+        {
+            Boiler::create($request->all());
+            Log::writeLog('Boiler', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Analisa Ketel berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -139,5 +145,10 @@ class BoilerController extends Controller
             Log::writeLog('Boiler', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Ketel berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Boiler::where('sample_id', $request->sample_id)->count();
     }
 }

@@ -43,9 +43,15 @@ class MoistureController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        Moisture::create($request->all());
-        Log::writeLog('Moisture', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Moisture berhasil disimpan');
+        
+        if(self::countId($request) == 0)
+        {
+            Moisture::create($request->all());
+            Log::writeLog('Moisture', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Moisture berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -133,5 +139,10 @@ class MoistureController extends Controller
             Log::writeLog('Moisture', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Moisture berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Moisture::where('sample_id', $request->sample_id)->count();
     }
 }

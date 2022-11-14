@@ -90,6 +90,10 @@
     @case(16)
         <th>Brix</th>
         @break
+    @case(17)
+        <th>TDS</th>
+        <th>pH</th>
+        @break
     @default
         <p>Method Undefined</p>
         @break

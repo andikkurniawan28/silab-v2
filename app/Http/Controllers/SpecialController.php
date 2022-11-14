@@ -43,9 +43,15 @@ class SpecialController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        Special::create($request->all());
-        Log::writeLog('Special', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Analisa Khusus berhasil disimpan');
+
+        if(self::countId($request) == 0)
+        {
+            Special::create($request->all());
+            Log::writeLog('Special', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Analisa Khusus berhasil disimpan');
+        }
+        else
+            return redirect()->back()->with('error', 'Error : Barcode '.$request->sample_id.' sudah masuk sistem, tidak boleh digunakan lagi!');
     }
 
     /**
@@ -152,5 +158,10 @@ class SpecialController extends Controller
             Log::writeLog('Special', 'Verify Data', Auth()->user()->name);
             return redirect()->back()->with('success', 'Analisa Khusus berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function countId($request)
+    {
+        return Special::where('sample_id', $request->sample_id)->count();
     }
 }

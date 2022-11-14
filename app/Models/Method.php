@@ -308,6 +308,21 @@ class Method extends Model
                     ->orderBy('samples.id', 'desc')
                     ->get();
             break;
+
+            case 17 : 
+                $data = Sample::leftjoin('boilers', 'samples.id', 'boilers.sample_id')
+                    ->where('samples.material_id', $material_id)
+                    ->select(
+                        'samples.id',
+                        'samples.created_at',
+                        'boilers.tds',
+                        'boilers.ph',
+                        'boilers.is_verified as boiler_verification',
+                    )
+                    ->limit($limit)
+                    ->orderBy('samples.id', 'desc')
+                    ->get();
+            break;
         }
         return $data;
     }
