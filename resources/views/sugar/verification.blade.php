@@ -35,7 +35,7 @@
                         @foreach ($sugars as $sugar)
                         <tr>
                             <td>{{ $sugar->id }}</td>
-                            <td>{{ $sugar->material_name }} <sub>({{ $sugar->sample_id }})</sub></td>
+                            <td>{{ $sugar->sample->material->name }} <sub>({{ $sugar->sample_id }})</sub></td>
                             <td>{{ $sugar->sulphur }}</td>
                             <td>{{ $sugar->diameter }}</td>
                             <td>{{ $sugar->blackspot }}</td>
@@ -53,12 +53,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('sugars.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

@@ -15,7 +15,7 @@ class CreateSugarsTable extends Migration
     {
         Schema::create('sugars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('sulphur')->nullable();
             $table->float('diameter')->nullable();
             $table->integer('blackspot')->nullable();

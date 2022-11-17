@@ -32,20 +32,20 @@
                         @foreach ($sugars as $sugar)
                         <tr>
                             <td>{{ $sugar->id }}</td>
-                            <td>{{ $sugar->material_name }} <sub>({{ $sugar->sample_id }})</sub></td>
+                            <td>{{ $sugar->sample->material->name }} <sub>({{ $sugar->sample_id }})</sub></td>
                             <td>
-                                {{ $sugar->sulphur_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $sugar->sulphur_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $sugar->sulphur }}
                             </td>
                             <td>
-                                {{ $sugar->diameter_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $sugar->diameter_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $sugar->diameter }}
                             </td>
                             <td>
-                                {{ $sugar->blackspot_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $sugar->blackspot_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $sugar->blackspot }}
                             </td>
                             <td>{{ $sugar->corrector }}</td>
@@ -59,7 +59,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('sugars.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

@@ -16,8 +16,8 @@ class SugarController extends Controller
      */
     public function index()
     {
-        $sugars = Sugar::serveAll();
-        $samples = Sample::serveAll();
+        $sugars = Sugar::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('sugar.index', compact('sugars', 'samples', 'stations'));
     }
@@ -129,9 +129,9 @@ class SugarController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -141,7 +141,7 @@ class SugarController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Analisa Sugar', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Gula berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('sugars.index')->with('success', 'Analisa Gula berhasil diverifikasi oleh '.$request->master);
         }
     }
 

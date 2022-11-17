@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('sugars.update', $sugar->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $sugar->material_name,
+                    'value' => $sugar->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -51,14 +51,14 @@
                     'value' => $sugar->blackspot,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="sulphur_origin" value="{{ $sugar->sulphur }}">
                 <input type="hidden" name="diameter_origin" value="{{ $sugar->diameter }}">
                 <input type="hidden" name="blackspot_origin" value="{{ $sugar->blackspot }}">
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>
