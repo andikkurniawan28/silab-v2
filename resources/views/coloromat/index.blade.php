@@ -71,13 +71,13 @@
                 @include('components.icon', ['icon' => 'plus '])
                 Create
             </button>
-            <a href="coloromats_correction" type="button" class="btn btn-info" target="_blank">
+            <a href="coloromats_correction" type="button" class="btn btn-info">
                 @include('components.icon', ['icon' => 'history '])
                 Correction
             </a>
 
             @if(Auth()->user()->role_id == 1 or Auth()->user()->role_id == 2)
-            <a href="coloromats_verification" type="button" class="btn btn-secondary" target="_blank">
+            <a href="coloromats_verification" type="button" class="btn btn-secondary">
                 @include('components.icon', ['icon' => 'check '])
                 Verification
             </a>

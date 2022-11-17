@@ -33,7 +33,7 @@
                         @foreach ($moistures as $moisture)
                         <tr>
                             <td>{{ $moisture->id }}</td>
-                            <td>{{ $moisture->material_name }} <sub>({{ $moisture->sample_id }})</sub></td>
+                            <td>{{ $moisture->sample->material->name }} <sub>({{ $moisture->sample_id }})</sub></td>
                             <td>{{ $moisture->moisture }}</td>
                             <td>{{ $moisture->analyst }}</td>
                             <td>{{ $moisture->created_at }}</td>
@@ -49,12 +49,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('moistures.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

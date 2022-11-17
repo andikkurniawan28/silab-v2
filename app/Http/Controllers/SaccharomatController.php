@@ -181,7 +181,7 @@ class SaccharomatController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Saccharomat', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Saccharomat berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('saccharomats.index')->with('success', 'Saccharomat berhasil diverifikasi oleh '.$request->master);
         }
     }
 }

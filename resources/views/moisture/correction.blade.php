@@ -30,10 +30,10 @@
                         @foreach ($moistures as $moisture)
                         <tr>
                             <td>{{ $moisture->id }}</td>
-                            <td>{{ $moisture->material_name }} <sub>({{ $moisture->sample_id }})</sub></td>
+                            <td>{{ $moisture->sample->material->name }} <sub>({{ $moisture->sample_id }})</sub></td>
                             <td>
-                                {{ $moisture->moisture_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $moisture->moisture_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $moisture->moisture }}
                             </td>
                             <td>{{ $moisture->corrector }}</td>
@@ -47,7 +47,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('moistures.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

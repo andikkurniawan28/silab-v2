@@ -15,7 +15,7 @@ class CreateColoromatsTable extends Migration
     {
         Schema::create('coloromats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->integer('icumsa');
             $table->integer('icumsa_origin')->nullable();
             $table->string('analyst')->nullable();

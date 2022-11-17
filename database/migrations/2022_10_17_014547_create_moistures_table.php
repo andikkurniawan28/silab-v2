@@ -15,7 +15,7 @@ class CreateMoisturesTable extends Migration
     {
         Schema::create('moistures', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('moisture');
             $table->float('moisture_origin')->nullable();
             $table->string('analyst')->nullable();

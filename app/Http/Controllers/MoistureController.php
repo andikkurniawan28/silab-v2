@@ -16,8 +16,8 @@ class MoistureController extends Controller
      */
     public function index()
     {
-        $moistures = Moisture::serveAll();
-        $samples = Sample::serveAll();
+        $moistures = Moisture::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('moisture.index', compact('moistures', 'samples', 'stations'));
     }
@@ -43,7 +43,7 @@ class MoistureController extends Controller
         $request->request->add([
             'analyst' => Auth()->user()->name,
         ]);
-        
+
         if(self::countId($request) == 0)
         {
             Moisture::create($request->all());
@@ -125,9 +125,9 @@ class MoistureController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -137,7 +137,7 @@ class MoistureController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Moisture', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Moisture berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('moistures.index')->with('success', 'Moisture berhasil diverifikasi oleh '.$request->master);
         }
     }
 

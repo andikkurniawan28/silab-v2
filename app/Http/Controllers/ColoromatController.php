@@ -138,7 +138,7 @@ class ColoromatController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Coloromat', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Coloromat berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('coloromats.index')->with('success', 'Coloromat berhasil diverifikasi oleh '.$request->master);
         }
     }
 

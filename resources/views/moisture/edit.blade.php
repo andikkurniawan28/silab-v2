@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('moistures.update', $moisture->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $moisture->material_name,
+                    'value' => $moisture->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -35,12 +35,12 @@
                     'value' => $moisture->moisture,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="moisture_origin" value="{{ $moisture->moisture }}">
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>
