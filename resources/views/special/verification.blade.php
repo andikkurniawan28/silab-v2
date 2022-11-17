@@ -41,7 +41,7 @@
                         @foreach ($specials as $special)
                         <tr>
                             <td>{{ $special->id }}</td>
-                            <td>{{ $special->material_name }} <sub>({{ $special->sample_id }})</sub></td>
+                            <td>{{ $special->sample->material->name }} <sub>({{ $special->sample_id }})</sub></td>
                             <td>{{ $special->tsai }}</td>
                             <td>{{ $special->glucose }}</td>
                             <td>{{ $special->fructose }}</td>
@@ -65,12 +65,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('specials.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

@@ -15,7 +15,7 @@ class CreateSpecialsTable extends Migration
     {
         Schema::create('specials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('tsai')->nullable();
             $table->float('glucose')->nullable();
             $table->float('fructose')->nullable();

@@ -38,50 +38,50 @@
                         @foreach ($specials as $special)
                         <tr>
                             <td>{{ $special->id }}</td>
-                            <td>{{ $special->material_name }} <sub>({{ $special->sample_id }})</sub></td>
+                            <td>{{ $special->sample->material->name }} <sub>({{ $special->sample_id }})</sub></td>
                             <td>
-                                {{ $special->tsai_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->tsai_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->tsai }}
                             </td>
                             <td>
-                                {{ $special->glucose_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->glucose_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->glucose }}
                             </td>
                             <td>
-                                {{ $special->fructose_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->fructose_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->fructose }}
                             </td>
                             <td>
-                                {{ $special->sucrose_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->sucrose_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->sucrose }}
                             </td>
                             <td>
-                                {{ $special->preparation_index_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->preparation_index_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->preparation_index }}
                             </td>
                             <td>
-                                {{ $special->fiber_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->fiber_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->fiber }}
                             </td>
                             <td>
-                                {{ $special->calcium_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->calcium_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->calcium }}
                             </td>
                             <td>
-                                {{ $special->optical_density_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->optical_density_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->optical_density }}
                             </td>
                             <td>
-                                {{ $special->sugar_reducted_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $special->sugar_reducted_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $special->sugar_reducted }}
                             </td>
                             <td>{{ $special->corrector }}</td>
@@ -95,7 +95,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('specials.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

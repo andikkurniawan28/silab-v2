@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('specials.update', $special->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $special->material_name,
+                    'value' => $special->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -99,7 +99,7 @@
                     'value' => $special->sugar_reducted,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="tsai_origin" value="{{ $special->tsai }}">
                 <input type="hidden" name="glucose_origin" value="{{ $special->glucose }}">
                 <input type="hidden" name="fructose_origin" value="{{ $special->fructose }}">
@@ -112,7 +112,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

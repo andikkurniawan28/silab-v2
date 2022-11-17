@@ -16,8 +16,8 @@ class SpecialController extends Controller
      */
     public function index()
     {
-        $specials = Special::serveAll();
-        $samples = Sample::serveAll();
+        $specials = Special::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('special.index', compact('specials', 'samples', 'stations'));
     }
@@ -97,7 +97,7 @@ class SpecialController extends Controller
             'calcium' => $request->calcium,
             'optical_density' => $request->optical_density,
             'sugar_reducted' => $request->sugar_reducted,
-            
+
             'tsai_origin' => $request->tsai_origin,
             'glucose_origin' => $request->glucose_origin,
             'fructose_origin' => $request->fructose_origin,
@@ -144,9 +144,9 @@ class SpecialController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -156,7 +156,7 @@ class SpecialController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Analisa Khusus', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Khusus berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('specials.index')->with('success', 'Analisa Khusus berhasil diverifikasi oleh '.$request->master);
         }
     }
 
