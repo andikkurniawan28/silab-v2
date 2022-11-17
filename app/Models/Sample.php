@@ -62,4 +62,44 @@ class Sample extends Model
     {
         return $this->belongsTo(Method::class);
     }
+
+    public function saccharomat()
+    {
+        return $this->hasOne(Saccharomat::class);
+    }
+
+    public function coloromat()
+    {
+        return $this->hasOne(Coloromat::class);
+    }
+
+    public function moisture()
+    {
+        return $this->hasOne(Moisture::class);
+    }
+
+    public function baggase()
+    {
+        return $this->hasOne(Baggase::class);
+    }
+
+    public function boiler()
+    {
+        return $this->hasOne(Boiler::class);
+    }
+
+    public function umum()
+    {
+        return $this->hasOne(Umum::class);
+    }
+
+    public function sugar()
+    {
+        return $this->hasOne(Sugar::class);
+    }
+
+    public function special()
+    {
+        return $this->hasOne(Special::class);
+    }
 }

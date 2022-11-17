@@ -15,7 +15,7 @@ class CreateSaccharomatsTable extends Migration
     {
         Schema::create('saccharomats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained();
             $table->float('percent_brix')->nullable();
             $table->float('percent_pol')->nullable();
             $table->float('pol')->nullable();

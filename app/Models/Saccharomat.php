@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class Saccharomat extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'sample_id',
         'percent_brix',
@@ -32,45 +32,14 @@ class Saccharomat extends Model
         'correction',
     ];
 
-    public static function serveAll()
-    {
-        return self::join('samples', 'saccharomats.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->select(
-                'saccharomats.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('saccharomats.id', 'desc')
-            ->get();
-    }
-
     public static function serveCorrected()
     {
-        return self::join('samples', 'saccharomats.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('correction', 1)
-            ->select(
-                'saccharomats.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('saccharomats.id', 'desc')
-            ->get();
+        return self::where('correction', 1)->get();
     }
 
     public static function serveUnverificated()
     {
-        return self::join('samples', 'saccharomats.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('is_verified', 0)
-            ->select(
-                'saccharomats.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('saccharomats.id', 'desc')
-            ->get();
+        return self::where('is_verified', 0)->get();
     }
 
     public static function findPurity($percent_pol, $percent_brix)
@@ -91,7 +60,7 @@ class Saccharomat extends Model
         else $yield = NULL;
         return $yield;
     }
-    
+
     public static function implementFormula($status, $percent_pol, $percent_brix, $pol)
     {
         if($status == 1)
@@ -115,9 +84,9 @@ class Saccharomat extends Model
             else
             {
                 $purity = self::findPurity($percent_pol, $percent_brix);
-                return $data = [ 
-                    'purity' => $purity, 
-                    'yield' => NULL, 
+                return $data = [
+                    'purity' => $purity,
+                    'yield' => NULL,
                 ];
             }
         }
@@ -131,6 +100,11 @@ class Saccharomat extends Model
     public static function findPolBySampleId($sample_id)
     {
         return self::where('sample_id', $sample_id)->get()->first()->pol;
+    }
+
+    public function sample()
+    {
+        return $this->belongsTo(Sample::class);
     }
 
 }

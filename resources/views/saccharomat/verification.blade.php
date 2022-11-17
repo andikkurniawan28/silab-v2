@@ -39,7 +39,7 @@
                         @foreach ($saccharomats as $saccharomat)
                         <tr>
                             <td>{{ $saccharomat->id }}</td>
-                            <td>{{ $saccharomat->material_name }} <sub>({{ $saccharomat->sample_id }})</sub></td>
+                            <td>{{ $saccharomat->sample->material->name }} <sub>({{ $saccharomat->sample_id }})</sub></td>
                             <td>{{ $saccharomat->percent_brix }}</td>
                             <td>{{ $saccharomat->percent_pol }}</td>
                             <td>{{ $saccharomat->pol }}</td>
@@ -61,12 +61,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('saccharomats.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

@@ -17,8 +17,8 @@ class SaccharomatController extends Controller
      */
     public function index()
     {
-        $saccharomats = Saccharomat::serveAll();
-        $samples = Sample::serveAll();
+        $saccharomats = Saccharomat::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('saccharomat.index', compact('saccharomats', 'samples', 'stations'));
     }
@@ -101,7 +101,7 @@ class SaccharomatController extends Controller
                 'yield' => $data['yield'],
                 'corrector' => Auth()->user()->name,
             ]);
-            Saccharomat::where('id', $id)->update([
+            Saccharomat::whereId($id)->update([
                 'sample_id' => $request->sample_id,
                 'percent_brix' => $request->percent_brix,
                 'percent_pol' => $request->percent_pol,
@@ -130,7 +130,7 @@ class SaccharomatController extends Controller
      */
     public function destroy($id)
     {
-        Saccharomat::where('id', $id)->delete();
+        Saccharomat::whereId($id)->delete();
         Log::writeLog('Saccharomat', 'Delete Data', Auth()->user()->name);
         return redirect()->back()->with('success', 'Saccharomat berhasil dihapus');
     }
@@ -169,9 +169,9 @@ class SaccharomatController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,

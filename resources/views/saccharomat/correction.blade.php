@@ -34,31 +34,33 @@
                         @foreach ($saccharomats as $saccharomat)
                         <tr>
                             <td>{{ $saccharomat->id }}</td>
-                            <td>{{ $saccharomat->material_name }} <sub>({{ $saccharomat->sample_id }})</sub></td>
+                            <td>{{ $saccharomat->sample->material->name }} <sub>({{ $saccharomat->sample_id }})</sub></td>
                             <td>
-                                {{ $saccharomat->percent_brix_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $saccharomat->percent_brix_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $saccharomat->percent_brix }}
                             </td>
                             <td>
-                                {{ $saccharomat->percent_pol_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $saccharomat->percent_pol_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $saccharomat->percent_pol }}
                             </td>
                             <td>
-                                {{ $saccharomat->pol_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $saccharomat->pol_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $saccharomat->pol }}
                             </td>
                             <td>
-                                {{ $saccharomat->purity_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $saccharomat->purity_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $saccharomat->purity }}
                             </td>
                             <td>
-                                {{ $saccharomat->yield_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
-                                {{ $saccharomat->yield }}
+                                @if($saccharomat->yield != NULL)
+                                    {{ $saccharomat->yield_origin }}
+                                    @include('components.icon', ['icon' => 'arrow-right '])
+                                    {{ $saccharomat->yield }}
+                                @endif
                             </td>
                             <td>{{ $saccharomat->corrector }}</td>
                             <td>{{ $saccharomat->created_at }}</td>
@@ -71,7 +73,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('saccharomats.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>
