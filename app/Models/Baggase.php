@@ -25,45 +25,19 @@ class Baggase extends Model
         'correction',
     ];
 
-    public static function serveAll()
+    public function sample()
     {
-        return self::join('samples', 'baggases.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->select(
-                'baggases.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('baggases.id', 'desc')
-            ->get();
+        return $this->belongsTo(Sample::class);
     }
 
     public static function serveCorrected()
     {
-        return self::join('samples', 'baggases.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('correction', 1)
-            ->select(
-                'baggases.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('baggases.id', 'desc')
-            ->get();
+        return self::where('correction', 1)->get();
     }
 
     public static function serveUnverificated()
     {
-        return self::join('samples', 'baggases.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('is_verified', 0)
-            ->select(
-                'baggases.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('baggases.id', 'desc')
-            ->get();
+        return self::where('is_verified', 0)->get();
     }
 
     public static function countWater($dry)

@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('baggases.update', $baggase->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $baggase->material_name,
+                    'value' => $baggase->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -51,14 +51,14 @@
                     'value' => $baggase->water,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="corrected_pol_origin" value="{{ $baggase->corrected_pol }}">
                 <input type="hidden" name="dry_origin" value="{{ $baggase->dry }}">
                 <input type="hidden" name="water_origin" value="{{ $baggase->water }}">
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

@@ -17,8 +17,8 @@
             <div class="table-responsive">
                 <table class="table table-bordered text-dark table-hover text-sm" id="dataTable" width="100%" cellspacing="0">
                     {{-- <p class="mb-4">
-                        Untuk material Ampas, <code>Corrected Pol = Pol Baca * Faktor</code> dari <a href="saccharomats" target="_blank">Saccharomat</a>. 
-                        Untuk material Blotong, <code>Corrected Pol = Pol Baca</code> <a href="saccharomats" target="_blank">Saccharomat</a>. 
+                        Untuk material Ampas, <code>Corrected Pol = Pol Baca * Faktor</code> dari <a href="saccharomats" target="_blank">Saccharomat</a>.
+                        Untuk material Blotong, <code>Corrected Pol = Pol Baca</code> <a href="saccharomats" target="_blank">Saccharomat</a>.
                     </p> --}}
                     <thead>
                         <tr>
@@ -27,9 +27,6 @@
                             <th>Pol</th>
                             <th>ZK</th>
                             <th>Air</th>
-                            {{-- <th>Analyst</th>
-                            <th>Master</th>
-                            <th>Created @</th> --}}
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -38,38 +35,35 @@
                         <tr>
                             <td>{{ $baggase->id }}</td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#show{{ $baggase->id }}">{{ $baggase->material_name }}</a>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $baggase->id }}">{{ $baggase->sample->material->name }}</a>
                             </td>
                             <td>{{ $baggase->corrected_pol }}</td>
                             <td>{{ $baggase->dry }}</td>
                             <td>{{ $baggase->water }}</td>
-                            {{-- <td>{{ $baggase->analyst }}</td>
-                            <td>{{ $baggase->master }}</td>
-                            <td>{{ $baggase->created_at }}</td> --}}
                             <td>
                                 @if($baggase->is_verified == 0)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $baggase->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
+                                        @include('components.icon', ['icon' => 'edit '])
                                         Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $baggase->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
+                                        @include('components.icon', ['icon' => 'trash '])
                                         Delete
                                     </button>
                                 @elseif($baggase->is_verified == 1 && Auth()->user()->role_id != 1)
                                     <h4>
                                         <span class="badge badge-warning text-dark">
-                                            @include('components.icon', ['icon' => 'lock ']) 
+                                            @include('components.icon', ['icon' => 'lock '])
                                             Locked
                                         </span>
                                     </h4>
                                 @elseif($baggase->is_verified == 1 && Auth()->user()->role_id == 1)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $baggase->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
+                                        @include('components.icon', ['icon' => 'edit '])
                                         Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $baggase->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
+                                        @include('components.icon', ['icon' => 'trash '])
                                         Delete
                                     </button>
                                 @endif
@@ -82,17 +76,17 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
+                @include('components.icon', ['icon' => 'plus '])
                 Create
             </button>
-            <a href="baggases_correction" type="button" class="btn btn-info" target="_blank">
-                @include('components.icon', ['icon' => 'history ']) 
+            <a href="baggases_correction" type="button" class="btn btn-info">
+                @include('components.icon', ['icon' => 'history '])
                 Correction
             </a>
 
             @if(Auth()->user()->role_id == 1 or Auth()->user()->role_id == 2)
-            <a href="baggases_verification" type="button" class="btn btn-secondary" target="_blank">
-                @include('components.icon', ['icon' => 'check ']) 
+            <a href="baggases_verification" type="button" class="btn btn-secondary">
+                @include('components.icon', ['icon' => 'check '])
                 Verification
             </a>
             @endif

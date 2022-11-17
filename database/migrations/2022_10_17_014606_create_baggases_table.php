@@ -15,7 +15,7 @@ class CreateBaggasesTable extends Migration
     {
         Schema::create('baggases', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('corrected_pol');
             $table->float('dry');
             $table->float('water');

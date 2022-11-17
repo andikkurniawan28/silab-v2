@@ -12,8 +12,8 @@ class BaggaseController extends Controller
 {
     public function index()
     {
-        $baggases = Baggase::serveAll();
-        $samples = Sample::serveAll();
+        $baggases = Baggase::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('baggase.index', compact('baggases', 'samples', 'stations'));
     }
@@ -81,9 +81,9 @@ class BaggaseController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -93,7 +93,7 @@ class BaggaseController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Analisa Ampas', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Ampas berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('baggases.index')->with('success', 'Analisa Ampas berhasil diverifikasi oleh '.$request->master);
         }
     }
 
@@ -103,8 +103,8 @@ class BaggaseController extends Controller
     }
 
     public function handleRequest($request)
-    {   
-        if(Sample::where('id', $request->id)->count() == 0)
+    {
+        if(Sample::where('id', $request->sample_id)->count() == 0)
             return redirect()->back()->with('error', 'Error : Barcode tidak terdaftar!');
 
         $station_id = Sample::checkSampleStation($request->sample_id);

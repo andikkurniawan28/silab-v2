@@ -32,20 +32,20 @@
                         @foreach ($baggases as $baggase)
                         <tr>
                             <td>{{ $baggase->id }}</td>
-                            <td>{{ $baggase->material_name }} <sub>({{ $baggase->sample_id }})</sub></td>
+                            <td>{{ $baggase->sample->material->name }} <sub>({{ $baggase->sample_id }})</sub></td>
                             <td>
-                                {{ $baggase->corrected_pol_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $baggase->corrected_pol_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $baggase->corrected_pol }}
                             </td>
                             <td>
-                                {{ $baggase->dry_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $baggase->dry_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $baggase->dry }}
                             </td>
                             <td>
-                                {{ $baggase->water_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $baggase->water_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $baggase->water }}
                             </td>
                             <td>{{ $baggase->corrector }}</td>
@@ -59,7 +59,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('baggases.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

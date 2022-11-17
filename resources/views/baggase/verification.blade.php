@@ -35,7 +35,7 @@
                         @foreach ($baggases as $baggase)
                         <tr>
                             <td>{{ $baggase->id }}</td>
-                            <td>{{ $baggase->material_name }} <sub>({{ $baggase->sample_id }})</sub></td>
+                            <td>{{ $baggase->sample->material->name }} <sub>({{ $baggase->sample_id }})</sub></td>
                             <td>{{ $baggase->corrected_pol }}</td>
                             <td>{{ $baggase->dry }}</td>
                             <td>{{ $baggase->water }}</td>
@@ -53,12 +53,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('baggases.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>
