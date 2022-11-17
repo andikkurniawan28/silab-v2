@@ -223,6 +223,14 @@ class DatabaseSeeder extends Seeder
             ],
             [
                 'role_id' => 3,
+                'name' => 'Dita Putri Pertiwi',
+                'username' => 'dita',
+                'password' => bcrypt('dita987'),
+                'hmi_access' => NULL,
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'role_id' => 3,
                 'name' => 'Darmaji',
                 'username' => 'darmaji',
                 'password' => bcrypt('darmaji987'),

@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
+
     protected $fillable = [
         'role_id',
         'username',
@@ -24,19 +25,8 @@ class User extends Authenticatable
         'image',
     ];
 
-    public static function serveAll()
+    public function role()
     {
-        return self::join('roles', 'users.role_id', 'roles.id')
-            ->select(
-                'users.*',
-                'roles.name as role_name',
-            )->get();
-    }
-
-    public static function checkUserIsExisted($username, $password)
-    {
-        return self::where('username', $username)
-            ->where('password', $password)
-            ->where('is_active', 1);
+        return $this->belongsTo(Role::class);
     }
 }

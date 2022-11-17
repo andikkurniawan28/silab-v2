@@ -31,14 +31,14 @@
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#show{{ $user->id }}">{{ $user->name }}</a>
                             </td>
-                            <td>{{ $user->role_name }}</td>
+                            <td>{{ $user->role->name }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $user->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
+                                    @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $user->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
+                                    @include('components.icon', ['icon' => 'trash '])
                                     Delete
                                 </button>
                             </td>
@@ -50,7 +50,7 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus']) 
+                @include('components.icon', ['icon' => 'plus'])
                 Create
             </button>
         </div>

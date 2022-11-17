@@ -28,15 +28,15 @@
                         <tr>
                             <td>{{ $sample->id }}</td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#show{{ $sample->id }}">{{ $sample->material_name }}</a>
+                                <a href="#" data-toggle="modal" data-target="#show{{ $sample->id }}">{{ $sample->material->name }}</a>
                             </td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $sample->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
+                                    @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sample->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
+                                    @include('components.icon', ['icon' => 'trash '])
                                     Delete
                                 </button>
                             </td>
@@ -48,7 +48,7 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
+                @include('components.icon', ['icon' => 'plus '])
                 Create
             </button>
         </div>

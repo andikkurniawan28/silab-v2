@@ -16,7 +16,7 @@ class SampleController extends Controller
      */
     public function index()
     {
-        $samples = Sample::serveAll();
+        $samples = Sample::latest()->get();
         $materials = Material::serveAll();
         $stations = $this->serveStation();
         return view('sample.index', compact('samples', 'materials', 'stations'));

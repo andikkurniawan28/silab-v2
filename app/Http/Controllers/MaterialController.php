@@ -17,7 +17,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        $materials = Material::serveAll();
+        $materials = Material::all();
         $stations = Station::all();
         $methods = Method::all();
         return view('material.index', compact('materials', 'stations', 'methods'));

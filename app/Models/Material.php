@@ -38,4 +38,19 @@ class Material extends Model
                 'method_id',
         )->get();
     }
+
+    public function station()
+    {
+        return $this->belongsTo(Station::class);
+    }
+
+    public function method()
+    {
+        return $this->belongsTo(Method::class);
+    }
+
+    public function sample()
+    {
+        return $this->hasMany(Sample::class);
+    }
 }

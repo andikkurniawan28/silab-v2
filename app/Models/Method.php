@@ -18,7 +18,7 @@ class Method extends Model
     {
         switch($method_id)
         {
-            case 1 : 
+            case 1 :
                 $data = Sample::leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
                     ->leftjoin('moistures', 'samples.id', 'moistures.sample_id')
                     ->leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
@@ -45,7 +45,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 2 : 
+            case 2 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -62,7 +62,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 3 : 
+            case 3 :
                 $data = Sample::leftjoin('baggases', 'samples.id', 'baggases.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -78,7 +78,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 4 : 
+            case 4 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
                     ->leftjoin('umums', 'samples.id', 'umums.sample_id')
@@ -103,7 +103,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 5 : 
+            case 5 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -123,7 +123,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 6 : 
+            case 6 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('specials', 'samples.id', 'specials.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -141,7 +141,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 7 : 
+            case 7 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('moistures', 'samples.id', 'moistures.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -158,7 +158,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 8 : 
+            case 8 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('baggases', 'samples.id', 'baggases.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -175,7 +175,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 9 : 
+            case 9 :
                 $data = Sample::leftjoin('boilers', 'samples.id', 'boilers.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -192,7 +192,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 10 : 
+            case 10 :
                 $data = Sample::leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
                     ->leftjoin('moistures', 'samples.id', 'moistures.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -209,7 +209,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 11 : 
+            case 11 :
                 $data = Sample::leftjoin('specials', 'samples.id', 'specials.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -223,7 +223,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 12 : 
+            case 12 :
                 $data = Sample::leftjoin('specials', 'samples.id', 'specials.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -238,7 +238,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 13 : 
+            case 13 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -256,7 +256,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 14 : 
+            case 14 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->leftjoin('umums', 'samples.id', 'umums.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -273,7 +273,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 15 : 
+            case 15 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                 ->leftjoin('coloromats', 'samples.id', 'coloromats.sample_id')
                     ->where('samples.material_id', $material_id)
@@ -295,7 +295,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 16 : 
+            case 16 :
                 $data = Sample::leftjoin('saccharomats', 'samples.id', 'saccharomats.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -309,7 +309,7 @@ class Method extends Model
                     ->get();
             break;
 
-            case 17 : 
+            case 17 :
                 $data = Sample::leftjoin('boilers', 'samples.id', 'boilers.sample_id')
                     ->where('samples.material_id', $material_id)
                     ->select(
@@ -325,5 +325,15 @@ class Method extends Model
             break;
         }
         return $data;
+    }
+
+    public function material()
+    {
+        return $this->hasMany(Material::class);
+    }
+
+    public function sample()
+    {
+        return $this->hasMany(Sample::class);
     }
 }

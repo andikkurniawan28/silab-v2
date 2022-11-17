@@ -15,8 +15,8 @@ class CreateMaterialsTable extends Migration
     {
         Schema::create('materials', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('station_id');
-            $table->foreignId('method_id');
+            $table->foreignId('station_id')->constrained();
+            $table->foreignId('method_id')->constrained();
             $table->string('name');
             $table->string('admin');
             $table->timestamp('created_at')->useCurrent();

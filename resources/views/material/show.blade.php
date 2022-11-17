@@ -14,7 +14,7 @@
                     'label' => 'Station',
                     'name' => 'station_name',
                     'type' => 'text',
-                    'value' => $material->station_name,
+                    'value' => $material->station->name,
                     'modifier' => 'readonly',
                 ])
 
@@ -22,7 +22,7 @@
                     'label' => 'Method',
                     'name' => 'method_name',
                     'type' => 'text',
-                    'value' => $material->method_name,
+                    'value' => $material->method->name,
                     'modifier' => 'readonly',
                 ])
 

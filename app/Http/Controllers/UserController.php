@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::serveAll();
+        $users = User::latest()->get();
         $roles = Role::all();
         $stations = $this->serveStation();
         return view('user.index', compact('users', 'roles', 'stations'));
