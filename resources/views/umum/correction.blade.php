@@ -33,25 +33,25 @@
                         @foreach ($umums as $umum)
                         <tr>
                             <td>{{ $umum->id }}</td>
-                            <td>{{ $umum->material_name }} <sub>({{ $umum->sample_id }})</sub></td>
+                            <td>{{ $umum->sample->material->name }} <sub>({{ $umum->sample_id }})</sub></td>
                             <td>
-                                {{ $umum->cao_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $umum->cao_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $umum->cao }}
                             </td>
                             <td>
-                                {{ $umum->ph_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $umum->ph_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $umum->ph }}
                             </td>
                             <td>
-                                {{ $umum->turbidity_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $umum->turbidity_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $umum->turbidity }}
                             </td>
                             <td>
-                                {{ $umum->temperature_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $umum->temperature_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $umum->temperature }}
                             </td>
                             <td>{{ $umum->corrector }}</td>
@@ -65,7 +65,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('umums.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

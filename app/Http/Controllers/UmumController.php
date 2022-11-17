@@ -16,8 +16,8 @@ class UmumController extends Controller
      */
     public function index()
     {
-        $umums = Umum::serveAll();
-        $samples = Sample::serveAll();
+        $umums = Umum::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('umum.index', compact('umums', 'samples', 'stations'));
     }
@@ -131,9 +131,9 @@ class UmumController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -143,7 +143,7 @@ class UmumController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Analisa Umum', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Umum berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('umums.index')->with('success', 'Analisa Umum berhasil diverifikasi oleh '.$request->master);
         }
     }
 

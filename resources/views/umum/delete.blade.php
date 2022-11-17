@@ -11,19 +11,19 @@
                 @csrf
                 @method('DELETE')
                 <p>Are you sure ?</p>
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $umum->material_name,
+                    'value' => $umum->sample->material->name,
                     'modifier' => 'readonly',
                 ])
 
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary">Yes 
+                <button type="submit" class="btn btn-primary">Yes
                     @include('components.icon', ['icon' => 'trash'])
                 </button>
             </form>

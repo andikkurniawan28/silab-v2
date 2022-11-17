@@ -26,44 +26,18 @@ class Umum extends Model
         'correction',
     ];
 
-    public static function serveAll()
+    public function sample()
     {
-        return self::join('samples', 'umums.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->select(
-                'umums.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('umums.id', 'desc')
-            ->get();
+        return $this->belongsTo(Sample::class);
     }
 
     public static function serveCorrected()
     {
-        return self::join('samples', 'umums.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('correction', 1)
-            ->select(
-                'umums.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('umums.id', 'desc')
-            ->get();
+        return self::where('correction', 1)->get();
     }
 
     public static function serveUnverificated()
     {
-        return self::join('samples', 'umums.sample_id', 'samples.id')
-            ->join('materials', 'samples.material_id', 'materials.id')
-            ->where('is_verified', 0)
-            ->select(
-                'umums.*',
-                'materials.name as material_name',
-            )
-            ->limit(1000)
-            ->orderBy('umums.id', 'desc')
-            ->get();
+        return self::where('is_verified', 0)->get();
     }
 }

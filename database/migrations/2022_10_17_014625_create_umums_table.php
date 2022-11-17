@@ -15,7 +15,7 @@ class CreateUmumsTable extends Migration
     {
         Schema::create('umums', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('cao')->nullable();
             $table->float('ph')->nullable();
             $table->float('turbidity')->nullable();

@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('umums.update', $umum->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $umum->material_name,
+                    'value' => $umum->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -59,7 +59,7 @@
                     'value' => $umum->temperature,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="cao_origin" value="{{ $umum->cao }}">
                 <input type="hidden" name="ph_origin" value="{{ $umum->ph }}">
                 <input type="hidden" name="turbidity_origin" value="{{ $umum->turbidity }}">
@@ -67,7 +67,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

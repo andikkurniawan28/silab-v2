@@ -36,7 +36,7 @@
                         @foreach ($umums as $umum)
                         <tr>
                             <td>{{ $umum->id }}</td>
-                            <td>{{ $umum->material_name }} <sub>({{ $umum->sample_id }})</sub></td>
+                            <td>{{ $umum->sample->material->name }} <sub>({{ $umum->sample_id }})</sub></td>
                             <td>{{ $umum->cao }}</td>
                             <td>{{ $umum->ph }}</td>
                             <td>{{ $umum->turbidity }}</td>
@@ -55,12 +55,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('umums.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>
