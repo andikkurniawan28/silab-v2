@@ -16,8 +16,8 @@ class ColoromatController extends Controller
      */
     public function index()
     {
-        $coloromats = Coloromat::serveAll();
-        $samples = Sample::serveAll();
+        $coloromats = Coloromat::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('coloromat.index', compact('coloromats', 'samples', 'stations'));
     }
@@ -126,9 +126,9 @@ class ColoromatController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : Tidak ada data!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,

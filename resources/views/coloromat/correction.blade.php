@@ -30,10 +30,10 @@
                         @foreach ($coloromats as $coloromat)
                         <tr>
                             <td>{{ $coloromat->id }}</td>
-                            <td>{{ $coloromat->material_name }} <sub>({{ $coloromat->sample_id }})</sub></td>
+                            <td>{{ $coloromat->sample->material->name }} <sub>({{ $coloromat->sample_id }})</sub></td>
                             <td>
-                                {{ $coloromat->icumsa_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $coloromat->icumsa_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $coloromat->icumsa }}
                             </td>
                             <td>{{ $coloromat->corrector }}</td>
@@ -47,7 +47,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('coloromats.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

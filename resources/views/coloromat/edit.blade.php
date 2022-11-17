@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('coloromats.update', $coloromat->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $coloromat->material_name,
+                    'value' => $coloromat->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -35,12 +35,12 @@
                     'value' => $coloromat->icumsa,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="icumsa_origin" value="{{ $coloromat->icumsa }}">
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

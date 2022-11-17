@@ -34,7 +34,7 @@
                         @foreach ($coloromats as $coloromat)
                         <tr>
                             <td>{{ $coloromat->id }}</td>
-                            <td>{{ $coloromat->material_name }} <sub>({{ $coloromat->sample_id }})</sub></td>
+                            <td>{{ $coloromat->sample->material->name }} <sub>({{ $coloromat->sample_id }})</sub></td>
                             <td>{{ $coloromat->icumsa }}</td>
                             <td>{{ $coloromat->analyst }}</td>
                             <td>{{ $coloromat->preparation }}</td>
@@ -51,12 +51,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('coloromats.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

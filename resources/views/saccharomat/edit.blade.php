@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('saccharomats.update', $saccharomat->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $saccharomat->material_name,
+                    'value' => $saccharomat->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -67,7 +67,7 @@
                     'value' => $saccharomat->yield,
                     'modifier' => 'readonly',
                 ])
-            
+
                 <input type="hidden" name="percent_brix_origin" value="{{ $saccharomat->percent_brix }}">
                 <input type="hidden" name="percent_pol_origin" value="{{ $saccharomat->percent_pol }}">
                 <input type="hidden" name="pol_origin" value="{{ $saccharomat->pol }}">
@@ -76,7 +76,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>
