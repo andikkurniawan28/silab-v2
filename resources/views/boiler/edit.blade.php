@@ -11,15 +11,15 @@
                 <form method="POST" action="{{ route('boilers.update', $boiler->id) }}" class="text-dark">
                 @csrf
                 @method('PUT')
-                
+
                 @include('components.input',[
                     'label' => 'Material',
                     'name' => 'material_name',
                     'type' => 'text',
-                    'value' => $boiler->material_name,
+                    'value' => $boiler->sample->material->name,
                     'modifier' => 'readonly',
                 ])
-                
+
                 @include('components.input',[
                     'label' => 'Sample',
                     'name' => 'sample_id',
@@ -59,7 +59,7 @@
                     'value' => $boiler->phospate,
                     'modifier' => '',
                 ])
-            
+
                 <input type="hidden" name="tds_origin" value="{{ $boiler->tds }}">
                 <input type="hidden" name="ph_origin" value="{{ $boiler->ph }}">
                 <input type="hidden" name="hardness_origin" value="{{ $boiler->hardness }}">
@@ -67,7 +67,7 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

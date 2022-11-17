@@ -36,7 +36,7 @@
                         @foreach ($boilers as $boiler)
                         <tr>
                             <td>{{ $boiler->id }}</td>
-                            <td>{{ $boiler->material_name }} <sub>({{ $boiler->sample_id }})</sub></td>
+                            <td>{{ $boiler->sample->material->name }} <sub>({{ $boiler->sample_id }})</sub></td>
                             <td>{{ $boiler->tds }}</td>
                             <td>{{ $boiler->ph }}</td>
                             <td>{{ $boiler->hardness }}</td>
@@ -55,12 +55,12 @@
         <div class="card-footer">
             <h5><input type="checkbox" name="checkedAll" id="checkedAll" /> SELECT ALL </h5>
             <button type="submit" class="btn btn-primary">
-                @include('components.icon', ['icon' => 'check ']) 
+                @include('components.icon', ['icon' => 'check '])
                 Verify
             </button>
             </form>
             <a href="{{ route('boilers.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

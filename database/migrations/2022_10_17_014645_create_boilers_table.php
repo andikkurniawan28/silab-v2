@@ -15,7 +15,7 @@ class CreateBoilersTable extends Migration
     {
         Schema::create('boilers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('sample_id')->unique();
+            $table->foreignId('sample_id')->constrained()->unique();
             $table->float('tds');
             $table->float('ph');
             $table->float('hardness')->nullable();

@@ -33,25 +33,25 @@
                         @foreach ($boilers as $boiler)
                         <tr>
                             <td>{{ $boiler->id }}</td>
-                            <td>{{ $boiler->material_name }} <sub>({{ $boiler->sample_id }})</sub></td>
+                            <td>{{ $boiler->sample->material->name }} <sub>({{ $boiler->sample_id }})</sub></td>
                             <td>
-                                {{ $boiler->tds_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $boiler->tds_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $boiler->tds }}
                             </td>
                             <td>
-                                {{ $boiler->ph_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $boiler->ph_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $boiler->ph }}
                             </td>
                             <td>
-                                {{ $boiler->hardness_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $boiler->hardness_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $boiler->hardness }}
                             </td>
                             <td>
-                                {{ $boiler->phospate_origin }} 
-                                @include('components.icon', ['icon' => 'arrow-right '])  
+                                {{ $boiler->phospate_origin }}
+                                @include('components.icon', ['icon' => 'arrow-right '])
                                 {{ $boiler->phospate }}
                             </td>
                             <td>{{ $boiler->corrector }}</td>
@@ -65,7 +65,7 @@
         </div>
         <div class="card-footer">
             <a href="{{ route('boilers.index') }}" type="button" class="btn btn-info">
-                @include('components.icon', ['icon' => 'arrow-left ']) 
+                @include('components.icon', ['icon' => 'arrow-left '])
                 Back
             </a>
         </div>

@@ -16,8 +16,8 @@ class BoilerController extends Controller
      */
     public function index()
     {
-        $boilers = Boiler::serveAll();
-        $samples = Sample::serveAll();
+        $boilers = Boiler::latest()->paginate(1000);
+        $samples = Sample::all();
         $stations = $this->serveStation();
         return view('boiler.index', compact('boilers', 'samples', 'stations'));
     }
@@ -131,9 +131,9 @@ class BoilerController extends Controller
 
     public function processVerification(Request $request)
     {
-        if($request->checkAll == NULL) 
+        if($request->checkAll == NULL)
             return redirect()->back()->with('error', 'Error : No data to verified!');
-        else 
+        else
         {
             $request->request->add([
                 'master' => Auth()->user()->name,
@@ -143,7 +143,7 @@ class BoilerController extends Controller
                 'master' => $request->master,
             ]);
             Log::writeLog('Analisa Ketel', 'Verify Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Analisa Ketel berhasil diverifikasi oleh '.$request->master);
+            return redirect()->route('boilers.index')->with('success', 'Analisa Ketel berhasil diverifikasi oleh '.$request->master);
         }
     }
 
