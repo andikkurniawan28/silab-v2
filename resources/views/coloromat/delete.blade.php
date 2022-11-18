@@ -3,14 +3,14 @@
     <div class="modal-dialog" coloromat="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $coloromat->id }}Label">Delete {{ ucfirst('coloromat') }}</h5>
+                <h5 class="modal-title" id="delete{{ $coloromat->id }}Label">Hapus {{ ucfirst('coloromat') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
             <form method="POST" action="{{ route('coloromats.destroy', $coloromat->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
-                <p>Are you sure ?</p>
+                <p>Apa anda yakin ?</p>
 
                 @include('components.input',[
                     'label' => 'Material',

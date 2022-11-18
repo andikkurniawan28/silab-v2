@@ -3,7 +3,7 @@
     <div class="modal-dialog" factor="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $factor->id }}Label">Delete {{ ucfirst('factor') }}</h5>
+                <h5 class="modal-title" id="delete{{ $factor->id }}Label">Delete {{ ucfirst('faktor') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary">Yes 
+                <button type="submit" class="btn btn-primary">Yes
                     @include('components.icon', ['icon' => 'trash'])
                 </button>
             </form>

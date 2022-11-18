@@ -16,6 +16,7 @@ class CreateFactorsTable extends Migration
         Schema::create('factors', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('description');
             $table->float('value');
             $table->string('admin');
             $table->timestamp('created_at')->useCurrent();

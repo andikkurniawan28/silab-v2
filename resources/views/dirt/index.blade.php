@@ -20,6 +20,7 @@
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
+                            <th>Max</th>
                             <th>Interval</th>
                             <th>Punishment</th>
                             <th>Action</th>
@@ -32,15 +33,16 @@
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#show{{ $dirt->id }}">{{ $dirt->name }}</a>
                             </td>
+                            <td>{{ $dirt->max }}</td>
                             <td>{{ $dirt->interval }}</td>
                             <td>{{ $dirt->punishment }}</td>
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $dirt->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
+                                    @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $dirt->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
+                                    @include('components.icon', ['icon' => 'trash '])
                                     Delete
                                 </button>
                             </td>
@@ -52,7 +54,7 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
+                @include('components.icon', ['icon' => 'plus '])
                 Create
             </button>
         </div>

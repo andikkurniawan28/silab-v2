@@ -10,6 +10,7 @@ class Factor extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'description',
         'value',
         'admin',
     ];

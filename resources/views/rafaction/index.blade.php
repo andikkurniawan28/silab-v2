@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3 text-right">
-            <h5 class="m-0 font-weight-bold text-primary text-left">{{ ucfirst('Scoring MBS') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary text-left">Data {{ ucfirst('Scoring MBS') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -51,15 +51,15 @@
                             @if(Auth()->user()->role_id < 2)
                             <td>
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $rafaction->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
+                                    @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $rafaction->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
+                                    @include('components.icon', ['icon' => 'trash '])
                                     Delete
                                 </button>
                                 <a href="{{ route('skmts.show', $rafaction->id) }}" type="button" class="btn btn-info" target="_blank">
-                                    @include('components.icon', ['icon' => 'print ']) 
+                                    @include('components.icon', ['icon' => 'print '])
                                     Print
                                 </a>
                             </td>
@@ -93,7 +93,7 @@
             </button>
             @endfor
             <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#createSKMT">
-                @include('components.icon', ['icon' => 'camera']) 
+                @include('components.icon', ['icon' => 'camera'])
                 SKMT
             </button>
         </div>

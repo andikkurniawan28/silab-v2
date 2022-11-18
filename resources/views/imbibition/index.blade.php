@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('imbibisi') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Data {{ ucfirst('imbibisi') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -28,7 +28,7 @@
                                 <th>Updated @</th>
                                 <th>Action</th>
                             @endif
-                            
+
                         </tr>
                     </thead>
                     <tbody>
@@ -44,12 +44,12 @@
                                 <td>{{ $imbibition->updated_at }}</td>
                                 <td>
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $imbibition->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
+                                        @include('components.icon', ['icon' => 'edit '])
                                         Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $imbibition->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
-                                        Delete
+                                        @include('components.icon', ['icon' => 'trash '])
+                                        Hapus
                                     </button>
                                 </td>
                             @endif
@@ -62,8 +62,8 @@
         <div class="card-footer">
             @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3 || Auth()->user()->role_id == 4)
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                    @include('components.icon', ['icon' => 'plus ']) 
-                    Create
+                    @include('components.icon', ['icon' => 'plus '])
+                    Tambah
                 </button>
             @endif
         </div>

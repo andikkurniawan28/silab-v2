@@ -90,6 +90,70 @@
                     'modifier' => 'readonly',
                 ])
 
+                @include('components.input',[
+                    'label' => 'Pucuk',
+                    'name' => 'pucuk',
+                    'type' => 'text',
+                    'value' => $rafaction->pucuk.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Sogolan',
+                    'name' => 'sogolan',
+                    'type' => 'text',
+                    'value' => $rafaction->sogolan.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Daduk',
+                    'name' => 'daduk',
+                    'type' => 'text',
+                    'value' => $rafaction->daduk.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Akar',
+                    'name' => 'akar',
+                    'type' => 'text',
+                    'value' => $rafaction->akar.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Tali',
+                    'name' => 'tali',
+                    'type' => 'text',
+                    'value' => $rafaction->tali.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Terbakar',
+                    'name' => 'terbakar',
+                    'type' => 'text',
+                    'value' => $rafaction->terbakar.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Muda',
+                    'name' => 'muda',
+                    'type' => 'text',
+                    'value' => $rafaction->muda.'%',
+                    'modifier' => 'readonly',
+                ])
+
+                @include('components.input',[
+                    'label' => 'Lelesan',
+                    'name' => 'lelesan',
+                    'type' => 'text',
+                    'value' => $rafaction->lelesan.'%',
+                    'modifier' => 'readonly',
+                ])
+
             </div>
             <div class="modal-footer">
                 </form>

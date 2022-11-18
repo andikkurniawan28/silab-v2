@@ -3,7 +3,7 @@
     <div class="modal-dialog" sample="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="edit{{ $sample->id }}Label">Edit {{ ucfirst('sample') }}</h5>
+                <h5 class="modal-title" id="edit{{ $sample->id }}Label">Edit {{ ucfirst('sampel') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -17,7 +17,7 @@
                     <div class="col-sm-10">
                         <select class="form-control" name="material_id">
                             @foreach ($materials as $material)
-                                <option 
+                                <option
                                 @if($material->id == $sample->material_id)
                                 {{ 'selected' }}
                                 @endif
@@ -32,7 +32,7 @@
             </div>
             <div class="modal-footer">
                 {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'edit'])
                 </button>
                 </form>

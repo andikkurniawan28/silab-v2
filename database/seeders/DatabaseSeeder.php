@@ -63,7 +63,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Admin', 'admin' => 'Andik Kurniawan'],
             ['name' => 'Mandor', 'admin' => 'Andik Kurniawan'],
             ['name' => 'Analis', 'admin' => 'Andik Kurniawan'],
-            ['name' => 'Pabrikasi', 'admin' => 'Andik Kurniawan'],
+            ['name' => 'Operator', 'admin' => 'Andik Kurniawan'],
             ['name' => 'User', 'admin' => 'Andik Kurniawan'],
         ];
         Role::insert($roles);
@@ -551,31 +551,42 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         User::insert($users);
-        
+
         $factors = [
             [
                 'name' => 'Mollases',
                 'value' => 0.5,
+                'description' => 'Faktor Mollase untuk menghitung Rendemen NPP.',
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Rendemen',
                 'value' => 0.7,
+                'description' => 'Faktor Rendemen untuk menghitung Rendemen NPP.',
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Raw Juice',
                 'value' => 0.85,
+                'description' => 'Faktor untuk mengkoreksi jumlah Nira Mentah.',
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Imbibition',
                 'value' => 1,
+                'description' => 'Faktor untuk mengkoreksi jumlah Imbibisi.',
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Saccharomat',
                 'value' => 0.03,
+                'description' => 'Faktor untuk mengkoreksi % Pol Saccharomat. % Pol Saccharomat ditambahkan dengan faktor * % Brix.',
+                'admin' => 'Andik Kurniawan',
+            ],
+            [
+                'name' => 'Pol Ampas',
+                'value' => 0.0,
+                'description' => 'Faktor untuk mengkoreksi Pol Ampas. Pol Ampas sebelum koreksi, ditambahkan dengan faktor ini.',
                 'admin' => 'Andik Kurniawan',
             ],
         ];
@@ -584,50 +595,58 @@ class DatabaseSeeder extends Seeder
         $dirts = [
             [
                 'name' => 'Pucuk',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Sogolan',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Daduk',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Akar',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Tali',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Terbakar',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Muda',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
             [
                 'name' => 'Lelesan',
-                'interval' => 5,
+                'interval' => 10,
                 'punishment' => 5,
+                'max' => 100,
                 'admin' => 'Andik Kurniawan',
             ],
         ];

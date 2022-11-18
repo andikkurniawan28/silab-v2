@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Core Sample') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Data Analisa {{ ucfirst('Core Sample') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -43,17 +43,17 @@
                             <td>
                                 @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $core_sample->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
+                                        @include('components.icon', ['icon' => 'edit '])
                                         Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $core_sample->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
+                                        @include('components.icon', ['icon' => 'trash '])
                                         Delete
                                     </button>
                                 @else
                                     <h4>
                                         <span class="badge badge-warning text-dark">
-                                            @include('components.icon', ['icon' => 'lock ']) 
+                                            @include('components.icon', ['icon' => 'lock '])
                                             Locked
                                         </span>
                                     </h4>
@@ -68,12 +68,12 @@
         <div class="card-footer">
             @if(auth()->user()->role_id == 1 || auth()->user()->role_id == 2)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
-                Create
+                @include('components.icon', ['icon' => 'plus '])
+                Tambah
             </button>
             @endif
             <a href="core_samples_correction" type="button" class="btn btn-info" target="_blank">
-                @include('components.icon', ['icon' => 'history ']) 
+                @include('components.icon', ['icon' => 'history '])
                 Correction
             </a>
 

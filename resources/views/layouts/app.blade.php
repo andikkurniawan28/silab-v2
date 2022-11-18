@@ -1,206 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>{{ env('APP_NAME') }}</title>
-
-	<link rel="icon" type="image/png" href="/admin_template/img/QC.png"/>
-    {{-- <link href="/admin_template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css"> --}}
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link href="/admin_template/css/sb-admin-2.min.css" rel="stylesheet">
-    <link href="/admin_template/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.dataTables.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+    @include('layouts.head')
 </head>
-
 <body id="page-top">
-
-    <!-- Page Wrapper -->
     <div id="wrapper">
-
-        @include('components.sidebar')
-
-        <!-- Content Wrapper -->
+        @include('layouts.sidebar')
         <div id="content-wrapper" class="d-flex flex-column text-dark">
-
-            <!-- Main Content -->
             <div id="content">
-
-                @include('components.navbar')
+                @include('layouts.navbar')
                 @yield('content')
-
             </div>
-            <!-- End of Main Content -->
-
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white text-dark">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Bagian Quality Control</span><br>
-                        <span>Sistem Informasi Laboratorium V<sub>2.0</sub></span><br>
-                        <span>Developed by <a href="https://wa.me/6285733465399" target="_blank">Andik Kurniawan</a></span>
-                        {{-- <br>
-                        <span>Empowered by <i class="fa-brands fa-laravel"></i></span> --}}
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
+            @include('layouts.footer')
         </div>
-        <!-- End of Content Wrapper -->
-
     </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{ route('logout') }}">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Change Password Modal-->
-    <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Change Password</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('change_password') }}" method="POST">
-                    @csrf
-                    <p>Masukkan Password Baru Anda</p>
-                    <p>
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="password" name="password" required>
-                        </div>
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Change Password</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Upload Image Modal-->
-    <div class="modal fade" id="uploadImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('upload_image') }}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Image</label>
-                        <input 
-                            type="file" 
-                            class="form-control-file" 
-                            accept="image/png, image/gif, image/jpeg" 
-                            name="image"
-                        >
-                    </div>
-                    
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <button class="btn btn-primary" type="submit">Upload Image</a>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
+    @include('layouts.modal')
     @yield('modal')
-
-    <script src="/admin_template/vendor/jquery/jquery.min.js"></script>
-    <script src="/admin_template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/admin_template/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="/admin_template/js/sb-admin-2.min.js"></script>
-    <script src="/admin_template/vendor/chart.js/Chart.min.js"></script>
-    <script src="/admin_template/js/demo/chart-area-demo.js"></script>
-    <script src="/admin_template/js/demo/chart-pie-demo.js"></script>
-    <script src="/admin_template/vendor/datatables/jquery.dataTables.min.js"></script>
-    <script src="/admin_template/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <script src="/admin_template/js/demo/datatables-demo.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $("#checkedAll").change(function(){
-                if(this.checked){
-                $(".checkSingle").each(function(){
-                    this.checked=true;
-                })              
-                }else{
-                $(".checkSingle").each(function(){
-                    this.checked=false;
-             })              
-            }
-        });
-
-        $(".checkSingle").click(function () {
-            if ($(this).is(":checked")){
-            var isAllChecked = 0;
-            $(".checkSingle").each(function(){
-                if(!this.checked)
-                isAllChecked = 1;
-            })              
-            if(isAllChecked == 0){ $("#checkedAll").prop("checked", true); }     
-            } else {
-            $("#checkedAll").prop("checked", false);
-            }
-        });
-        });
-    </script>
+    @include('layouts.script')
     @yield('chart_area')
-
 </body>
-
 </html>

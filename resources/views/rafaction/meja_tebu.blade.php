@@ -19,18 +19,18 @@
                         <select class="form-control" name="barcode">
                             @foreach ($rafactions_unscored[$number] as $rafaction_unscored)
                                 <option value="{{ $rafaction_unscored->barcode }}">
-                                    {{ $rafaction_unscored->barcode }} 
+                                    {{ $rafaction_unscored->barcode }}
                                 </option>
                             @endforeach
                           </select>
                     </div>
                 </div>
-                
+
                 @foreach($dirts as $dirt)
                 <div class="form-group row">
                 <label for="spot" class="col-sm-2 col-form-label">{{ ucfirst($dirt->name) }}</label>
                     <div class="col-sm-10">
-                        @for($i = 0; $i < $dirt->interval; $i++)
+                        @for($i = 0; $i < $dirt->max; $i = $i + $dirt->interval)
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="{{ strtolower($dirt->name) }}" id="{{ $dirt->name }}" value="{{ $i }}"
                                 @if($i == 0)
@@ -49,7 +49,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'save'])
                 </button>
                 </form>

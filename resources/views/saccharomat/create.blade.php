@@ -2,7 +2,7 @@
     <div class="modal-dialog" sample="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createLabel">Create {{ ucfirst('saccharomat') }}</h5>
+                <h5 class="modal-title" id="createLabel">Tambah {{ ucfirst('saccharomat') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
@@ -46,7 +46,7 @@
             </div>
             <div class="modal-footer">
                 {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'save'])
                 </button>
                 </form>

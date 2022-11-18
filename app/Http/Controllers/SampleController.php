@@ -50,7 +50,7 @@ class SampleController extends Controller
 
         Sample::create($request->all());
         Log::writeLog('Sample', 'Create New Sample', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Sample has been stored');
+        return redirect()->back()->with('success', 'Sampel berhasil disimpan.');
     }
 
     /**
@@ -91,7 +91,7 @@ class SampleController extends Controller
             'method_id' => $foreignId->method_id,
         ]);
         Log::writeLog('Sample', 'Update Sample', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Sample has been updated');
+        return redirect()->back()->with('success', 'Sampel berhasil dirubah.');
     }
 
     /**
@@ -104,6 +104,6 @@ class SampleController extends Controller
     {
         Sample::where('id', $id)->delete();
         Log::writeLog('Sample', 'Delete Sample', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Sample has been delete');
+        return redirect()->back()->with('success', 'Sampel berhasil dihapus.');
     }
 }

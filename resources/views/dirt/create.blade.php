@@ -20,6 +20,14 @@
                 ])
 
                 @include('components.input',[
+                    'label' => 'Max',
+                    'name' => 'max',
+                    'type' => 'number',
+                    'value' => '',
+                    'modifier' => 'required',
+                ])
+
+                @include('components.input',[
                     'label' => 'Interval',
                     'name' => 'interval',
                     'type' => 'number',
@@ -38,7 +46,7 @@
             </div>
             <div class="modal-footer">
                 {{-- <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button> --}}
-                <button type="submit" class="btn btn-primary">Save 
+                <button type="submit" class="btn btn-primary">Save
                     @include('components.icon', ['icon' => 'save'])
                 </button>
                 </form>

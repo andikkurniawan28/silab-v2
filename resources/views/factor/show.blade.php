@@ -18,6 +18,13 @@
                     'modifier' => 'readonly',
                 ])
 
+                <div class="form-group row">
+                    <label for="description" class="col-sm-2 col-form-label">Desc.</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="{{ $factor->description }}" readonly></textarea>
+                    </div>
+                </div>
+
                 @include('components.input',[
                     'label' => 'Admin',
                     'name' => 'admin',

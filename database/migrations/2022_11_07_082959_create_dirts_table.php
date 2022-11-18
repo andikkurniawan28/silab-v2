@@ -18,6 +18,7 @@ class CreateDirtsTable extends Migration
             $table->string('name')->unique();
             $table->integer('interval');
             $table->float('punishment');
+            $table->integer('max');
             $table->string('admin');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();

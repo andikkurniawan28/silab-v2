@@ -46,7 +46,7 @@ class MaterialController extends Controller
         ]);
         Material::create($request->all());
         Log::writeLog('Material', 'Create New Material', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Material '.$request->name.' has been stored');
+        return redirect()->back()->with('success', 'Material '.$request->name.' berhasil disimpan.');
     }
 
     /**
@@ -87,7 +87,7 @@ class MaterialController extends Controller
             'method_id' => $request->method_id,
         ]);
         Log::writeLog('Material', 'Edit Material '.$request->name, Auth()->user()->name);
-        return redirect()->back()->with('success', 'Material '.$request->name.' has been updated');
+        return redirect()->back()->with('success', 'Material '.$request->name.' berhasil dirubah.');
     }
 
     /**
@@ -100,6 +100,6 @@ class MaterialController extends Controller
     {
         Material::where('id', $id)->delete();
         Log::writeLog('Material', 'Delete Material', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Material berhasil dihapus');
+        return redirect()->back()->with('success', 'Material berhasil dihapus.');
     }
 }

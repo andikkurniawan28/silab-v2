@@ -10,11 +10,6 @@ use Illuminate\Http\Request;
 
 class SaccharomatController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $saccharomats = Saccharomat::latest()->paginate(1000);
@@ -23,116 +18,36 @@ class SaccharomatController extends Controller
         return view('saccharomat.index', compact('saccharomats', 'samples', 'stations'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $error = self::validateRequest($request);
-        if($error == 0)
-        {
-            $sampleIsNpp = Sample::checkIfSampleIsNpp($request->sample_id);
-            $data = Saccharomat::implementFormula($sampleIsNpp, $request->percent_pol, $request->percent_brix, $request->pol);
-            $request->request->add([
-                'purity' => $data['purity'],
-                'yield' => $data['yield'],
-                'analyst' => Auth()->user()->name,
-                'preparation1' => Auth()->user()->name,
-                'preparation2' => Auth()->user()->name,
-            ]);
-            Saccharomat::create($request->all());
-            Log::writeLog('Saccharomat', 'Submit Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Saccharomat berhasil disimpan');
-        }
-        else return self::showError($error);
+        return self::handleRequest($error, $request);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Saccharomat  $saccharomat
-     * @return \Illuminate\Http\Response
-     */
     public function show(Saccharomat $saccharomat)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Saccharomat  $saccharomat
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Saccharomat $saccharomat)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Saccharomat  $saccharomat
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $error = self::validateRequest($request);
-        if($error == 0 || $error == 3)
-        {
-            $sampleIsNpp = Sample::checkIfSampleIsNpp($request->sample_id);
-            $data = Saccharomat::implementFormula($sampleIsNpp, $request->percent_pol, $request->percent_brix, $request->pol);
-            $request->request->add([
-                'purity' => $data['purity'],
-                'yield' => $data['yield'],
-                'corrector' => Auth()->user()->name,
-            ]);
-            Saccharomat::whereId($id)->update([
-                'sample_id' => $request->sample_id,
-                'percent_brix' => $request->percent_brix,
-                'percent_pol' => $request->percent_pol,
-                'pol' => $request->pol,
-                'purity' => $request->purity,
-                'yield' => $request->yield,
-                'percent_brix_origin' => $request->percent_brix_origin,
-                'percent_pol_origin' => $request->percent_pol_origin,
-                'pol_origin' => $request->pol_origin,
-                'purity_origin' => $request->purity_origin,
-                'yield_origin' => $request->yield_origin,
-                'corrector' => $request->corrector,
-                'correction' => 1,
-            ]);
-            Log::writeLog('Saccharomat', 'Update Data', Auth()->user()->name);
-            return redirect()->back()->with('success', 'Saccharomat berhasil diupdate');
-        }
-        else return self::showError($error);
+        return self::handleRequestUpdate($error, $request, $id);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Saccharomat  $saccharomat
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        Saccharomat::whereId($id)->delete();
-        Log::writeLog('Saccharomat', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Saccharomat berhasil dihapus');
+        return self::handleRequestDelete($id);
     }
 
     public function validateRequest($request)
@@ -183,5 +98,66 @@ class SaccharomatController extends Controller
             Log::writeLog('Saccharomat', 'Verify Data', Auth()->user()->name);
             return redirect()->route('saccharomats.index')->with('success', 'Saccharomat berhasil diverifikasi oleh '.$request->master);
         }
+    }
+
+    public function handleRequest($error, $request)
+    {
+        if($error == 0)
+        {
+            $sampleIsNpp = Sample::checkIfSampleIsNpp($request->sample_id);
+            $data = Saccharomat::implementFormula($sampleIsNpp, $request->percent_pol, $request->percent_brix, $request->pol);
+            $request->request->add([
+                'purity' => $data['purity'],
+                'yield' => $data['yield'],
+                'analyst' => Auth()->user()->name,
+                'preparation1' => Auth()->user()->name,
+                'preparation2' => Auth()->user()->name,
+            ]);
+            Saccharomat::create($request->all());
+            Log::writeLog('Saccharomat', 'Submit Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Saccharomat berhasil disimpan');
+        }
+        else
+            return self::showError($error);
+    }
+
+    public function handleRequestUpdate($error, $request, $id)
+    {
+        if($error == 0 || $error == 3)
+        {
+            $sampleIsNpp = Sample::checkIfSampleIsNpp($request->sample_id);
+            $data = Saccharomat::implementFormula($sampleIsNpp, $request->percent_pol, $request->percent_brix, $request->pol);
+            $request->request->add([
+                'purity' => $data['purity'],
+                'yield' => $data['yield'],
+                'corrector' => Auth()->user()->name,
+            ]);
+            Saccharomat::whereId($id)->update([
+                'sample_id' => $request->sample_id,
+                'percent_brix' => $request->percent_brix,
+                'percent_pol' => $request->percent_pol,
+                'pol' => $request->pol,
+                'purity' => $request->purity,
+                'yield' => $request->yield,
+                'percent_brix_origin' => $request->percent_brix_origin,
+                'percent_pol_origin' => $request->percent_pol_origin,
+                'pol_origin' => $request->pol_origin,
+                'purity_origin' => $request->purity_origin,
+                'yield_origin' => $request->yield_origin,
+                'corrector' => $request->corrector,
+                'correction' => 1,
+            ]);
+            Log::writeLog('Saccharomat', 'Update Data', Auth()->user()->name);
+            return redirect()->back()->with('success', 'Saccharomat berhasil diupdate');
+        }
+        else
+            return self::showError($error);
+    }
+
+    public function handleRequestDelete($id)
+    {
+        Saccharomat::whereId($id)->delete();
+        Log::writeLog('Saccharomat', 'Delete Data', Auth()->user()->name);
+        return redirect()->back()->with('success', 'Saccharomat berhasil dihapus');
     }
 }

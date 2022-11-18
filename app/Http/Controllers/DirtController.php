@@ -79,6 +79,7 @@ class DirtController extends Controller
     {
         Dirt::where('id', $id)->update([
             'name' => $request->name,
+            'max' => $request->max,
             'interval' => $request->interval,
             'punishment' => $request->punishment,
             'admin' => Auth()->user()->name,

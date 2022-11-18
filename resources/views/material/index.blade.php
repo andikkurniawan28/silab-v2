@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('material') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Data {{ ucfirst('material') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -19,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>Name</th>
+                            <th>Nama</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -34,18 +34,18 @@
                                 @if(Auth()->user()->role_id != 1)
                                 <h4>
                                     <span class="badge badge-warning text-dark">
-                                        @include('components.icon', ['icon' => 'lock ']) 
-                                        Locked
+                                        @include('components.icon', ['icon' => 'lock '])
+                                        Terkunci
                                     </span>
                                 </h4>
                                 @elseif(Auth()->user()->role_id == 1)
                                     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $material->id }}">
-                                        @include('components.icon', ['icon' => 'edit ']) 
+                                        @include('components.icon', ['icon' => 'edit '])
                                         Edit
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $material->id }}">
-                                        @include('components.icon', ['icon' => 'trash ']) 
-                                        Delete
+                                        @include('components.icon', ['icon' => 'trash '])
+                                        Hapus
                                     </button>
                                 @endif
                             </td>
@@ -57,8 +57,8 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
-                Create
+                @include('components.icon', ['icon' => 'plus '])
+                Tambah
             </button>
         </div>
     </div>

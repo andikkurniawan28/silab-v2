@@ -1,5 +1,5 @@
 <ul class="navbar-nav bg-gradient-light sidebar sidebar-light accordion" id="accordionSidebar">
-   
+
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
         <div class="sidebar-brand-icon">
             <img src="/admin_template/img/QC.png" width="50" height="50" alt="Logo QC">
@@ -15,7 +15,7 @@
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
-    
+
     <hr class="sidebar-divider">
 
     <li class="nav-item">
@@ -83,7 +83,7 @@
             </div>
         </div>
     </li>
-    
+
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
             <i class="fas fa-fw fa-file-signature"></i>
@@ -116,7 +116,7 @@
                 <a class="collapse-item" href="{{ route('cooperatives.index') }}">KUD</a>
                 <a class="collapse-item" href="{{ route('outposts.index') }}">Pos Pantau</a>
                 <a class="collapse-item" href="{{ route('programs.index') }}">Asal Tebu</a>
-                <a class="collapse-item" href="{{ route('factors.index') }}">Factor</a>
+                <a class="collapse-item" href="{{ route('factors.index') }}">Faktor Koreksi</a>
                 <a class="collapse-item" href="{{ route('dirts.index') }}">Kotoran</a>
                 <a class="collapse-item" href="{{ route('activity_log') }}">Log Aktifitas</a>
                 <a class="collapse-item" href="{{ route('meja_tebu', 1) }}">Meja Tebu 1</a>

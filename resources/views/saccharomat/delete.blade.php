@@ -3,14 +3,14 @@
     <div class="modal-dialog" saccharomat="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $saccharomat->id }}Label">Delete {{ ucfirst('saccharomat') }}</h5>
+                <h5 class="modal-title" id="delete{{ $saccharomat->id }}Label">Hapus {{ ucfirst('saccharomat') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
             <form method="POST" action="{{ route('saccharomats.destroy', $saccharomat->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
-                <p>Are you sure ?</p>
+                <p>Apa Anda yakin ?</p>
 
                 @include('components.input',[
                     'label' => 'Material',

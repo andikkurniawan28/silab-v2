@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('Analisa Khusus') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Data {{ ucfirst('Analisa Khusus') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -62,13 +62,13 @@
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $special->id }}">
                                         @include('components.icon', ['icon' => 'trash '])
-                                        Delete
+                                        Hapus
                                     </button>
                                 @elseif($special->is_verified == 1 && Auth()->user()->role_id != 1)
                                     <h4>
                                         <span class="badge badge-warning text-dark">
                                             @include('components.icon', ['icon' => 'lock '])
-                                            Locked
+                                            Terkunci
                                         </span>
                                     </h4>
                                 @elseif($special->is_verified == 1 && Auth()->user()->role_id == 1)
@@ -78,7 +78,7 @@
                                     </button>
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $special->id }}">
                                         @include('components.icon', ['icon' => 'trash '])
-                                        Delete
+                                        Hapus
                                     </button>
                                 @endif
                             </td>
@@ -91,17 +91,17 @@
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
-                Create
+                Tambah
             </button>
             <a href="specials_correction" type="button" class="btn btn-info">
                 @include('components.icon', ['icon' => 'history '])
-                Correction
+                Koreksi
             </a>
 
             @if(Auth()->user()->role_id == 1 or Auth()->user()->role_id == 2)
             <a href="specials_verification" type="button" class="btn btn-secondary">
                 @include('components.icon', ['icon' => 'check '])
-                Verification
+                Verifikasi
             </a>
             @endif
 

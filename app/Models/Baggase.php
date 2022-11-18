@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Factor;
 use App\Models\Saccharomat;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Baggase extends Model
 {
@@ -47,6 +48,7 @@ class Baggase extends Model
 
     public static function countPol($pol, $water)
     {
-        return (($pol/2) * 0.0286 * ((10000+$water)/100)*2.5);
+        $factor = Factor::where('name', 'Pol Ampas')->get()->last()->value;
+        return (($pol/2) * 0.0286 * ((10000+$water)/100)*2.5) + $factor;
     }
 }

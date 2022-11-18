@@ -11,7 +11,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">{{ ucfirst('sample') }}</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Data {{ ucfirst('sampel') }}</h5>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -37,7 +37,7 @@
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $sample->id }}">
                                     @include('components.icon', ['icon' => 'trash '])
-                                    Delete
+                                    Hapus
                                 </button>
                             </td>
                         </tr>
@@ -49,7 +49,7 @@
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
                 @include('components.icon', ['icon' => 'plus '])
-                Create
+                Tambah
             </button>
         </div>
     </div>

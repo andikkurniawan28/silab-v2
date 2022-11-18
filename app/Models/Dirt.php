@@ -10,6 +10,7 @@ class Dirt extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'max',
         'interval',
         'punishment',
         'admin',

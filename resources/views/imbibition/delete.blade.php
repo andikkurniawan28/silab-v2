@@ -3,14 +3,14 @@
     <div class="modal-dialog" imbibition="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="delete{{ $imbibition->id }}Label">Delete {{ ucfirst('imbibisi') }}</h5>
+                <h5 class="modal-title" id="delete{{ $imbibition->id }}Label">Hapus {{ ucfirst('imbibisi') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
             <form method="POST" action="{{ route('imbibitions.destroy', $imbibition->id) }}" class="text-dark">
                 @csrf
                 @method('DELETE')
-                <p>Are you sure ?</p>
+                <p>Apa Anda yakin ?</p>
 
                 @include('components.input',[
                     'label' => 'ID',
@@ -23,7 +23,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
-                <button type="submit" class="btn btn-primary">Yes 
+                <button type="submit" class="btn btn-primary">Yes
                     @include('components.icon', ['icon' => 'trash'])
                 </button>
             </form>

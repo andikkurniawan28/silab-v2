@@ -38,17 +38,17 @@
                             @endif
                             <td>
                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#show{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'eye ']) 
+                                    @include('components.icon', ['icon' => 'eye '])
                                     Show
                                 </button>
                                 @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
                                 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#edit{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'edit ']) 
+                                    @include('components.icon', ['icon' => 'edit '])
                                     Edit
                                 </button>
                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete{{ $around->id }}">
-                                    @include('components.icon', ['icon' => 'trash ']) 
-                                    Delete
+                                    @include('components.icon', ['icon' => 'trash '])
+                                    Hapus
                                 </button>
                                 @endif
                             </td>
@@ -61,8 +61,8 @@
         <div class="card-footer">
             @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-                @include('components.icon', ['icon' => 'plus ']) 
-                Create
+                @include('components.icon', ['icon' => 'plus '])
+                Tambah
             </button>
             @endif
         </div>

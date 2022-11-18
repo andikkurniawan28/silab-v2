@@ -17,20 +17,20 @@
     <div class="row">
 
         @include('balance.cards')
-    
+
     </div>
 
     @if(Auth()->user()->role_id == 1 || Auth()->user()->role_id == 2 || Auth()->user()->role_id == 3)
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#create">
-            @include('components.icon', ['icon' => 'plus ']) 
-            Create
+            @include('components.icon', ['icon' => 'plus '])
+            Tambah
         </button>
 
         <a href="{{ route('balances.index') }}" target="_blank" class="btn btn-secondary shadow-sm">
-            <i  class="fas fa-table fa-sm text-white-50"></i> All Data
+            <i class="fas fa-table fa-sm text-white-50"></i> Semua Data
         </a>
     @endif
-    
+
 </div>
 @endsection
 

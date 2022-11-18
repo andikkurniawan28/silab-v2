@@ -28,7 +28,7 @@ class PageController extends Controller
 
     public function activityLog()
     {
-        $logs = Log::limit(1000)->orderBy('id', 'desc')->get();
+        $logs = Log::latest()->paginate(1000);
         $stations = $this->serveStation();
         return view('log.index', compact('logs', 'stations'));
     }
