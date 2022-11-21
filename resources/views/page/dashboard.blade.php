@@ -48,13 +48,13 @@
     </div>
 
     <!-- Chart Section -->
-    <div class="row">
+    {{-- <div class="row">
         @include('page.area_chart',[
             'title' => 'Reject SHS',
             'id' => 'myAreaChart',
         ])
         @include('page.pie_chart')
-    </div>
+    </div> --}}
 
     <!-- Content Section -->
     <div class="row">
@@ -104,7 +104,7 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: [ 
+    labels: [
         // "{{ date('d M Y', strtotime($data['reject'][7]['created_at'])) }}",
         // "{{ date('d M Y', strtotime($data['reject'][6]['created_at'])) }}",
         // "{{ date('d M Y', strtotime($data['reject'][5]['created_at'])) }}",
@@ -127,7 +127,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [ 
+      data: [
                 // {{ $data['reject'][7]['weight'] }},
                 // {{ $data['reject'][6]['weight'] }},
                 // {{ $data['reject'][5]['weight'] }},

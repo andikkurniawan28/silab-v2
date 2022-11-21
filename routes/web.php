@@ -36,6 +36,7 @@ use App\Http\Controllers\MoistureController;
 use App\Http\Controllers\TaxationController;
 use App\Http\Controllers\ColoromatController;
 use App\Http\Controllers\RafactionController;
+use App\Http\Controllers\TestYajraController;
 use App\Http\Controllers\CoreSampleController;
 use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\CertificateController;

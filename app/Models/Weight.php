@@ -14,22 +14,22 @@ class Weight extends Model
     {
         $time = self::determineTimeRange();
 
-        $data['tetes']['today'] = 
+        $data['tetes']['today'] =
             DB::connection('tetes')
                 ->table('tetes')
                 ->where('time', '>=', $time['yesterday'])
                 ->where('time', '<', $time['today'])
                 ->sum('netto');
-                
-        $data['tetes']['until_today'] = 
+
+        $data['tetes']['until_today'] =
             DB::connection('tetes')
                 ->table('tetes')
                 ->where('time', '<', $time['today'])
-                ->sum('netto'); 
+                ->sum('netto');
 
         for($i=0; $i<24; $i++)
         {
-            $data['tetes']['hour'][$i] = 
+            $data['tetes']['hour'][$i] =
             DB::connection('tetes')
                 ->table('tetes')
                 ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
@@ -37,22 +37,22 @@ class Weight extends Model
                 ->sum('netto');
         }
 
-        $data['raw_sugar']['today'] = 
+        $data['raw_sugar']['today'] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar')
                 ->where('time', '>=', $time['yesterday'])
                 ->where('time', '<', $time['today'])
                 ->sum('netto');
-                
-        $data['raw_sugar']['until_today'] = 
+
+        $data['raw_sugar']['until_today'] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar')
                 ->where('time', '<', $time['today'])
                 ->sum('netto');
-                
+
         for($i=0; $i<24; $i++)
         {
-            $data['raw_sugar']['hour'][$i] = 
+            $data['raw_sugar']['hour'][$i] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar')
                 ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
@@ -60,22 +60,22 @@ class Weight extends Model
                 ->sum('netto');
         }
 
-        $data['raw_sugar_output']['today'] = 
+        $data['raw_sugar_output']['today'] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar_output')
                 ->where('time', '>=', $time['yesterday'])
                 ->where('time', '<', $time['today'])
                 ->sum('netto');
-                
-        $data['raw_sugar_output']['until_today'] = 
+
+        $data['raw_sugar_output']['until_today'] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar_output')
                 ->where('time', '<', $time['today'])
                 ->sum('netto');
-                
+
         for($i=0; $i<24; $i++)
         {
-            $data['raw_sugar_output']['hour'][$i] = 
+            $data['raw_sugar_output']['hour'][$i] =
             DB::connection('raw_sugar')
                 ->table('raw_sugar_output')
                 ->where('time', '>=', date('Y-m-d '.$i.':00:00'))
@@ -85,7 +85,7 @@ class Weight extends Model
 
         return $data;
     }
-    
+
     public static function determineTimeRange()
     {
         $data['now'] = date('Y-m-d');
@@ -93,5 +93,32 @@ class Weight extends Model
         $data['yesterday'] = date('Y-m-d H:i', strtotime($data['today'] . "-24 hours"));
         $data['tommorow'] = date('Y-m-d H:i', strtotime($data['today'] . "+24 hours"));
         return $data;
+    }
+
+    public static function raw_sugar_in_total()
+    {
+        $time = self::determineTimeRange();
+        return DB::connection('raw_sugar')
+                ->table('raw_sugar')
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+    }
+
+    public static function raw_sugar_out_total()
+    {
+        $time = self::determineTimeRange();
+        return DB::connection('raw_sugar')
+                ->table('raw_sugar_output')
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
+    }
+
+    public static function tetes_total()
+    {
+        $time = self::determineTimeRange();
+        return DB::connection('tetes')
+                ->table('tetes')
+                ->where('time', '<', $time['today'])
+                ->sum('netto');
     }
 }
