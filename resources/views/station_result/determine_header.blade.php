@@ -94,6 +94,11 @@
         <th>TDS</th>
         <th>pH</th>
         @break
+    @case(18)
+        <th>TDS</th>
+        <th>pH</th>
+        <th>Hardness</th>
+        @break
     @default
         <p>Method Undefined</p>
         @break

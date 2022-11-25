@@ -326,6 +326,15 @@
             @endif
         </td>
         @break
+    @case(18)
+        <td>
+            @if($analysis->boiler_verification == 1)
+                {{ $analysis->tds }}
+                {{ $analysis->ph }}
+                {{ $analysis->hardness }}
+            @endif
+        </td>
+        @break
     @default
         <p>Method Undefined</p>
         @break

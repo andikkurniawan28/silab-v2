@@ -56,6 +56,7 @@ class DatabaseSeeder extends Seeder
             ['name' => "Brix, Pol, HK, Icumsa, HL", 'admin' => 'Andik Kurniawan'],
             ['name' => "Brix", 'admin' => 'Andik Kurniawan'],
             ['name' => "TDS, pH", 'admin' => 'Andik Kurniawan'],
+            ['name' => "TDS, pH, Hardness", 'admin' => 'Andik Kurniawan'],
         ];
         Method::insert($methods);
 
@@ -734,7 +735,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Jiangxin Jianglin', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Yoshimine 1', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Yoshimine 2', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
-            ['name' => 'WTP', 'station_id' => 10, 'method_id' => 9, 'admin' => 'Andik Kurniawan', ],
+            ['name' => 'WTP', 'station_id' => 10, 'method_id' => 18, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Daert JJ', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Daert Yoshimine1', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
             ['name' => 'Daert Yoshimine2', 'station_id' => 10, 'method_id' => 17, 'admin' => 'Andik Kurniawan', ],
