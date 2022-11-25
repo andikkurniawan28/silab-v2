@@ -234,7 +234,7 @@ class DatabaseSeeder extends Seeder
                 'name' => 'Darmaji',
                 'username' => 'darmaji',
                 'password' => bcrypt('darmaji987'),
-                'hmi_access' => NULL,
+                'hmi_access' => 1,
                 'admin' => 'Andik Kurniawan',
             ],
             [

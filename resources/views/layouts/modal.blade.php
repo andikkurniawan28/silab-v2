@@ -33,7 +33,13 @@
                 <div class="modal-body">
                     <form action="{{ route('change_password') }}" method="POST">
                     @csrf
-                    <p>Masukkan Password Baru Anda</p>
+                    <p>Masukkan Password <strong>Lama</strong> Anda</p>
+                    <p>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="password" name="password_old" required>
+                        </div>
+                    </p>
+                    <p>Masukkan Password <strong>Baru</strong> Anda</p>
                     <p>
                         <div class="form-group">
                             <input type="password" class="form-control" id="password" name="password" required>

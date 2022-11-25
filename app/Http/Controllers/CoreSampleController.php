@@ -38,19 +38,21 @@ class CoreSampleController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = Core_sample::validateRequest($request);
-        // $request->request->add([
-        //     'vehicle' => $data['vehicle'],
-        //     'register' => $data['register'],
-        //     'cooperative' => $data['cooperative'],
-        //     'outpost' => $data['outpost'],
-        //     'program' => $data['program'],
-        //     'yield' => $data['yield'],
-        //     'analyst' => Auth()->user()->name,
-        // ]);
+        $data = Core_sample::validateRequest($request);
+        $request->request->add([
+            'farmer' => $data['farmer'],
+            'truck_number' => $data['truck_number'],
+            'vehicle' => $data['vehicle'],
+            'register' => $data['register'],
+            'cooperative' => $data['cooperative'],
+            'outpost' => $data['outpost'],
+            'program' => $data['program'],
+            'yield' => $data['yield'],
+            'analyst' => Auth()->user()->name,
+        ]);
         Core_sample::create($request->all());
-        // Log::writeLog('Core Sample', 'Submit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been stored');
+        Log::writeLog('Core Sample', 'Submit Data', Auth()->user()->name);
+        return redirect()->back()->with('success', 'Core Sample berhasil disimpan.');
     }
 
     /**
@@ -86,6 +88,8 @@ class CoreSampleController extends Controller
     {
         $data = Core_sample::validateRequest($request);
         $request->request->add([
+            'farmer' => $data['farmer'],
+            'truck_number' => $data['truck_number'],
             'vehicle' => $data['vehicle'],
             'register' => $data['register'],
             'cooperative' => $data['cooperative'],
@@ -93,14 +97,16 @@ class CoreSampleController extends Controller
             'program' => $data['program'],
             'yield' => $data['yield'],
         ]);
-        Core_sample::find($id)->update([
+        Core_sample::whereId($id)->update([
             'barcode' => $request->barcode,
             'spot' => $request->spot,
             'batch' => $request->batch,
+            'farmer' => $request->farmer,
+            'truck_number' => $request->truck_number,
             'register' => $request->register,
             'vehicle' => $request->vehicle,
             'cooperative' => $request->cooperative,
-            'oupost' => $request->outpost,
+            'outpost' => $request->outpost,
             'program' => $request->program,
             'percent_brix' => $request->percent_brix,
             'percent_pol' => $request->percent_pol,
@@ -112,7 +118,7 @@ class CoreSampleController extends Controller
             'correction' => 1,
         ]);
         Log::writeLog('Core Sample', 'Edit Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been updated');
+        return redirect()->back()->with('success', 'Core Sample berhasil dirubah.');
     }
 
     /**
@@ -125,7 +131,7 @@ class CoreSampleController extends Controller
     {
         Core_sample::find($id)->delete();
         Log::writeLog('Core Sample', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Data has been deleted');
+        return redirect()->back()->with('success', 'Core Sample berhasi dihapus.');
     }
 
     public function showCorrection()

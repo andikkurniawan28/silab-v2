@@ -42,6 +42,8 @@ use App\Http\Controllers\ImbibitionController;
 use App\Http\Controllers\CertificateController;
 use App\Http\Controllers\CooperativeController;
 use App\Http\Controllers\SaccharomatController;
+use App\Http\Controllers\TestJoinStationResult;
+use App\Http\Controllers\SampleResultController;
 use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\RainMonitoringController;
 use App\Http\Controllers\UploadUserImageController;
@@ -56,6 +58,7 @@ Route::get('activity_log', [PageController::class, 'activityLogByUser'])->name('
 Route::get('analysis_result', [PageController::class, 'analysisResult'])->name('analysis_result')->middleware(['auth', 'role_is_5']);
 Route::get('station_result/{station_id}', [PageController::class, 'stationResult'])->name('station_result')->middleware(['auth', 'role_is_5']);
 Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'])->name('sample_result')->middleware(['auth', 'role_is_5']);
+//  Route::get('sample_result/{material_id}', SampleResultController::class)->name('sample_result')->middleware(['auth', 'role_is_5']);
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['auth', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['auth', 'role_is_3']);
 Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['auth', 'role_is_3']);
@@ -174,7 +177,7 @@ Route::get('agroklimat/{kud}/{humidity}/{cahaya}/{curah_hujan}', RainController:
 Route::get('agroklimat/', RainMonitoringController::class)->name('agroklimat_view')->middleware('auth');
 
 // TestApi
-Route::get('test/{nomor_bor}', TestApi::class)->name('test');
+// Route::get('test/{nomor_bor}', TestApi::class)->name('test');
 // Route::get('taxation_export/{id}', [TaxationController::class, 'export'])->name('taxation_export')->middleware(['auth', 'role_is_5']);
 
 // View
@@ -187,4 +190,6 @@ Route::post('change_password', ChangePasswordController::class)->name('change_pa
 // Upload Image
 Route::post('upload_image', UploadUserImageController::class)->name('upload_image');
 
+// Test
+// Route::get('test/{method_id}', SampleResultController::class);
 

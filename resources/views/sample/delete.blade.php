@@ -16,7 +16,7 @@
                     'label' => 'Nama',
                     'name' => 'name',
                     'type' => 'text',
-                    'value' => $sample->material_name,
+                    'value' => $sample->material->name,
                     'modifier' => 'readonly',
                 ])
 

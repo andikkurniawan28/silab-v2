@@ -336,4 +336,9 @@ class Method extends Model
     {
         return $this->hasMany(Sample::class);
     }
+
+    public function coloromat()
+    {
+        return $this->hasOne(Coloromat::class);
+    }
 }

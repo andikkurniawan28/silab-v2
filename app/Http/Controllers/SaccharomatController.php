@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Saccharomat;
+use App\Models\Log;
+use App\Models\Factor;
 use App\Models\Sample;
 use App\Models\Material;
-use App\Models\Log;
+use App\Models\Saccharomat;
 use Illuminate\Http\Request;
 
 class SaccharomatController extends Controller
@@ -15,7 +16,9 @@ class SaccharomatController extends Controller
         $saccharomats = Saccharomat::latest()->paginate(1000);
         $samples = Sample::all();
         $stations = $this->serveStation();
-        return view('saccharomat.index', compact('saccharomats', 'samples', 'stations'));
+        $mollases_factor = Factor::findMollasesFactor();
+        $yield_factor = Factor::findRendemenFactor();
+        return view('saccharomat.index', compact('saccharomats', 'samples', 'stations', 'mollases_factor', 'yield_factor'));
     }
 
     public function create()

@@ -62,6 +62,8 @@ class Core_sample extends Model
             'outpost' => $outpost,
             'program' => $program,
             'yield' => $yield,
+            'truck_number' => $barcode_info['nopol'],
+            'farmer' => $barcode_info['nama_petani'],
         ];
         return $data;
     }

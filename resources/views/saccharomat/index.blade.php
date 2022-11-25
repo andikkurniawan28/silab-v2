@@ -97,6 +97,8 @@
 @endsection
 
 @section('modal')
+<div id = "mollases_factor" style="display: none">{{ $mollases_factor }}</div>
+<div id = "yield_factor" style="display: none">{{ $yield_factor }}</div>
 @include('saccharomat.create')
 @include('saccharomat.show')
 @include('saccharomat.edit')
