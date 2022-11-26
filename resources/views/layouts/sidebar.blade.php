@@ -30,10 +30,13 @@
                 <a class="collapse-item" href="{{ route('balances.create') }}">Flow Nira Mentah</a>
                 <a class="collapse-item" href="{{ route('imbibitions.create') }}">Imbibisi</a>
                 <a class="collapse-item" href="{{ route('arounds.index') }}">Data Proses</a>
+                <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
                 <a class="collapse-item" href="{{ route('taxations.index') }}">Taksasi In Proses</a>
                 <a class="collapse-item" href="{{ route('mollases.create') }}">Taksasi Tetes</a>
-                <a class="collapse-item" href="{{ route('chemicals.create') }}">Bahan Kimia</a>
-                <a class="collapse-item" href="{{ route('timbangan_in_proses') }}">Timbangan In Proses</a>
+                {{-- <a class="collapse-item" href="{{ route('timbangan_in_proses') }}">Timbangan In Proses</a> --}}
+                <a class="collapse-item" href="{{ route('timbangan_tetes') }}">Timbangan Tetes</a>
+                <a class="collapse-item" href="{{ route('timbangan_rs_in') }}">Timbangan RS</a>
+                <a class="collapse-item" href="{{ route('timbangan_rs_out') }}">Timbangan RS Out</a>
                 <a class="collapse-item" href="{{ route('agroklimat_view') }}">Agroklimat</a>
             </div>
         </div>

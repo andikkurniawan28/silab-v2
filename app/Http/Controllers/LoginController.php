@@ -23,22 +23,22 @@ class LoginController extends Controller
     {
         return view('auth.register');
     }
-    
+
     public function login(Request $request)
     {
         $attempt = Auth::attempt([
-            'username' => $request->username, 
-            'password' => $request->password, 
-            'is_active' => 1, 
+            'username' => $request->username,
+            'password' => $request->password,
+            'is_active' => 1,
         ]);
 
-        if ($attempt) 
+        if ($attempt)
         {
             $request->session()->regenerate();
             Log::writeLog('Authentication', 'Login' , auth()->user()->name);
             return redirect()->intended();
         }
-        else 
+        else
         {
             Log::writeLog('Authentication', 'Login Failed' , $request->username);
             return redirect('login')->with('error', 'Username / password wrong.');
@@ -60,7 +60,7 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Log::writeLog('Authentication', 'Logout', Auth()->user()->name);
+        // Log::writeLog('Authentication', 'Logout', Auth()->user()->name);
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -79,7 +79,7 @@ class LoginController extends Controller
                 session()->put('is_login', 1);
             }
             Log::writeLog('Authentication', 'Login' , $user->name);
-            return redirect('barcode_samples');    
+            return redirect('barcode_samples');
         }
         else
         {

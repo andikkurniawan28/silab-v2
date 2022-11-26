@@ -31,6 +31,7 @@
                             <th>Bruto</th>
                             <th>Tarra</th>
                             <th>Netto</th>
+                            <th>Density</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,6 +42,7 @@
                             <td>{{ $data->bruto }}</td>
                             <td>{{ $data->tarra }}</td>
                             <td>{{ $data->netto }}</td>
+                            <td>{{ $data->density }}</td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -49,7 +51,7 @@
         </div>
         <div class="card-footer">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createTetes">
-                @include('components.icon', ['icon' => 'edit']) 
+                @include('components.icon', ['icon' => 'edit'])
                 Adjust
             </button>
             @include('timbangan_in_proses.createTetes')

@@ -42,7 +42,7 @@ class WeightController extends Controller
 
         return redirect()->back()->with('success', 'Raw Sugar In has been adjusted');
     }
-    
+
     public function adjustTetes(Request $request)
     {
         $datetime = self::mergeDateTime($request);
@@ -54,7 +54,7 @@ class WeightController extends Controller
                 'bruto' => 0,
                 'netto' => $request->netto,
             ]);
-        
+
         Log::writeLog('Timbangan Tetes', 'Adjust', Auth()->user()->name);
 
         return redirect()->back()->with('success', 'Tetes has been adjusted');
@@ -64,26 +64,5 @@ class WeightController extends Controller
     {
         $datetime = $request->date.' '.$request->time;
         return $datetime;
-    }
-
-    public static function showTetes()
-    {
-        $data = DB::connection('tetes')->table('tetes')->select('*')->limit(1000)->orderBy('time', 'desc')->get();
-        $stations = Station::all();
-        return view('timbangan_in_proses.show_tetes', compact('data', 'stations'));
-    }
-
-    public static function showRSOut()
-    {
-        $data = DB::connection('raw_sugar')->table('raw_sugar_output')->select('*')->limit(1000)->orderBy('time', 'desc')->get();
-        $stations = Station::all();
-        return view('timbangan_in_proses.show_rs_out', compact('data', 'stations'));
-    }
-
-    public static function showRSIn()
-    {
-        $data = DB::connection('raw_sugar')->table('raw_sugar')->select('*')->limit(1000)->orderBy('time', 'desc')->get();
-        $stations = Station::all();
-        return view('timbangan_in_proses.show_rs_in', compact('data', 'stations'));
     }
 }
