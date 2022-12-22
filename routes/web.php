@@ -65,11 +65,7 @@ Route::get('sample_result/{material_id}', [PageController::class, 'sampleResult'
 Route::get('reports', [PageController::class, 'report'])->name('reports')->middleware(['auth', 'role_is_3']);
 Route::get('certificates', [PageController::class, 'certificate'])->name('certificates')->middleware(['auth', 'role_is_3']);
 Route::get('barcode_samples', [PageController::class, 'barcodeSample'])->name('barcode_samples')->middleware(['auth', 'role_is_3']);
-// Route::get('timbangan_in_proses', [PageController::class, 'timbanganInProses'])->name('timbangan_in_proses')->middleware(['auth', 'role_is_5']);
 
-// Route::get('timbangan_tetes', [WeightController::class, 'showTetes'])->name('timbangan_tetes')->middleware(['auth', 'role_is_1']);
-// Route::get('timbangan_rs_out', [WeightController::class, 'showRSOut'])->name('timbangan_rs_out')->middleware(['auth', 'role_is_1']);
-// Route::get('timbangan_rs_in', [WeightController::class, 'showRSIn'])->name('timbangan_rs_in')->middleware(['auth', 'role_is_1']);
 Route::get('timbangan_tetes', [TimbanganTetesController::class, 'index'])->name('timbangan_tetes')->middleware(['auth']);
 Route::get('timbangan_rs_in', [TimbanganRsController::class, 'index'])->name('timbangan_rs_in')->middleware(['auth']);
 Route::get('timbangan_rs_out', [TimbanganRsOutController::class, 'index'])->name('timbangan_rs_out')->middleware(['auth']);

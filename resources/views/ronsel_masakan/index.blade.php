@@ -76,15 +76,15 @@
                     <br>
                     @if(Auth()->user()->role_id < 5)
                     <button type="button" class="btn btn-warning text-dark" data-toggle="modal" data-target="#create{{ $material->id }}">
-                        Create Ronsel 
-                        @include('components.icon', ['icon' => 'file ']) 
+                        Buat Ronsel
+                        @include('components.icon', ['icon' => 'file '])
                     </button>
                     @include('ronsel_masakan.create')
                     @endif
                 </div>
             </div>
         </div>
-        
+
         @endforeach
 
     </div>

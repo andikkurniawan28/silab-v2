@@ -57,10 +57,10 @@
     </div> --}}
 
     <!-- Content Section -->
-    <div class="row">
+    {{-- <div class="row">
         @include('page.realisasi')
         @include('page.ilustrasi')
-    </div>
+    </div> --}}
 
 </div>
 <!-- /.container-fluid -->

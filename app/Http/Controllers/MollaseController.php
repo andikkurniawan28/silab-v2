@@ -63,7 +63,7 @@ class MollaseController extends Controller
         ]);
         Mollase::create($request->all());
         Log::writeLog('Mollase', 'Create New Mollase', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi Tetes has been stored');
+        return redirect()->back()->with('success', 'Taksasi Tetes berhasil disimpan');
     }
 
     /**
@@ -104,7 +104,7 @@ class MollaseController extends Controller
             'meters' => $request->meters,
         ]);
         Log::writeLog('Mollase', 'Edit Mollase', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi Tetes has been updated');
+        return redirect()->back()->with('success', 'Taksasi Tetes berhasil dirubah');
     }
 
     /**
@@ -117,6 +117,6 @@ class MollaseController extends Controller
     {
         Mollase::find($id)->delete();
         Log::writeLog('Mollase', 'Delete Mollase', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi Tetes has been deleted');
+        return redirect()->back()->with('success', 'Taksasi Tetes berhasil dihapus');
     }
 }

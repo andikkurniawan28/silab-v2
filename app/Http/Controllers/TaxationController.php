@@ -19,7 +19,7 @@ class TaxationController extends Controller
         $stations = $this->serveStation();
         $labels = self::prepareLabel();
         $vars = self::prepareVars();
-        
+
         for($i = 0; $i < count($labels); $i++)
             $colors[$i] = self::determineColor($i);
 
@@ -51,7 +51,7 @@ class TaxationController extends Controller
         ]);
         Taxation::create($request->all());
         Log::writeLog('Taksasi', 'Create New Taksasi', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi In Proses has been stored');
+        return redirect()->back()->with('success', 'Taksasi In Proses berhasil disimpan');
     }
 
     /**
@@ -186,7 +186,7 @@ class TaxationController extends Controller
             'back_wash_tank2' => $request->back_wash_tank2,
         ]);
         Log::writeLog('Taksasi', 'Edit Taksasi', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi In Proses has been updated');
+        return redirect()->back()->with('success', 'Taksasi In Proses berhasil dirubah');
     }
 
     /**
@@ -199,7 +199,7 @@ class TaxationController extends Controller
     {
         Taxation::find($id)->delete();
         Log::writeLog('Taksasi', 'Delete Taksasi', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Taksasi In Proses has been deleted');
+        return redirect()->back()->with('success', 'Taksasi In Proses berhasil dihapus');
     }
 
     public function prepareVars()

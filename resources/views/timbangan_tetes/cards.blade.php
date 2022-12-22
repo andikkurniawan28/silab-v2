@@ -2,7 +2,7 @@
     <div class="card bg-primary text-white shadow">
         <div class="card-body">
             <div class="font-weight-bold text-light text-uppercase mb-1">
-                <h5 align="left"><a href="#" class="text-light">Rekapitulasi Per Shift & Harian</a></h5>
+                <h5 align="left" class="text-light">Rekapitulasi Per Shift & Harian</h5>
             </div>
             <div class="table-responsive">
                 <table width="100%" class="table table-sm table-hovered text-light text-left">
@@ -66,7 +66,7 @@
     <div class="card bg-secondary text-white shadow">
         <div class="card-body">
             <div class="font-weight-bold text-light text-uppercase mb-1">
-                <h5 align="left"><a href="#" class="text-light">Rekapitulasi Sampai Dengan</a></h5>
+                <h5 align="left" class="text-light">Rekapitulasi SD</h5>
             </div>
             <div class="table-responsive">
                 <table width="100%" class="table table-sm table-hovered text-light text-left">
@@ -100,7 +100,7 @@
     <div class="card bg-danger text-white shadow">
         <div class="card-body">
             <div class="font-weight-bold text-light text-uppercase mb-1">
-                <h5 align="left"><a href="#" class="text-light">Rekapitulasi Per Jam</a></h5>
+                <h5 align="left" class="text-light">Rekapitulasi Per Jam</h5>
             </div>
             <div class="table-responsive">
                 <table width="100%" class="table table-sm table-hovered text-light text-left">

@@ -76,7 +76,7 @@ class ChemicalController extends Controller
         $request->request->add([ 'admin' => Auth()->user()->name, ]);
         Chemical::create($request->all());
         Log::writeLog('Chemical', 'Create New Chemical', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Bahan Kimia has been stored');
+        return redirect()->back()->with('success', 'Bahan Kimia berhasil disimpan');
     }
 
     /**
@@ -122,7 +122,7 @@ class ChemicalController extends Controller
             'blotong' => $request->blotong,
         ]);
         Log::writeLog('Chemical', 'Update Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Bahan Kimia has been updated');
+        return redirect()->back()->with('success', 'Bahan Kimia berhasil dirubah');
     }
 
     /**
@@ -135,6 +135,6 @@ class ChemicalController extends Controller
     {
         Chemical::find($id)->delete();
         Log::writeLog('Chemical', 'Delete Data', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Bahan Kimia has been deleted');
+        return redirect()->back()->with('success', 'Bahan Kimia berhasil dihapus');
     }
 }

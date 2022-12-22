@@ -66,7 +66,7 @@ class BalanceController extends Controller
         ]);
         Balance::create($request->all());
         Log::writeLog('Balance', 'Create New Balance', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Flow Nira Mentah has been stored');
+        return redirect()->back()->with('success', 'Flow Nira Mentah berhasil disimpan');
     }
 
     /**
@@ -103,12 +103,12 @@ class BalanceController extends Controller
         $data = Balance::editRawJuice($request, $id);
         Balance::where('id', $id)->update([
             'sugar_cane' => $request->sugar_cane,
-            'totalizer_raw_juice' => $request->totalizer_raw_juice,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-            'flow_raw_juice' => $data['flow_raw_juice'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
-            'raw_juice_percent_sugar_cane' => $data['raw_juice_percent_sugar_cane'],                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       
+            'totalizer_raw_juice' => $request->totalizer_raw_juice,
+            'flow_raw_juice' => $data['flow_raw_juice'],
+            'raw_juice_percent_sugar_cane' => $data['raw_juice_percent_sugar_cane'],
         ]);
         Log::writeLog('Balance', 'Edit Balance '.$request->name, Auth()->user()->name);
-        return redirect()->back()->with('success', 'Flow Nira Mentah has been updated');
+        return redirect()->back()->with('success', 'Flow Nira Mentah berhasil dirubah');
     }
 
     /**
@@ -121,6 +121,6 @@ class BalanceController extends Controller
     {
         Balance::find($id)->delete();
         Log::writeLog('Balance', 'Delete Balance', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Flow Nira Mentah has been deleted');
+        return redirect()->back()->with('success', 'Flow Nira Mentah berhasil dihapus');
     }
 }

@@ -67,7 +67,7 @@ class ImbibitionController extends Controller
         ]);
         Imbibition::create($request->all());
         Log::writeLog('Imbibition', 'Create New Imbibition', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Imbibisi has been stored');
+        return redirect()->back()->with('success', 'Imbibisi berhasil disimpan');
     }
 
     /**
@@ -107,7 +107,7 @@ class ImbibitionController extends Controller
             'flow' => $data['flow'],
         ]);
         Log::writeLog('Imbibition', 'Edit Imbibition', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Imbibisi has been updated');
+        return redirect()->back()->with('success', 'Imbibisi berhasil dirubah');
     }
 
     /**
@@ -120,6 +120,6 @@ class ImbibitionController extends Controller
     {
         Imbibition::find($id)->delete();
         Log::writeLog('Imbibition', 'Delete Imbibition', Auth()->user()->name);
-        return redirect()->back()->with('success', 'Imbibisi has been deleted');
+        return redirect()->back()->with('success', 'Imbibisi berhasil dihapus');
     }
 }

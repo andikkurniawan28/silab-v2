@@ -114,25 +114,25 @@ class Analysis extends Model
         else
             $data['icumsa_shs'] = NULL;
 
-        $data['reject'] = Reject::latest()->paginate(10);
+        // $data['reject'] = Reject::latest()->paginate(10);
 
-        $data['target_raw_sugar'] = 50000000;
-        $data['target_tebu_tergiling'] = 1;
-        $data['target_produksi_shs'] = 1;
-        $data['target_produksi_tetes'] = 100000000;
-        $data['target_reject_shs'] = 50000000;
+        // $data['target_raw_sugar'] = 50000000;
+        // $data['target_tebu_tergiling'] = 1;
+        // $data['target_produksi_shs'] = 1;
+        // $data['target_produksi_tetes'] = 100000000;
+        // $data['target_reject_shs'] = 50000000;
 
-        $data['produksi_raw_sugar'] = Weight::raw_sugar_in_total();
-        $data['tebu_tergiling'] = 1;
-        $data['produksi_shs'] = 1;
-        $data['produksi_tetes'] = Weight::tetes_total();
-        $data['reject_shs'] = Reject::reject_total();
+        // $data['produksi_raw_sugar'] = Weight::raw_sugar_in_total();
+        // $data['tebu_tergiling'] = 1;
+        // $data['produksi_shs'] = 1;
+        // $data['produksi_tetes'] = Weight::tetes_total();
+        // $data['reject_shs'] = Reject::reject_total();
 
-        $data['realisasi_raw_sugar'] = $data['produksi_raw_sugar'] / $data['target_raw_sugar'] * 100;
-        $data['realisasi_tebu_tergiling'] = $data['tebu_tergiling'] / $data['target_tebu_tergiling'] * 100;
-        $data['realisasi_produksi_shs'] = $data['produksi_shs'] / $data['target_produksi_shs'] * 100;
-        $data['realisasi_produksi_tetes'] = $data['produksi_tetes'] / $data['target_produksi_tetes'] * 100;
-        $data['realisasi_reject_shs'] = $data['reject_shs'] / $data['target_reject_shs'] * 100;
+        // $data['realisasi_raw_sugar'] = $data['produksi_raw_sugar'] / $data['target_raw_sugar'] * 100;
+        // $data['realisasi_tebu_tergiling'] = $data['tebu_tergiling'] / $data['target_tebu_tergiling'] * 100;
+        // $data['realisasi_produksi_shs'] = $data['produksi_shs'] / $data['target_produksi_shs'] * 100;
+        // $data['realisasi_produksi_tetes'] = $data['produksi_tetes'] / $data['target_produksi_tetes'] * 100;
+        // $data['realisasi_reject_shs'] = $data['reject_shs'] / $data['target_reject_shs'] * 100;
 
         return $data;
     }
